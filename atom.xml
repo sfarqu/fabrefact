@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Fabrefact</title>
+  
+  <subtitle>a blog by Sara Farquharson</subtitle>
+  <link href="/fabrefact/atom.xml" rel="self"/>
+  
+  <link href="https://sfarqu.github.io/fabrefact/"/>
+  <updated>2019-11-03T04:36:22.000Z</updated>
+  <id>https://sfarqu.github.io/fabrefact/</id>
+  
+  <author>
+    <name>Sara Farquharson</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>WTF is a CTF? A beginner&#39;s adventure</title>
+    <link href="https://sfarqu.github.io/fabrefact/2019/11/02/WTF-is-a-CTF/"/>
+    <id>https://sfarqu.github.io/fabrefact/2019/11/02/WTF-is-a-CTF/</id>
+    <published>2019-11-03T01:24:49.000Z</published>
+    <updated>2019-11-03T04:36:22.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of <a href="https://ittakesahuman.com/lp/WomenUniteOverCTF.html" target="_blank" rel="noopener">Women Unite Over CTF</a>, an online competition hosted by a number of cybersecurity communities.</p><h2 id="So-what-is-a-CTF"><a href="#So-what-is-a-CTF" class="headerlink" title="So what is a CTF?"></a>So what <em>is</em> a CTF?</h2><p>A few weeks ago I had this exact question, after seeing the Women Unite event promoted by several people I follow on Twitter. A <a href="https://ctftime.org/ctf-wtf/" target="_blank" rel="noopener">quick search</a> told me CTF stands for “Capture the Flag”, and means a type of information security competition where players or teams compete to collect “flags” for points. This sounds, to be honest, <em>deeply intimidating</em>. </p><p>I may be a professional software developer, but I have never been a hacker. I don’t decompile software or use cheat codes in games, and I only switched my IDE to dark mode due to peer pressure from my coworkers. I hate the way the hacker stereotype involves taking joy from making other people feel stupid. I particularly hate feeling stupid.</p><p>But I <em>love</em> puzzle games.</p><p>Removed from the competitive aspect, a Capture the Flag event is solving a series of puzzles using techniques like forensics and cryptography. This sounds fun to me! But the problem remains: how do you learn those techniques if you’re just a regular person who has never considered exploiting a web server?</p><p>It turns out CTFs are <em>not</em> exclusively high-pressure clashes between technowizards who are out to crush your self esteem. Some events are explicitly aimed at beginners, and can serve as educational opportunities to get familiar with the tools and techniques.</p><h2 id="Women-Unite-Over-CTF"><a href="#Women-Unite-Over-CTF" class="headerlink" title="Women Unite Over CTF"></a>Women Unite Over CTF</h2><p>I clicked on the Women Unite event with the thought of sending it to my coworker, who is actively studying security. However, my attention was caught by wording like “laidback” and “we’ll give you a tutorial”. Could this be a friendly way to get started? I signed up on a whim.</p><h3 id="The-event"><a href="#The-event" class="headerlink" title="The event"></a>The event</h3><p>I was not precisely thrilled at getting up before 9am on a Saturday, but I was excited to learn new things! I still wasn’t convinced I would solve a single puzzle.</p><h4 id="The-bad"><a href="#The-bad" class="headerlink" title="The bad"></a>The bad</h4><p>The online event had a bit of a rough start. The competition was hosted on Point3 Security’s ESCALATE platform, which is supposed to provide a sandboxed environment full of well-designed challenges in various categories. Unfortunately, under the hammering of hundreds of attendees trying to log in, the system mostly provided 504 Gateway Timeouts.</p><p>Look, I get it. I work in the tech industry, and sometimes despite your best efforts your system falls over and users are angry. <em>However</em>, if you have a scheduled event coming up with a thousand people registered, please for the love of little fishes test what 1000 concurrent connections will do to your web app!</p><p>I didn’t care about prizes so wasn’t too bummed about the late start, but it was still frustrating. It took well over an hour before I could even log in, and even then clicking any link could take up to five minutes or time out entirely. Since completing each challenge took at least five clicks, this was a huge tax on participation.</p><h4 id="The-good"><a href="#The-good" class="headerlink" title="The good"></a>The good</h4><p>Even so, the ESCALATE platform was pretty cool. The provided Linux VM was stocked with every conceivable application used for decompiling or inspecting files, and the problems themselves escalated in difficulty in a way that I was able to take what I’d learned from one challenge and apply it to the next. After the competition was over and (I assume) most people had logged off, all the fancier features were able to load and I found the tool quite pleasant.</p><p>The best part, however, were the tutorials. On the livestream the presenter Nada gave walkthroughs for three of the reverse-engineering challenges, including demonstrating which tools to use and some of the features of those tools. This was, to my mind, the most critical part.</p><p>The tutorials themselves had some pretty advanced concepts compressed into a very short lesson, so I don’t know how they would feel for complete beginners. Since I already know how to code and even have a vague understanding of assembly language I got the most value out of the sections that explained the thought process of which tools to choose for which parts of the process. (Although the assembly reference was also essential—I didn’t have <em>that</em> strong an understanding going in!)</p><p>Due to the technical difficulties they extended the time of the contest and let everyone continue using the ESCALATE trial until the end of the day. This allowed me to keep plugging along at challenges on a system that was not currently being accidentally DDOSed. It was a rewarding and fun afternoon.</p><h3 id="The-results"><a href="#The-results" class="headerlink" title="The results"></a>The results</h3><p>I ended up solving 9 out of 28 challenges! I got all five in Network Foundations Level 1 and the easiest four Reverse Engineering problems. Three of those reverse engineering challenges had walkthroughs, but the last (and most complex!) I was able to extrapolate based on what I had learned in the previous lessons. The networking challenges I figured out for myself, starting from the knowledge of “Wireshark is a tool for looking at network stuff”.</p><p>I came out with a basic knowledge of how to use Wireshark, BinaryNinja, and Ollydbg. More generally I learned about static and dynamic analysis of binaries, and a little bit about when and why to use them.</p><p>After the event was over I was hype for more learning and signed up for a resource <a href="https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04" target="_blank" rel="noopener">recommended for newcomers</a>. Instead it has opaque problems with zero guidance labelled “very easy” and I hate it. Let’s just say there’s still room for improvement in this space.</p><p>Thanks to <a href="https://www.ittakesahuman.com/" target="_blank" rel="noopener">Point3 Security</a>, <a href="https://gatebreachers.org/" target="_blank" rel="noopener">Gatebreachers</a>, <a href="https://womenscyberjutsu.org/" target="_blank" rel="noopener">Women’s Society of Cyberjutsu</a>, <a href="https://twitter.com/WoSECtweets" target="_blank" rel="noopener">WoSEC</a>, and <a href="https://www.womenhackerz.com/" target="_blank" rel="noopener">WomenHackerz</a> for putting on an event that, technical difficulties aside, succeeded in making security feel accessible.</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of &lt;a
+        
+      
+    
+    </summary>
+    
+    
+      <category term="events" scheme="https://sfarqu.github.io/fabrefact/categories/events/"/>
+    
+    
+      <category term="security" scheme="https://sfarqu.github.io/fabrefact/tags/security/"/>
+    
+      <category term="ctf" scheme="https://sfarqu.github.io/fabrefact/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>what I&#39;m reading this week</title>
+    <link href="https://sfarqu.github.io/fabrefact/2019/10/31/what-I-m-reading-this-week/"/>
+    <id>https://sfarqu.github.io/fabrefact/2019/10/31/what-I-m-reading-this-week/</id>
+    <published>2019-11-01T03:26:57.000Z</published>
+    <updated>2019-11-01T06:58:31.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>These days I am reading a lot across many devices and then immediately misplacing the references. Instead, here are some things I found interesting this week.</p><ul><li><p><a href="https://segment.com/blog/the-10m-engineering-problem/" target="_blank" rel="noopener">The $10m engineering problem</a>, blog post about how Segment cut their infrastructure costs by 30%</p><ul><li>I found this fascinating! Hope to come back to it as I learn more about infrastructure design to see what else I can get out of it.</li></ul></li><li><p><em>Deep Work: rules for focused success in a distracted world</em> by Cal Newport (audiobook)</p><ul><li>This book mostly made me angry, but buried in the endless tedious anecdotes about white men being successful is at least a blog post’s worth of good advice.</li></ul></li><li><p><a href="https://arstechnica.com/gadgets/2019/10/how-a-months-old-amd-microcode-bug-destroyed-my-weekend/" target="_blank" rel="noopener">How a months-old AMD microcode bug destroyed my weekend</a> Ars Technica article about a bug in certain AMD processors whose onboard random number generator always returns the same value</p></li><li><p><em>Doing Good Better: effective altruism and how you can make a difference</em> by William MacAskill (audiobook)</p><ul><li>I was on board with this technique until he said one should <em>never</em> allow personal feelings toward an issue to influence your charitable giving. As I am still interested in effective altruism I will keep listening, but with greater skepticism.</li></ul></li><li><p>Xiang (Jenny) Ren, Kirk Rodrigues, Luyuan Chen, Camilo Vega, Michael Stumm, and Ding Yuan. 2019. <a href="https://doi.org/10.1145/3341301.3359640" target="_blank" rel="noopener">An analysis of performance evolution of Linux’s core operations</a>. In Proceedings of the 27th ACM Symposium on Operating Systems Principles (SOSP ‘19). ACM, New York, NY, USA, 554-569.</p><ul><li>This one digs pretty deep and I decided to come back to it after I finish the work about CPU architecture I have on hold</li></ul></li><li><p>Two Twitter-threads-turned-blog-posts on Errata Security: <a href="https://blog.erratasec.com/2019/08/thread-on-osi-model-is-lie.html" target="_blank" rel="noopener">Thread on the OSI model is a lie</a> and <a href="https://blog.erratasec.com/2019/08/thread-on-network-input-parsers.html" target="_blank" rel="noopener">Thread on network input parsers</a></p><ul><li>I never did learn networking properly in school, but I seem to be finding a flurry of sources on protocols and algorithms so maybe it’s time to stop being intimidated by the topic</li></ul></li><li><p>Amy Ousterhout, Adam Belay, and Irene Zhang. 2019. <a href="https://www.usenix.org/conference/hotcloud19/presentation/ousterhout" target="_blank" rel="noopener">Just in time delivery: leveraging operating systems knowledge for better datacenter congestion control</a>. In Proceedings of the 11th USENIX Conference on Hot Topics in Cloud Computing (HotCloud’19).</p><ul><li>In which the authors propose a Chimera operating system for datacenters, not to be confused with the <a href="http://www.cs.cmu.edu/~aml/chimera/chimera.html" target="_blank" rel="noopener">Chimera Real Time Operating System</a>.</li></ul></li><li><p><a href="https://www.infoq.com/presentations/rust-security-guarantees/" target="_blank" rel="noopener">The Most Secure Program Is One That Doesn’t Exist</a> by Diane Hosfelt (transcript of talk from QCon SF 2018)</p><ul><li>Watching talks about Rust is one step closer to learning Rust, right?</li></ul></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;These days I am reading a lot across many devices and then immediately misplacing the references. Instead, here are some things I found interesting this week.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://segment.com/blog/the-10m-engineering-problem/&quot;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="reading list" scheme="https://sfarqu.github.io/fabrefact/categories/reading-list/"/>
+    
+    
+      <category term="papers" scheme="https://sfarqu.github.io/fabrefact/tags/papers/"/>
+    
+      <category term="links" scheme="https://sfarqu.github.io/fabrefact/tags/links/"/>
+    
+  </entry>
+  
+</feed>
