@@ -500,8 +500,6 @@ article {
       margin-top: 0; }
   article ol, article ul {
     padding-left: 1em; }
-    article ol ol, article ol ul, article ul ol, article ul ul {
-      padding-left: 1em; }
   article li p {
     margin-top: 0.5;
     margin-bottom: 0; }
