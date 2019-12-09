@@ -1,0 +1,403 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>papers on Fabrefact</title>
+   <link>http://sfarqu.github.io/fabrefact/tags/papers/</link>
+   <description>Recent content in papers on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Thu, 31 Oct 2019 20:26:57 -0700</lastBuildDate>
+   
+       <atom:link href="http://sfarqu.github.io/fabrefact/tags/papers/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+     <item>
+       <title>(framework) mistakes were made</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</link>
+       <pubDate>Sat, 07 Dec 2019 23:13:25 -0800</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</guid>
+       <description>&lt;p&gt;It took a long time for me to go from &amp;ldquo;I want to write blog posts&amp;rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was &lt;em&gt;so exhausting&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Even once I decided to use a static site generator, I had to choose &lt;em&gt;which&lt;/em&gt; generator, and then a template&amp;hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.&lt;/p&gt;
+&lt;p&gt;That turned out to be a mistake. How could I have done better?&lt;/p&gt;
+&lt;h2 id=&#34;the-perils-of-picking-tools&#34;&gt;The perils of picking tools&lt;/h2&gt;
+&lt;p&gt;Once, back in the before times, when we wanted to create a webpage we would write plain HTML in a text editor (uphill both ways in the snow) but that hasn&#39;t been the in thing for decades now. The last time I had a go at creating a new website (circa 2010) it still seemed like content management systems were the way to go. Spend days or weeks choosing a platform that had all the features you need but wasn&#39;t too complicated, or write your own from scratch and be responsible for all the database management, user authentication, and API design.&lt;/p&gt;
+&lt;p&gt;I&#39;ve always fallen in the &amp;ldquo;roll your own&amp;rdquo; camp, which is why I have not had a functioning website in a decade.&lt;/p&gt;
+&lt;p&gt;When this new blogging impulse hit, I, older and wiser, determined to use a tool to abstract away all the blog boilerplate and website design. I wanted to simply publish posts without having to babysit my own Linux server. Conveniently, while I was ignoring the world of web, the tide had shifted away from databases and admin consoles to static HTML sites on free hosting.&lt;/p&gt;
+&lt;p&gt;Turns out I still don&#39;t like outsourcing most of my application to other programmers, but it&#39;s either that or go back to never finishing my own framework so what choice did I have?&lt;/p&gt;
+&lt;h2 id=&#34;decisions-decisions&#34;&gt;Decisions, decisions&lt;/h2&gt;
+&lt;p&gt;A lot of choice! There are approximately eleventy-billion static site generators out there, so how to pick one, if you only barely understand what a static site generator is? I settled on a few heuristics to get the fastest start on a new site:&lt;/p&gt;
+&lt;h3 id=&#34;1-how-good-is-the-documentation&#34;&gt;1. How good is the documentation?&lt;/h3&gt;
+&lt;p&gt;If you want to get started as fast as possible, be on the lookout for step-by-step instructions for getting up and running with all the features you&#39;re looking for.&lt;/p&gt;
+&lt;h3 id=&#34;2-is-the-generator-written-in-a-programming-language-you-know-or-want-to-learn&#34;&gt;2. Is the generator written in a programming language you know (or want to learn?)&lt;/h3&gt;
+&lt;p&gt;Eventually you may want to understand what is happening inside the generator, or edit some of the templates. Even if you are not interested in tinkering, the tooling around installing, updating, and running the generator will be tied to the language it&#39;s written in. Some familiarity with that programming language will make the whole process easier.&lt;/p&gt;
+&lt;h3 id=&#34;3-are-there-prebuilt-themes-you-like-the-look-of&#34;&gt;3. Are there pre-built themes you like the look of?&lt;/h3&gt;
+&lt;p&gt;Even if you intend to make a custom theme, starting with one that is most of what you want will give you a vast head start.&lt;/p&gt;
+&lt;h3 id=&#34;4-how-popular-is-it&#34;&gt;4. How popular is it?&lt;/h3&gt;
+&lt;p&gt;The larger the user community, the more likely you are to find tutorials, Stack Overflow answers, and lots of themes or other sites for reference.&lt;/p&gt;
+&lt;h3 id=&#34;5-is-it-actively-maintained&#34;&gt;5. Is it actively maintained?&lt;/h3&gt;
+&lt;p&gt;How often is it updated? Are there any problems regularly reported by users that aren&#39;t getting fixed?&lt;/p&gt;
+&lt;h2 id=&#34;mistakes-were-made&#34;&gt;Mistakes were made&lt;/h2&gt;
+&lt;p&gt;Where I went wrong was in prioritizing a pre-made theme I liked over community, language, and support. Hexo is a fairly popular static site generator written in node.js, but it turned out to have some fatal flaws for my needs.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Turns out I don&#39;t like Node&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I didn&#39;t have strong feelings about language choice when I started, and I thought learning Node a little better might be useful. Instead I just felt annoyed whenever I had to debug anything, because I don&#39;t care enough about getting familiar with the framework, and it has a few quirks that frustrated me:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Node doesn&#39;t have a standard templating language&lt;/strong&gt;.
+Almost every theme I looked at used a different templating style, which made it difficult to generalize about how templates worked and how to customize them. On top of that, the templating framework used by the theme I chose turned out to be obsolete.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;There are too many dependencies&lt;/strong&gt;.
+The quick-start instructions for setting up my Hexo site didn&#39;t include checking in a dependency lockfile. As a result, some transitive dependency updated and for unknown reasons broke Hexo&#39;s ability to generate my site. This crystallized my frustration with the overall Node dependency ecosystem.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;The support community is not accessible to me&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Hexo has a reasonable number of users, but many of them are Chinese-speaking. Many times when trying to debug an error or find a tutorial, I had trouble finding any results in my native language. I didn&#39;t think this would be an issue when I chose it, but I ended up having to debug a lot more than I predicted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Some of the defaults result in undesireable behaviour&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;The final nail in the coffin of my Hexo experiment was realizing that by default permalinks include date information, but default date-time stamps in posts don&#39;t include time zone. This meant that URIs for all my posts sometimes changed depending on which timezone I was in when I generated the static files. This broke any links to my site and was overall much less permanent than &amp;ldquo;permalink&amp;rdquo; implies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;I probably could have worked all of these problems out, but the entire reason for using a static site generator is to not have to do all this code tweaking and maintenance!&lt;/p&gt;
+&lt;h2 id=&#34;enter-hugo&#34;&gt;Enter Hugo&lt;/h2&gt;
+&lt;p&gt;After a week or two of sulking, I picked Hugo as a replacement generator. I don&#39;t love any of the themes, but found one I can tolerate until I find time to make something custom. Hugo has the following selling points:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The community and support seem vibrant. I haven&#39;t had any trouble so far finding documentation or tutorials for any issues I&#39;ve run in to.&lt;/li&gt;
+&lt;li&gt;I am actively interested in learning more Go and find it straightforward to read both code and templates.&lt;/li&gt;
+&lt;li&gt;The specific date issues I had with Hexo don&#39;t exist in Hugo.&lt;/li&gt;
+&lt;li&gt;The post and front matter formats are identical, so I was able to simply copy-paste my previous source files into the new generator.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Fingers crossed this will be the last major shakeup for a while, but at the very least I am moving on to new and different problems.&lt;/p&gt;</description>
+     </item>
+   
+     <item>
+       <title>what I&#39;m reading this week: Nov 23</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</link>
+       <pubDate>Sat, 23 Nov 2019 22:21:53 -0800</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</guid>
+       <description>&lt;p&gt;Continuing on my haphazard self-education tour around distributed systems topics and other random corners of the internet.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I feel like I learned so much from reading the transcript of this QCon panel moderated by Cindy Sridharan: &lt;a href=&#34;https://www.infoq.com/presentations/panel-perils-distributed-coordination/&#34;&gt;The Promises and Perils of Eschewing Distributed Coordination&lt;/a&gt;. I had to look up what a control plane is, and took notes on interesting ways distributed systems have failed.
+&lt;ul&gt;
+&lt;li&gt;new things to look into: Anna key-value store, Jepsen test framework, Google F1 paper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Andi McClure wrote a cool Twitter thread about Sun Microsystems doomed &lt;a href=&#34;https://mobile.twitter.com/mcclure111/status/1196557401710837762&#34;&gt;predicted future of the internet&lt;/a&gt; with a little coda about how it compares to Google Stadia, which I still have not bothered to look up.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This week&#39;s &lt;a href=&#34;https://vicki.substack.com&#34;&gt;Normcore Tech&lt;/a&gt; public post by Vicki Boykis was a fascinating dive into the Russian internet and how it is vastly different than we who grew up with the promise of a free and global internet might expect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can&#39;t remember how I stumbled across Martin Kleppmann&#39;s older post about &lt;a href=&#34;https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html&#34;&gt;how to do distributed locking&lt;/a&gt;, but it is a deliciously crunchy and opinionated accusal that Redis&#39;s algorithm for distributed locking fails to guarantee safety—ie that it is possible for two processes to get conflicting locks on the same resource. Had to lean on cloud computing concepts I learned recently, so this felt like a useful refresher! I did not read &lt;a href=&#34;http://antirez.com/news/101&#34;&gt;the rebuttal by the author of the algorithm&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Further in Kleppmann&#39;s blog archive I found more interesting mistakes in &lt;a href=&#34;https://martin.kleppmann.com/2014/03/26/six-things-about-scaling.html&#34;&gt;Six things I wish we had known about scaling&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Embedded Artistry blog recommends studying classic programs to improve your knowledge, and lists &lt;a href=&#34;https://embeddedartistry.com/blog/2019/05/06/programmers-lets-study-source-code-classics/&#34;&gt;freely available source code to classic programs&lt;/a&gt; to study&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I only recently learned who Barbara Liskov is, but thanks to this &lt;a href=&#34;https://www.quantamagazine.org/barbara-liskov-is-the-architect-of-modern-algorithms-20191120/&#34;&gt;Quanta Magazine interview&lt;/a&gt; I desperately wish I could hang out with her.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There&#39;s always at least one thing I love in every issue of Increment; for this month&#39;s &amp;ldquo;Teams&amp;rdquo; issue it&#39;s Kevin Stewart&#39;s article on &lt;a href=&#34;https://increment.com/teams/how-to-build-a-startup-engineering-team/&#34;&gt;how to build a startup engineering team&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If you didn&#39;t know why the sale of the .org domain registry to a private company is so upsetting, well, &lt;a href=&#34;https://www.theregister.co.uk/AMP/2019/11/20/org_registry_sale_shambles/&#34;&gt;here&#39;s an article in the Register&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Saw a tweet about Paypal&#39;s new open source &lt;a href=&#34;https://github.com/paypal/scorebot&#34;&gt;Secure Code Review bot&lt;/a&gt; and decided to read the source code to figure out how it works. I am getting better at reading source code! Still a little vague on how to add new rules to compare against, the documentation is not terribly user friendly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
+       <title>what I&#39;m reading this week: Nov 16</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</link>
+       <pubDate>Sat, 16 Nov 2019 10:45:00 -0800</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</guid>
+       <description>&lt;ul&gt;
+&lt;li&gt;I wanted to quickly check my intuition that Rust doesn&#39;t have garbage collection and instead found this &lt;a href=&#34;https://words.steveklabnik.com/borrow-checking-escape-analysis-amd-the-generational-hypothesis&#34;&gt;Steve Klabnik essay&lt;/a&gt; about that and a lot more. The takeaway I think is that Rust&#39;s static memory management makes GC redundant?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;There was a lot of hoopla about the implicit algorithmic bias in the new Apple Card, but I found &lt;a href=&#34;https://dhh.dk/2019/about-the-apple-card.html&#34;&gt;Jamie Heinemeier Hansson&#39;s post&lt;/a&gt; particularly incisive. Especially the widely-quoted &amp;ldquo;justice for another rich white woman is not justice at all.&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cockroachlabs.com/blog/parallel-commits&#34;&gt;Parallel Commits: An Atomic Commit Protocol For Globally Distributed Transactions&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Cockroach Labs has this amazing blog full of crunchy technical details of design decisions they&#39;ve made when building CockroachDB, their distributed database product. I loved this deep dive into the complex intersection of atomic transactions and distributed consensus, with a brief sidebar into using TLA+ for formal verification.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://dl.acm.org/citation.cfm?id=3359656&#34;&gt;File Systems Unfit as Distributed Storage Backends: Lessons from 10 Years of Ceph Evolution&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Having just learned about Ceph in a cloud computing course and read Alex Petrov&#39;s talk transcript about storage systems last week, I was in a much better position to understand this paper! I also leaned on the &lt;a href=&#34;https://blog.acolyer.org/2019/11/06/ceph-evolution/&#34;&gt;summary from The Morning Paper&lt;/a&gt; for some of the highlights.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Also helpful for getting a handle on file systems was this &lt;a href=&#34;https://mobile.twitter.com/Foone/status/1194762568948056064?s=20&#34;&gt;cool tweet thread about formatting floppy disks&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I keep meaning to dig more into &lt;a href=&#34;https://mobile.twitter.com/vaidehijoshi&#34;&gt;Vaidehi Joshi&lt;/a&gt;&amp;lsquo;s BaseCS series, so today I randomly started with her &lt;a href=&#34;https://medium.com/basecs/leveling-up-ones-parsing-game-with-asts-d7a6fc2400ff&#34;&gt;intro to abstract syntax trees&lt;/a&gt;. It probably would have been better to start with the preceeding articles about parsers, but I&#39;ve had to interact with ASTs and parsers enough at work to have a basic foundation.&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
+       <title>what I&#39;m reading this week: Nov 9</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</link>
+       <pubDate>Sat, 09 Nov 2019 21:47:59 -0800</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</guid>
+       <description>&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://chelseatroy.com/category/leveling-up/&#34;&gt;Chelsea Troy&#39;s whole Leveling Up series&lt;/a&gt; is exactly the sort of thing I dreamed of writing when I thought about starting a blog.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Getting back to &lt;a href=&#34;https://people.freebsd.org/~lstewart/articles/cpumemory.pdf&#34;&gt;What Every Programmer Should Know About Memory&lt;/a&gt;, Ulrich Drepper&#39;s enormous paper about the foundational workings of computers. I keep putting it down and haring off on tangents about how much has changed since 2007, but I&#39;ve promised my paper reading group that I will get through all 50-odd pages and summarize it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chelsea Troy&#39;s three-part &lt;a href=&#34;https://chelseatroy.com/2018/08/01/api-design-part-1-before-there-was-rest/&#34;&gt;history of web API design&lt;/a&gt; is the first thing that ever made GraphQL click for me.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Not to diminish this &lt;a href=&#34;https://twitter.com/hexrcs/status/1190332090149150720&#34;&gt;10-tweet crash course in GraphQL&lt;/a&gt; by Xiaoru Li, which packs a lot of information into few words, but still uses a bit too much jargon to be a good introduction.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.dazeddigital.com/science-tech/article/45942/1/your-period-tracker-app-might-be-sharing-your-data-to-facebook&#34;&gt;Your period tracker might be sharing your sensitive data with Facebook&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This seems obvious in retrospect, and with Google buying Fitbit, I&#39;ve been thinking a lot about how I don&#39;t really &lt;em&gt;need&lt;/em&gt; to track my health data.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://www.leanessays.com/2019/04/what-if-your-team-wrote-code-for-737.html&#34;&gt;What If Your Team Wrote the Code for the 737 MCAS System?&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I don&#39;t write code for airplane controls, but the lessons of the 737 MAX and the Uber pedestrian death should be a reminder to all software developers that you are never &lt;em&gt;just&lt;/em&gt; an engineer. Software has consequences, and we should be thinking about the effects of what we build.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.brainpickings.org/2015/08/10/leisure-the-basis-of-culture-josef-pieper/&#34;&gt;Leisure, the Basis of Culture: An Obscure German Philosopher’s Timely 1948 Manifesto for Reclaiming Our Human Dignity in a Culture of Workaholism&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;To be honest I don&#39;t think I could read this Josef Pieper book without considering it &lt;em&gt;work&lt;/em&gt;, but the reviewer clearly enjoyed it, and I find it useful to occasionally reflect on how much I am conceding to the Cult of Productivity.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://timewitch.net/post/2019-11-03-when-cache-is-a-db/&#34;&gt;When a Cache is a Database&lt;/a&gt;, Vallery Lancey&#39;s neat post about the importance of making correct assumptions about the availability of services in production.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.infoq.com/presentations/storage-algorithms/&#34;&gt;Algorithms behind Modern Storage Systems&lt;/a&gt;, transcript of a talk by Alex Petrov&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Coincidentally, yesterday my coworker recommended Petrov&#39;s new book Database Internals, which is the same book mentioned in this 2018 talk! I was very tired when I skimmed this talk transcript, so I look forward to reading the book and understanding a bit better.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/17255186-the-phoenix-project&#34;&gt;The Phoenix Project&lt;/a&gt; by Gene Kim, Kevin Behr, George Spafford&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This book was recommended to me, and I kept seeing people talking up the sequel, &lt;em&gt;The Unicorn Project&lt;/em&gt;. I&#39;m not sure I got a lot out of it, since I am already aware of concepts like DevOps and the novel is a little formulaic—but at the same time I did read the whole book in one sitting, so I can see how it could be a more engaging introduction to the topic than a dry textbook.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.fastcompany.com/90422553/the-first-map-of-americas-food-supply-chain-is-mind-boggling&#34;&gt;The first map of America’s food supply chain is mind-boggling&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This reads to me as &amp;ldquo;how to disrupt America&#39;s food supply chain&amp;rdquo; but maybe I&#39;m just pessimistic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/6570502-switch&#34;&gt;Switch: how to change things when change is hard&lt;/a&gt; by Chip Heath &amp;amp; Dan Heath (audiobook)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The problem with reading one self-help book that debunks the theory of willpower exhaustion (Indistractable) is that every other self-help book published in the last 20 years uses willpower exhaustion as a foundation of their thesis, and &lt;em&gt;Switch&lt;/em&gt; is no exception. This is probably my own fault for enjoying pop-science books in the first place. However, once I decided to let slide the dubious science and tortuous elephant-and-rider metaphor, there is some reasonable advice for how to implement change in an organization. Still have a few hours left in this one.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://architecht.io/what-happened-to-hadoop-211aa52a297&#34;&gt;What happened to Hadoop&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;When I saw Urs Hölzle&#39;s tweet saying &lt;a href=&#34;https://twitter.com/uhoelzle/status/1177360023976067077&#34;&gt;RIP MapReduce&lt;/a&gt; I was a little disoriented, having just finished a Coursera course on Cloud Computing that taught MapReduce as an important topic in Big Data. In an effort to find my footing again I searched for a summary of the current state of data processing. This article about the decline of Hadoop is the closest to what I was looking for. I guess this tech still exists, but is used in managed services instead of directly? My main takeaway is that by the time a specialization becomes popular on Coursera, much of what it says is probably outdated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
+       <title>Review: Doing Good Better</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</link>
+       <pubDate>Thu, 07 Nov 2019 21:54:20 -0800</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</guid>
+       <description>&lt;p&gt;One of my lifelong values has always been &lt;em&gt;making a positive impact on the world&lt;/em&gt;. For a long time I lived paycheque-to-paycheque, but I still tried to put aside a percentage of my income for charitable giving. When I got a full-time software job, my income tripled overnight—which meant so did my donation budget.&lt;/p&gt;
+&lt;p&gt;This left me with an unexpected problem: now that I have more money to give, who should I give it to? Should I increase my monthly donation to the existing charities I support, or branch out to new ones? How can I do the &lt;em&gt;most&lt;/em&gt; good with the resources I have?&lt;/p&gt;
+&lt;p&gt;That latter question is the one posed by William MacAskill&#39;s book &lt;a href=&#34;https://www.effectivealtruism.org/doing-good-better/&#34;&gt;&lt;em&gt;Doing Good Better: How Effective Altruism Can Help You Make A Difference&lt;/em&gt;&lt;/a&gt;. I was excited to listen to this audiobook and finally have direction for my haphazard altruism.&lt;/p&gt;
+&lt;h1 id=&#34;a-ruthless-efficiency&#34;&gt;A ruthless efficiency&lt;/h1&gt;
+&lt;p&gt;This book applies economics and scientific reasoning to altruism, resulting in a rational and often mind-bendingly ruthless approach to doing good.&lt;/p&gt;
+&lt;p&gt;As alluded to in &lt;a href=&#34;http://sfarqu.github.io/fabrefact/fabrefact/2019/11/01/what-I-m-reading-this-week/&#34;&gt;last week&#39;s reading list&lt;/a&gt;, the book got off on a bit of a wrong foot with me with an early assertion that addressing global poverty is where you get the most effect for your dollar, so you should never donate to other causes that you are personally attached to. By this logic I should immediately cease donating to my local food bank, because the people in my community are not poor enough by global standards.&lt;/p&gt;
+&lt;p&gt;I do not disagree that my dollar can buy more food in sub-Saharan Africa, nor that the total amount of suffering in poor countries is greater than in Canada. At the same time it feels cold to only help faceless people in distant places and never my neighbours. The &amp;ldquo;effectiveness&amp;rdquo; argument presupposes that it is both possible and desirable for humans to be 100% logical, points I happen to think are more nuanced.&lt;/p&gt;
+&lt;p&gt;That said, I completely agree that personal attachment should not be the &lt;em&gt;only&lt;/em&gt; consideration when choosing a cause to support. That&#39;s why I have been struggling to decide where to spend my charitable dollars, and why I am swayed by the idea of picking a solution based on effectiveness.&lt;/p&gt;
+&lt;p&gt;Later chapters of Doing Good Better walk the initial assertion back a bit, both by introducing other topics that the Effective Altruism community considers worth supporting, and by including &amp;ldquo;personal fit&amp;rdquo; in the list of criteria you should consider when choosing a cause to donate, work, or volunteer for. Overall I found the book interesting, and it did provide some useful frameworks for evaluating different altruistic options.&lt;/p&gt;
+&lt;h1 id=&#34;a-good-career-choice&#34;&gt;A good career choice&lt;/h1&gt;
+&lt;p&gt;Memorable conclusions from this book include: being a software engineer who donates might be better for the world than working for a non-profit, buying Fair Trade does not help workers in poor countries, and sweatshops are good, actually,&lt;/p&gt;
+&lt;p&gt;There is a whole section on career choices, which crunches the numbers and declares that unless you are a particularly good fit for a specific role, you will probably do more good in the world by making a buttload of money and donating a percentage of your income to an effective charitable organization. Since I happen to like being a software developer, this is a comfortable conclusion!&lt;/p&gt;
+&lt;p&gt;Another section addresses ethical consumption, and makes some counter-intuitive judgements which amount to: ethical consumption doesn&#39;t help very much, maybe you should buy the cheaper bananas and donate the difference.&lt;/p&gt;
+&lt;h1 id=&#34;a-framework-for-everything&#34;&gt;A framework for everything&lt;/h1&gt;
+&lt;p&gt;A quirk of powering through an audiobook in a short period of time is that repeated words stand out quite strongly, and MacAskill sure loves to introduce a framework! That said, this was the most useful part of the book for me—tools to help select a cause or charity to support are exactly what I was looking for. I&#39;ve summarized a couple of the frameworks below. If you&#39;re interested in more detail, I suggest looking on the &lt;a href=&#34;https://www.effectivealtruism.org/&#34;&gt;Effective Altruism site&lt;/a&gt; or reading the book.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-evaluate-an-intervention&#34;&gt;How to evaluate an intervention&lt;/h2&gt;
+&lt;h4 id=&#34;1-how-many-people-benefit-and-by-how-much&#34;&gt;1. How many people benefit, and by how much?&lt;/h4&gt;
+&lt;p&gt;To have the greatest impact on the world, you should aim to help a large number of people, and improve their lives by a large amount.&lt;/p&gt;
+&lt;h4 id=&#34;2-is-this-the-best-thing-you-can-do&#34;&gt;2. Is this the &lt;em&gt;best&lt;/em&gt; thing you can do?&lt;/h4&gt;
+&lt;p&gt;The best programs are orders of magnitude more effective than merely &lt;em&gt;good&lt;/em&gt; programs. Therefore, if you care about this cause, you should aid the very best solutions.&lt;/p&gt;
+&lt;h4 id=&#34;3-is-this-area-neglected&#34;&gt;3. Is this area neglected?&lt;/h4&gt;
+&lt;p&gt;You will have more of an impact by donating to causes that are not already widely supported&lt;/p&gt;
+&lt;h4 id=&#34;4-what-would-happen-otherwise&#34;&gt;4. What would happen otherwise?&lt;/h4&gt;
+&lt;p&gt;If this action was never taken, what would the likely outcome be? If the answer is that it wouldn&#39;t be that bad, or might be even better than the expected outcome of this action, it might be better not to do it.&lt;/p&gt;
+&lt;h4 id=&#34;5-what-are-the-chances-of-success-and-how-good-would-success-be&#34;&gt;5. What are the chances of success, and how good would success be?&lt;/h4&gt;
+&lt;p&gt;By this metric, a program that is very likely to succeed and have a small impact and a relatively unlikely result that would be a massive improvement are both worthy investments.&lt;/p&gt;
+&lt;h2 id=&#34;how-to-evaluate-a-charity&#34;&gt;How to evaluate a charity&lt;/h2&gt;
+&lt;h4 id=&#34;1-what-does-this-charity-do&#34;&gt;1. What does this charity &lt;em&gt;do&lt;/em&gt;?&lt;/h4&gt;
+&lt;p&gt;Beyond their advertising slogan, what &lt;em&gt;specific&lt;/em&gt; actions or interventions does the charity take?&lt;/p&gt;
+&lt;h4 id=&#34;2-how-costeffective-is-each-program-area&#34;&gt;2. How cost-effective is each program area?&lt;/h4&gt;
+&lt;p&gt;How much benefit is your dollar going to create?&lt;/p&gt;
+&lt;h4 id=&#34;3-how-robust-is-the-evidence-behind-each-program&#34;&gt;3. How robust is the evidence behind each program?&lt;/h4&gt;
+&lt;p&gt;Is there any proof that this intervention works?&lt;/p&gt;
+&lt;h4 id=&#34;4-how-well-is-each-program-implemented&#34;&gt;4. How well is each program implemented?&lt;/h4&gt;
+&lt;p&gt;Even if the idea is sound, does this specific charity do a good job of implementing it?&lt;/p&gt;
+&lt;h4 id=&#34;5-does-the-charity-need-additional-funds&#34;&gt;5. Does the charity need additional funds?&lt;/h4&gt;
+&lt;p&gt;Does your donation make any perceptible difference to this charity&#39;s ability to succeed?&lt;/p&gt;</description>
+     </item>
+   
+     <item>
+       <title>Women Unite Over CTF - Solving Challenges</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</link>
+       <pubDate>Mon, 04 Nov 2019 16:04:02 -0800</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</guid>
+       <description>&lt;p&gt;The winner of the Women Unite Over CTF, Jaime Lightfoot, quickly posted writeups about how she solved the challenges. These posts (&lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;networking challenges&lt;/a&gt;, &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-reverse-engineering-challenges/&#34;&gt;reverse engineering&lt;/a&gt;, and &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-linux-exploitation/&#34;&gt;Linux exploitation&lt;/a&gt;) are excellent for the same reasons I enjoyed the event in general: my main barrier to entry is not knowing what tools to use or what to look for.&lt;/p&gt;
+&lt;p&gt;I thought of including details of my own problem-solving approach in my &lt;a href=&#34;http://sfarqu.github.io/fabrefact/fabrefact/posts/wtf-is-a-ctf/&#34;&gt;last post&lt;/a&gt;, but I didn&#39;t have the forethought to take any screenshots. Since I was working in a provided VM, I don&#39;t even have any of the challenge files or tools on my own computer. However, I ended up solving exactly the same problems as two of Jaime&#39;s posts, so here I will simply talk about how my solutions differed from hers.&lt;/p&gt;
+&lt;h1 id=&#34;networking-challenges&#34;&gt;Networking challenges&lt;/h1&gt;
+&lt;p&gt;(See &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;Women Unite Over CTF - Networking Challenges&lt;/a&gt; for Jaime&#39;s solutions, with screenshots.)&lt;/p&gt;
+&lt;p&gt;I opened up the networking challenges because technical difficulties delayed the start of the reverse engineering walkthroughs. I hovered over random icons in the Kali Linux VM, hoping that one of them was a tool for looking at network information. Luckily Wireshark was prominently placed!&lt;/p&gt;
+&lt;p&gt;I have literally never used Wireshark before, but it&#39;s the tool everyone talks about so it seemed an obvious choice. I solved these pretty slowly, but now that I know a little bit about Wireshark I expect to be faster next time.&lt;/p&gt;
+&lt;h3 id=&#34;level-1-helpfulwine&#34;&gt;level 1: helpfulwine&lt;/h3&gt;
+&lt;p&gt;As soon as I opened the file and selected a packet at random, the flag showed up in the bottom pane. My first flag! It took a bit of trial and error to figure out how to copy it—I eventually had to paste whatever I copied into a text editor in order to strip out all the extraneous content before pasting the flag into the form.&lt;/p&gt;
+&lt;h3 id=&#34;level-2-rhetoricalairplane&#34;&gt;level 2: rhetoricalairplane&lt;/h3&gt;
+&lt;p&gt;Jaime used &lt;code&gt;frame contains &amp;quot;flag&amp;quot;&lt;/code&gt; in all of these to narrow down which packet contained the flag text, but I just clicked around randomly until I found it.&lt;/p&gt;
+&lt;h3 id=&#34;level-3-numberlesslove&#34;&gt;level 3: numberlesslove&lt;/h3&gt;
+&lt;p&gt;Again I just clicked around randomly looking for something called &amp;ldquo;flag&amp;rdquo;. Used the exact same strategy as Jaime here, which is heartening!&lt;/p&gt;
+&lt;h3 id=&#34;level-4-warmsong&#34;&gt;level 4: warmsong&lt;/h3&gt;
+&lt;p&gt;This is where I slowed down a lot, because I didn&#39;t know about the Export Objects function. I could see from the headers that it was a .docx so I assumed I had to extract the doc and open it&amp;hellip;but I didn&#39;t know how. I tried looking at a bunch of different packets, right clicking on things, copying and pasting the bytes into a file&amp;hellip;eventually I realized this must be a common problem and started looking for an export function.&lt;/p&gt;
+&lt;p&gt;Once I successfully save the .doc, my next challenge was how to open a Word document in an unfamiliar OS. I searched for something like &amp;ldquo;how to open word doc linux command line&amp;rdquo; and learned &lt;code&gt;lowriter flag.doc&lt;/code&gt;.&lt;/p&gt;
+&lt;h3 id=&#34;level-5-savoryhill&#34;&gt;level 5: savoryhill&lt;/h3&gt;
+&lt;p&gt;Now that I knew about Export Objects function this went quickly. Export object as PNG, do a quick search to figure out what kind of program on Linux can open PNGs. The first search result suggested that &lt;code&gt;xdg-open&lt;/code&gt; is a good way to open a file in its default program.&lt;/p&gt;
+&lt;h1 id=&#34;reverse-engineering-challenges&#34;&gt;Reverse engineering challenges&lt;/h1&gt;
+&lt;p&gt;(See &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-reverse-engineering-challenges/&#34;&gt;Women Unite Over CTF – Reverse Engineering Challenges&lt;/a&gt; for Jaime&#39;s solutions, with screenshots.)&lt;/p&gt;
+&lt;p&gt;The reverse engineering challenges had walkthroughs on the live stream, which is good because I definitely wouldn&#39;t have gotten anywhere without them!&lt;/p&gt;
+&lt;h3 id=&#34;level-1-calculateerratic&#34;&gt;level 1: calculateerratic&lt;/h3&gt;
+&lt;p&gt;I followed Nada&#39;s walkthrough and used Binary Ninja, using the &lt;code&gt;View &amp;gt; Strings&lt;/code&gt; option Jaime mentions in the next problem. Nada talked about the &lt;code&gt;strings&lt;/code&gt; command but I never tried it.&lt;/p&gt;
+&lt;h3 id=&#34;level-2-dustyabandon&#34;&gt;level 2: dustyabandon&lt;/h3&gt;
+&lt;p&gt;The walkthroughs were also available as PDFs shared in the event Slack, so I started working a little ahead of the livestream. I spent a bunch of time in Binary Ninja, clicking on different views and trying to remember everything I ever knew about assembly.&lt;/p&gt;
+&lt;p&gt;I found the password-constructing subfunction (&lt;code&gt;sub_40100&lt;/code&gt; highlighted in Jaime&#39;s writeup), and the PDF said something about using &lt;code&gt;R&lt;/code&gt; in Binary Ninja to switch to character representations, but I wasn&#39;t able to make heads nor tails of this code and didn&#39;t know what I was supposed to be switching. I waited for Nada&#39;s livestream to catch up. It seemed obvious as soon as Nada pointed out the hex codes!&lt;/p&gt;
+&lt;p&gt;Definitely don&#39;t recognize hex values in the ASCII range off the top of my head, but maybe that&#39;s a skill to acquire?&lt;/p&gt;
+&lt;h3 id=&#34;level-3-etherealshop&#34;&gt;level 3: etherealshop&lt;/h3&gt;
+&lt;p&gt;By now I expected a program with a similar design to the first two and opened it up in Binary Ninja to verify the same pattern of password comparison. I kind of went down a rabbit hole trying to understand what assembly was doing and tuned into the livestream to get back on track.&lt;/p&gt;
+&lt;p&gt;This is where my solution differed from Jaime&#39;s by a lot—the documentation suggested switching to dynamic analysis so I opened up the program in Ollydbg. (Sorry no screenshots for this part.) I used an address I had found in Binary Ninja to get to the right section of code, but mostly poked around trying to understand the interface until Nada started talking about setting a breakpoint.&lt;/p&gt;
+&lt;p&gt;Breakpoints I understand! The step-in/step-over commands are similar to every IDE debugger I&#39;ve used, so it didn&#39;t take long to step through until the flag showed up in a register.&lt;/p&gt;
+&lt;h3 id=&#34;level-4-expertquestion&#34;&gt;level 4: expertquestion&lt;/h3&gt;
+&lt;p&gt;By now the contest was well over, and the Escalate platform was actually quite responsive, so I decided to tackle one more difficult problem. This one didn&#39;t have a walkthrough!&lt;/p&gt;
+&lt;p&gt;I started the same process I&#39;d gone through with all the other RE problems. Like Jaime, I found that the password encryption now had three functions doing mysterious things to the encrypted password that looked very hairy to decipher in static analysis. Unlike Jaime, I did not have any insights over hard-coded bytes and encryption methods. Instead I opened up Ollydbg for some dynamic analysis.&lt;/p&gt;
+&lt;p&gt;This part was a bit of a slog. Unlike level 3, the password didn&#39;t show up conveniently in the little window that seemed to hold the current instruction. When I stepped through the comparison of the user-entered text to the password, it instead went straight to the &amp;ldquo;You are not leet enough&amp;rdquo; message. I went back further and started stepping through the entire decryption function.&lt;/p&gt;
+&lt;p&gt;Throughout this I was trying to piece together more about how Ollydbg works. There&#39;s a large pane in the top left that contains your program, and one on the top right that shows the contents of all the registers (as well as some other stuff that I never understood.) In the bottom right shows the stack—you can scroll down through it to see all the pointers in the call stack from other functions.&lt;/p&gt;
+&lt;p&gt;That left the pane in the lower left as being I assume the heap? While stepping through the decryption process I eventually saw stuff starting to change here. At first it appeared to be random gibberish, but it still looked like a clue.&lt;/p&gt;
+&lt;p&gt;The decryption has a bunch of loops, and I learned how to recognize what a loop looks like in assembly and skip to the next instruction if nothing relevant seems to happen inside. This was not the most efficient method, but I was worried if I skipped too far ahead I would miss the flag again!&lt;/p&gt;
+&lt;p&gt;After far too long of this, the flag unscrambled itself in the pane I decided was the heap. Victory!&lt;/p&gt;
+&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;Jaime&#39;s walkthroughs were a great refresher and a beginner-friendly introduction to some new techniques. I look forward to reading more from her, and maybe—just maybe—I&#39;ll remember to take some screenshots of my own next time.&lt;/p&gt;</description>
+     </item>
+   
+     <item>
+       <title>WTF is a CTF? A beginner&#39;s adventure</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</link>
+       <pubDate>Sat, 02 Nov 2019 18:24:49 -0700</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</guid>
+       <description>&lt;p&gt;Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of &lt;a href=&#34;https://ittakesahuman.com/lp/WomenUniteOverCTF.html&#34;&gt;Women Unite Over CTF&lt;/a&gt;, an online competition hosted by a number of cybersecurity communities.&lt;/p&gt;
+&lt;h2 id=&#34;so-what-is-a-ctf&#34;&gt;So what &lt;em&gt;is&lt;/em&gt; a CTF?&lt;/h2&gt;
+&lt;p&gt;A few weeks ago I had this exact question, after seeing the Women Unite event promoted by several people I follow on Twitter. A &lt;a href=&#34;https://ctftime.org/ctf-wtf/&#34;&gt;quick search&lt;/a&gt; told me CTF stands for &amp;ldquo;Capture the Flag&amp;rdquo;, and means a type of information security competition where players or teams compete to collect &amp;ldquo;flags&amp;rdquo; for points. This sounds, to be honest, &lt;em&gt;deeply intimidating&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;I may be a professional software developer, but I have never been a hacker. I don&#39;t decompile software or use cheat codes in games, and I only switched my IDE to dark mode due to peer pressure from my coworkers. I hate the way the hacker stereotype involves taking joy from making other people feel stupid. I particularly hate feeling stupid.&lt;/p&gt;
+&lt;p&gt;But I &lt;em&gt;love&lt;/em&gt; puzzle games.&lt;/p&gt;
+&lt;p&gt;Removed from the competitive aspect, a Capture the Flag event is solving a series of puzzles using techniques like forensics and cryptography. This sounds fun to me! But the problem remains: how do you learn those techniques if you&#39;re just a regular person who has never considered exploiting a web server?&lt;/p&gt;
+&lt;p&gt;It turns out CTFs are &lt;em&gt;not&lt;/em&gt; exclusively high-pressure clashes between technowizards who are out to crush your self esteem. Some events are explicitly aimed at beginners, and can serve as educational opportunities to get familiar with the tools and techniques.&lt;/p&gt;
+&lt;h2 id=&#34;women-unite-over-ctf&#34;&gt;Women Unite Over CTF&lt;/h2&gt;
+&lt;p&gt;I clicked on the Women Unite event with the thought of sending it to my coworker, who is actively studying security. However, my attention was caught by wording like &amp;ldquo;laidback&amp;rdquo; and &amp;ldquo;we&#39;ll give you a tutorial&amp;rdquo;. Could this be a friendly way to get started? I signed up on a whim.&lt;/p&gt;
+&lt;h3 id=&#34;the-event&#34;&gt;The event&lt;/h3&gt;
+&lt;p&gt;I was not precisely thrilled at getting up before 9am on a Saturday, but I was excited to learn new things! I still wasn&#39;t convinced I would solve a single puzzle.&lt;/p&gt;
+&lt;h4 id=&#34;the-bad&#34;&gt;The bad&lt;/h4&gt;
+&lt;p&gt;The online event had a bit of a rough start. The competition was hosted on Point3 Security&#39;s ESCALATE platform, which is supposed to provide a sandboxed environment full of well-designed challenges in various categories. Unfortunately, under the hammering of hundreds of attendees trying to log in, the system mostly provided 504 Gateway Timeouts.&lt;/p&gt;
+&lt;p&gt;Look, I get it. I work in the tech industry, and sometimes despite your best efforts your system falls over and users are angry. &lt;em&gt;However&lt;/em&gt;, if you have a scheduled event coming up with a thousand people registered, please for the love of little fishes test what 1000 concurrent connections will do to your web app!&lt;/p&gt;
+&lt;p&gt;I didn&#39;t care about prizes so wasn&#39;t too bummed about the late start, but it was still frustrating. It took well over an hour before I could even log in, and even then clicking any link could take up to five minutes or time out entirely. Since completing each challenge took at least five clicks, this was a huge tax on participation.&lt;/p&gt;
+&lt;h4 id=&#34;the-good&#34;&gt;The good&lt;/h4&gt;
+&lt;p&gt;Even so, the ESCALATE platform was pretty cool. The provided Linux VM was stocked with every conceivable application used for decompiling or inspecting files, and the problems themselves escalated in difficulty in a way that I was able to take what I&#39;d learned from one challenge and apply it to the next. After the competition was over and (I assume) most people had logged off, all the fancier features were able to load and I found the tool quite pleasant.&lt;/p&gt;
+&lt;p&gt;The best part, however, were the tutorials. On the livestream the presenter Nada gave walkthroughs for three of the reverse-engineering challenges, including demonstrating which tools to use and some of the features of those tools. This was, to my mind, the most critical part.&lt;/p&gt;
+&lt;p&gt;The tutorials themselves had some pretty advanced concepts compressed into a very short lesson, so I don&#39;t know how they would feel for complete beginners. Since I already know how to code and even have a vague understanding of assembly language I got the most value out of the sections that explained the thought process of which tools to choose for which parts of the process. (Although the assembly reference was also essential—I didn&#39;t have &lt;em&gt;that&lt;/em&gt; strong an understanding going in!)&lt;/p&gt;
+&lt;p&gt;Due to the technical difficulties they extended the time of the contest and let everyone continue using the ESCALATE trial until the end of the day. This allowed me to keep plugging along at challenges on a system that was not currently being accidentally DDOSed. It was a rewarding and fun afternoon.&lt;/p&gt;
+&lt;h3 id=&#34;the-results&#34;&gt;The results&lt;/h3&gt;
+&lt;p&gt;I ended up solving 9 out of 28 challenges! I got all five in Network Foundations Level 1 and the easiest four Reverse Engineering problems. Three of those reverse engineering challenges had walkthroughs, but the last (and most complex!) I was able to extrapolate based on what I had learned in the previous lessons. The networking challenges I figured out for myself, starting from the knowledge of &amp;ldquo;Wireshark is a tool for looking at network stuff&amp;rdquo;.&lt;/p&gt;
+&lt;p&gt;I came out with a basic knowledge of how to use Wireshark, BinaryNinja, and Ollydbg. More generally I learned about static and dynamic analysis of binaries, and a little bit about when and why to use them.&lt;/p&gt;
+&lt;p&gt;After the event was over I was hype for more learning and signed up for a resource &lt;a href=&#34;https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04&#34;&gt;recommended for newcomers&lt;/a&gt;. Instead it has opaque problems with zero guidance labelled &amp;ldquo;very easy&amp;rdquo; and I hate it. Let&#39;s just say there&#39;s still room for improvement in this space.&lt;/p&gt;
+&lt;p&gt;Thanks to &lt;a href=&#34;https://www.ittakesahuman.com/&#34;&gt;Point3 Security&lt;/a&gt;, &lt;a href=&#34;https://gatebreachers.org/&#34;&gt;Gatebreachers&lt;/a&gt;, &lt;a href=&#34;https://womenscyberjutsu.org/&#34;&gt;Women&#39;s Society of Cyberjutsu&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/WoSECtweets&#34;&gt;WoSEC&lt;/a&gt;, and &lt;a href=&#34;https://www.womenhackerz.com/&#34;&gt;WomenHackerz&lt;/a&gt; for putting on an event that, technical difficulties aside, succeeded in making security feel accessible.&lt;/p&gt;</description>
+     </item>
+   
+     <item>
+       <title>what I&#39;m reading this week: Oct 31</title>
+       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</link>
+       <pubDate>Thu, 31 Oct 2019 20:26:57 -0700</pubDate>
+       
+       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</guid>
+       <description>&lt;p&gt;These days I am reading a lot across many devices and then immediately misplacing the references. Instead, here are some things I found interesting this week.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://segment.com/blog/the-10m-engineering-problem/&#34;&gt;The $10m engineering problem&lt;/a&gt;, blog post about how Segment cut their infrastructure costs by 30%
+&lt;ul&gt;
+&lt;li&gt;I found this fascinating! Hope to come back to it as I learn more about infrastructure design to see what else I can get out of it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Deep Work: rules for focused success in a distracted world&lt;/em&gt; by Cal Newport (audiobook)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This book mostly made me angry, but buried in the endless tedious anecdotes about white men being successful is at least a blog post&#39;s worth of good advice.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://arstechnica.com/gadgets/2019/10/how-a-months-old-amd-microcode-bug-destroyed-my-weekend/&#34;&gt;How a months-old AMD microcode bug destroyed my weekend&lt;/a&gt; Ars Technica article about a bug in certain AMD processors whose onboard random number generator always returns the same value&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;Doing Good Better: effective altruism and how you can make a difference&lt;/em&gt; by William MacAskill (audiobook)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I was on board with this technique until he said one should &lt;em&gt;never&lt;/em&gt; allow personal feelings toward an issue to influence your charitable giving. As I am still interested in effective altruism I will keep listening, but with greater skepticism.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Xiang (Jenny) Ren, Kirk Rodrigues, Luyuan Chen, Camilo Vega, Michael Stumm, and Ding Yuan. 2019. &lt;a href=&#34;https://doi.org/10.1145/3341301.3359640&#34;&gt;An analysis of performance evolution of Linux&#39;s core operations&lt;/a&gt;. In Proceedings of the 27th ACM Symposium on Operating Systems Principles (SOSP &amp;lsquo;19). ACM, New York, NY, USA, 554-569.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;This one digs pretty deep and I decided to come back to it after I finish the work about CPU architecture I have on hold&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Two Twitter-threads-turned-blog-posts on Errata Security: &lt;a href=&#34;https://blog.erratasec.com/2019/08/thread-on-osi-model-is-lie.html&#34;&gt;Thread on the OSI model is a lie&lt;/a&gt; and &lt;a href=&#34;https://blog.erratasec.com/2019/08/thread-on-network-input-parsers.html&#34;&gt;Thread on network input parsers&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I never did learn networking properly in school, but I seem to be finding a flurry of sources on protocols and algorithms so maybe it&#39;s time to stop being intimidated by the topic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Amy Ousterhout, Adam Belay, and Irene Zhang. 2019. &lt;a href=&#34;https://www.usenix.org/conference/hotcloud19/presentation/ousterhout&#34;&gt;Just in time delivery: leveraging operating systems knowledge for better datacenter congestion control&lt;/a&gt;. In Proceedings of the 11th USENIX Conference on Hot Topics in Cloud Computing (HotCloud&#39;19).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;In which the authors propose a Chimera operating system for datacenters, not to be confused with the &lt;a href=&#34;http://www.cs.cmu.edu/~aml/chimera/chimera.html&#34;&gt;Chimera Real Time Operating System&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.infoq.com/presentations/rust-security-guarantees/&#34;&gt;The Most Secure Program Is One That Doesn’t Exist&lt;/a&gt; by Diane Hosfelt (transcript of talk from QCon SF 2018)&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Watching talks about Rust is one step closer to learning Rust, right?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

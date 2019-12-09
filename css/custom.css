@@ -1,0 +1,23 @@
+a {
+    color: #028092;
+    text-decoration: none;
+    opacity: 0.9;
+
+    transition: border .2s;
+}
+a:hover {
+    opacity: 1;
+    border-bottom: .05em dashed #8DDCE7;
+    color: #8DDCE7;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-weight: bold;
+    position: relative;
+}
+h1::before,h2::before,h3::before,h4::before,h5::before,h6::before {
+    position: absolute;
+    content: ">";
+    color: #E461BD;
+    left: -1em;
+    top: 0;
+}

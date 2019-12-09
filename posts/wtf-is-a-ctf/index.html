@@ -1,0 +1,168 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Fabrefact</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Sara Farquharson" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="books" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://sfarqu.github.io/fabrefact/tags/books/" />
+<meta property="og:updated_time" content="2019-11-09T21:47:59-08:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="books"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/fabrefact/css/styles.css" /><link rel='stylesheet' href='http://sfarqu.github.io/fabrefact/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/fabrefact/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>WTF is a CTF? A beginner&#39;s adventure</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-11-02T18:24:49-07:00">Nov 2, 2019</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/fabrefact/categories/events">events</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/fabrefact/tags/security">#security</a>
+                
+                    , 
+                    <a href="/fabrefact/tags/ctf">#ctf</a>
+                
+            </em>
+        </li>
+        
+
+        <li>5 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of <a href="https://ittakesahuman.com/lp/WomenUniteOverCTF.html">Women Unite Over CTF</a>, an online competition hosted by a number of cybersecurity communities.</p>
+<h2 id="so-what-is-a-ctf">So what <em>is</em> a CTF?</h2>
+<p>A few weeks ago I had this exact question, after seeing the Women Unite event promoted by several people I follow on Twitter. A <a href="https://ctftime.org/ctf-wtf/">quick search</a> told me CTF stands for &ldquo;Capture the Flag&rdquo;, and means a type of information security competition where players or teams compete to collect &ldquo;flags&rdquo; for points. This sounds, to be honest, <em>deeply intimidating</em>.</p>
+<p>I may be a professional software developer, but I have never been a hacker. I don't decompile software or use cheat codes in games, and I only switched my IDE to dark mode due to peer pressure from my coworkers. I hate the way the hacker stereotype involves taking joy from making other people feel stupid. I particularly hate feeling stupid.</p>
+<p>But I <em>love</em> puzzle games.</p>
+<p>Removed from the competitive aspect, a Capture the Flag event is solving a series of puzzles using techniques like forensics and cryptography. This sounds fun to me! But the problem remains: how do you learn those techniques if you're just a regular person who has never considered exploiting a web server?</p>
+<p>It turns out CTFs are <em>not</em> exclusively high-pressure clashes between technowizards who are out to crush your self esteem. Some events are explicitly aimed at beginners, and can serve as educational opportunities to get familiar with the tools and techniques.</p>
+<h2 id="women-unite-over-ctf">Women Unite Over CTF</h2>
+<p>I clicked on the Women Unite event with the thought of sending it to my coworker, who is actively studying security. However, my attention was caught by wording like &ldquo;laidback&rdquo; and &ldquo;we'll give you a tutorial&rdquo;. Could this be a friendly way to get started? I signed up on a whim.</p>
+<h3 id="the-event">The event</h3>
+<p>I was not precisely thrilled at getting up before 9am on a Saturday, but I was excited to learn new things! I still wasn't convinced I would solve a single puzzle.</p>
+<h4 id="the-bad">The bad</h4>
+<p>The online event had a bit of a rough start. The competition was hosted on Point3 Security's ESCALATE platform, which is supposed to provide a sandboxed environment full of well-designed challenges in various categories. Unfortunately, under the hammering of hundreds of attendees trying to log in, the system mostly provided 504 Gateway Timeouts.</p>
+<p>Look, I get it. I work in the tech industry, and sometimes despite your best efforts your system falls over and users are angry. <em>However</em>, if you have a scheduled event coming up with a thousand people registered, please for the love of little fishes test what 1000 concurrent connections will do to your web app!</p>
+<p>I didn't care about prizes so wasn't too bummed about the late start, but it was still frustrating. It took well over an hour before I could even log in, and even then clicking any link could take up to five minutes or time out entirely. Since completing each challenge took at least five clicks, this was a huge tax on participation.</p>
+<h4 id="the-good">The good</h4>
+<p>Even so, the ESCALATE platform was pretty cool. The provided Linux VM was stocked with every conceivable application used for decompiling or inspecting files, and the problems themselves escalated in difficulty in a way that I was able to take what I'd learned from one challenge and apply it to the next. After the competition was over and (I assume) most people had logged off, all the fancier features were able to load and I found the tool quite pleasant.</p>
+<p>The best part, however, were the tutorials. On the livestream the presenter Nada gave walkthroughs for three of the reverse-engineering challenges, including demonstrating which tools to use and some of the features of those tools. This was, to my mind, the most critical part.</p>
+<p>The tutorials themselves had some pretty advanced concepts compressed into a very short lesson, so I don't know how they would feel for complete beginners. Since I already know how to code and even have a vague understanding of assembly language I got the most value out of the sections that explained the thought process of which tools to choose for which parts of the process. (Although the assembly reference was also essential—I didn't have <em>that</em> strong an understanding going in!)</p>
+<p>Due to the technical difficulties they extended the time of the contest and let everyone continue using the ESCALATE trial until the end of the day. This allowed me to keep plugging along at challenges on a system that was not currently being accidentally DDOSed. It was a rewarding and fun afternoon.</p>
+<h3 id="the-results">The results</h3>
+<p>I ended up solving 9 out of 28 challenges! I got all five in Network Foundations Level 1 and the easiest four Reverse Engineering problems. Three of those reverse engineering challenges had walkthroughs, but the last (and most complex!) I was able to extrapolate based on what I had learned in the previous lessons. The networking challenges I figured out for myself, starting from the knowledge of &ldquo;Wireshark is a tool for looking at network stuff&rdquo;.</p>
+<p>I came out with a basic knowledge of how to use Wireshark, BinaryNinja, and Ollydbg. More generally I learned about static and dynamic analysis of binaries, and a little bit about when and why to use them.</p>
+<p>After the event was over I was hype for more learning and signed up for a resource <a href="https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04">recommended for newcomers</a>. Instead it has opaque problems with zero guidance labelled &ldquo;very easy&rdquo; and I hate it. Let's just say there's still room for improvement in this space.</p>
+<p>Thanks to <a href="https://www.ittakesahuman.com/">Point3 Security</a>, <a href="https://gatebreachers.org/">Gatebreachers</a>, <a href="https://womenscyberjutsu.org/">Women's Society of Cyberjutsu</a>, <a href="https://twitter.com/WoSECtweets">WoSEC</a>, and <a href="https://www.womenhackerz.com/">WomenHackerz</a> for putting on an event that, technical difficulties aside, succeeded in making security feel accessible.</p>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/"><i class="fa fa-chevron-circle-left"></i> what I&#39;m reading this week: Oct 31</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/">Women Unite Over CTF - Solving Challenges <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://sfarqu.github.io/fabrefact/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/fabrefact/js/scripts.js"></script>
+
+</body>
+
+</html>
+

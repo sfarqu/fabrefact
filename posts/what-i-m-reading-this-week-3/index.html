@@ -1,0 +1,177 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Fabrefact</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="The HTML5 Herald" />
+  <meta name="author" content="Sara Farquharson" /><meta name="generator" content="Hugo 0.60.1" />
+    
+
+  <meta property="og:title" content="books" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://sfarqu.github.io/fabrefact/tags/books/" />
+<meta property="og:updated_time" content="2019-11-09T21:47:59-08:00" />
+
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="books"/>
+<meta name="twitter:description" content=""/>
+
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" />
+  <script src="https://kit.fontawesome.com/b76b73e8e8.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  <link rel="stylesheet" type="text/css" href="/fabrefact/css/styles.css" /><link rel='stylesheet' href='http://sfarqu.github.io/fabrefact/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/fabrefact/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+    </ul>
+</nav>
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>what I&#39;m reading this week: Nov 23</h1>
+
+    
+        <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2019-11-23T22:21:53-08:00">Nov 23, 2019</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/fabrefact/categories/reading-list">reading list</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/fabrefact/tags/links">#links</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    <p>Continuing on my haphazard self-education tour around distributed systems topics and other random corners of the internet.</p>
+<ul>
+<li>I feel like I learned so much from reading the transcript of this QCon panel moderated by Cindy Sridharan: <a href="https://www.infoq.com/presentations/panel-perils-distributed-coordination/">The Promises and Perils of Eschewing Distributed Coordination</a>. I had to look up what a control plane is, and took notes on interesting ways distributed systems have failed.
+<ul>
+<li>new things to look into: Anna key-value store, Jepsen test framework, Google F1 paper</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>
+<p>Andi McClure wrote a cool Twitter thread about Sun Microsystems doomed <a href="https://mobile.twitter.com/mcclure111/status/1196557401710837762">predicted future of the internet</a> with a little coda about how it compares to Google Stadia, which I still have not bothered to look up.</p>
+</li>
+<li>
+<p>This week's <a href="https://vicki.substack.com">Normcore Tech</a> public post by Vicki Boykis was a fascinating dive into the Russian internet and how it is vastly different than we who grew up with the promise of a free and global internet might expect.</p>
+</li>
+<li>
+<p>Can't remember how I stumbled across Martin Kleppmann's older post about <a href="https://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html">how to do distributed locking</a>, but it is a deliciously crunchy and opinionated accusal that Redis's algorithm for distributed locking fails to guarantee safety—ie that it is possible for two processes to get conflicting locks on the same resource. Had to lean on cloud computing concepts I learned recently, so this felt like a useful refresher! I did not read <a href="http://antirez.com/news/101">the rebuttal by the author of the algorithm</a>.</p>
+</li>
+<li>
+<p>Further in Kleppmann's blog archive I found more interesting mistakes in <a href="https://martin.kleppmann.com/2014/03/26/six-things-about-scaling.html">Six things I wish we had known about scaling</a></p>
+</li>
+<li>
+<p>The Embedded Artistry blog recommends studying classic programs to improve your knowledge, and lists <a href="https://embeddedartistry.com/blog/2019/05/06/programmers-lets-study-source-code-classics/">freely available source code to classic programs</a> to study</p>
+</li>
+<li>
+<p>I only recently learned who Barbara Liskov is, but thanks to this <a href="https://www.quantamagazine.org/barbara-liskov-is-the-architect-of-modern-algorithms-20191120/">Quanta Magazine interview</a> I desperately wish I could hang out with her.</p>
+</li>
+<li>
+<p>There's always at least one thing I love in every issue of Increment; for this month's &ldquo;Teams&rdquo; issue it's Kevin Stewart's article on <a href="https://increment.com/teams/how-to-build-a-startup-engineering-team/">how to build a startup engineering team</a></p>
+</li>
+<li>
+<p>If you didn't know why the sale of the .org domain registry to a private company is so upsetting, well, <a href="https://www.theregister.co.uk/AMP/2019/11/20/org_registry_sale_shambles/">here's an article in the Register</a></p>
+</li>
+<li>
+<p>Saw a tweet about Paypal's new open source <a href="https://github.com/paypal/scorebot">Secure Code Review bot</a> and decided to read the source code to figure out how it works. I am getting better at reading source code! Still a little vague on how to add new rules to compare against, the documentation is not terribly user friendly.</p>
+</li>
+</ul>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/"><i class="fa fa-chevron-circle-left"></i> what I&#39;m reading this week: Nov 16</a>
+        </li>
+        
+        
+        <li>
+            <a href="http://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/">(framework) mistakes were made <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+    
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="http://sfarqu.github.io/fabrefact/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/fabrefact/js/scripts.js"></script>
+
+</body>
+
+</html>
+
