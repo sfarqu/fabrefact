@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
    <title>Categories on Fabrefact</title>
-   <link>http://sfarqu.github.io/fabrefact/categories/</link>
+   <link>https://sfarqu.github.io/fabrefact/categories/</link>
    <description>Recent content in Categories on Fabrefact</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
    <lastBuildDate>Sat, 23 Nov 2019 22:21:53 -0800</lastBuildDate>
    
-       <atom:link href="http://sfarqu.github.io/fabrefact/categories/index.xml" rel="self" type="application/rss+xml" />
+       <atom:link href="https://sfarqu.github.io/fabrefact/categories/index.xml" rel="self" type="application/rss+xml" />
    
    
      <item>
        <title>(framework) mistakes were made</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</link>
        <pubDate>Sat, 07 Dec 2019 23:13:25 -0800</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</guid>
        <description>&lt;p&gt;It took a long time for me to go from &amp;ldquo;I want to write blog posts&amp;rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was &lt;em&gt;so exhausting&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Even once I decided to use a static site generator, I had to choose &lt;em&gt;which&lt;/em&gt; generator, and then a template&amp;hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.&lt;/p&gt;
 &lt;p&gt;That turned out to be a mistake. How could I have done better?&lt;/p&gt;
@@ -74,10 +74,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Nov 23</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</link>
        <pubDate>Sat, 23 Nov 2019 22:21:53 -0800</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</guid>
        <description>&lt;p&gt;Continuing on my haphazard self-education tour around distributed systems topics and other random corners of the internet.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;I feel like I learned so much from reading the transcript of this QCon panel moderated by Cindy Sridharan: &lt;a href=&#34;https://www.infoq.com/presentations/panel-perils-distributed-coordination/&#34;&gt;The Promises and Perils of Eschewing Distributed Coordination&lt;/a&gt;. I had to look up what a control plane is, and took notes on interesting ways distributed systems have failed.
@@ -119,10 +119,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Nov 16</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</link>
        <pubDate>Sat, 16 Nov 2019 10:45:00 -0800</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</guid>
        <description>&lt;ul&gt;
 &lt;li&gt;I wanted to quickly check my intuition that Rust doesn&#39;t have garbage collection and instead found this &lt;a href=&#34;https://words.steveklabnik.com/borrow-checking-escape-analysis-amd-the-generational-hypothesis&#34;&gt;Steve Klabnik essay&lt;/a&gt; about that and a lot more. The takeaway I think is that Rust&#39;s static memory management makes GC redundant?&lt;/li&gt;
 &lt;/ul&gt;
@@ -145,10 +145,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Nov 9</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</link>
        <pubDate>Sat, 09 Nov 2019 21:47:59 -0800</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</guid>
        <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chelseatroy.com/category/leveling-up/&#34;&gt;Chelsea Troy&#39;s whole Leveling Up series&lt;/a&gt; is exactly the sort of thing I dreamed of writing when I thought about starting a blog.&lt;/li&gt;
 &lt;/ul&gt;
@@ -218,16 +218,16 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>Review: Doing Good Better</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</link>
        <pubDate>Thu, 07 Nov 2019 21:54:20 -0800</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</guid>
        <description>&lt;p&gt;One of my lifelong values has always been &lt;em&gt;making a positive impact on the world&lt;/em&gt;. For a long time I lived paycheque-to-paycheque, but I still tried to put aside a percentage of my income for charitable giving. When I got a full-time software job, my income tripled overnight—which meant so did my donation budget.&lt;/p&gt;
 &lt;p&gt;This left me with an unexpected problem: now that I have more money to give, who should I give it to? Should I increase my monthly donation to the existing charities I support, or branch out to new ones? How can I do the &lt;em&gt;most&lt;/em&gt; good with the resources I have?&lt;/p&gt;
 &lt;p&gt;That latter question is the one posed by William MacAskill&#39;s book &lt;a href=&#34;https://www.effectivealtruism.org/doing-good-better/&#34;&gt;&lt;em&gt;Doing Good Better: How Effective Altruism Can Help You Make A Difference&lt;/em&gt;&lt;/a&gt;. I was excited to listen to this audiobook and finally have direction for my haphazard altruism.&lt;/p&gt;
 &lt;h1 id=&#34;a-ruthless-efficiency&#34;&gt;A ruthless efficiency&lt;/h1&gt;
 &lt;p&gt;This book applies economics and scientific reasoning to altruism, resulting in a rational and often mind-bendingly ruthless approach to doing good.&lt;/p&gt;
-&lt;p&gt;As alluded to in &lt;a href=&#34;http://sfarqu.github.io/fabrefact/fabrefact/2019/11/01/what-I-m-reading-this-week/&#34;&gt;last week&#39;s reading list&lt;/a&gt;, the book got off on a bit of a wrong foot with me with an early assertion that addressing global poverty is where you get the most effect for your dollar, so you should never donate to other causes that you are personally attached to. By this logic I should immediately cease donating to my local food bank, because the people in my community are not poor enough by global standards.&lt;/p&gt;
+&lt;p&gt;As alluded to in &lt;a href=&#34;https://sfarqu.github.io/fabrefact/fabrefact/2019/11/01/what-I-m-reading-this-week/&#34;&gt;last week&#39;s reading list&lt;/a&gt;, the book got off on a bit of a wrong foot with me with an early assertion that addressing global poverty is where you get the most effect for your dollar, so you should never donate to other causes that you are personally attached to. By this logic I should immediately cease donating to my local food bank, because the people in my community are not poor enough by global standards.&lt;/p&gt;
 &lt;p&gt;I do not disagree that my dollar can buy more food in sub-Saharan Africa, nor that the total amount of suffering in poor countries is greater than in Canada. At the same time it feels cold to only help faceless people in distant places and never my neighbours. The &amp;ldquo;effectiveness&amp;rdquo; argument presupposes that it is both possible and desirable for humans to be 100% logical, points I happen to think are more nuanced.&lt;/p&gt;
 &lt;p&gt;That said, I completely agree that personal attachment should not be the &lt;em&gt;only&lt;/em&gt; consideration when choosing a cause to support. That&#39;s why I have been struggling to decide where to spend my charitable dollars, and why I am swayed by the idea of picking a solution based on effectiveness.&lt;/p&gt;
 &lt;p&gt;Later chapters of Doing Good Better walk the initial assertion back a bit, both by introducing other topics that the Effective Altruism community considers worth supporting, and by including &amp;ldquo;personal fit&amp;rdquo; in the list of criteria you should consider when choosing a cause to donate, work, or volunteer for. Overall I found the book interesting, and it did provide some useful frameworks for evaluating different altruistic options.&lt;/p&gt;
@@ -263,12 +263,12 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>Women Unite Over CTF - Solving Challenges</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</link>
        <pubDate>Mon, 04 Nov 2019 16:04:02 -0800</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</guid>
        <description>&lt;p&gt;The winner of the Women Unite Over CTF, Jaime Lightfoot, quickly posted writeups about how she solved the challenges. These posts (&lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;networking challenges&lt;/a&gt;, &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-reverse-engineering-challenges/&#34;&gt;reverse engineering&lt;/a&gt;, and &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-linux-exploitation/&#34;&gt;Linux exploitation&lt;/a&gt;) are excellent for the same reasons I enjoyed the event in general: my main barrier to entry is not knowing what tools to use or what to look for.&lt;/p&gt;
-&lt;p&gt;I thought of including details of my own problem-solving approach in my &lt;a href=&#34;http://sfarqu.github.io/fabrefact/fabrefact/posts/wtf-is-a-ctf/&#34;&gt;last post&lt;/a&gt;, but I didn&#39;t have the forethought to take any screenshots. Since I was working in a provided VM, I don&#39;t even have any of the challenge files or tools on my own computer. However, I ended up solving exactly the same problems as two of Jaime&#39;s posts, so here I will simply talk about how my solutions differed from hers.&lt;/p&gt;
+&lt;p&gt;I thought of including details of my own problem-solving approach in my &lt;a href=&#34;https://sfarqu.github.io/fabrefact/fabrefact/posts/wtf-is-a-ctf/&#34;&gt;last post&lt;/a&gt;, but I didn&#39;t have the forethought to take any screenshots. Since I was working in a provided VM, I don&#39;t even have any of the challenge files or tools on my own computer. However, I ended up solving exactly the same problems as two of Jaime&#39;s posts, so here I will simply talk about how my solutions differed from hers.&lt;/p&gt;
 &lt;h1 id=&#34;networking-challenges&#34;&gt;Networking challenges&lt;/h1&gt;
 &lt;p&gt;(See &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;Women Unite Over CTF - Networking Challenges&lt;/a&gt; for Jaime&#39;s solutions, with screenshots.)&lt;/p&gt;
 &lt;p&gt;I opened up the networking challenges because technical difficulties delayed the start of the reverse engineering walkthroughs. I hovered over random icons in the Kali Linux VM, hoping that one of them was a tool for looking at network information. Luckily Wireshark was prominently placed!&lt;/p&gt;
@@ -311,10 +311,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>WTF is a CTF? A beginner&#39;s adventure</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</link>
        <pubDate>Sat, 02 Nov 2019 18:24:49 -0700</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</guid>
        <description>&lt;p&gt;Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of &lt;a href=&#34;https://ittakesahuman.com/lp/WomenUniteOverCTF.html&#34;&gt;Women Unite Over CTF&lt;/a&gt;, an online competition hosted by a number of cybersecurity communities.&lt;/p&gt;
 &lt;h2 id=&#34;so-what-is-a-ctf&#34;&gt;So what &lt;em&gt;is&lt;/em&gt; a CTF?&lt;/h2&gt;
 &lt;p&gt;A few weeks ago I had this exact question, after seeing the Women Unite event promoted by several people I follow on Twitter. A &lt;a href=&#34;https://ctftime.org/ctf-wtf/&#34;&gt;quick search&lt;/a&gt; told me CTF stands for &amp;ldquo;Capture the Flag&amp;rdquo;, and means a type of information security competition where players or teams compete to collect &amp;ldquo;flags&amp;rdquo; for points. This sounds, to be honest, &lt;em&gt;deeply intimidating&lt;/em&gt;.&lt;/p&gt;
@@ -344,10 +344,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Oct 31</title>
-       <link>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</link>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</link>
        <pubDate>Thu, 31 Oct 2019 20:26:57 -0700</pubDate>
        
-       <guid>http://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</guid>
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</guid>
        <description>&lt;p&gt;These days I am reading a lot across many devices and then immediately misplacing the references. Instead, here are some things I found interesting this week.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://segment.com/blog/the-10m-engineering-problem/&#34;&gt;The $10m engineering problem&lt;/a&gt;, blog post about how Segment cut their infrastructure costs by 30%
