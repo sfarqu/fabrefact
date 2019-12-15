@@ -7,10 +7,65 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sat, 07 Dec 2019 23:13:25 -0800</lastBuildDate>
+   <lastBuildDate>Sat, 14 Dec 2019 17:20:09 -0800</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what I&#39;m reading: catch-up edition</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-catch-up/</link>
+       <pubDate>Sat, 14 Dec 2019 17:20:09 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-catch-up/</guid>
+       <description>&lt;p&gt;Due to my site generator woes, I went a few weeks without sharing what I&#39;ve been reading. I have still been making a list though, and it&#39;s enormous! This post took twice as long to compile because I had to revisit all these links to remember why I liked them, and also group into topics to hopefully make it more readable&lt;/p&gt;
+&lt;h3 id=&#34;nontech-reading&#34;&gt;Non-tech reading&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Finished up the audiobook for &lt;em&gt;Other Minds: The octopus, the sea, and the deep origins of consciousness&lt;/em&gt; by Peter Godfrey-Smith. The author is a philosopher, so this was a bit more abstract than I expected when I bought it, but it still had a lot of interesting science.&lt;/li&gt;
+&lt;li&gt;A article by Sarah Milstein on &lt;a href=&#34;https://medium.com/better-humans/how-to-stay-friends-when-you-dont-have-kids-and-your-besties-do-7e5e3870eadf&#34;&gt;how to maintain a friendship once your friends start having kids&lt;/a&gt; was hilarious but also good advice&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;software-design-and-process&#34;&gt;Software design and process&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Very inspired to touch legacy projects after reading Carla Geisser&#39;s post on &lt;a href=&#34;https://softwareexorcist.com/writing/haunted-graveyards&#34;&gt;getting rid of &amp;ldquo;haunted graveyards&amp;rdquo;&lt;/a&gt;, a great name for a phenomenon I usually call &amp;ldquo;here be dragons code&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;Haven&#39;t gotten around to researching Domain Driven Design, but Kevin Mas Ruiz&#39;s post on &lt;a href=&#34;https://dev.to/kmruiz/to-domain-driven-design-6ao&#34;&gt;how to start thinking in DDD terms when designing microservices&lt;/a&gt; was informative and easy to follow&lt;/li&gt;
+&lt;li&gt;Allen Holub&#39;s post on &lt;a href=&#34;https://holub.com/technical-debt/&#34;&gt;technical debt&lt;/a&gt; was recommended by my new manager, and I agree with the framing that tech debt is a normal part of writing the best code you can with incomplete knowledge of the future.&lt;/li&gt;
+&lt;li&gt;I was investigating how to design feature flags so they don&#39;t proliferate indefinitely in the codebase, and came across Pete Hodgson&#39;s &lt;a href=&#34;https://martinfowler.com/articles/feature-toggles.html&#34;&gt;deep dive on &amp;ldquo;Feature Toggles&amp;rdquo;&lt;/a&gt;, which is apparently another common term for the same idea. The article provides a bunch of different ways to think about or categorize flags, and I learned a lot, but I&#39;m having trouble recalling details. May still look for more on this topic.&lt;/li&gt;
+&lt;li&gt;I ran into someone reading Will Larson&#39;s book &lt;em&gt;An Elegant Puzzle&lt;/em&gt; and as a result dug through a bunch of Will&#39;s blog. This article on &lt;a href=&#34;https://lethain.com/how-to-invest-technical-infrastructure/&#34;&gt;How to invest in technical infrastructure&lt;/a&gt; stood out.&lt;/li&gt;
+&lt;li&gt;Mads Hartmann&#39;s &lt;a href=&#34;https://mads-hartmann.com/sre/2019/08/04/journey-into-observability-reading-material.html&#34;&gt;reading list for learning about observability&lt;/a&gt; is a lot more focused than my random time-based lists!&lt;/li&gt;
+&lt;li&gt;Uggghhh I want to highlight just about every paragraph of this Increment article by Liz Fong-Jones: &lt;a href=&#34;https://increment.com/teams/code-less-engineer-more/&#34;&gt;Code less, engineer more&lt;/a&gt;. I need to have that title tattooed on the inside of my eyelids to counteract my impulse to want to build every single thing from scratch.&lt;/li&gt;
+&lt;li&gt;Nora Jones &lt;a href=&#34;https://www.learningfromincidents.io/blog/learning-from-incidents-in-software&#34;&gt;announced a new community around learning from incidents in software&lt;/a&gt; and I&#39;m excited to have this new resource for learning about resilience engineering.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;documentation&#34;&gt;Documentation&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://zapier.com/engineering/great-documentation-examples/&#34;&gt;8 Great Examples of Developer Documentation&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jennifer Riggins has written a number of articles on &lt;a href=&#34;https://thenewstack.io/continuous-documentation-in-a-ci-cd-world/&#34;&gt;how to integrate documentation into your Agile process&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Tanya Reilly&#39;s great post about &lt;a href=&#34;https://noidea.dog/blog/can-somebody-take-notes&#34;&gt;why taking notes at meetings is important and why it should be done by senior people in the room&lt;/a&gt; makes me want to implement this in every meeting I have from now on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;security&#34;&gt;Security&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A bunch of application security posts from hella-secure.com have crossed my radar recently. Ray&#39;s &lt;a href=&#34;https://hella-secure.com/secure-sdlc/&#34;&gt;Secure SDLC&lt;/a&gt; article is a refreshingly practical approach to adding security to an existing development lifecycle and Aaron&#39;s related &lt;a href=&#34;https://hella-secure.com/who-is-threat-modeling/&#34;&gt;intro to threat modelling&lt;/a&gt; is a lot more approachable than a lot of the other threat modelling content I&#39;ve come across.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;testing&#34;&gt;Testing&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;This post by Cindy Sridharan on &lt;a href=&#34;https://medium.com/@copyconstruct/testing-microservices-the-sane-way-9bb31d158c16&#34;&gt;testing microservices&lt;/a&gt; was, uh, &lt;em&gt;very relatable&lt;/em&gt;&amp;hellip;Specifically when she talked about the folly of good-faith efforts to make the entire architecture testable in a single VM. The article then goes into serious detail about different types of testing and how to define tests, making some recommendations contrary to the normal testing rubric that I&#39;ll be thinking about for a while.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;career&#34;&gt;Career&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://jvns.ca/blog/brag-documents/&#34;&gt;Julia Evans article on &amp;ldquo;brag documents&amp;rdquo;&lt;/a&gt; has come up a few times recently, which reminds me that I should start doing this.&lt;/li&gt;
+&lt;li&gt;Cate Huston wrote an interesting overview on &lt;a href=&#34;https://cate.blog/2019/12/04/mastering-new-leadership-styles/&#34;&gt;mastering new leadership styles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Code Without Rules&lt;/em&gt; by Itamar Turner-Trauring is a treasure-trove of a blog full of practical advice on how to be a better programmer while still having a life outside of work. I entered via a recent &lt;a href=&#34;&#34;&gt;post on job negotiation&lt;/a&gt; but quickly ended up reading things like &lt;a href=&#34;https://codewithoutrules.com/2017/10/23/obsolete-skills/&#34;&gt;what to do when your technical skills are obsolete&lt;/a&gt;. Will likely be coming back to this for more.&lt;/li&gt;
+&lt;li&gt;Kim Maida&#39;s &lt;a href=&#34;https://dev.to/kimmaida/7-tips-for-career-advancement-and-personal-fulfillment-5e02&#34;&gt;7 tips for career advancement&lt;/a&gt; covers a broad range of advice in a not-very-long article and definitely gave me some ideas for what to focus on next.&lt;/li&gt;
+&lt;li&gt;I&#39;m about to start up a mentoring program at my work, so stumbling across &lt;a href=&#34;https://www.bc.edu/content/dam/files/centers/cwf/individuals/pdf/MentorGuide.pdf&#34;&gt;NCWIT&#39;s introduction to mentoring for mentors&lt;/a&gt; introduced me to &lt;a href=&#34;https://www.ncwit.org/resources/mentoring-box-technical-women-work&#34;&gt;NCWIT&#39;s Mentoring-in-a-Box toolkit&lt;/a&gt; at the right time.&lt;/li&gt;
+&lt;li&gt;Bridget Kromhout gives &lt;a href=&#34;https://bridgetkromhout.com/blog/give-actionable-takeaways/&#34;&gt;in-depth instructions on how to get your talk selected by a conference&lt;/a&gt;, a lot of which comes down to &amp;ldquo;know your audience&amp;rdquo; and write your abstract with that audience in mind.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;technical-deep-dives&#34;&gt;Technical deep dives&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/a-journey-with-go/go-work-stealing-in-go-scheduler-d439231be64d&#34;&gt;Work-Stealing in Go Scheduler&lt;/a&gt; by Vincent Blanchon is way above my understanding of Go, but it was still interesting and has explanatory diagrams&lt;/li&gt;
+&lt;li&gt;This &lt;a href=&#34;https://twitter.com/pati_gallardo/status/1203458003929833473&#34;&gt;Twitter discussion about the non-intuitive nature of queuing theory math&lt;/a&gt; kicked off by Patricia Aas led me to John D. Cook&#39;s &lt;a href=&#34;https://www.johndcook.com/blog/2008/10/21/what-happens-when-you-add-a-new-teller/&#34;&gt;post on queueing theory&lt;/a&gt; and from there to this &lt;a href=&#34;https://www.johndcook.com/blog/2019/11/25/stochastic-rounding-and-privacy/&#34;&gt;post about stochastic rounding as a better way to anonymize data&lt;/a&gt;. I feel like I now know just enough about both of these mathy topics that I need to learn more!&lt;/li&gt;
+&lt;li&gt;Jonathan Mueller wrote an &lt;a href=&#34;https://foonathan.net/2019/11/implementer-vs-user-names/&#34;&gt;incisive post on naming functions&lt;/a&gt;, inspired by a &lt;a href=&#34;https://www.youtube.com/watch?v=MBRoCdtZOYg&#34;&gt;talk by Kate Gregory&lt;/a&gt;. I liked this because I am &lt;em&gt;terrible&lt;/em&gt; at naming things, and every little bit of advice is appreciated.&lt;/li&gt;
+&lt;li&gt;I loved Lynn Fisher&#39;s &lt;a href=&#34;https://lynnandtonic.com/thoughts/entries/case-study-2019-refresh/&#34;&gt;case study of how she redesigned her website&lt;/a&gt; because I know just enough CSS to be very impressed when people do clever things I could never have imagined with it.&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>(framework) mistakes were made</title>
