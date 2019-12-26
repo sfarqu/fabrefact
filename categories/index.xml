@@ -7,10 +7,54 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sat, 14 Dec 2019 17:20:09 -0800</lastBuildDate>
+   <lastBuildDate>Wed, 25 Dec 2019 23:25:13 -0800</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/categories/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what I&#39;m reading: holiday special</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-december/</link>
+       <pubDate>Wed, 25 Dec 2019 23:25:13 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-december/</guid>
+       <description>&lt;p&gt;What better time than holidays with the family to hide in your room writing blog posts? I got my work-provided login to O&#39;Reilly&#39;s online learning portal to work on my iPad without SSO, so now I have a lot more technical books available to me when I travel!&lt;/p&gt;
+&lt;h3 id=&#34;books&#34;&gt;Books&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://beleaderly.com/woman-of-influence/&#34;&gt;&lt;em&gt;Woman of Influence: 9 Steps to Build Your Brand, Establish Your Legacy, and Thrive&lt;/em&gt;&lt;/a&gt; by Jo Miller - This was neither as cloying as I feared nor as practical as I&#39;d hoped, but I still may recommend it to our new women&#39;s resource group. I liked how Miller is pragmatic about what is (and is not) within your control your career, however I found the exercises in each chapter a little vague.&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Moonwalking With Einstein&lt;/em&gt; by Joshua Foer (audiobook) - a biographical yarn about a pack of assholes (otherwise known as 25-year-old white men) that incidentally tells you how to memorize the order of a deck of playing cards. CW casual use of transphobic slurs. Do not recommend.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://annleckie.com/novel/the-raven-tower/&#34;&gt;&lt;em&gt;The Raven Tower&lt;/em&gt;&lt;/a&gt; by Ann Leckie - Read this earlier this year and adored it, so picked up a copy for myself as part of my Christmas shopping. Realised that I do not actually care at all about Mawat&#39;s story, so I mostly skipped that and instead read the bits where the Strength and Patience of the Hill describes its own experiences. I read those parts twice.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.oreilly.com/library/view/agile-application-security/9781491938836/&#34;&gt;&lt;em&gt;Agile Application Security: Enabling Security in a Continuous Delivery Pipeline&lt;/em&gt;&lt;/a&gt; by Laura Bell, Jim Bird, Rich Smith, and Michael Brunton-Spall - Turns out I read this back in July? But logging into O&#39;Reilly again I&#39;m skimming everything on my lists and clearly I had forgotten huge chunks of this. I think I understand both CI/CD and security better than I did the first time I went through it. Look forward to bringing some of this into my work in the new year&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.brendangregg.com/sysperfbook.html&#34;&gt;&lt;em&gt;Systems Performance: Enterprise and the Cloud&lt;/em&gt;&lt;/a&gt; by Brendan Gregg - Only a few chapters in but this is already very helpful to me! I wish I&#39;d known about this book a year or two ago when I wanted to performance test something but didn&#39;t know where to start. I&#39;m planning to read Gregg&#39;s &lt;a href=&#34;http://www.brendangregg.com/bpf-performance-tools-book.html&#34;&gt;new BPF book&lt;/a&gt; but wanted to read this one for background first.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;articles&#34;&gt;Articles&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A piece from Catalyst about &lt;a href=&#34;https://www.catalyst.org/research/actions-men-can-take-to-create-an-inclusive-workplace/&#34;&gt;actions men can take to create an inclusive workplace&lt;/a&gt; is getting added to the resource list for one of my current projects.&lt;/li&gt;
+&lt;li&gt;I liked this post from Emily Nakashima about &lt;a href=&#34;https://honkathon.com/2014-07-25-sunset-testing-for-short-lived-code/&#34;&gt;&amp;ldquo;sunset testing&amp;rdquo;&lt;/a&gt;, aka how to remind yourself to remove that gross temporary hack from your code.&lt;/li&gt;
+&lt;li&gt;Victoria Tran of Kitfox Games wrote a great &lt;a href=&#34;https://medium.com/kitfox-games/an-introverts-guide-to-networking-971676958352&#34;&gt;introvert&#39;s guide to networking&lt;/a&gt; from the perspective of going to tech/gaming events for professional purposes.&lt;/li&gt;
+&lt;li&gt;Nicky Wrightson has a fascinating post about &lt;a href=&#34;https://medium.com/@SkyscannerEng/finding-the-steps-on-the-individual-contributor-ladder-8ec60e11fb46&#34;&gt;what a principal engineer is and how to find such roles&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Stephanie Morillo has some good advice on &lt;a href=&#34;https://www.stephaniemorillo.co/post/2019/02/17/7-common-content-marketing-mistakes-developers-make-and-how-to-avoid-them&#34;&gt;content marketing for developers&lt;/a&gt;, if what you&#39;re trying to do is build a brand as a developer advocate. I&#39;m still not certain that&#39;s where I&#39;m trying to go, but I do prefer to communicate effectively.&lt;/li&gt;
+&lt;li&gt;Vallery Lancey briefly outlines an interesting scenario which can cause &lt;a href=&#34;https://timewitch.net/post/2019-12-17-autoscaling-cascade/&#34;&gt;autoscaling groups to cascade out of control&lt;/a&gt; and a couple high-level concepts for how to prevent this. I might want to diagram this to understand it better?&lt;/li&gt;
+&lt;li&gt;Still looking for an opportunity to use Laura Klein&#39;s &lt;a href=&#34;https://www.usersknow.com/blog/2019/10/2/make-better-product-decisions&#34;&gt;framework for making better product decisions&lt;/a&gt; It seems deceptively simple, but I&#39;m going to have to read this a few more times to see how to fit it into our slightly-different-than-described product cycle.&lt;/li&gt;
+&lt;li&gt;Julia Evans &lt;a href=&#34;https://jvns.ca/blog/how-tracking-pixels-work/&#34;&gt;explains how tracking pixels work&lt;/a&gt; with her characteristic clarity and enthusiasm!&lt;/li&gt;
+&lt;li&gt;Chelsea Troy has some interesting opinions about &lt;a href=&#34;https://chelseatroy.com/2019/12/18/reviewing-pull-requests/&#34;&gt;how to review pull requests&lt;/a&gt; which indicate a vastly different code review dynamic than I have ever experienced, but one that intrigued me. After reading the linked post about &lt;a href=&#34;https://chelseatroy.com/2019/12/13/async-collaboration-1-submitting-pull-requests/&#34;&gt;how to include context in pull requests&lt;/a&gt; I am frankly dying to try to incorporate this type of collaboration in my workplace.&lt;/li&gt;
+&lt;li&gt;A Slack group I&#39;m in shared Anisha Sekar&#39;s &lt;a href=&#34;https://humaninterest.com/blog/startup-equity-basics-ask-stock-accept/&#34;&gt;Startup Equity Basics&lt;/a&gt; as a list of things to ask about stock options before accepting an offer—absolutely none of which I knew when I accepted an offer at a startup, so I lucked out by getting any benefit at all.&lt;/li&gt;
+&lt;li&gt;Chelsea Troy (again) has a &lt;a href=&#34;https://chelseatroy.com/2018/05/24/why-your-efforts-to-make-your-company-inclusive-arent-working/&#34;&gt;rubric for evaluating team members on contributing to an inclusive culture&lt;/a&gt;, with some invaluable ideas on how to be more scientific about &amp;ldquo;is this human decent to work with&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;This Signal blog post on &lt;a href=&#34;https://signal.org/blog/secure-value-recovery/&#34;&gt;secure value recovery&lt;/a&gt; takes a walk through cloud storage, techniques to prevent brute-forcing of cryptographic keys, and secure enclaves, before circling around to one of my favourite topics: distributed consensus. Joshua Lund then describes how they implemented the Raft protocol in Rust. Honestly I only understood about half of this but I look forward to coming back to it in a few months.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;and-a-few-more-things-since-i-started-this-post-last-night&#34;&gt;And a few more things since I started this post last night&lt;/h3&gt;
+&lt;p&gt;Trying to dig through all the unread links in my reading list during any holiday downtime:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I can&#39;t remember where I saw the recommendation that all developers should read Richard I. Cook&#39;s short paper &lt;a href=&#34;http://web.mit.edu/2.75/resources/random/How%20Complex%20Systems%20Fail.pdf&#34;&gt;How Complex Systems Fail&lt;/a&gt; but I concur.&lt;/li&gt;
+&lt;li&gt;Thinking about the meaning of &amp;ldquo;beautiful code&amp;rdquo; after reading this small qualitative study about &lt;a href=&#34;https://lectoraatchangemanagement.files.wordpress.com/2019/12/acm_conference_proceedings__master__template.pdf&#34;&gt;the role of aesthetics in code&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;The latest issue of ACM Queue has a piece by Pat Helland on &lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3364509&#34;&gt;the tradeoffs between read and write speeds in database architectures&lt;/a&gt; which sounded interesting, but no matter how many times I read the section on log-structured merge trees I still don&#39;t grok how LSM merges work. Hoping the Database Internals book I have on my reading list will help me out.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://labs.thisdot.co/blog/the-benefits-of-mentorship-for-developers&#34;&gt;The Benefits of Mentorshop for Developers&lt;/a&gt; by Jay Phelps has some interesting tips on mentorship from a different perspective than the general, non-tech-focused mentorship advice I&#39;ve seen elsewhere.&lt;/li&gt;
+&lt;li&gt;Darius Kazemi, continuing to make me feel like a slacker who will never accomplish anything, spent 2019 &lt;a href=&#34;https://write.as/365-rfcs/365-ietf-rfcs-a-50th-anniversary-dive&#34;&gt;reading and blogging about the first 365 RFCs ever written by ARPANET engineers&lt;/a&gt;, a project I just heard about today, when he completed it.&lt;/li&gt;
+&lt;li&gt;Cindy Sridharan posted &lt;a href=&#34;https://twitter.com/copyconstruct/status/1210024957117263873&#34;&gt;a cool framework for diagramming hyped tech trends&lt;/a&gt; that I now want to borrow for everything.&lt;/li&gt;
+&lt;li&gt;I still haven&#39;t learned enough about GraphQL to work with it, but this article on &lt;a href=&#34;https://lab.wallarm.com/graphql-batching-attack/&#34;&gt;GraphQL batching attacks&lt;/a&gt; makes me want to read the whole series on security concerns for this API architecture.&lt;/li&gt;
+&lt;li&gt;Ian Wilkes wrote a piece for the Honeycomb.io blog about &lt;a href=&#34;https://www.honeycomb.io/blog/secondary-storage-to-just-storage/&#34;&gt;how they sped up large queries without breaking the bank&lt;/a&gt; through a combination of AWS Lambda, efficient compression algorithms, and better garbage collection.&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what I&#39;m reading: catch-up edition</title>
