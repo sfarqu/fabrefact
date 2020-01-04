@@ -13,6 +13,57 @@
    
    
      <item>
+       <title>what i&#39;m reading: Jan 3</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-january-3/</link>
+       <pubDate>Fri, 03 Jan 2020 22:12:16 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-january-3/</guid>
+       <description>&lt;p&gt;Finally got my CI pipeline working with Hugo! Next step is to start writing something other than link posts, but in the meantime: here&#39;s another link post.&lt;/p&gt;
+&lt;p&gt;Even if no one else ever reads these posts this habit has proven invaluable to &lt;em&gt;me&lt;/em&gt;, because it&#39;s easier for me to share that interesting article I was reading the other day now that I have a list of them online.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A few chapters into &lt;a href=&#34;https://daretolead.brenebrown.com/&#34;&gt;Dare to Lead&lt;/a&gt; by Brené Brown (audiobook). Still searching for a business book that does not set my teeth on edge with business jargon. This is not that book.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Charity Majors offers advice on &lt;a href=&#34;https://charity.wtf/2019/12/17/questionable-advice-how-do-i-get-my-team-into-observability/&#34;&gt;how to get your developers on board with observability&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;There&#39;s a lot to unpack in this article about &lt;a href=&#34;https://www.technologyreview.com/s/613305/this-chip-was-demoed-at-jeff-bezoss-secretive-tech-conference-it-could-be-key-to-the-future/&#34;&gt;the new AI-optimized chip Vivienne Sze demoed at &amp;ldquo;an elite, invite only conference&amp;rdquo;&lt;/a&gt;. There&#39;s currently a race to design more efficient chip architectures for specific algorithms—interesting. Given the many Twitter threads I&#39;ve seen about the lack of ethics in AI, also a candidate for Dystopian Hellscape Weekly, along with: Amazon has a secret tech conference full of technology co-funded by DARPA.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I am utterly captivated by the idea of &lt;a href=&#34;http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions&#34;&gt;architecture decision records&lt;/a&gt; as envisioned by Michael Nygard (this &lt;a href=&#34;https://www.agilealliance.org/resources/experience-reports/distribute-design-authority-with-architecture-decision-records/&#34;&gt;longer interview&lt;/a&gt; exlores how they worked in practice.) I want to retroactively add ADRs to every project I&#39;ve ever had to do forensic psychology on to piece together architecture decisions out of terse changelist messages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nora Jones suggested this &lt;a href=&#34;https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-019-0913-5&#34;&gt;study comparing structured briefings to checkings in medical emergencies&lt;/a&gt; could apply to software incident response. The study showed that briefings and checklists were about equally effective in getting to a correct solution within a limited time, but that briefings might allow people to feel more in control of what to do next if the first thing doesn&#39;t work.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rereading Esther Derby&#39;s piece on &lt;a href=&#34;https://www.estherderby.com/control-and-creativity/&#34;&gt;control vs creativity&lt;/a&gt; a few times and thinking about how to internalize this and relax my own tendency to want to control instead of delegate.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chris McDermott wrote about &lt;a href=&#34;https://medium.com/@chrisvmcd/mapping-maturity-create-context-specific-maturity-models-with-wardley-maps-informed-by-cynefin-37ffcd1d315&#34;&gt;creating maturity models using Wardley Maps and the Cynefin framework&lt;/a&gt; which was intriguing enough that I finally watched &lt;a href=&#34;https://vimeo.com/189984496&#34;&gt;a video from Simom Wardley&lt;/a&gt; to figure out WTF a Wardly Map is, because I keep seeing the design/architecture/leadership parts of my Twitter feed talking about them. Video was entertaining but I still don&#39;t know how to &lt;em&gt;make&lt;/em&gt; such a map. Also haven&#39;t looked up Cynefin.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chelsea Troy wrote about &lt;a href=&#34;https://chelseatroy.com/2020/01/01/boundaries-2-assisted-processing/&#34;&gt;setting boundaries for professional venting&lt;/a&gt; and I immediately shared it with a bunch of friends.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m starting to think a lot about what I want my career to look like down the road, so Anna Shipman&#39;s post on &lt;a href=&#34;https://www.annashipman.co.uk/jfdi/finding-next-level-job.html&#34;&gt;finding a higher-level tech job&lt;/a&gt; was interesting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On a similar note someone linked to &lt;a href=&#34;https://keavy.com/work/thriving-on-the-technical-leadership-path/&#34;&gt;Keavy McMinn&#39;s post about what technical leadership roles can look like&lt;/a&gt; and I immediately remembered reading it before, but I still read it again.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I made it through Sanjay Sha&#39;s &lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3374665&#34;&gt;The Reliability of Enterprise Applications&lt;/a&gt; but it was a bit of a slog.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I might have accidentally made some new goals under the pressure of this time of year, and I&#39;m reflecting on &lt;a href=&#34;https://medium.com/@cwodtke/personal-okrs-three-years-later-7616e60574a4&#34;&gt;Christina Wodtke&#39;s personal OKR process&lt;/a&gt; to see if it might suit me.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;While compiling this list I ended up reading more of Chelsea Troy&#39;s blog, and this post from her Listening series about &lt;a href=&#34;https://chelseatroy.com/2019/11/25/listening-6-deliberate-inquisition/&#34;&gt;deliberate inquisition&lt;/a&gt; seems like something I specifically need to practice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
        <title>what I&#39;m reading: holiday special</title>
        <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-december/</link>
        <pubDate>Wed, 25 Dec 2019 23:25:13 -0800</pubDate>
