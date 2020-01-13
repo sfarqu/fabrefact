@@ -7,10 +7,90 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Fri, 03 Jan 2020 22:12:16 -0800</lastBuildDate>
+   <lastBuildDate>Sun, 12 Jan 2020 23:05:22 -0800</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/tags/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: Jan 12</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-12/</link>
+       <pubDate>Sun, 12 Jan 2020 23:05:22 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-12/</guid>
+       <description>&lt;p&gt;Instead of writing up my recent reading I spent most of today reading &lt;em&gt;more&lt;/em&gt; things, which is not exactly how I intended this to work.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Molly Struve shares a specific story about migrating from Memcached to Redis, along with some &lt;a href=&#34;https://dev.to/molly_struve/switching-from-memcache-to-redis-and-some-tips-on-caching-4g1l&#34;&gt;cacheing best practices&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Starting on my reading list of dystopian tech books with Emily Chang&#39;s &lt;a href=&#34;http://www.brotopiabook.com/&#34;&gt;Brotopia&lt;/a&gt; (audiobook). I expected this to retread a lot of ground I already knew, so was pleasantly surprised to instead learn a lot of details about Silicon Valley and how VC firms work that was new to me. Still lots of downer content and descriptions of assault and harassment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Simon Wardley&#39;s tweet thread &lt;a href=&#34;https://twitter.com/swardley/status/1213868373051875328&#34;&gt;starts off in open source and ends up in dystopian techno-futureism&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Segun Ola makes a good point about &lt;a href=&#34;https://twitter.com/segunolalive/status/1213953805454381061?s=20&#34;&gt;where DIV tags still have value in semantic HTML&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chelsea Troy has been posting a lot and I have been reading all of it, but I especially liked this &lt;a href=&#34;https://chelseatroy.com/2020/01/06/posd-2-debugging-tactics/&#34;&gt;post on debugging tactics&lt;/a&gt; with a rant in the middle about how the software industry as a whole doesn&#39;t actually teach debugging.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dan Lorenc posts eloquently about a topic I am currenlty invested in: &lt;a href=&#34;https://medium.com/better-programming/getting-serious-about-open-source-security-1d15609478fa&#34;&gt;how to apply security to open source dependencies&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Continuing with dependencies, Pablo Díaz writes about a concept for &lt;a href=&#34;https://medium.com/blogyuxiglobal/tracking-project-and-library-dependencies-with-graph-oriented-dbs-e55027d33adf&#34;&gt;using a graph-oriented database to model software dependencies and identify issues&lt;/a&gt;. This article was mostly a narrative about a problem the author solved and did not easily lend itself to steps to apply, but I think there&#39;s useful ideas here.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I love when people turn talks into blog posts! I am way more likely to read an article than watch a video, and Galo Navarro&#39;s talk on &lt;a href=&#34;https://srvaroa.github.io/paas/infrastructure/platform/kubernetes/cloud/2020/01/02/talk-how-to-build-a-paas-for-1500-engineers.html&#34;&gt;how to build a successful platform team in a large org&lt;/a&gt; was worth looking at.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Twitter engineering blog has a great post by Bryce Anderson and Ruben Oanta about &lt;a href=&#34;https://blog.twitter.com/engineering/en_us/topics/infrastructure/2019/daperture-load-balancer.html&#34;&gt;Twitter&#39;s new load balancing algorithm for their custom RPC system&lt;/a&gt; complete with a lot of very helpful diagrams.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;http://fionavoss.blog&#34;&gt;Fiona Voss&lt;/a&gt; asked for feedback on an interview question she had about scaling Twitter, which led me down a rabbit hole of wondering how &lt;em&gt;Twitter&lt;/em&gt; scaled Twitter. I found this article about their architecture in 2013 in &lt;a href=&#34;http://highscalability.com/blog/2013/7/8/the-architecture-twitter-uses-to-deal-with-150m-active-users.html&#34;&gt;High Scalability&lt;/a&gt;, and a Twitter engineering blog post from 2017 about their &lt;a href=&#34;https://blog.twitter.com/engineering/en_us/topics/infrastructure/2017/the-infrastructure-behind-twitter-scale.html&#34;&gt;infrastructure and ops&lt;/a&gt; by Mazdak Hashemi, which is still a bit over my head.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dan Abramov has an evocative point about how &lt;a href=&#34;https://overreacted.io/goodbye-clean-code/&#34;&gt;clean code is not a goal in itself&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I greatly enjoyed Cindy Sridharan&#39;s &lt;a href=&#34;https://medium.com/@copyconstruct/a-decade-in-review-in-tech-1cde76c9b43c&#34;&gt;review of tech trends of the 2010s&lt;/a&gt; and predictions of the future&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Coda Hale blogged persuasively about &lt;a href=&#34;https://codahale.com/work-is-work/&#34;&gt;organizational performance as parallel systems&lt;/a&gt; and what that means for growth. I liked the principles at the end of this one.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To be contrary, I then read Sonja Blignaut&#39;s metaphor of &lt;a href=&#34;https://medium.com/@sonjablignaut/reconceptualising-organisations-from-complicated-machines-to-flowing-streams-c03e9e917f35&#34;&gt;organizations as flow systems&lt;/a&gt;, though I don&#39;t think the two articles express contradictory ideas.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Esther Derby talks about &lt;a href=&#34;https://www.estherderby.com/the-risks-of-anonymous-feedback/&#34;&gt;the risks of anonymous feedback&lt;/a&gt; among colleagues&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Edmund Lewry writes about how they &lt;a href=&#34;https://clearblueskybox.wordpress.com/2020/01/05/becoming-a-technical-leader/&#34;&gt;define a Tech Lead, while moving into that role&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://medium.com/@djpardis/management-and-coaching-best-practices-as-a-list-of-n-things-7a6d9c7f0fa5&#34;&gt;list of coaching best practices&lt;/a&gt; by Pardis Noorzad is clearly aimed at managers, but I think some of the advice is applicable to everyone who is trying to interact effectively with colleagues. (I take a little issue with the smile comment, but she&#39;s not wrong.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Denise Yu made and shared &lt;a href=&#34;https://twitter.com/deniseyu21/status/1215695277237178369?s=20&#34;&gt;a worksheet for writing a conference talk proposal&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I found &lt;a href=&#34;https://www.annashipman.co.uk/jfdi.html&#34;&gt;Anna Shipman&#39;s blog&lt;/a&gt; through one of her recent book reviews, but ended up reading a large section of her archives. I thought this post on &lt;a href=&#34;https://www.annashipman.co.uk/jfdi/good-pull-requests.html&#34;&gt;best practices for making a pull request&lt;/a&gt; will be useful for me to reference as we migrate our codebase from Perforce to Github&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I recently had to go through the Byzantine password process at my work, so reading Emily Cain&#39;s article for Increment about how &lt;a href=&#34;https://increment.com/security/password-security-best-practices/&#34;&gt;password policies are terrible for security&lt;/a&gt; was mostly cathartic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A long explanation of &lt;a href=&#34;https://ourworldindata.org/plastic-pollution&#34;&gt;the global problem plastic pollution&lt;/a&gt; by Hannah Ritchie and Max Roser is a little depressing but also provides data-based suggestions about what policies could make the biggest difference. (Banning straws does not even come close to making the list.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A &lt;a href=&#34;https://psyarxiv.com/vqyw6/&#34;&gt;recent replication of Mueller and Oppenheimer&#39;s study&lt;/a&gt; (about how taking notes longhand is better for your memory than typing on a computer) failed to replicate the same results. Another whole generation of pop-psychology books about the benefits of unplugging may turn out to be factually incorrect.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Checked out Fancy Fairy&#39;s tutorial for &lt;a href=&#34;https://www.fancyfairy.com/fairywingtutorial&#34;&gt;making fairy wings&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: Jan 3</title>
