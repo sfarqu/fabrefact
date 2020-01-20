@@ -7,10 +7,66 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 12 Jan 2020 23:05:22 -0800</lastBuildDate>
+   <lastBuildDate>Sun, 19 Jan 2020 17:42:02 -0800</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/categories/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: Jan 19</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-19/</link>
+       <pubDate>Sun, 19 Jan 2020 17:42:02 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-19/</guid>
+       <description>&lt;p&gt;Last week I got access back to my company&#39;s O&#39;Reilly books subscription after a licensing hiccup, so I finally got back to Brendan Gregg&#39;s &lt;em&gt;Systems Performance&lt;/em&gt;! Still managed to find time for some other reading though.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;&lt;a href=&#34;https://www.goodreads.com/en/book/show/41104130-ten-drugs&#34;&gt;Ten Drugs: How Plants, Powders, and Pills Have Shaped the History of Medicine&lt;/a&gt;&lt;/em&gt; (audiobook) was a rollicking romp through the history of drug companies, accidental discoveries, and unintended side-effects. The author states at the beginning that this is more of a pop book than a science book, but I still learned a lot, and forgave a little pointless meandering.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tried for-real pair programming for the first time recently and found it quite valuable, so &lt;a href=&#34;https://martinfowler.com/articles/on-pair-programming.html&#34;&gt;On Pair Programming&lt;/a&gt; by Birgitta Böckeler and Nina Siessegger came about at a good time, even if it seems to assume an organisation where pairing is the norm.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rina Artstain has thoughts about how to apply &lt;a href=&#34;https://medium.com/@rinaarts/radical-candor-software-edition-d4b5ad401be3&#34;&gt;Radical Candor to software development&lt;/a&gt;. Lots here that I should work on, since my natural tendency is to avoid confrontation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m not exactly the sort of person who follows RFC drafts, so this &lt;a href=&#34;https://twitter.com/jasnell/status/1217620376747827200?s=20&#34;&gt;Twitter rant by James Snell&lt;/a&gt; is the first time it clicked that HTTP/3 will use the QUIC protocol, which I read a paper about not long ago. I still don&#39;t know about QPACK and stateful header compression, which according to this are overly-complicated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I said last week that I love when conference talks are turned into blog posts; this week I found Clint Gibler summarized &lt;a href=&#34;https://tldrsec.com/blog/appsec-cali-2019/&#34;&gt;every talk from AppSec Cali 2019&lt;/a&gt; into a giant blog post, and it is &lt;em&gt;great&lt;/em&gt;!  AppSec California sounds like a great conference, and a lot of the summarised talks are directly relevant to a project I&#39;m helping out with.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Lynn Cyrin had some quick thoughts on &lt;a href=&#34;https://twitter.com/lynncyrin/status/1217726716828737536?s=20&#34;&gt;how the infrastructure engineer role is changing&lt;/a&gt;. I hope they write that blog post and go more into depth on this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I normally am not super interested in &amp;ldquo;how I work&amp;rdquo;-type posts, but this &lt;a href=&#34;http://phdtalk.blogspot.com/2020/01/i-am-felienne-hermans-and-this-is-how-i.html?m=1&#34;&gt;interview with Felianne Hermans&lt;/a&gt; introduced me to the Goodnotes app, which I immediately downloaded because taking handwritten notes and annotating PDFs are the main uses I have found for my iPad, and an app that renders my handwriting searchable is golden.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Christian Posta breaks down &lt;a href=&#34;https://blog.christianposta.com/microservices/istio-as-an-example-of-when-not-to-do-microservices/&#34;&gt;why it made sense for Istio to ditch the complexity of a microservice architecture&lt;/a&gt; as an example of how to pick the best architecture for your product.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kristian Köhntopp turned a long tweet thread into a post about &lt;a href=&#34;http://blog.koehntopp.info/2020/01/17/rolling-back-a-rollout.html&#34;&gt;how to achieve reliable rollbacks&lt;/a&gt;, which mostly comes down to separating deploy from activation, appropriate feature flagging, and good observability (using Charity Majors&amp;rsquo; definition of &amp;ldquo;observability&amp;rdquo;).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Liz Rice &lt;a href=&#34;https://medium.com/@lizrice/go-slices-maps-pitfalls-and-generics-f7ced963ced&#34;&gt;gets into the weeds about array slices in Go&lt;/a&gt;, which is pretty technical but I hope will somehow help me absorb enough Go by osmosis that when I finally come up with a project to build in Go I will have less trouble with it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stumbled across this older John Allspaw piece about &lt;a href=&#34;https://www.oreilly.com/radar/the-infinite-hows/&#34;&gt;why &amp;ldquo;how&amp;rdquo; is a better question than &amp;ldquo;why&amp;rdquo; in incident review&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Through the Level Up newsletter I keep finding articles a little above my weight class, but I still found Will Larson&#39;s article about &lt;a href=&#34;https://lethain.com/first-ninety-days-cto-vpe/&#34;&gt;what to do in your first 90 days as CTO&lt;/a&gt; interesting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mekka Okereke has a great Twitter thread for managers about how to make your team more inclusive by &lt;a href=&#34;https://twitter.com/mekkaokereke/status/1218940982122577921?s=20&#34;&gt;ensuring stretch opportunities are evenly distributed&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alexis King goes way into depth about &lt;a href=&#34;https://lexi-lambda.github.io/blog/2020/01/19/no-dynamic-type-systems-are-not-inherently-more-open/&#34;&gt;dynamic type systems are not inherently better at modelling real-world data&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quincy Larson&#39;s story about how &lt;a href=&#34;https://www.freecodecamp.org/news/stopping-credit-card-fraud-and-saving-our-nonprofit/&#34;&gt;fraudulent donations came close to bankrupting his nonprofit&lt;/a&gt; is a nailbiter with a happy ending.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: Jan 12</title>
@@ -27,7 +83,7 @@
 &lt;p&gt;Starting on my reading list of dystopian tech books with Emily Chang&#39;s &lt;a href=&#34;http://www.brotopiabook.com/&#34;&gt;Brotopia&lt;/a&gt; (audiobook). I expected this to retread a lot of ground I already knew, so was pleasantly surprised to instead learn a lot of details about Silicon Valley and how VC firms work that was new to me. Still lots of downer content and descriptions of assault and harassment.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Simon Wardley&#39;s tweet thread &lt;a href=&#34;https://twitter.com/swardley/status/1213868373051875328&#34;&gt;starts off in open source and ends up in dystopian techno-futureism&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Simon Wardley&#39;s tweet thread &lt;a href=&#34;https://twitter.com/swardley/status/1213868373051875328&#34;&gt;starts off in open source and ends up in dystopian techno-futurism&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Segun Ola makes a good point about &lt;a href=&#34;https://twitter.com/segunolalive/status/1213953805454381061?s=20&#34;&gt;where DIV tags still have value in semantic HTML&lt;/a&gt;&lt;/p&gt;
@@ -36,7 +92,7 @@
 &lt;p&gt;Chelsea Troy has been posting a lot and I have been reading all of it, but I especially liked this &lt;a href=&#34;https://chelseatroy.com/2020/01/06/posd-2-debugging-tactics/&#34;&gt;post on debugging tactics&lt;/a&gt; with a rant in the middle about how the software industry as a whole doesn&#39;t actually teach debugging.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Dan Lorenc posts eloquently about a topic I am currenlty invested in: &lt;a href=&#34;https://medium.com/better-programming/getting-serious-about-open-source-security-1d15609478fa&#34;&gt;how to apply security to open source dependencies&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Dan Lorenc posts eloquently about a topic I am currently invested in: &lt;a href=&#34;https://medium.com/better-programming/getting-serious-about-open-source-security-1d15609478fa&#34;&gt;how to apply security to open source dependencies&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Continuing with dependencies, Pablo Díaz writes about a concept for &lt;a href=&#34;https://medium.com/blogyuxiglobal/tracking-project-and-library-dependencies-with-graph-oriented-dbs-e55027d33adf&#34;&gt;using a graph-oriented database to model software dependencies and identify issues&lt;/a&gt;. This article was mostly a narrative about a problem the author solved and did not easily lend itself to steps to apply, but I think there&#39;s useful ideas here.&lt;/p&gt;
@@ -111,16 +167,16 @@
 &lt;p&gt;There&#39;s a lot to unpack in this article about &lt;a href=&#34;https://www.technologyreview.com/s/613305/this-chip-was-demoed-at-jeff-bezoss-secretive-tech-conference-it-could-be-key-to-the-future/&#34;&gt;the new AI-optimized chip Vivienne Sze demoed at &amp;ldquo;an elite, invite only conference&amp;rdquo;&lt;/a&gt;. There&#39;s currently a race to design more efficient chip architectures for specific algorithms—interesting. Given the many Twitter threads I&#39;ve seen about the lack of ethics in AI, also a candidate for Dystopian Hellscape Weekly, along with: Amazon has a secret tech conference full of technology co-funded by DARPA.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;I am utterly captivated by the idea of &lt;a href=&#34;http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions&#34;&gt;architecture decision records&lt;/a&gt; as envisioned by Michael Nygard (this &lt;a href=&#34;https://www.agilealliance.org/resources/experience-reports/distribute-design-authority-with-architecture-decision-records/&#34;&gt;longer interview&lt;/a&gt; exlores how they worked in practice.) I want to retroactively add ADRs to every project I&#39;ve ever had to do forensic psychology on to piece together architecture decisions out of terse changelist messages.&lt;/p&gt;
+&lt;p&gt;I am utterly captivated by the idea of &lt;a href=&#34;http://thinkrelevance.com/blog/2011/11/15/documenting-architecture-decisions&#34;&gt;architecture decision records&lt;/a&gt; as envisioned by Michael Nygard (this &lt;a href=&#34;https://www.agilealliance.org/resources/experience-reports/distribute-design-authority-with-architecture-decision-records/&#34;&gt;longer interview&lt;/a&gt; explores how they worked in practice.) I want to retroactively add ADRs to every project I&#39;ve ever had to do forensic psychology on to piece together architecture decisions out of terse changelist messages.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Nora Jones suggested this &lt;a href=&#34;https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-019-0913-5&#34;&gt;study comparing structured briefings to checkings in medical emergencies&lt;/a&gt; could apply to software incident response. The study showed that briefings and checklists were about equally effective in getting to a correct solution within a limited time, but that briefings might allow people to feel more in control of what to do next if the first thing doesn&#39;t work.&lt;/p&gt;
+&lt;p&gt;Nora Jones suggested this &lt;a href=&#34;https://bmcanesthesiol.biomedcentral.com/articles/10.1186/s12871-019-0913-5&#34;&gt;study comparing structured briefings to checklists in medical emergencies&lt;/a&gt; could apply to software incident response. The study showed that briefings and checklists were about equally effective in getting to a correct solution within a limited time, but that briefings might allow people to feel more in control of what to do next if the first thing doesn&#39;t work.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Rereading Esther Derby&#39;s piece on &lt;a href=&#34;https://www.estherderby.com/control-and-creativity/&#34;&gt;control vs creativity&lt;/a&gt; a few times and thinking about how to internalize this and relax my own tendency to want to control instead of delegate.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;Chris McDermott wrote about &lt;a href=&#34;https://medium.com/@chrisvmcd/mapping-maturity-create-context-specific-maturity-models-with-wardley-maps-informed-by-cynefin-37ffcd1d315&#34;&gt;creating maturity models using Wardley Maps and the Cynefin framework&lt;/a&gt; which was intriguing enough that I finally watched &lt;a href=&#34;https://vimeo.com/189984496&#34;&gt;a video from Simom Wardley&lt;/a&gt; to figure out WTF a Wardly Map is, because I keep seeing the design/architecture/leadership parts of my Twitter feed talking about them. Video was entertaining but I still don&#39;t know how to &lt;em&gt;make&lt;/em&gt; such a map. Also haven&#39;t looked up Cynefin.&lt;/p&gt;
+&lt;p&gt;Chris McDermott wrote about &lt;a href=&#34;https://medium.com/@chrisvmcd/mapping-maturity-create-context-specific-maturity-models-with-wardley-maps-informed-by-cynefin-37ffcd1d315&#34;&gt;creating maturity models using Wardley Maps and the Cynefin framework&lt;/a&gt; which was intriguing enough that I finally watched &lt;a href=&#34;https://vimeo.com/189984496&#34;&gt;a video from Simom Wardley&lt;/a&gt; to figure out WTF a Wardley Map is, because I keep seeing the design/architecture/leadership parts of my Twitter feed talking about them. Video was entertaining but I still don&#39;t know how to &lt;em&gt;make&lt;/em&gt; such a map. Also haven&#39;t looked up Cynefin.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Chelsea Troy wrote about &lt;a href=&#34;https://chelseatroy.com/2020/01/01/boundaries-2-assisted-processing/&#34;&gt;setting boundaries for professional venting&lt;/a&gt; and I immediately shared it with a bunch of friends.&lt;/p&gt;
