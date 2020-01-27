@@ -7,10 +7,87 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 19 Jan 2020 17:42:02 -0800</lastBuildDate>
+   <lastBuildDate>Sun, 26 Jan 2020 20:59:35 -0800</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/tags/links/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: Jan 26</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-26/</link>
+       <pubDate>Sun, 26 Jan 2020 20:59:35 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-26/</guid>
+       <description>&lt;p&gt;This felt like a slow reading week since I got sick and spent a lot of time not wanting to do anything more strenuous than play phone games, and didn&#39;t finish either book that I&#39;m working through. Sunday morning make-coffee-and-read-articles is becoming a relaxing ritual though.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Been slogging through Don Norman&#39;s &lt;a href=&#34;https://mitpress.mit.edu/books/design-everyday-things-revised-and-expanded-edition&#34;&gt;The Design of Everyday Things&lt;/a&gt; (audiobook), since I&#39;ve encountered most of these concepts before—in works that were probably inspired by the first edition of this book, to be fair. Later in the book there&#39;s some good content about resilience engineering that kept my attention a little better. Lesson learned: always skip the preface in audiobooks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I didn&#39;t feel like I had the time to attend the local Global Diversity CFP event but I&#39;m glad Wen Cai &lt;a href=&#34;https://www.linkedin.com/pulse/how-become-tech-conference-speaker-key-takeaways-from-wen-cai&#34;&gt;wrote a post summarizing the key lessons&lt;/a&gt; of the experience.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Re-read Suz Hinton&#39;s &lt;a href=&#34;https://increment.com/development/a-guide-to-coding-accessible-developer-tools/&#34;&gt;guide to coding accessible developer tools&lt;/a&gt;, which has a lot of good things to keep in mind for any project&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jon Cutler&#39;s &lt;a href=&#34;https://blog.prototypr.io/the-messy-shift-to-starting-together-61088323b896&#34;&gt;post on &amp;ldquo;starting together&amp;rdquo;&lt;/a&gt; was less focused than I&#39;d hoped from the tweet that led me to it, but has valuable takeaways about how to shift a team from a top-down to an autonomous mindset. The most important point being that this is hard.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Looking for good guidelines on documentation led me to Gene Hughson&#39;s &lt;a href=&#34;https://genehughson.wordpress.com/2014/01/13/your-code-is-not-enough/&#34;&gt;Your Code is not Enough&lt;/a&gt;, which mostly sells the &amp;ldquo;why&amp;rdquo; of documentation but at the end gets a little into &amp;ldquo;how&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;More practical advice can be found in Stephanie Blotner&#39;s &lt;a href=&#34;https://increment.com/documentation/primer-on-documentation-content-strategy/&#34;&gt;primer on documentation content strategy&lt;/a&gt; on Increment&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I don&#39;t have kids of my own but I still &lt;a href=&#34;https://twitter.com/iproposethis/status/1161130456286289920?s=20&#34;&gt;worry about how to keep teens from being groomed by white supremacists on social media&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Even though I don&#39;t love watching talks, I might have to go through Cindy Sridharan&#39;s &lt;a href=&#34;https://medium.com/@copyconstruct/best-of-2019-in-tech-talks-bac697c3ee13&#34;&gt;Best of 2019 in Tech Talks&lt;/a&gt; because they all sound amazing. (I saw one of these live!)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Always looking for beginner-friendly security content, and while Troy Hunters &lt;a href=&#34;https://www.troyhunt.com/locking-down-your-website-scripts-with-csp-hashes-nonces-and-report-uri/&#34;&gt;overview of using content security policies&lt;/a&gt; isn&#39;t quite as accessible as I&#39;d like, it&#39;s not bad&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Had Gregor Hohpe&#39;s treatise on &lt;a href=&#34;https://martinfowler.com/articles/oss-lockin.html&#34;&gt;the perils of trying to avoid lock-in&lt;/a&gt; open in my browser for a while. Glad I finally got around to reading it because it&#39;s both insightful and funny.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also funny was Jan Schaumann&#39;s tweet thread about &lt;a href=&#34;https://www.netmeister.org/blog/ops-lessons.html&#34;&gt;Ops lessons we all learn the hard way&lt;/a&gt;, collected here into a blog post. I&#39;ve never even been Ops but I can still relate to some of these.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I was hoping for more out of Farnam Street&#39;s &lt;a href=&#34;https://fs.blog/smart-decisions/&#34;&gt;framework for making smarter decisions&lt;/a&gt;, which makes a case for people being bad at decisions but, despite the title, does not actually explain how to do better. It does however have a lot of links at the end which may be more promising.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Teri Radichel has an interesting two-part post about &lt;a href=&#34;https://www.darkreading.com/vulnerabilities-and-threats/why-patching-software-is-hard-technical-challenges-/a/d-id/1330181&#34;&gt;why patching software in a large organization is hard&lt;/a&gt; with the first part addressing the technical challenges and &lt;a href=&#34;https://www.darkreading.com/vulnerabilities---threats/why-patching-software-is-hard-organizational-challenges/a/d-id/1330182&#34;&gt;the second looking at organizational issues&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Elizabeth Ayer advocates for &lt;a href=&#34;https://medium.com/@ElizAyer/dont-ask-forgiveness-radiate-intent-d36fd22393a3&#34;&gt;&amp;ldquo;radiating intent&amp;rdquo; instead of &amp;ldquo;begging forgiveness&amp;rdquo;&lt;/a&gt; as a healthier attitude toward taking action without waiting for permission. I like that she at least nods to how this strategy might not work for everyone though.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jon Moore elaborates on Coda Hale&#39;s piece I linked last week with &lt;a href=&#34;https://blog.jonm.dev/posts/universal-scalability-for-orgs/&#34;&gt;some more math about organizational scalability&lt;/a&gt; which points to contention for shared resources and coherence/communication overheads as limiting factors.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Keavy McMinn has a great post about &lt;a href=&#34;https://keavy.com/work/technical-preparation/&#34;&gt;how she approaches technical research when solving engineering problems&lt;/a&gt;. Her advocacy of &amp;ldquo;spikes&amp;rdquo; makes me think of the second divergence phase of the &lt;a href=&#34;https://www.thoughtworks.com/insights/blog/double-diamond&#34;&gt;double diamond design model&lt;/a&gt;, which apparently makes at least one thing I&#39;ll take away from The Design of Everyday Things.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://goslings.tech&#34;&gt;Christian Carter&lt;/a&gt; generously shared some of the resources he&#39;s using to learn to write a Go web app, and I started with Jon Calhoun&#39;s &lt;a href=&#34;https://www.calhoun.io/using-the-service-object-pattern-in-go/&#34;&gt;Using the Service Object Pattern in Go&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jessica Kerr talks about &lt;a href=&#34;https://blog.jessitron.com/2020/01/24/capturing-the-world-in-software/&#34;&gt;why to use event sourcing architectures&lt;/a&gt; even though they are not more scalable, faster, or simpler than the alternatives.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I enjoyed Radhika Morabia&#39;s &lt;a href=&#34;https://radhika.dev/anti-workaholics-guide/&#34;&gt;Anti-Workaholic&#39;s Guide to Getting Ahead&lt;/a&gt;, which is a very pragmatic (if cynical) approach to how to build skills without burning yourself out.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Last year I read &lt;a href=&#34;https://dl.acm.org/doi/10.1145/3355369.3355604&#34;&gt;an intriguing paper&lt;/a&gt; on how Google&#39;s new congestion control algorithm for QUIC was unfair to TCP traffic, but lead author Ranysha Ware just published &lt;a href=&#34;https://blog.apnic.net/2020/01/24/modelling-bbrs-interactions-with-loss-based-congestion-control/&#34;&gt;a new article about the research&lt;/a&gt; that is much more comprehensible to a layperson!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mattias Verraes posits a &lt;a href=&#34;http://verraes.net/2020/01/wall-of-technical-debt/&#34;&gt;strategy for making tech debt visible&lt;/a&gt; that unfortunately I don&#39;t think will fly in my office.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Liz Fong-Jones&amp;rsquo; Honeycomb blog post about &lt;a href=&#34;https://www.honeycomb.io/blog/treading-in-haunted-graveyards/&#34;&gt;automating infrastructure-as-code deploys&lt;/a&gt; was a little over my head because I don&#39;t know the first thing about Terraform, but I was sucked in by the reference to haunted graveyards in the title and learned a bit about optimizing cloud hosting bills.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: Jan 19</title>
