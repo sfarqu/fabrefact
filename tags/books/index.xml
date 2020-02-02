@@ -7,10 +7,80 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 26 Jan 2020 20:59:35 -0800</lastBuildDate>
+   <lastBuildDate>Sun, 02 Feb 2020 12:38:20 -0800</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/tags/books/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: February 2</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-2/</link>
+       <pubDate>Sun, 02 Feb 2020 12:38:20 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-2/</guid>
+       <description>&lt;p&gt;Hit the point where I need to start adding metadata to individual links, because I&#39;ve posted enough reading lists that I can&#39;t reliably remember where to find a particular article I want to go back to! Started looking at &lt;a href=&#34;https://gohugo.io/templates/data-templates/&#34;&gt;Hugo data templates&lt;/a&gt; but won&#39;t have time to play with it for a while. In the meantime, more unordered lists:&lt;/p&gt;
+&lt;h2 id=&#34;current-books&#34;&gt;Current Books&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Started on Safiya Umoja Noble&#39;s &lt;a href=&#34;https://www.goodreads.com/en/book/show/34762552-algorithms-of-oppression&#34;&gt;Algorithms of Oppression: how search engines reinforce racism&lt;/a&gt; with some trepidation, but so far it is neither overwhelmingly depressing nor devoid of new information about algorithmic failures. Still a little depressing tho.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally pulled Martin Kleppmann&#39;s &lt;a href=&#34;https://dataintensive.net/&#34;&gt;Designing Data-Driven Applications&lt;/a&gt; off the to-be-read pile and already enjoying the tone! I think this&#39;ll be a faster read that &lt;em&gt;Systems Performance&lt;/em&gt; because I&#39;ve studied a bit of distributed systems design already, and Kleppmann promises to stay pretty high-level.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;articles&#34;&gt;Articles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This older article from Christopher Allen about &lt;a href=&#34;http://www.lifewithalacrity.com/2008/09/group-threshold.html&#34;&gt;natural thresholds to community sizes&lt;/a&gt; goes much deeper than the casual references to Dunbar Number I&#39;ve seen before, and provides an interesting way to think about communities!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Still haven&#39;t gotten around to writing any tech talks, but Nina Zakharenko&#39;s &lt;a href=&#34;https://medium.com/@nnja/the-ultimate-guide-to-memorable-tech-talks-e7c350778d4b&#34;&gt;Ultimate Guide to Memorable Tech Talks&lt;/a&gt; has some very useful pointers for the whole process, including my sticking point: choosing a topic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also looked at Phil Nash&#39;s summary of &lt;a href=&#34;https://philna.sh/blog/2020/01/29/how-to-find-cfps-for-developer-conferences/&#34;&gt;how to find CFP&#39;s for developer conferences&lt;/a&gt; but it still sounds exhausting.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I feel like Marc Brooker was on to something with this twitter thread &lt;a href=&#34;https://twitter.com/MarcJBrooker/status/1222217458028707841?s=20&#34;&gt;attempting to define the different things people mean when they talk about &amp;ldquo;containers&amp;rdquo;&lt;/a&gt; but to an outsider like me it was still a little opaque. Still thinking about it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Clint Gibler (whose summary of AppSec Cali 2019 delighted me a few weeks ago) posted the slides from his talk at AppSec Cali 2020 talk &lt;a href=&#34;https://docs.google.com/presentation/d/1zbj9XBiv6r6zla0KHNfs63Ux45QZAfRut2zlK7o-dRw/mobilepresent#slide=id.g6555b225cd_0_1069&#34;&gt;An Opinionated Guide to Scaling Your Company&#39;s Security&lt;/a&gt;. There is &lt;em&gt;so much content&lt;/em&gt; here I feel like the talk must be two hours long, but I still want to watch it now. And also read all of the embedded links.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;I&#39;ve heard about &lt;a href=&#34;https://netflixtechblog.com/introducing-aardvark-and-repokid-53b081bf3a7e?gi=7b630f80c460&#34;&gt;Repokid&lt;/a&gt; before but now it reminded me of a coworker&#39;s question at lunch the other day so I read the Netflix tech blog post about it&lt;/li&gt;
+&lt;li&gt;Gibler also mentions &lt;a href=&#34;https://engineering.salesforce.com/salesforce-cloud-security-automating-least-privilege-in-aws-iam-with-policy-sentry-b04fe457b8dc&#34;&gt;Salesforce&#39;s Policy Sentry&lt;/a&gt; in the same &amp;ldquo;automated IAM permissions&amp;rdquo; space, so read that too&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://twitter.com/TomNomNom/status/1221839790225743872?s=20&#34;&gt;Learned something weird about bash&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;James Ma talks about the Lean concept of &lt;a href=&#34;https://www.jama.work/blog/negative-feedback-loops&#34;&gt;build-measure-learn and how it can lead to negative feedback loops&lt;/a&gt; but in my opinion doesn&#39;t really stick the landing of&amp;hellip;what to do about it? I think my takeaway is that any process introduced to improve a team can backfire and you have to think critically about what impact it&#39;s actually having.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;ve been intrigued by Coraline Ehmke&#39;s Ethical Open Source Movement, but am not precisely versed in the minutiae of open source licenses. I found it interesting to read Christie Koehler&#39;s &lt;a href=&#34;https://subfictional.com/open-source-licenses-and-the-ethical-use-of-software/&#34;&gt;critique of the approach&lt;/a&gt; for context on why Ehmke&#39;s work is apparently controversial. I still fall on the side of not wanting software I write to be used for things I consider evil, so I will keep watching.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Breanne Boland wrote about &lt;a href=&#34;https://breanneboland.com/blog/2020/01/27/how-an-sre-became-an-application-security-engineer-and-you-can-too/&#34;&gt;how she moved from an SRE to an Application Security Engineer role&lt;/a&gt;. I found the most interesting part to be her detailed description of how she prepared for the interview. I hadn&#39;t seen anyone talk about that kind of systematic approach before.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paul Ionescu&#39;s &lt;a href=&#34;https://medium.com/@paul_io/security-code-review-101-a3c593dc6854&#34;&gt;Secure Code Review 101 series&lt;/a&gt; has a lot of good info, but I was hoping for a genuine 101-level guide that I could use as teaching materials for someone unfamiliar with secure coding and this isn&#39;t quite it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://medium.com/@Mo_Mack/editorial-guidelines-for-developers-and-data-scientists-e6ca5d6afa6a&#34;&gt;editorial guidelines for writing a compelling technical blog post&lt;/a&gt; piece by Maureen McElaney is more of a random grab-bag of tips than I expected when I clicked on it, and some of those tips are very specific to the editorial preferences of a single publication. Regardless I saw some good advice in there.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I haven&#39;t used a feed reader in many years, but Jason McIntosh&#39;s &lt;a href=&#34;https://fogknife.com/2020-01-31-fraidycat-a-most-interesting-newsreader.html&#34;&gt;review of Fraidycat&lt;/a&gt; intrigues me as a way to both consolidate my reading sources and not get sucked into the endless vortex of More Content.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Bonnie Eisenman does a good job &lt;a href=&#34;https://blog.bonnieeisenman.com/blog/senior-work/&#34;&gt;defining different types of work developers do including &amp;ldquo;exploratory work&amp;rdquo;&lt;/a&gt;, in a way that both makes me feel validated for not having checked in any code in ages, and also that I am doing exploratory work wrong and need to improve.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://firstround.com/review/the-engineers-guide-to-career-growth-advice-from-my-time-at-stripe-and-facebook/&#34;&gt;Engineer&#39;s Guide to Career Growth&lt;/a&gt; interview with Raylene Yung has some insightful advice both for growing as an engineer and on becoming an engineering manager.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tanya Janca provides advice for &lt;a href=&#34;https://medium.com/microsoftazure/when-is-a-vulnerability-not-a-vulnerability-41ff9c880adf&#34;&gt;when a vulnerability isn&#39;t a vulnerability&lt;/a&gt;, which is a good thing to keep in mind when making or receiving vulnerability reports.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: Jan 26</title>
