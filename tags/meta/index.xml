@@ -13,6 +13,89 @@
    
    
      <item>
+       <title>what i&#39;m reading: february 11</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-11/</link>
+       <pubDate>Tue, 11 Feb 2020 20:47:47 -0800</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-11/</guid>
+       <description>&lt;p&gt;Instead of posting a reading list on Sunday I instead read 5 books, so while I feel like I haven&#39;t gotten much reading done that&#39;s not entirely correct.&lt;/p&gt;
+&lt;h2 id=&#34;completed-books&#34;&gt;Completed Books&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Finished &lt;a href=&#34;https://www.goodreads.com/en/book/show/34762552-algorithms-of-oppression&#34;&gt;Algorithms of Oppression: how search engines reinforce racism&lt;/a&gt; by Safiya Umoja Noble. A little more dry and academic than I was expecting, but I did learn some things about how algorithms intersect poorly with marginalised identities.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Re-read Martha Wells &lt;a href=&#34;https://www.marthawells.com/murderbot.htm&#34;&gt;Murderbot Diaries&lt;/a&gt; novellas for at least the second, possibly third time. I deeply enjoy this character and this world, and the novellas are quick so they make good stress reads.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;All Systems Red&lt;/li&gt;
+&lt;li&gt;Artificial Condition&lt;/li&gt;
+&lt;li&gt;Rogue Protocol&lt;/li&gt;
+&lt;li&gt;Exit Strategy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/42036538-gideon-the-ninth&#34;&gt;Gideon the Ninth&lt;/a&gt; by Tamsyn Muir was nothing at all like what I expected, despite being exactly what all my friends described it as. Perhaps not &lt;em&gt;exactly&lt;/em&gt; alike. Billed as &amp;ldquo;lesbian necromancers in space&amp;rdquo;, while they technically &lt;em&gt;do&lt;/em&gt; go to space for half a page, it is primarily a sword-and-sorcery Clue-style mystery&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;articles&#34;&gt;Articles&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A disheartening but ultimately positively-framed retraction from Dr. Kate Laskowski about &lt;a href=&#34;https://laskowskilab.faculty.ucdavis.edu/2020/01/29/retractions/&#34;&gt;how she discovered that a collaborator faked the data for some of their research papers&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Vicki Boykis &lt;a href=&#34;https://vicki.substack.com/p/one-very-bad-apple&#34;&gt;tears apart Apple&#39;s ostensible &amp;ldquo;commitment to privacy&amp;rdquo;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Discovered Lara Hogan&#39;s blog via Twitter, and liked this post about &lt;a href=&#34;https://larahogan.me/blog/benefits-offering-challenges/&#34;&gt;how to offer challenges to your teammates&lt;/a&gt; and this one about &lt;a href=&#34;https://larahogan.me/blog/how-to-manage-up/&#34;&gt;how to manage up&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Level Up newsletter linked to this Madeleine Dore article with the promising title of &lt;a href=&#34;https://www.bbc.com/worklife/article/20200130-the-life-hack-to-reduce-admin-and-carve-out-downtime&#34;&gt;How to reduce &amp;lsquo;attention residue&amp;rsquo; in your life&lt;/a&gt;, but it mostly talks up a particular program offered at University of Melbourne, and is low on practical advice for the average person.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tl;dr schedule a chunk of time regularly to knock off half-a-dozen or so small life admin tasks and you&#39;ll feel more in control of your life.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Quinn Crossley wrote &lt;a href=&#34;https://medium.com/@quinncrossley/uplifting-diverse-genders-beyond-women-and-non-binary-916c890f2185&#34;&gt;how &amp;ldquo;Women and Non-Binary&amp;rdquo; is not the best way to be inclusive&lt;/a&gt;, including a few clear steps about how to make your communities more welcome to all genders.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://blog.tidelift.com/open-source-licenses-2019-year-in-review&#34;&gt;2019 year in review of open source licenses&lt;/a&gt; by Luis Villa gives some context for the Hippocratic License I stumbled upon recently, as well as many other details about open source licenses that I didn&#39;t know until now!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alex Pareto wrote a quick blog post on &lt;a href=&#34;https://alexpareto.com/scalability/systems/2020/02/03/scaling-100k.html&#34;&gt;how to scale an app from 1 to 100K users&lt;/a&gt;. It summarizes commonly used architecture patterns for each stage of growth, with a few nods to specific technologies and where they fit into the picture.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In this podcast excerpt Kelsey Hightower shares his unpopular opinion that &lt;a href=&#34;https://changelog.com/posts/monoliths-are-the-future&#34;&gt;monoliths are the future&lt;/a&gt;, aka microservices and kubernetes won&#39;t save you from bad architecture decisions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After listening to &lt;em&gt;Brotopia&lt;/em&gt; I had a tiny bit of context for how startup VC works so Alex Danco&#39;s post about &lt;a href=&#34;https://alexdanco.com/2020/02/07/debt-is-coming/&#34;&gt;how the software startup world needs a financial realignment&lt;/a&gt; wasn&#39;t &lt;em&gt;completely&lt;/em&gt; over my head, but I still glazed over a lot of the specifics about production capital and liquidity preferences. However this line made me crack up: &lt;em&gt;“Don’t take debt” is tech’s “Four legs good, two legs bad.”&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Janelle Shane has produced another work of horrifying genius by &lt;a href=&#34;https://aiweirdness.com/post/190721709472/ai-vintage-american-cooking-a-combination-that&#34;&gt;training the GPT-2 neural net on a collection of vintage American recipes involving gelatin&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tanya Reilly describes fighting through organizational friction as &lt;a href=&#34;https://noidea.dog/blog/surviving-the-organisational-side-quest&#34;&gt;side quests in a point-and-click adventure game&lt;/a&gt; and is absolutely right. This is the kind of frustrating side quest I&#39;m aiming to reduce in my new role.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I still don&#39;t know what Project Zero is, but this is an incredible deep dive into &lt;a href=&#34;https://googleprojectzero.blogspot.com/2020/02/several-months-in-life-of-part1.html&#34;&gt;how they tracked down an obscure Chrome buffer overflow bug&lt;/a&gt; which I definitely didn&#39;t fully understand but has some interesting insight into debugging.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Speaking of debugging, Chelsea Troy, seemingly partially talked into it by Twitter, posted a &lt;a href=&#34;https://chelseatroy.com/2020/01/27/the-case-of-the-failing-upload-part-1/&#34;&gt;debugging case study in the form of a murder mystery&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An interesting (and sad) conclusion from The Atlantic about &lt;a href=&#34;https://www.theatlantic.com/ideas/archive/2019/11/how-boeing-lost-its-bearings/602188/&#34;&gt;why Boeing lost its focus on engineering and safety&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After reading &lt;em&gt;Systems Performance&lt;/em&gt; I have a much clearer idea what it means that &lt;a href=&#34;https://www.zdnet.com/article/apple-deprecating-macos-kernel-extensions-kexts-is-a-great-win-for-security/&#34;&gt;Apple is deprecating macOS kernel extensions&lt;/a&gt;, and how that is both good for security and bad for certain types of tooling.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://cidrdb.org/cidr2019/papers/p119-hellerstein-cidr19.pdf&#34;&gt;Serverless computing: one step forward, two steps back&lt;/a&gt; Hellerstein et al., CIDR’19&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/2002.02855.pdf&#34;&gt;Security Certification in Payment Card Industry:Testbeds, Measurements, and Recommendations&lt;/a&gt; Rahaman et al., CCS&#39;19&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
        <title>what i&#39;m reading: February 2</title>
        <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-2/</link>
        <pubDate>Sun, 02 Feb 2020 12:38:20 -0800</pubDate>
