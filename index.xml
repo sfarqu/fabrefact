@@ -7,10 +7,74 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Tue, 11 Feb 2020 20:47:47 -0800</lastBuildDate>
+   <lastBuildDate>Tue, 21 Apr 2020 20:11:50 -0700</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: April 21</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-apr-21/</link>
+       <pubDate>Tue, 21 Apr 2020 20:11:50 -0700</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-apr-21/</guid>
+       <description>&lt;p&gt;I got busy and then the world kind of collapsed. For a while I couldn&#39;t care about much outside my immediate field of vision, but now I&#39;ve settled into the new life of working remote and idly stressing about a different set of problems. I still have a job, might as well read more and try to get better at it.&lt;/p&gt;
+&lt;h2 id=&#34;completed-books&#34;&gt;Completed Books&lt;/h2&gt;
+&lt;p&gt;I have been reading a lot of fiction.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Was lucky enough to get an advance copy of Martha Wells&amp;rsquo; new Murderbot novella &lt;a href=&#34;https://publishing.tor.com/networkeffect-marthawells/9781250229861/&#34;&gt;Network Effect&lt;/a&gt; and it was everything I wanted a new Murderbot book to be.&lt;/li&gt;
+&lt;li&gt;Picked Elizabeth Moon&#39;s &lt;a href=&#34;http://www.elizabethmoon.com/books-serrano.html#hero&#34;&gt;Once a Hero&lt;/a&gt; off my bookshelf and read most of it, then went on a bit of a kick and re-read &lt;a href=&#34;http://www.elizabethmoon.com/books-paksworld.html#surrender&#34;&gt;Surrender None&lt;/a&gt; and the end of &lt;a href=&#34;http://www.elizabethmoon.com/books-paksworld.html#liar&#34;&gt;Liar&#39;s Oath&lt;/a&gt; before discovering that there are new books in the world of Paksenarrion. I borrowed the entire &lt;a href=&#34;https://www.goodreads.com/series/49609-paladin-s-legacy&#34;&gt;Paladin&#39;s Legacy series&lt;/a&gt; from the library.
+&lt;ul&gt;
+&lt;li&gt;Oath of Fealty&lt;/li&gt;
+&lt;li&gt;Kings of the North&lt;/li&gt;
+&lt;li&gt;Echoes of Betrayal&lt;/li&gt;
+&lt;li&gt;Limits of Power&lt;/li&gt;
+&lt;li&gt;Crown of Renewal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Stumbled across a blog post by Jenny Trout and ended up reading the first two books in her &lt;a href=&#34;http://jennytrout.com/?page_id=10585&#34;&gt;The Boss series&lt;/a&gt; (as Abigail Barnette), sold by the concept of &amp;ldquo;if 50 Shades of Grey was written by someone who knows how kink works&amp;rdquo; and the fact that the first book was free. Not my normal genre but pleasingly well-written, covering a lot of complex topics and modelling of healthy communication. May not read any more though, contemporary romance isn&#39;t my jam.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;current-books&#34;&gt;Current Books&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;&#34;&gt;Programmed Inequality: How Britain discarded women technologists and lost its edge in computing&lt;/a&gt; (audiobook) by Marie Hicks. I was so excited about this based on the excerpt I read, but the audiobook is a bit of a slog. Not sure if it&#39;s the narration or the pacing of the book itself, but I have trouble paying attention. A shame, because there&#39;s a ton of fascinating historical detail buried in here!&lt;/li&gt;
+&lt;li&gt;Picked &lt;a href=&#34;https://dataintensive.net/&#34;&gt;Designing Data-Driven Applications&lt;/a&gt; back up. Still quite enjoyable, though this chapter on consensus feels familiar after all the classes I took last year.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;articles&#34;&gt;Articles&lt;/h2&gt;
+&lt;p&gt;Deliberately reading things that are &lt;em&gt;not&lt;/em&gt; about current events, but not entirely avoiding the topic.&lt;/p&gt;
+&lt;h3 id=&#34;covid19&#34;&gt;COVID-19&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;A summary by Tiernan Ray of &lt;a href=&#34;https://www.zdnet.com/google-amp/article/ai-runs-smack-up-against-a-big-data-problem-in-covid-19-diagnosis/&#34;&gt;the problems of using AI for COVID-19 diagnosis&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I read a lot of DIY mask tutorials, but Beth Darrah&#39;s &lt;a href=&#34;https://slyfoxfabrics.com/blogs/mash-ups/the-ten-minute-mask-by-beth-darrah&#34;&gt;Ten-Minute Mask&lt;/a&gt; was one of the cleanest. I used my own pattern, but it&#39;s helpful to see how other people are approaching the issue of cloth masks.&lt;/li&gt;
+&lt;li&gt;Most important tutorial: &lt;a href=&#34;https://melmagazine.com/en-us/story/how-to-wear-mask-glasses-no-fogging-up&#34;&gt;How to wear a mask without fogging up your glasses&lt;/a&gt; by Magdalene Taylor&lt;/li&gt;
+&lt;li&gt;My Twitter timeline has been full of information and ideas on contact-tracing apps to minimize the spread of COVID-19, but I work with tracking software on a regular basis so it was validating to see this ACLU white paper on &lt;a href=&#34;https://www.aclu.org/report/aclu-white-paper-limits-location-tracking-epidemic?redirect=aclu-white-paper-limits-location-tracking-epidemic&#34;&gt;The Limits of Location Tracking in an Epidemic&lt;/a&gt; by Jay Stanley and Jennifer Stisa Granick, which brings up all the caveats I had considered, and more.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;refactoring&#34;&gt;Refactoring&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Clare Sudbery wrote a helpful practical example of &lt;a href=&#34;https://martinfowler.com/articles/class-too-large.html&#34;&gt;refactoring a too-large class&lt;/a&gt; for martinfowler.com. I enjoy seeing real-life examples of theories I&#39;ve read about.&lt;/li&gt;
+&lt;li&gt;The title &lt;a href=&#34;https://github.blog/2020-04-09-from-48k-lines-of-code-to-10-the-story-of-githubs-javascript-sdk/&#34;&gt;From 48K lines of code to 10&lt;/a&gt; is clickbait, since Gregor Martynus just moved all the code from a monolithic library to a bunch of plugins. Still, I found it timely since I have to write an app for the GitHub API and was looking at their SDKs anyway.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;random-technical-posts&#34;&gt;Random technical posts&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;In my new life working on Developer Experience I have to draw a lot more diagrams than I was accustomed to as a software developer. For that reason I paid attention to &lt;a href=&#34;https://medium.com/@emalone/using-modeling-to-understand-whats-happening-within-a-system-bb5b9f4fc128&#34;&gt;Using Modeling to Understand What&#39;s Happening in a System&lt;/a&gt;, though I can&#39;t think of where I&#39;d use any of these particular diagrams.&lt;/li&gt;
+&lt;li&gt;In &lt;a href=&#34;https://www.swyx.io/writing/marketing-yourself/&#34;&gt;How to market yourself without being a celebrity&lt;/a&gt; Shawn Wang argues that it&#39;s important to find a niche and stick to it, which is why I&#39;ll never be famous in tech.&lt;/li&gt;
+&lt;li&gt;I enjoyed Dave Nicolette&#39;s clarification of the purpose of &lt;a href=&#34;https://neopragma.com/2020/04/code-katas/&#34;&gt;code katas&lt;/a&gt;. Makes me want to get in the habit of doing them.&lt;/li&gt;
+&lt;li&gt;Lydia Hallie made some cool &lt;a href=&#34;https://dev.to/lydiahallie/cs-visualized-useful-git-commands-37p1&#34;&gt;visualizations of git commands&lt;/a&gt; like merge, rebase, and cherry-pick. The more ways to model a concept I&#39;m learning, the better!&lt;/li&gt;
+&lt;li&gt;I like the idea of observability that Honeycomb advocates, but the definition still feels a bit slippery if you&#39;re not using their service. I appreciated Andy Dote&#39;s &lt;a href=&#34;https://andydote.co.uk/2020/03/15/observability-without-honeycomb/&#34;&gt;Observability without Honeycomb&lt;/a&gt;. Turns out yes, we already do something like this, though I have ideas to improve it.&lt;/li&gt;
+&lt;li&gt;Stack Overflow&#39;s &lt;a href=&#34;https://stackoverflow.blog/2020/04/09/the-unfriendly-robot-automatically-flagging-unwelcoming-comments/&#34;&gt;Unfriendly Robot: automatically flagging unwelcoming comments&lt;/a&gt; by Jason Punyon and Kevin Montrose is a fun overview of the context and results of implementing an AI comment-flagging system.&lt;/li&gt;
+&lt;li&gt;Zara Cooper&#39;s &lt;a href=&#34;https://stackoverflow.blog/2020/04/06/a-practical-guide-to-writing-technical-specs/&#34;&gt;practical guide to writing technical specs&lt;/a&gt; contains far more than I have ever put into a spec and now I want to go back and fix them. Wish I&#39;d found this when I was first made responsible for designing features!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-new-work-reality&#34;&gt;The new work reality&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;It&#39;s impossible to not sound like a robot when talking about layoffs, but Nobl&#39;s &lt;a href=&#34;https://academy.nobl.io/how-to-layoff-employees-in-a-humane-way/&#34;&gt;How to Layoff Employees in a Humane Way&lt;/a&gt; at least sounds like an &lt;em&gt;ethical&lt;/em&gt; robot? I am very lucky that this article doesn&#39;t have any meaning for me personally, but I&#39;m thinking a lot about everyone I know who has been on one side or another of pandemic-related downsizing.&lt;/li&gt;
+&lt;li&gt;Antonio Bertossi&#39;s &lt;a href=&#34;https://www.kinandcarta.com/en/insights/2020/04/bolster-remote-leadership/&#34;&gt;Six tips to bolster remote leadership and promote trust&lt;/a&gt; have a common thread of &amp;ldquo;be direct, communicate clearly, ditch unnecessary extras&amp;rdquo;. Good points to keep in mind as the weeks of remote work roll on.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;papers&#34;&gt;Papers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/pdf/1805.06358.pdf&#34;&gt;Conflict-free Replicated Datatypes&lt;/a&gt; by Nuno Preguica, Carlos Baquero, and Marc Shapiro was not illuminating. Maybe if I keep looking at &lt;a href=&#34;https://crdt.tech/&#34;&gt;https://crdt.tech/&lt;/a&gt; I will start to intuit how CRDTs actually work, instead of just the idealistic theory.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/2004.04145&#34;&gt;Google COVID-19 Community Mobility Reports: Anonymization Process Description&lt;/a&gt; by A. Aktay et al. Only skimmed this, but it was interesting to see a real-world implementation of differential privacy. Useful context for looking at the &lt;a href=&#34;https://www.google.com/covid19/mobility/&#34;&gt;actual mobility reports&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/DP-3T/documents/blob/master/DP3T%20White%20Paper.pdf&#34;&gt;Decentralized Privacy-Preserving Proximity Tracing (DP-3T) whitepaper&lt;/a&gt; by Prof. Carmela Troncoso et al was a fascinating look at a lot of threat models I hadn&#39;t heard of. Didn&#39;t get around to reading it before Apple and Google announced their respective contact-tracing frameworks that use a similar Bluetooth beacon approach, but I&#39;m glad I finally dug into it.&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: february 11</title>
