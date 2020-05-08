@@ -7,10 +7,82 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Tue, 21 Apr 2020 20:11:50 -0700</lastBuildDate>
+   <lastBuildDate>Thu, 07 May 2020 22:49:41 -0700</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/tags/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>Refactoring Legacy Javascript: Part 1</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/refactoring-legacy-javascript-1/</link>
+       <pubDate>Thu, 07 May 2020 22:49:41 -0700</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/refactoring-legacy-javascript-1/</guid>
+       <description>&lt;h2 id=&#34;enter-the-haunted-forest&#34;&gt;Enter the haunted forest&lt;/h2&gt;
+&lt;p&gt;My workplace has the expected share of legacy code, and one piece nestles at the heart of a major product I supported for years as a developer. This very successful product dates back to when the company was a frantic handful of developers trying to do too much work in too little time, and by the time I joined the company it had attained nigh-on &lt;a href=&#34;https://softwareexorcist.com/writing/haunted-graveyards&#34;&gt;haunted graveyard&lt;/a&gt; status. Little documentation, no tests, a tangled mess of tightly-dependent code in at least three languages, relied upon daily by many Important Clients.&lt;/p&gt;
+&lt;p&gt;One of my first tasks was a backlog ticket to add an insignificant feature to this product, and it took me a full month to feel like I understood it well enough to not break it. (Spoiler: even then I didn&#39;t understand it.) Over the years tiny changes broke production more often than not, and every developer who touched it had to spend days chasing down arcane undocumented trivia, like how to even build the localization files.&lt;/p&gt;
+&lt;p&gt;Did I mention no tests?&lt;/p&gt;
+&lt;p&gt;Of course I adopted this orphaned codebase as my ugly, precious baby. I spent many hours thinking about how to make it beautiful, even while knowing it would never be a priority. At one point I demanded the opportunity to refactor the entire PHP codebase for testability as a prerequisite for adding a new feature, but the Javascript was deemed out of scope. None of us had a background in Javascript development, and the code worked until now, might as well just cross our fingers and hope it held out until this product&#39;s inevitable retirement.&lt;/p&gt;
+&lt;p&gt;The problem with decade-old Javascript, however, is that the browser landscape keeps changing, and suddenly you get an emergency bug ticket from an Important Client because your product doesn&#39;t work in a new browser. And nobody understands how the code works, or how to test it, or where the script to build the localization files lives.&lt;/p&gt;
+&lt;p&gt;I didn&#39;t get that ticket because I&#39;ve moved on to another role, so I only watched Slack in dismay as the dev described a week struggling to implement and verify a ten-line fix, some of which could have been avoided if I&#39;d documented my own fights more thoroughly. (She is a better dev than I, and wrote down the entire elaborate build process as she figured it out.)&lt;/p&gt;
+&lt;h2 id=&#34;the-purpose-of-refactoring&#34;&gt;The purpose of refactoring&lt;/h2&gt;
+&lt;p&gt;If you&#39;re not familiar with a language, figuring out &lt;em&gt;how&lt;/em&gt; to write tests or run the code can be an insurmountable barrier. The curse of haunted Javascript is that all today&#39;s snazzy test frameworks assume you are using modern techniques like modules or ES6 syntax or a framework. Nothing like that in legacy files! Only a bunch of functions, dumped into an inline script tag.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sfarqu.github.io/fabrefact/fabrefact/figures/legacy-script.png&#34; alt=&#34;Drawing of code being inserted between &amp;ldquo;script&amp;rdquo; HTML tags&#34;&gt;&lt;/p&gt;
+&lt;p&gt;You can&#39;t get code coverage unless you can &lt;code&gt;require&lt;/code&gt; your files in your tests, and you can&#39;t tell what parts of the 3000-line monolith to put in a &lt;code&gt;module.exports&lt;/code&gt; without either writing a test, or painstakingly stepping through in a way no one ever seems to have the time for. Last year I spent a weekend trying to get at least a test framework running, and ended up lost in the bowels of &lt;a href=&#34;https://istanbul.js.org/&#34;&gt;Istanbul&lt;/a&gt; source code.&lt;/p&gt;
+&lt;p&gt;But improving the code coverage metrics is just something I &lt;em&gt;want&lt;/em&gt; to do. There are some genuine reasons to want to modernize the code to do things like remove global variables, but even that is mostly personal preference. The real problem is that it takes too long to check if your changes worked.&lt;/p&gt;
+&lt;p&gt;I came back to this on Tuesday full of renewed determination to make the process of building and testing this code easier. Right now &amp;ldquo;the process&amp;rdquo; involves running two different command line scripts manually and checking in the processed artifacts. These artifacts are dynamically injected into a &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag at run time.&lt;/p&gt;
+&lt;p&gt;Let&#39;s draw that as a picture:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://sfarqu.github.io/fabrefact/fabrefact/figures/build-flow.png&#34; alt=&#34;Flow diagram of the build process, from CSV file through a legacy PHP script, then compiled by a different legacy PHP script along with a variable number of other script files into a concatenated and minified version, which is checked into source control, then included inline at run time&#34;&gt;&lt;/p&gt;
+&lt;p&gt;This diagram makes it look more straightforward than it is currently:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Every one of these files lives in a different directory&lt;/li&gt;
+&lt;li&gt;There are several customer-specific builds, which require passing command-line parameters to the manual scripts&lt;/li&gt;
+&lt;li&gt;One of the scripts can only be run in a VM environment, and getting the processed file back to your laptop is complicated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;how-can-we-make-this-easier&#34;&gt;How can we make this easier?&lt;/h3&gt;
+&lt;p&gt;First I decided on my goals:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;A developer new to this project should be able to build a testable artifact in one step after making a code change&lt;/li&gt;
+&lt;li&gt;The whole build should be able to run on different environments—developer laptop, VM, or CI pipeline—without a lot of custom setup&lt;/li&gt;
+&lt;li&gt;The build should allow us to move a lot of these steps to the existing automated build pipeline&lt;/li&gt;
+&lt;li&gt;Artifacts produced by this new build process should be identical to the old process&lt;/li&gt;
+&lt;li&gt;None of the existing files should be changed&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The last one is possibly overkill, but I want to be absolutely sure that my desire to improve the developer experience doesn&#39;t impact the actual production code.&lt;/p&gt;
+&lt;h2 id=&#34;choosing-tools&#34;&gt;Choosing tools&lt;/h2&gt;
+&lt;p&gt;First things first, we need a package manager. I went with npm over yarn because I&#39;ve used npm before and it&#39;s already installed on my computer. At least one other project also uses npm, so it&#39;s pretty likely to be on other developers&amp;rsquo; computers too.&lt;/p&gt;
+&lt;h3 id=&#34;running-tasks&#34;&gt;Running tasks&lt;/h3&gt;
+&lt;p&gt;For my needs I knew I wanted to use a task runner. As I said before, I am not a Javascript expert, and neither are the people who maintain this product. There aren&#39;t many other Javascript projects in the company that I can use for reference, and I&#39;m not familiar with the common Javascript toolchain.&lt;/p&gt;
+&lt;p&gt;I considered using a custom script or a task runner in another language—gradle is commonly used even for projects that aren&#39;t Java. I decided to pick a JS tool despite that for a few reasons:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Custom scripts are how we got in this mess—if you spend enough time to make a script that&#39;s resilient and extendable, you&#39;ve basically written another task runner. Better to use one that&#39;s actively maintained.&lt;/li&gt;
+&lt;li&gt;A tool that&#39;s designed to work with Javascript is more likely to have built-in support for the kind of steps used in Javascript pipelines, like running Google Closure Compiler.&lt;/li&gt;
+&lt;li&gt;I hold a grudge against Gradle after years of having to deal with build chains I didn&#39;t understand.&lt;/li&gt;
+&lt;li&gt;I wanted to learn more about Javascript toolchains.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;A quick search for Javascript build tools got me a few options:&lt;/p&gt;
+&lt;h4 id=&#34;webpack&#34;&gt;Webpack&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;PRO: Used by another project at work; might have some crossover expertise&lt;/li&gt;
+&lt;li&gt;PRO: Extremely popular&lt;/li&gt;
+&lt;li&gt;CON: Primary use case is transpiling modern syntax into backwards-compatible Javascript; almost no references found for how to use it &lt;em&gt;without&lt;/em&gt; transpiling&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;gulp&#34;&gt;Gulp&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;PRO: Very fast&lt;/li&gt;
+&lt;li&gt;CON: Relatively complicated to use&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;grunt&#34;&gt;Grunt&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;PRO: Described as simpler to learn than Gulp&lt;/li&gt;
+&lt;li&gt;CON: I can&#39;t remember, but surely there was something?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Webpack was clearly out because it is a bundler, not a task runner, and trying to force it to be a task runner would lead to heartache. Grunt and Gulp seemed to be a toss-up, with &lt;a href=&#34;https://www.ionos.ca/digitalguide/websites/web-development/gulp-vs-grunt-differentiating-between-the-task-runners/&#34;&gt;some articles&lt;/a&gt; describing Grunt having more a focus on configuration, and Gulp more on programming. I decided to try Gulp first, for nebulous reasons including the fact that it was supposed to be faster, and I didn&#39;t like the &lt;a href=&#34;https://gruntjs.com/&#34;&gt;Grunt logo&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;I fully planned to delete Gulp if I got frustrated with it, because there are clearly other options that work very well.&lt;/p&gt;
+&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
+&lt;p&gt;In the next post I&#39;ll talk about how I set up a working build script in 4 hours, and then spent until sunrise debugging a single configuration option.&lt;/p&gt;
+</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: April 21</title>
