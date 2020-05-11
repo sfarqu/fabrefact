@@ -1,3 +1,7 @@
+
+#container main {
+  font-size: 1rem;
+}
 a {
     color: #028092;
     text-decoration: none;
@@ -20,4 +24,8 @@ h1::before,h2::before,h3::before,h4::before,h5::before,h6::before {
     color: #E461BD;
     left: -1em;
     top: 0;
+}
+
+#container main article p code {
+  background-color: #f2d3e9;
 }

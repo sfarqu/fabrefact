@@ -7,10 +7,120 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Tue, 21 Apr 2020 20:11:50 -0700</lastBuildDate>
+   <lastBuildDate>Sat, 09 May 2020 22:51:49 -0700</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/tags/links/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: until May-ish</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-9/</link>
+       <pubDate>Sat, 09 May 2020 22:51:49 -0700</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-9/</guid>
+       <description>&lt;p&gt;Posting my last reading list sent me on a reading kick, and I finally found the motivation to dig through circa 4 months of newsletters full of links. If I&#39;m going to keep at this pace I need to post reading lists more often, or they will all be 100 links long.&lt;/p&gt;
+&lt;p&gt;In fact this list is mostly from April; I have yet to sync my reading list for May from phone to computer.&lt;/p&gt;
+&lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Tore through the O&#39;Reilly previews for both Maude Lemaire&#39;s &lt;em&gt;Refactoring at Scale&lt;/em&gt; and Tarandach &amp;amp; Coles&amp;rsquo; &lt;em&gt;Threat Modeling&lt;/em&gt; and was left wanting more of each. Can&#39;t wait until these are published!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also skimmed a few chapters each of recently published O&#39;Reilly books instead of finishing &lt;em&gt;Data-Intensive Applications&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Architecting for Scale, 2nd Edition&lt;/em&gt;, Lee Atchison — is this the manager&#39;s version of the SRE book?&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Building Secure and Reliable Systems&lt;/em&gt;, Ana Oprea et al — can&#39;t remember what I thought of this one, and can&#39;t load it&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Distributed Tracing in Practice&lt;/em&gt;, Austin Parker et al — could be interesting later, but not what I&#39;m working on right now&lt;/li&gt;
+&lt;li&gt;&lt;em&gt;Fundamentals of Software Architecture&lt;/em&gt;, Mark Richards &amp;amp; Neal Ford&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Re-read Anne McCaffrey&#39;s &lt;em&gt;The City Who Fought&lt;/em&gt;, which I remember liking when I was young, and it extremely does not hold up. It may be time to let go of a lot of problematic stuff, even if I liked it as a teen.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also re-read Anne Leckie&#39;s &lt;em&gt;Ancillary&lt;/em&gt; trilogy. Seeing quite a few parallels between Breq and Murderbot. Wonder what it says about me that I love this character archetype so much?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;leadership&#34;&gt;Leadership&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I keep reading articles about how engineers moving into leadership need to &lt;a href=&#34;https://www.patkua.com/blog/maker-vs-multiplier/&#34;&gt;learn to let go of maker mode&lt;/a&gt; because I still need to work on that, and Pat Kua&#39;s recent article was a good reminder.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Matt Schellhas writes &lt;a href=&#34;https://medium.com/@matt.schellhas/that-crabby-engineer-4d7a9eec1ece&#34;&gt;a defense of crabby engineers&lt;/a&gt; which I am of two minds on. He makes a good point that senior engineer who seem to be assholes might just be missing key communication skills, but in terms of how a manager should approach that just says &amp;ldquo;do your job&amp;rdquo; which&amp;hellip;isn&#39;t helpful.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I liked what Dawn Parzych had to say in &lt;a href=&#34;https://launchdarkly.com/blog/the-fallacy-of-move-fast-and-break-things/&#34;&gt;&amp;ldquo;The Fallacy of Move Fast and Break Things&amp;rdquo;&lt;/a&gt;, since the popular saying is missing the part that you have to be able to recover from failure quickly for this strategy to succeed.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Begriff&#39;s massive post on &lt;a href=&#34;https://begriffs.com/posts/2020-03-23-concurrent-programming.html&#34;&gt;concurrent programming&lt;/a&gt; was a lot of fun, mostly because I felt like a wizard for keeping up with it at all. Having read &lt;em&gt;Systems Performance&lt;/em&gt; definitely planted some seeds for understanding this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I hoped for more based on the title &lt;a href=&#34;https://medium.dave-bailey.com/how-to-get-your-team-to-speak-up-4d403bfc10c9&#34;&gt;How to Get Your Team to Challenge Your Ideas&lt;/a&gt;, which it turns out is about how to stop being an insufferable dillhole if you&#39;re too assertive, and less about how to coach your team to give feedback. Still, good reminder to check if you&#39;re being insufferable.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ravi Rajan shares some good leadership tips in &lt;a href=&#34;https://medium.com/swlh/how-to-be-a-rock-star-developer-4c7b0d17a9a0&#34;&gt;how to be a rockstar developer&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;A former Spotify engineer rags on &lt;a href=&#34;https://www.jeremiahlee.com/posts/failed-squad-goals/&#34;&gt;how the Spotify model never really existed&lt;/a&gt;. I later read at least one rebuttal to this article, but overall it&#39;s a good reminder that all processes and models are aspirational, and you shouldn&#39;t adopt them blindly.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;remote-collaboration&#34;&gt;Remote collaboration&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Claudia Beresford has a helpfully-timed &lt;a href=&#34;https://queenofdowntime.com/blog/remote-pair-programming&#34;&gt;How to pair-program remotely and not lose the will to live&lt;/a&gt; but despite her arguments I&#39;m not sure I want to learn Vim.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Beth Andres-Beck has advice for &lt;a href=&#34;https://blog.bethcodes.com/moderating-discussions-over-video&#34;&gt;moderating discussions over video&lt;/a&gt; which I hope will come in handy next week.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I used Google Wave for a hot five minutes before forgetting it existed, but it was fascinating to read this &lt;a href=&#34;https://www.taskade.com/blog/google-wave-history/&#34;&gt;history of Wave and why it failed&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GitHub is posting a blog series of tips for remote working; the latest at the time I read was this one on &lt;a href=&#34;https://github.blog/2020-04-16-remote-work-working-together-when-were-not-together/&#34;&gt;effective collaboration&lt;/a&gt;. I try to read this a little skeptically, because the tone is very much &amp;ldquo;we&#39;ve solved this for you and our culture is perfect&amp;rdquo; when I know it&#39;s not that simple. Some good tips though.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;introductory-topics&#34;&gt;Introductory topics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m a sucker for intro Rust content, and amos&#39;s &lt;a href=&#34;https://fasterthanli.me/blog/2020/a-half-hour-to-learn-rust/&#34;&gt;half-hour to learn Rust&lt;/a&gt; is a good quick overview including stuff I hadn&#39;t seen before, but the nuances for sure did not stick with me. Think I need to play with &lt;code&gt;if let&lt;/code&gt; syntax myself before expecting it to make sense.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;These &lt;a href=&#34;https://dev.to/leahfb/python-security-top-5-best-practices-2of3&#34;&gt;top 5 best practices for Python security&lt;/a&gt; are pretty basic, but make me wonder if I covered dependency management in my recent secure coding lecture&amp;hellip;I liked that they shared Python security tools at the bottom, because I&#39;m trying to get more of those in the pipeline for all languages.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;New Relic&#39;s &lt;a href=&#34;https://blog.newrelic.com/technology/state-of-java/&#34;&gt;State of Java&lt;/a&gt; was a worthwhile to me since I have to use Java more at work and I don&#39;t really have a feel for the ecosystem. Most boring numbers but I was surprised to find that Java 8 or older is still used by 88% of production environments.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;I&#39;m thinking of picking up VSCode as an alternate editor, so I was curious when tl;dr sec newsletter linked to a &lt;a href=&#34;https://blog.doyensec.com/2020/03/16/vscode_codeexec.html&#34;&gt;code execution vulnerability&lt;/a&gt; in the editor. (Turns out it was actually in a Python extension)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-writing&#34;&gt;Technical writing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Google&#39;s &lt;a href=&#34;https://developers.google.com/tech-writing/two/&#34;&gt;Technical Writing courses&lt;/a&gt; were a nice refresher to share with my team and is the only technical writing source I&#39;ve found that includes stuff like &lt;a href=&#34;https://developers.google.com/tech-writing/two/sample-code&#34;&gt;creating good code samples&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Still trying to figure out how to work Architecture Decision Records into my work, so this Spotify flowchart on &lt;a href=&#34;https://labs.spotify.com/2020/04/14/when-should-i-write-an-architecture-decision-record/&#34;&gt;when to write ADRs&lt;/a&gt; was helpful.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-deep-dives&#34;&gt;Technical deep dives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I don&#39;t remember what linked me to this old post about how &lt;a href=&#34;https://rachelbythebay.com/w/2014/10/27/ps/&#34;&gt;a container out of memory can hang proc calls forever&lt;/a&gt; but it linked me to a rabbit hole of reading Rachel&#39;s blog. Considering the original post is from 2014, I wonder if cgroups still act the same way?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This dev blog talks about &lt;a href=&#34;https://encore.dev/blog/advanced-go-concurrency&#34;&gt;advanced Go concurrency&lt;/a&gt; when I would certainly not call myself &amp;ldquo;advanced&amp;rdquo; in Go, but all the same it was surprisingly readable. Paired well with the other concurrency article (both via the O&#39;Reilly programming newsletter)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;On the one hand, Philipp Oppermann&#39;s &lt;a href=&#34;https://os.phil-opp.com/async-await/&#34;&gt;deep dive into Rust async/await programming&lt;/a&gt; is well written and provides a lot of context for people new to these concepts. On the other hand, combinator functions and pinning seem like&amp;hellip;an unintuitive nightmare? Maybe I shouldn&#39;t have tried to read it at 2am.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Yoshua Wuyts may have sold me on &lt;a href=&#34;https://blog.yoshuawuyts.com/state-machines/&#34;&gt;how state machines are useful in software&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>Refactoring Legacy Javascript: Part 1</title>
