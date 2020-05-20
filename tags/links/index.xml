@@ -7,10 +7,130 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sat, 09 May 2020 22:51:49 -0700</lastBuildDate>
+   <lastBuildDate>Tue, 19 May 2020 22:02:13 -0700</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/tags/links/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: May 19</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-19/</link>
+       <pubDate>Tue, 19 May 2020 22:02:13 -0700</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-19/</guid>
+       <description>&lt;p&gt;My giant reading list backlog is on the verge of preventing me from opening new links, so here&#39;s an annotated list of things I&#39;ve read since April. This isn&#39;t even all of it.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;em&gt;Finally&lt;/em&gt; finished &lt;em&gt;Designing Data-Intensive Applications&lt;/em&gt;! I really enjoyed this one, it just hit me at a weird time and I was having trouble getting back into the last few chapters. I found the maps to start each chapter extremely charming.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;papers&#34;&gt;Papers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.usenix.org/system/files/nsdi20-paper-brooker.pdf&#34;&gt;Millions of Tiny Databases&lt;/a&gt; by Marc Brooker, Tao Chen, and Fan Ping was a ton of fun, it tied in really well to the Cloud Networking course I&#39;ve been ignoring with all the details about data centre topology. I found the section on formal methods invaluable, as it made TLA+ seem approachable and practical.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h2 id=&#34;accessibility&#34;&gt;Accessibility&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Hoping to pick up some accessibility knowledge by osmosis from articles like Sigute&#39;s &lt;a href=&#34;https://medium.com/android-microsoft/accessible-reordering-for-touch-devices-e7f7a7ef404&#34;&gt;Accessible Reordering for Touch Devices&lt;/a&gt;, which isn&#39;t a how to so much as a process retrospective. I like seeing how other people approach problems, and also the links to more instructional content in the article might be useful later.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This piece from Safe and Silent validated my intuitive &lt;a href=&#34;https://safeandsilent.wordpress.com/2020/05/01/accessibility-window-dressing/&#34;&gt;skepticism on the usefulness of masks with windows for lipreading&lt;/a&gt;, and I also learned some cool stuff about how people who lipread actually do it. It&#39;s important to have affected populations involved in the design of assistive technologies!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;engineering-management&#34;&gt;Engineering Management&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Came across Marty Cagan&#39;s &lt;a href=&#34;https://svpg.com/product-vs-feature-teams/&#34;&gt;Product vs Feature teams&lt;/a&gt; piece again, and was halfway through before I remembered I&#39;d already read it. Thinking more lately about team structure and how much leverage I have over it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Intriguing &lt;a href=&#34;https://builtin.com/software-engineering-perspectives/lean-agile-methodology-software-engineering&#34;&gt;interview with Mary Poppendieck&lt;/a&gt;, who thinks the Agile movement she helped found in 2003 is obsolete. Makes a pretty good case for it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fred Hebert&#39;s &lt;a href=&#34;https://ferd.ca/complexity-has-to-live-somewhere.html&#34;&gt;Complexity has to live somewhere&lt;/a&gt; is one of those pieces that is absolutely obvious once you read it, but it seems profound because no one talking to early-career devs ever &lt;em&gt;says&lt;/em&gt; it. You can&#39;t remove complexity from your software unless you&#39;re only solving simple problems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cat Swetel&#39;s quick &lt;a href=&#34;https://twitter.com/CatSwetel/status/1256996117415251968&#34;&gt;thread on &amp;ldquo;cost of delay&amp;rdquo;&lt;/a&gt; gave me something to churn on the topic of how to communicate priority for projects.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Camille Fournier has advice for how &lt;a href=&#34;https://medium.com/@skamille/product-for-internal-platforms-9205c3a08142&#34;&gt;internal platform teams can take lessons from product teams&lt;/a&gt;, which definitely addresses some issues I can relate to.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I went down a rabbit hole of reading Rachel Kroll&#39;s blog, but was amused by this post on how &lt;a href=&#34;https://rachelbythebay.com/w/2020/04/30/dev/&#34;&gt;companies should be honest about their dev experience&lt;/a&gt; which felt a bit like a personal attack.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;remote-work&#34;&gt;Remote Work&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Been reading a bunch of articles about why &lt;a href=&#34;https://www.blog.google/inside-google/working-google/science-why-remote-meetings-dont-feel-same/&#34;&gt;remote meetings are weird&lt;/a&gt;, but this one at least offers tips to counteract each of the problems mentioned.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Code Climate&#39;s blog about &lt;a href=&#34;https://codeclimate.com/blog/how-our-vp-of-engineering-used-data-to-support-our-engineering-team-on-a-human-level/&#34;&gt;how they used metrics to identify work-from-home friction that no one complained about&lt;/a&gt; was extremely useful in suggesting avenues for metrics to collect that actually return useful data.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;making-a-website&#34;&gt;Making a website&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;It&#39;s been a long time since I had to write a resume, but I was still click-baited into reading Sarah Drasner&#39;s &lt;a href=&#34;https://css-tricks.com/advice-for-writing-a-technical-resume/&#34;&gt;advice for writing a technical resume&lt;/a&gt;. I didn&#39;t find anything groundbreaking, but I hope it helps those who are seeking work right now.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;ve steadfastly avoided learning much about modern web frameworks, so Tom MacWright&#39;s &lt;a href=&#34;https://macwright.org/2020/05/10/spa-fatigue.html&#34;&gt;criticism of single-page apps&lt;/a&gt; was both rewarding to my curmudgeonly heart and also educational about what developing for the modern web actually looks like these days. I feel slightly less like an out-of-touch grandparent now.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monica Lent just started up a new series on &amp;ldquo;blogging for developers&amp;rdquo;, so I was checking out her blog and this post about &lt;a href=&#34;https://monicalent.com/blog/2019/06/03/absolute-truths-unlearned-as-junior-developer/&#34;&gt;absolutist views of junior developers&lt;/a&gt; struck uncomfortably close to home.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-big-companies-do-things&#34;&gt;How big companies do things&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apparently back in 2013 Netflix and Etsy had a &amp;ldquo;developer exchange program&amp;rdquo;? Interesting to note this &lt;a href=&#34;http://mhawthorne.net/posts/2013-etsy-netflix-I-push-therefore-I-am/&#34;&gt;time capsule summary&lt;/a&gt; of things one dude learned by contrasting the two companies.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Linkedin&#39;s &lt;a href=&#34;https://engineering.linkedin.com/blog/2020/continuous-integration&#34;&gt;approach to doing trunk-based development in high-velocity repos&lt;/a&gt; actually seems like kind of a headache, but I like learning what sort of things people automate to solve developer experience issues.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Stumbled across Tom Critchlow&#39;s musing on &lt;a href=&#34;https://tomcritchlow.com/2019/02/17/building-digital-garden/&#34;&gt;digital gardens&lt;/a&gt; via Twitter and was reminded of my own itch to have a better way of organizing information outside of my head closer to how it feels inside my head. Still need to come up with a better way to archive links than these posts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I loved Brandon Falk&#39;s rant about the &lt;a href=&#34;https://twitter.com/gamozolabs/status/1259989454527139840?s=20&#34;&gt;lack of accessible tooling for fuzzing&lt;/a&gt; because it&#39;s a handful of people having an epically long but polite discussion about arcane research topics that I barely understand that got incidentally shared into my feed, but by reading it I feel like I understand at least the rough outline of the problem.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Just a couple weeks ago I was looking for a way to &lt;a href=&#34;https://github.com/mingrammer/diagrams/blob/master/README.md&#34;&gt;make diagrams with code&lt;/a&gt; and the other day Pat Kua just shared Mingrammer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I didn&#39;t know InfoQ has &lt;a href=&#34;https://www.infoq.com/articles/architecture-trends-2020/&#34;&gt;a software trends matrix&lt;/a&gt; too, it&#39;s interesting to see a few different opinions on some of the big buzzwords.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gajus Kuizinas makes a coherent &lt;a href=&#34;https://dev.to/gajus/stop-using-package-lock-json-or-yarn-lock-3ddi&#34;&gt;argument against using package-lock.json&lt;/a&gt; in projects that will be dependencies of other projects. I think it might still work within an organization, but I see the issue in open source (especially an ecosystem like Node with ten thousand billion dependencies)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-deep-dives&#34;&gt;Technical deep dives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Jaana Dogan&#39;s tweets about databases are great but long-form like &lt;a href=&#34;https://medium.com/@rakyll/things-i-wished-more-developers-knew-about-databases-2d0178464f78&#34;&gt;Things I Wished More Developers Knew About Databases&lt;/a&gt; was even more so. It dovetailed very well with the chapters of &lt;em&gt;Designing Data-Intensive Applications&lt;/em&gt; I was reading at the same time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Emily Stark coherently breaks down &lt;a href=&#34;https://twitter.com/estark37/status/1257441534779297804&#34;&gt;the meaning and impact of the DigiCert vulnerability disclosure&lt;/a&gt; in a Twitter thread, which provided a lot of helpful context for me.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;GeePaw Hill apparently does a lot of refactoring walkthroughs as Twitter threads? This one on &lt;a href=&#34;https://twitter.com/GeePawHill/status/1258005102167838723?s=20&#34;&gt;removing implementation inheritance&lt;/a&gt; caught my eye. I should probably follow this guy, I love refactoring advice.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;oddball-topics&#34;&gt;Oddball topics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vicki Boykis&#39;s &lt;em&gt;Normcore Tech&lt;/em&gt; newsletter is always introducing me to corners of culture I was unaware of, including the &lt;a href=&#34;https://vicki.substack.com/p/your-mattress-as-a-service&#34;&gt;rise of point-of-sale loans&lt;/a&gt;. New VC-backed ways to screw over poor people, I guess.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jen Manion&#39;s &lt;a href=&#34;https://aeon.co/amp/essays/may-we-all-be-so-brave-as-19th-century-female-husbands?&#34;&gt;piece on &amp;ldquo;female husbands&amp;rdquo;&lt;/a&gt; is a fascinating look at a bit of history I wasn&#39;t aware of. I listen to enough &amp;ldquo;strange stories from history&amp;rdquo; podcasts that I&#39;ve certainly heard stories of LGBTQ+ people throughout history, but the term &amp;ldquo;female husband&amp;rdquo; was new to me.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This article about &lt;a href=&#34;https://www.quantamagazine.org/graduate-student-solves-decades-old-conway-knot-problem-20200519/&#34;&gt;Lisa Piccirillo&#39;s solution to the Conway Knot&lt;/a&gt; tries heroically to express 4-dimensional knot theory in lay terms—and succeeds pretty well! I feel like I get the gist of how the problem was solved, but I may never be able to properly visualize the knots of a 4D sphere.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: until May-ish</title>
