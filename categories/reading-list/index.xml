@@ -7,10 +7,88 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Tue, 19 May 2020 22:02:13 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 24 May 2020 16:10:28 -0700</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: May 24</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-24/</link>
+       <pubDate>Sun, 24 May 2020 16:10:28 -0700</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-24/</guid>
+       <description>&lt;p&gt;Finally caught up with my reading list backlog, which is good because I subscribed to three new mailing lists last week and maybe now I&#39;ll have time to read them.&lt;/p&gt;
+&lt;h2 id=&#34;engineering-effectiveness&#34;&gt;Engineering effectiveness&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Tutti Quintella writes a lot of good content about creating effective engineering cultures; my favourite so far is her presentation on &lt;a href=&#34;https://speakerdeck.com/tuttiq/scaling-software-development-teams-and-codebase&#34;&gt;scaling software development&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I felt like I&#39;d already read some post about the math supporting the usefulness of a platform team, but &lt;a href=&#34;https://medium.com/adobetech/why-do-organizations-need-a-platform-team-910d79893e0a&#34;&gt;this one&lt;/a&gt; by David Jared of Adobe was apparently not it and had some fun, comprehensible graphs.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The previous platform post led me to the source of the graphs, Peter Seibel&#39;s funny post about Twitter growing pains intriguingly titled &lt;a href=&#34;http://gigamonkeys.com/flowers/&#34;&gt;Let 1000 flowers bloom. Then rip 999 of them out by the root&lt;/a&gt;. This one is square in my wheelhouse of dev experience, and I&#39;d like to hear about how effective the Engineering Effectiveness team has been over the past 5 years.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Francisco Trindade has a post about &lt;a href=&#34;https://medium.com/@frankmt/tell-me-how-you-measure-me-aa47d50cb9f5&#34;&gt;what metrics he uses for engineering management and why&lt;/a&gt;, a topic I have also been spending a lot of time on lately. I agree what matters is trend lines, not specific numbers, though some of the particular metrics he uses assumes a homogeneity among how different teams use kanban software, which I&#39;m not sure I can depend on.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pat Kua&#39;s older post on &lt;a href=&#34;https://www.martinfowler.com/articles/useOfMetrics.html&#34;&gt;appropriate use of metrics&lt;/a&gt; dives more into the pitfalls of using the wrong metrics or trying to use them the wrong way.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;case-studies&#34;&gt;Case studies&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This Netlify case study of &lt;a href=&#34;https://www.netlify.com/blog/2020/05/05/what-netlifys-infrastructure-team-learned-as-it-increased-deploy-speed-by-up-to-2x/&#34;&gt;how they increased deploy speeds&lt;/a&gt; solidified in my mind the need for diagrams when trying to explain architecture changes. I still wouldn&#39;t say I understand what Netlify &lt;em&gt;does&lt;/em&gt;, but thanks to the sequence diagrams I at least grasp the shape of what their refactor did and why it improved performance.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stephanie Morillo&#39;s &lt;a href=&#34;https://www.stephaniemorillo.co/bundler-case-study&#34;&gt;Bundler.io case study&lt;/a&gt; provides interesting examples of how to identify the effectiveness of documentation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;unix-tools&#34;&gt;UNIX tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Avdi Grimm makes a great analogy about &lt;a href=&#34;https://avdi.codes/the-limits-of-small-sharp-tools/&#34;&gt;small, sharp tools&lt;/a&gt; and when the UNIX command-line philosophy is maybe not the best solution.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tim Bray wrote about a little side project to &lt;a href=&#34;https://www.tbray.org/ongoing/When/202x/2020/05/18/TopFew&#34;&gt;replace a common Unix pipeline task with a Go program&lt;/a&gt; that left him with an interesting puzzle about how little tools like this perform. The comments are full of interesting commentary and links.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;software-architecture&#34;&gt;Software architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Shubheksha Jalan explains &lt;a href=&#34;https://shubheksha.com/posts/2020/05/retries-in-distributed-systems-good-and-bad-parts/&#34;&gt;retry storms and how to prevent them&lt;/a&gt;, with comics as illustrations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Scott Wlaschin&#39;s &lt;a href=&#34;https://increment.com/software-architecture/primer-on-functional-architecture/&#34;&gt;primer on functional architectures&lt;/a&gt; for Increment is intriguing, but still contains too much jargon I only vaguely understand for me to feel confident in the concepts. I&#39;m starting to understand how some of these patterns/frameworks/languages are related though. I&#39;d like to see more concrete examples of how people implement real software in a functional architecture, and what compromises have to be made.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Was excited to read Heidi Howard&#39;s new paper on consensus, &lt;a href=&#34;https://arxiv.org/pdf/2004.05074.pdf&#34;&gt;Paxos vs Raft&lt;/a&gt;! Conclusion by Howard and co-author Richard Mortier seems to be that Paxos isn&#39;t so much a more complicated algorithm than Raft, as just less-well described.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;leveling-up-your-engineering-skills&#34;&gt;Leveling up your engineering skills&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Denise Yu&#39;s recent epic on &lt;a href=&#34;https://deniseyu.io/2020/05/22/ramping-up-on-large-software-projects.html&#34;&gt;ramping up on large software projects&lt;/a&gt; at GitHub is chock-full of useful advice and anecdotes. I have no idea how she managed to put out four long, high-quality posts in four days this weekend, but I also recommend &lt;a href=&#34;https://deniseyu.io/2020/05/21/talking-about-software-at-scale.html&#34;&gt;How to Talk about Software at Scale&lt;/a&gt; and &lt;a href=&#34;https://deniseyu.io/2020/05/23/habits-of-high-performing-teams.html&#34;&gt;Habits of High-Functioning Teams&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Felienne Hermans points out the lack of formal instruction on how to &lt;em&gt;read&lt;/em&gt; code, and how she applied the concepts of &amp;ldquo;close reading&amp;rdquo; to &lt;a href=&#34;https://www.felienne.com/archives/6472&#34;&gt;propose &amp;ldquo;code reading clubs&amp;rdquo;&lt;/a&gt;. I admit I am fascinated, and the recommended exercises remind me Chelsea Troy&#39;s Leveling Up skill of &lt;a href=&#34;https://chelseatroy.com/2018/07/21/leveling-up-skill-6-commit-tracing/&#34;&gt;commit tracing&lt;/a&gt;. Definitely want to incorporate this into my life.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monica Lent has a free newsletter on &lt;a href=&#34;https://bloggingfordevs.com/&#34;&gt;blogging for devs&lt;/a&gt; that contains a ton of useful advice if you want people to see and enjoy your blog! Unfortunately last week I didn&#39;t have the time to follow along with the homework so I am here putting out a link post again instead of any substantial content. 😅&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;people-management&#34;&gt;People management&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Chelsea Troy re-linked to her post railing against &lt;a href=&#34;https://chelseatroy.com/2017/07/21/smart-is-not-a-hiring-criterion/&#34;&gt;&amp;ldquo;smart&amp;rdquo; as a hiring criterion&lt;/a&gt;, and while I—a self-identified &amp;ldquo;fast learner&amp;rdquo;—would like to quibble, she has a good point that innate brilliance does not necessarily correlate to &amp;ldquo;producer of maintainable code&amp;rdquo; or &amp;ldquo;good mentor to other engineers&amp;rdquo;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apparently half my Twitter feed is talking about feedback because a lot of companies are doing performance review around now, which gave better context for why someone linked to Jo Crossick&#39;s opinion about &lt;a href=&#34;https://www.jocrossick.com/blog/no-feedback.html&#34;&gt;why feedback is bad, actually&lt;/a&gt;. The part I most agree with is that the more senior you get, the less able you are to give casual feedback, because people will take it as fact regardless of how lightly you mean it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: May 19</title>
