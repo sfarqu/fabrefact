@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
  <channel>
    <title>reading list on Fabrefact</title>
-   <link>https://sfarqu.github.io/fabrefact/categories/reading-list/</link>
+   <link>https://blog.fabrefact.ca/categories/reading-list/</link>
    <description>Recent content in reading list on Fabrefact</description>
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
    <lastBuildDate>Sat, 06 Jun 2020 21:32:17 -0700</lastBuildDate>
    
-       <atom:link href="https://sfarqu.github.io/fabrefact/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
+       <atom:link href="https://blog.fabrefact.ca/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
    
      <item>
        <title>what i&#39;m reading: June 6</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jun-6/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-jun-6/</link>
        <pubDate>Sat, 06 Jun 2020 21:32:17 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jun-6/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-jun-6/</guid>
        <description>&lt;p&gt;I, like most people I know, have been a little distracted from technology-as-usual by a constant feed of police brutality. It&#39;s been a jarring reminder that some people don&#39;t have the luxury of ignoring racial injustice, and that we should all be working harder for equality every day. I&#39;ve been donating money to community organizations and researching my local police department&#39;s history of using force, how about you?&lt;/p&gt;
 &lt;p&gt;I still read a lot before I heard about the protests, and continue to poke at tech stuff on occasion for my own mental health. Stay safe out there. Black lives matter.&lt;/p&gt;
 &lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
@@ -125,10 +125,10 @@
    
      <item>
        <title>what i&#39;m reading: May 24</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-24/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-may-24/</link>
        <pubDate>Sun, 24 May 2020 16:10:28 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-24/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-may-24/</guid>
        <description>&lt;p&gt;Finally caught up with my reading list backlog, which is good because I subscribed to three new mailing lists last week and maybe now I&#39;ll have time to read them.&lt;/p&gt;
 &lt;h2 id=&#34;engineering-effectiveness&#34;&gt;Engineering effectiveness&lt;/h2&gt;
 &lt;ul&gt;
@@ -203,10 +203,10 @@
    
      <item>
        <title>what i&#39;m reading: May 19</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-19/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-may-19/</link>
        <pubDate>Tue, 19 May 2020 22:02:13 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-19/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-may-19/</guid>
        <description>&lt;p&gt;My giant reading list backlog is on the verge of preventing me from opening new links, so here&#39;s an annotated list of things I&#39;ve read since April. This isn&#39;t even all of it.&lt;/p&gt;
 &lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
 &lt;ul&gt;
@@ -323,10 +323,10 @@
    
      <item>
        <title>what i&#39;m reading: until May-ish</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-9/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-may-9/</link>
        <pubDate>Sat, 09 May 2020 22:51:49 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-may-9/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-may-9/</guid>
        <description>&lt;p&gt;Posting my last reading list sent me on a reading kick, and I finally found the motivation to dig through circa 4 months of newsletters full of links. If I&#39;m going to keep at this pace I need to post reading lists more often, or they will all be 100 links long.&lt;/p&gt;
 &lt;p&gt;In fact this list is mostly from April; I have yet to sync my reading list for May from phone to computer.&lt;/p&gt;
 &lt;h2 id=&#34;books&#34;&gt;Books&lt;/h2&gt;
@@ -433,10 +433,10 @@
    
      <item>
        <title>Refactoring Legacy Javascript: Part 1</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/refactoring-legacy-javascript-1/</link>
+       <link>https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/</link>
        <pubDate>Thu, 07 May 2020 22:49:41 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/refactoring-legacy-javascript-1/</guid>
+       <guid>https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/</guid>
        <description>&lt;h2 id=&#34;enter-the-haunted-forest&#34;&gt;Enter the haunted forest&lt;/h2&gt;
 &lt;p&gt;My workplace has the expected share of legacy code, and one piece nestles at the heart of a major product I supported for years as a developer. This very successful product dates back to when the company was a frantic handful of developers trying to do too much work in too little time, and by the time I joined the company it had attained nigh-on &lt;a href=&#34;https://softwareexorcist.com/writing/haunted-graveyards&#34;&gt;haunted graveyard&lt;/a&gt; status. Little documentation, no tests, a tangled mess of tightly-dependent code in at least three languages, relied upon daily by many Important Clients.&lt;/p&gt;
 &lt;p&gt;One of my first tasks was a backlog ticket to add an insignificant feature to this product, and it took me a full month to feel like I understood it well enough to not break it. (Spoiler: even then I didn&#39;t understand it.) Over the years tiny changes broke production more often than not, and every developer who touched it had to spend days chasing down arcane undocumented trivia, like how to even build the localization files.&lt;/p&gt;
@@ -446,12 +446,12 @@
 &lt;p&gt;I didn&#39;t get that ticket because I&#39;ve moved on to another role, so I only watched Slack in dismay as the dev described a week struggling to implement and verify a ten-line fix, some of which could have been avoided if I&#39;d documented my own fights more thoroughly. (She is a better dev than I, and wrote down the entire elaborate build process as she figured it out.)&lt;/p&gt;
 &lt;h2 id=&#34;the-purpose-of-refactoring&#34;&gt;The purpose of refactoring&lt;/h2&gt;
 &lt;p&gt;If you&#39;re not familiar with a language, figuring out &lt;em&gt;how&lt;/em&gt; to write tests or run the code can be an insurmountable barrier. The curse of haunted Javascript is that all today&#39;s snazzy test frameworks assume you are using modern techniques like modules or ES6 syntax or a framework. Nothing like that in legacy files! Only a bunch of functions, dumped into an inline script tag.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sfarqu.github.io/fabrefact/fabrefact/figures/legacy-script.png&#34; alt=&#34;Drawing of code being inserted between &amp;ldquo;script&amp;rdquo; HTML tags&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.fabrefact.ca/fabrefact/figures/legacy-script.png&#34; alt=&#34;Drawing of code being inserted between &amp;ldquo;script&amp;rdquo; HTML tags&#34;&gt;&lt;/p&gt;
 &lt;p&gt;You can&#39;t get code coverage unless you can &lt;code&gt;require&lt;/code&gt; your files in your tests, and you can&#39;t tell what parts of the 3000-line monolith to put in a &lt;code&gt;module.exports&lt;/code&gt; without either writing a test, or painstakingly stepping through in a way no one ever seems to have the time for. Last year I spent a weekend trying to get at least a test framework running, and ended up lost in the bowels of &lt;a href=&#34;https://istanbul.js.org/&#34;&gt;Istanbul&lt;/a&gt; source code.&lt;/p&gt;
 &lt;p&gt;But improving the code coverage metrics is just something I &lt;em&gt;want&lt;/em&gt; to do. There are some genuine reasons to want to modernize the code to do things like remove global variables, but even that is mostly personal preference. The real problem is that it takes too long to check if your changes worked.&lt;/p&gt;
 &lt;p&gt;I came back to this on Tuesday full of renewed determination to make the process of building and testing this code easier. Right now &amp;ldquo;the process&amp;rdquo; involves running two different command line scripts manually and checking in the processed artifacts. These artifacts are dynamically injected into a &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag at run time.&lt;/p&gt;
 &lt;p&gt;Let&#39;s draw that as a picture:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://sfarqu.github.io/fabrefact/fabrefact/figures/build-flow.png&#34; alt=&#34;Flow diagram of the build process, from CSV file through a legacy PHP script, then compiled by a different legacy PHP script along with a variable number of other script files into a concatenated and minified version, which is checked into source control, then included inline at run time&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://blog.fabrefact.ca/fabrefact/figures/build-flow.png&#34; alt=&#34;Flow diagram of the build process, from CSV file through a legacy PHP script, then compiled by a different legacy PHP script along with a variable number of other script files into a concatenated and minified version, which is checked into source control, then included inline at run time&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This diagram makes it look more straightforward than it is currently:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Every one of these files lives in a different directory&lt;/li&gt;
@@ -505,10 +505,10 @@
    
      <item>
        <title>what i&#39;m reading: April 21</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-apr-21/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-apr-21/</link>
        <pubDate>Tue, 21 Apr 2020 20:11:50 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-apr-21/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-apr-21/</guid>
        <description>&lt;p&gt;I got busy and then the world kind of collapsed. For a while I couldn&#39;t care about much outside my immediate field of vision, but now I&#39;ve settled into the new life of working remote and idly stressing about a different set of problems. I still have a job, might as well read more and try to get better at it.&lt;/p&gt;
 &lt;h2 id=&#34;completed-books&#34;&gt;Completed Books&lt;/h2&gt;
 &lt;p&gt;I have been reading a lot of fiction.&lt;/p&gt;
@@ -569,10 +569,10 @@
    
      <item>
        <title>what i&#39;m reading: february 11</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-11/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-feb-11/</link>
        <pubDate>Tue, 11 Feb 2020 20:47:47 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-11/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-feb-11/</guid>
        <description>&lt;p&gt;Instead of posting a reading list on Sunday I instead read 5 books, so while I feel like I haven&#39;t gotten much reading done that&#39;s not entirely correct.&lt;/p&gt;
 &lt;h2 id=&#34;completed-books&#34;&gt;Completed Books&lt;/h2&gt;
 &lt;ul&gt;
@@ -652,10 +652,10 @@
    
      <item>
        <title>what i&#39;m reading: February 2</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-2/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-feb-2/</link>
        <pubDate>Sun, 02 Feb 2020 12:38:20 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-feb-2/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-feb-2/</guid>
        <description>&lt;p&gt;Hit the point where I need to start adding metadata to individual links, because I&#39;ve posted enough reading lists that I can&#39;t reliably remember where to find a particular article I want to go back to! Started looking at &lt;a href=&#34;https://gohugo.io/templates/data-templates/&#34;&gt;Hugo data templates&lt;/a&gt; but won&#39;t have time to play with it for a while. In the meantime, more unordered lists:&lt;/p&gt;
 &lt;h2 id=&#34;current-books&#34;&gt;Current Books&lt;/h2&gt;
 &lt;ul&gt;
@@ -722,10 +722,10 @@
    
      <item>
        <title>what i&#39;m reading: Jan 26</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-26/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-26/</link>
        <pubDate>Sun, 26 Jan 2020 20:59:35 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-26/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-26/</guid>
        <description>&lt;p&gt;This felt like a slow reading week since I got sick and spent a lot of time not wanting to do anything more strenuous than play phone games, and didn&#39;t finish either book that I&#39;m working through. Sunday morning make-coffee-and-read-articles is becoming a relaxing ritual though.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -799,10 +799,10 @@
    
      <item>
        <title>what i&#39;m reading: Jan 19</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-19/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-19/</link>
        <pubDate>Sun, 19 Jan 2020 17:42:02 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-19/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-19/</guid>
        <description>&lt;p&gt;Last week I got access back to my company&#39;s O&#39;Reilly books subscription after a licensing hiccup, so I finally got back to Brendan Gregg&#39;s &lt;em&gt;Systems Performance&lt;/em&gt;! Still managed to find time for some other reading though.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -855,10 +855,10 @@
    
      <item>
        <title>what i&#39;m reading: Jan 12</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-12/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-12/</link>
        <pubDate>Sun, 12 Jan 2020 23:05:22 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jan-12/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-12/</guid>
        <description>&lt;p&gt;Instead of writing up my recent reading I spent most of today reading &lt;em&gt;more&lt;/em&gt; things, which is not exactly how I intended this to work.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -935,10 +935,10 @@
    
      <item>
        <title>what i&#39;m reading: Jan 3</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-january-3/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-january-3/</link>
        <pubDate>Fri, 03 Jan 2020 22:12:16 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-january-3/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-january-3/</guid>
        <description>&lt;p&gt;Finally got my CI pipeline working with Hugo! Next step is to start writing something other than link posts, but in the meantime: here&#39;s another link post.&lt;/p&gt;
 &lt;p&gt;Even if no one else ever reads these posts this habit has proven invaluable to &lt;em&gt;me&lt;/em&gt;, because it&#39;s easier for me to share that interesting article I was reading the other day now that I have a list of them online.&lt;/p&gt;
 &lt;ul&gt;
@@ -986,10 +986,10 @@
    
      <item>
        <title>what I&#39;m reading: holiday special</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-december/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-december/</link>
        <pubDate>Wed, 25 Dec 2019 23:25:13 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-december/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-december/</guid>
        <description>&lt;p&gt;What better time than holidays with the family to hide in your room writing blog posts? I got my work-provided login to O&#39;Reilly&#39;s online learning portal to work on my iPad without SSO, so now I have a lot more technical books available to me when I travel!&lt;/p&gt;
 &lt;h3 id=&#34;books&#34;&gt;Books&lt;/h3&gt;
 &lt;ul&gt;
@@ -1030,10 +1030,10 @@
    
      <item>
        <title>what I&#39;m reading: catch-up edition</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-catch-up/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-catch-up/</link>
        <pubDate>Sat, 14 Dec 2019 17:20:09 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-catch-up/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-catch-up/</guid>
        <description>&lt;p&gt;Due to my site generator woes, I went a few weeks without sharing what I&#39;ve been reading. I have still been making a list though, and it&#39;s enormous! This post took twice as long to compile because I had to revisit all these links to remember why I liked them, and also group into topics to hopefully make it more readable&lt;/p&gt;
 &lt;h3 id=&#34;nontech-reading&#34;&gt;Non-tech reading&lt;/h3&gt;
 &lt;ul&gt;
@@ -1085,10 +1085,10 @@
    
      <item>
        <title>(framework) mistakes were made</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</link>
+       <link>https://blog.fabrefact.ca/posts/framework-mistakes-were-made/</link>
        <pubDate>Sat, 07 Dec 2019 23:13:25 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/framework-mistakes-were-made/</guid>
+       <guid>https://blog.fabrefact.ca/posts/framework-mistakes-were-made/</guid>
        <description>&lt;p&gt;It took a long time for me to go from &amp;ldquo;I want to write blog posts&amp;rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was &lt;em&gt;so exhausting&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Even once I decided to use a static site generator, I had to choose &lt;em&gt;which&lt;/em&gt; generator, and then a template&amp;hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.&lt;/p&gt;
 &lt;p&gt;That turned out to be a mistake. How could I have done better?&lt;/p&gt;
@@ -1145,10 +1145,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Nov 23</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-3/</link>
        <pubDate>Sat, 23 Nov 2019 22:21:53 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-3/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-3/</guid>
        <description>&lt;p&gt;Continuing on my haphazard self-education tour around distributed systems topics and other random corners of the internet.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;I feel like I learned so much from reading the transcript of this QCon panel moderated by Cindy Sridharan: &lt;a href=&#34;https://www.infoq.com/presentations/panel-perils-distributed-coordination/&#34;&gt;The Promises and Perils of Eschewing Distributed Coordination&lt;/a&gt;. I had to look up what a control plane is, and took notes on interesting ways distributed systems have failed.
@@ -1190,10 +1190,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Nov 16</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-2/</link>
        <pubDate>Sat, 16 Nov 2019 10:45:00 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-2/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-2/</guid>
        <description>&lt;ul&gt;
 &lt;li&gt;I wanted to quickly check my intuition that Rust doesn&#39;t have garbage collection and instead found this &lt;a href=&#34;https://words.steveklabnik.com/borrow-checking-escape-analysis-amd-the-generational-hypothesis&#34;&gt;Steve Klabnik essay&lt;/a&gt; about that and a lot more. The takeaway I think is that Rust&#39;s static memory management makes GC redundant?&lt;/li&gt;
 &lt;/ul&gt;
@@ -1216,10 +1216,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Nov 9</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-1/</link>
        <pubDate>Sat, 09 Nov 2019 21:47:59 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week-1/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-1/</guid>
        <description>&lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://chelseatroy.com/category/leveling-up/&#34;&gt;Chelsea Troy&#39;s whole Leveling Up series&lt;/a&gt; is exactly the sort of thing I dreamed of writing when I thought about starting a blog.&lt;/li&gt;
 &lt;/ul&gt;
@@ -1289,16 +1289,16 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>Review: Doing Good Better</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</link>
+       <link>https://blog.fabrefact.ca/posts/review-doing-good-better/</link>
        <pubDate>Thu, 07 Nov 2019 21:54:20 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/review-doing-good-better/</guid>
+       <guid>https://blog.fabrefact.ca/posts/review-doing-good-better/</guid>
        <description>&lt;p&gt;One of my lifelong values has always been &lt;em&gt;making a positive impact on the world&lt;/em&gt;. For a long time I lived paycheque-to-paycheque, but I still tried to put aside a percentage of my income for charitable giving. When I got a full-time software job, my income tripled overnight—which meant so did my donation budget.&lt;/p&gt;
 &lt;p&gt;This left me with an unexpected problem: now that I have more money to give, who should I give it to? Should I increase my monthly donation to the existing charities I support, or branch out to new ones? How can I do the &lt;em&gt;most&lt;/em&gt; good with the resources I have?&lt;/p&gt;
 &lt;p&gt;That latter question is the one posed by William MacAskill&#39;s book &lt;a href=&#34;https://www.effectivealtruism.org/doing-good-better/&#34;&gt;&lt;em&gt;Doing Good Better: How Effective Altruism Can Help You Make A Difference&lt;/em&gt;&lt;/a&gt;. I was excited to listen to this audiobook and finally have direction for my haphazard altruism.&lt;/p&gt;
 &lt;h1 id=&#34;a-ruthless-efficiency&#34;&gt;A ruthless efficiency&lt;/h1&gt;
 &lt;p&gt;This book applies economics and scientific reasoning to altruism, resulting in a rational and often mind-bendingly ruthless approach to doing good.&lt;/p&gt;
-&lt;p&gt;As alluded to in &lt;a href=&#34;https://sfarqu.github.io/fabrefact/fabrefact/2019/11/01/what-I-m-reading-this-week/&#34;&gt;last week&#39;s reading list&lt;/a&gt;, the book got off on a bit of a wrong foot with me with an early assertion that addressing global poverty is where you get the most effect for your dollar, so you should never donate to other causes that you are personally attached to. By this logic I should immediately cease donating to my local food bank, because the people in my community are not poor enough by global standards.&lt;/p&gt;
+&lt;p&gt;As alluded to in &lt;a href=&#34;https://blog.fabrefact.ca/fabrefact/2019/11/01/what-I-m-reading-this-week/&#34;&gt;last week&#39;s reading list&lt;/a&gt;, the book got off on a bit of a wrong foot with me with an early assertion that addressing global poverty is where you get the most effect for your dollar, so you should never donate to other causes that you are personally attached to. By this logic I should immediately cease donating to my local food bank, because the people in my community are not poor enough by global standards.&lt;/p&gt;
 &lt;p&gt;I do not disagree that my dollar can buy more food in sub-Saharan Africa, nor that the total amount of suffering in poor countries is greater than in Canada. At the same time it feels cold to only help faceless people in distant places and never my neighbours. The &amp;ldquo;effectiveness&amp;rdquo; argument presupposes that it is both possible and desirable for humans to be 100% logical, points I happen to think are more nuanced.&lt;/p&gt;
 &lt;p&gt;That said, I completely agree that personal attachment should not be the &lt;em&gt;only&lt;/em&gt; consideration when choosing a cause to support. That&#39;s why I have been struggling to decide where to spend my charitable dollars, and why I am swayed by the idea of picking a solution based on effectiveness.&lt;/p&gt;
 &lt;p&gt;Later chapters of Doing Good Better walk the initial assertion back a bit, both by introducing other topics that the Effective Altruism community considers worth supporting, and by including &amp;ldquo;personal fit&amp;rdquo; in the list of criteria you should consider when choosing a cause to donate, work, or volunteer for. Overall I found the book interesting, and it did provide some useful frameworks for evaluating different altruistic options.&lt;/p&gt;
@@ -1334,12 +1334,12 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>Women Unite Over CTF - Solving Challenges</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</link>
+       <link>https://blog.fabrefact.ca/posts/women-unite-over-ctf-solving-challenges/</link>
        <pubDate>Mon, 04 Nov 2019 16:04:02 -0800</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/women-unite-over-ctf-solving-challenges/</guid>
+       <guid>https://blog.fabrefact.ca/posts/women-unite-over-ctf-solving-challenges/</guid>
        <description>&lt;p&gt;The winner of the Women Unite Over CTF, Jaime Lightfoot, quickly posted writeups about how she solved the challenges. These posts (&lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;networking challenges&lt;/a&gt;, &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-reverse-engineering-challenges/&#34;&gt;reverse engineering&lt;/a&gt;, and &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-linux-exploitation/&#34;&gt;Linux exploitation&lt;/a&gt;) are excellent for the same reasons I enjoyed the event in general: my main barrier to entry is not knowing what tools to use or what to look for.&lt;/p&gt;
-&lt;p&gt;I thought of including details of my own problem-solving approach in my &lt;a href=&#34;https://sfarqu.github.io/fabrefact/fabrefact/posts/wtf-is-a-ctf/&#34;&gt;last post&lt;/a&gt;, but I didn&#39;t have the forethought to take any screenshots. Since I was working in a provided VM, I don&#39;t even have any of the challenge files or tools on my own computer. However, I ended up solving exactly the same problems as two of Jaime&#39;s posts, so here I will simply talk about how my solutions differed from hers.&lt;/p&gt;
+&lt;p&gt;I thought of including details of my own problem-solving approach in my &lt;a href=&#34;https://blog.fabrefact.ca/fabrefact/posts/wtf-is-a-ctf/&#34;&gt;last post&lt;/a&gt;, but I didn&#39;t have the forethought to take any screenshots. Since I was working in a provided VM, I don&#39;t even have any of the challenge files or tools on my own computer. However, I ended up solving exactly the same problems as two of Jaime&#39;s posts, so here I will simply talk about how my solutions differed from hers.&lt;/p&gt;
 &lt;h1 id=&#34;networking-challenges&#34;&gt;Networking challenges&lt;/h1&gt;
 &lt;p&gt;(See &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;Women Unite Over CTF - Networking Challenges&lt;/a&gt; for Jaime&#39;s solutions, with screenshots.)&lt;/p&gt;
 &lt;p&gt;I opened up the networking challenges because technical difficulties delayed the start of the reverse engineering walkthroughs. I hovered over random icons in the Kali Linux VM, hoping that one of them was a tool for looking at network information. Luckily Wireshark was prominently placed!&lt;/p&gt;
@@ -1382,10 +1382,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>WTF is a CTF? A beginner&#39;s adventure</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</link>
+       <link>https://blog.fabrefact.ca/posts/wtf-is-a-ctf/</link>
        <pubDate>Sat, 02 Nov 2019 18:24:49 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/wtf-is-a-ctf/</guid>
+       <guid>https://blog.fabrefact.ca/posts/wtf-is-a-ctf/</guid>
        <description>&lt;p&gt;Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of &lt;a href=&#34;https://ittakesahuman.com/lp/WomenUniteOverCTF.html&#34;&gt;Women Unite Over CTF&lt;/a&gt;, an online competition hosted by a number of cybersecurity communities.&lt;/p&gt;
 &lt;h2 id=&#34;so-what-is-a-ctf&#34;&gt;So what &lt;em&gt;is&lt;/em&gt; a CTF?&lt;/h2&gt;
 &lt;p&gt;A few weeks ago I had this exact question, after seeing the Women Unite event promoted by several people I follow on Twitter. A &lt;a href=&#34;https://ctftime.org/ctf-wtf/&#34;&gt;quick search&lt;/a&gt; told me CTF stands for &amp;ldquo;Capture the Flag&amp;rdquo;, and means a type of information security competition where players or teams compete to collect &amp;ldquo;flags&amp;rdquo; for points. This sounds, to be honest, &lt;em&gt;deeply intimidating&lt;/em&gt;.&lt;/p&gt;
@@ -1415,10 +1415,10 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
    
      <item>
        <title>what I&#39;m reading this week: Oct 31</title>
-       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</link>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week/</link>
        <pubDate>Thu, 31 Oct 2019 20:26:57 -0700</pubDate>
        
-       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-this-week/</guid>
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week/</guid>
        <description>&lt;p&gt;These days I am reading a lot across many devices and then immediately misplacing the references. Instead, here are some things I found interesting this week.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://segment.com/blog/the-10m-engineering-problem/&#34;&gt;The $10m engineering problem&lt;/a&gt;, blog post about how Segment cut their infrastructure costs by 30%
