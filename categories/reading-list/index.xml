@@ -7,10 +7,121 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 24 May 2020 16:10:28 -0700</lastBuildDate>
+   <lastBuildDate>Sat, 06 Jun 2020 21:32:17 -0700</lastBuildDate>
    
        <atom:link href="https://sfarqu.github.io/fabrefact/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: June 6</title>
+       <link>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jun-6/</link>
+       <pubDate>Sat, 06 Jun 2020 21:32:17 -0700</pubDate>
+       
+       <guid>https://sfarqu.github.io/fabrefact/posts/what-i-m-reading-jun-6/</guid>
+       <description>&lt;p&gt;I, like most people I know, have been a little distracted from technology-as-usual by a constant feed of police brutality. It&#39;s been a jarring reminder that some people don&#39;t have the luxury of ignoring racial injustice, and that we should all be working harder for equality every day. I&#39;ve been donating money to community organizations and researching my local police department&#39;s history of using force, how about you?&lt;/p&gt;
+&lt;p&gt;I still read a lot before I heard about the protests, and continue to poke at tech stuff on occasion for my own mental health. Stay safe out there. Black lives matter.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.penguinrandomhouse.com/books/545427/broad-band-by-claire-l-evans/&#34;&gt;&lt;em&gt;Broad Band: The Untold Story of the Women Who Made the Internet&lt;/em&gt;&lt;/a&gt; by Claire L. Evans (audiobook) has captured my interest much more than &lt;em&gt;Programmed Inequality&lt;/em&gt;, which I still have 6 hours left of and despair of ever having the interest to finish.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Couldn&#39;t sleep this week, so did a little escapist re-reading of some of my favourite Courtney Milan historical romances. The &lt;a href=&#34;http://www.courtneymilan.com/anovellacollection.php&#34;&gt;&lt;em&gt;Novella Collection&lt;/em&gt;&lt;/a&gt; and &lt;a href=&#34;http://www.courtneymilan.com/theheiresseffect.php&#34;&gt;&lt;em&gt;The Heiress Effect&lt;/em&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Skimmed Alex S. Vitale&#39;s &lt;a href=&#34;https://www.versobooks.com/books/2817-the-end-of-policing&#34;&gt;The End of Policing&lt;/a&gt;, which is available as a free ebook.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;papers&#34;&gt;Papers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Was intrigued by the title of &lt;a href=&#34;https://www.usenix.org/conference/nsdi20/presentation/lou&#34;&gt;&lt;em&gt;Understanding, Detecting and Localizing Partial Failures in Large System Software&lt;/em&gt;&lt;/a&gt; by Chang Lou, Peng Huang, and Scott Smith, and the fact that it won Best Paper at NSDI &amp;lsquo;20 so picked it for my work paper reading group.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h2 id=&#34;racial-justice&#34;&gt;Racial Justice&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Harry Kopyto asks &lt;a href=&#34;https://canadiandimension.com/articles/view/can-we-truly-transform-or-democratize-the-police&#34;&gt;Can we ever truly transform or democratize the police&lt;/a&gt; as a response to to other essays on how to address police brutality. Article is a little wordy but I enjoyed the history on how police forces were invented.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://tinyurl.com/supportBlackcommunitiesCanada&#34;&gt;Resources to support Black communities in Canada&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Nate Powell&#39;s &lt;a href=&#34;https://popula.com/2019/02/24/about-face/&#34;&gt;fascinating 2019 comic About Face&lt;/a&gt; explores how a certain aesthetic militarism became normalised in modern American society.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tatiana Mac wrote a full-of-attitude &lt;a href=&#34;https://tatianamac.com/posts/save-the-tears/&#34;&gt;guide for white women&lt;/a&gt; who want to make meaningful actions in support of Black people. It&#39;s very much a 101 kind of list, but I liked that it is focused.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Only realised the third or fourth time I came across this list of &lt;a href=&#34;https://medium.com/equality-includes-you/what-white-people-can-do-for-racial-justice-f2d18b0e0234&#34;&gt;75 things white people can do for racial justice&lt;/a&gt; that it was originally written in 2017, but it is updated and still relevant.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;core-skills&#34;&gt;Core skills&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Several days after I made a mediocre presentation about threat modelling for developers, Jim Gumbley posted this &lt;a href=&#34;https://martinfowler.com/articles/agile-threat-modelling.html&#34;&gt;guide to threat modelling for developers&lt;/a&gt;, including advice on how to run a remote session. Sigh.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Interview about &lt;a href=&#34;https://ideas.plusplus.co/taking-a-holistic-approach-at-twitter-university-7b369b582239&#34;&gt;Twitter University&lt;/a&gt;, an interesting approach to documentation&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jamie Dobson&#39;s post on &lt;a href=&#34;https://www.infoq.com/articles/framework-emergent-strategy/&#34;&gt;Emergent Strategy&lt;/a&gt; isn&#39;t quite as comprehensible as I want it to be, though I am interested to see if his &lt;a href=&#34;https://www.container-solutions.com/a-pattern-language-for-strategy-chapter-ii&#34;&gt;strategy patterns&lt;/a&gt; would be easier to make practical use of.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I was hoping this article on &lt;a href=&#34;https://medium.com/@mcleanonline/building-psychological-safety-c46844cb918&#34;&gt;building psychological safety in teams&lt;/a&gt; would be more practical, but it&#39;s mostly about how Elsevier has set up a peer facilitation program. May need to instead look into the recommended book, Amy Edmondson’s &lt;em&gt;The Fearless Organization&lt;/em&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ryn Daniels has a whole series on introspecting as a mid-career technologist, starting with &lt;a href=&#34;https://www.ryn.works/blog/on-mid-career-challenges&#34;&gt;On Mid-Career Challenges&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;distributed-sytems&#34;&gt;Distributed Sytems&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;While trying to find more about the Twitter Engineering Effectiveness team I discovered Caitie McCaffrey, who has an older post of &lt;a href=&#34;https://caitiem.com/2017/09/07/getting-started-with-distributed-systems/&#34;&gt;resources for getting started with distributed systems&lt;/a&gt;, including some I hadn&#39;t seen mentioned before.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dan Luu talks about how &lt;a href=&#34;https://danluu.com/tracing-analytics/&#34;&gt;distributed tracing was made more useful at Twitter&lt;/a&gt;, primarily by making it easier to query&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Christina Delimitrou writes about the reasons behind and implications of &lt;a href=&#34;https://www.sigops.org/2020/the-increasing-heterogeneity-of-cloud-hardware-and-what-it-means-for-systems/&#34;&gt;increased heterogeneity of hardware in cloud data centres&lt;/a&gt;, which is an area I hadn&#39;t really heard of.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jaana Dogan&#39;s article on &lt;a href=&#34;https://medium.com/google-cloud/how-does-spanner-avoid-single-point-of-failures-in-writes-4f7765cd894&#34;&gt;how Spanner avoids single-point write failures&lt;/a&gt; should have been clearer to me after all the reading I&#39;ve done about distributed systems, but I feel like I&#39;d need to do more reading to have an instinct for what consistency model is implied.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;programming-languages&#34;&gt;Programming languages&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Caitie McCaffrey also had this tempting article on &lt;a href=&#34;https://caitiem.com/2016/08/18/a-quick-guide-to-testing-in-golang/&#34;&gt;testing in Go&lt;/a&gt;. Is it time to write more than code puzzle answers in Go?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;As a bit of a Javascript outsider, this &lt;a href=&#34;http://lea.verou.me/2020/05/todays-javascript-from-an-outsiders-perspective/&#34;&gt;outsider&#39;s perspective of modern Javascript&lt;/a&gt; rings very true to me. I just want to load this module!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;remote-working&#34;&gt;Remote working&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Learning From Incidents posts &lt;a href=&#34;https://www.learningfromincidents.io/blog/learning-from-adaptations-to-coronavirus&#34;&gt;five common themes in adaptation to Coronavirus&lt;/a&gt;. I found the &amp;ldquo;how to adapt&amp;rdquo; sections useful.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I have been struggling to exercise at home for many of the reasons Casey Johnston outlines in &lt;a href=&#34;https://www.vice.com/en_us/article/pkyb3y/fun-home-workout-goals&#34;&gt;At-Home Workout Goals That Are Fun and Don&#39;t Suck&lt;/a&gt;. I wonder if any stores have weights back in stock yet?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jay Shirley at Stripe reviews &lt;a href=&#34;https://stripe.com/blog/remote-hub-one-year&#34;&gt;Stripe&#39;s remote engineering hub&lt;/a&gt;, an interesting organizational choice they made a year ago to become a more remote-friendly company. While it&#39;s not meant as an advice post for companies struggling to adjust to remote work, it does list things that have worked well for Stripe over the past year.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jen Gilbert for Lyft Engineering wrote about their &lt;a href=&#34;https://eng.lyft.com/how-lyft-does-remote-learning-differently-d57fdb19dde7&#34;&gt;short-notice remote onboarding program&lt;/a&gt;, which has some solid tips.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;scaling-systems&#34;&gt;Scaling systems&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Venkatesh-Prasad Ranganath&#39;s reviews of &lt;a href=&#34;https://medium.com/@rvprasad/books-about-designing-systems-of-scale-295a7a91997c&#34;&gt;books on architecting for scale&lt;/a&gt; contains some books I&#39;m familiar with and others I&#39;m not, so more to add to the reading list.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Marta Kosarchyn writes on the Khan Academy Engineering blog about how &lt;a href=&#34;https://engineering.khanacademy.org/posts/handling-2x-traffic-in-a-week.htm&#34;&gt;Khan Academy handled 2.5x normal load during Covid&lt;/a&gt;, which amounts to &amp;ldquo;our cloud hosting scaled automatically&amp;rdquo;, but still neat to see what some of their specific architecture choices are.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: May 24</title>
