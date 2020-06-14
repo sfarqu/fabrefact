@@ -7,10 +7,101 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sat, 06 Jun 2020 21:32:17 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 14 Jun 2020 10:25:00 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/tags/links/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: June 14</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-june-14/</link>
+       <pubDate>Sun, 14 Jun 2020 10:25:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-june-14/</guid>
+       <description>&lt;p&gt;Put a custom URL on this blog, that&#39;s something.&lt;/p&gt;
+&lt;p&gt;Continuing to read a combination of political and tech industry news, as protests continue but are deemed no longer newsworthy, and COVID is on the rise again as communities go back to pretending everything is normal. Welcome to the new normal.&lt;/p&gt;
+&lt;h2 id=&#34;racial-justice&#34;&gt;Racial Justice&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;R. Eric Thomas&#39;s essay &lt;a href=&#34;https://www.elle.com/culture/career-politics/amp32733422/on-protest-and-progress/&#34;&gt;When All Of This Is Over: On The Narrative Of Protest And Progress&lt;/a&gt; reflects on the question: will this current movement result in actions to end white supremacy, or will we just go back to &amp;ldquo;normal&amp;rdquo;?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://static1.squarespace.com/static/59ead8f9692ebee25b72f17f/t/5b65cd58758d46d34254f22c/1533398363539/CR_NoCops_reform_vs_abolition_CRside.pdf&#34;&gt;Abolitionist Reforms Chart&lt;/a&gt; from &lt;a href=&#34;http://criticalresistance.org&#34;&gt;Critical Resistance&lt;/a&gt; helped me frame why some suggested police reforms don&#39;t actually lead to meaningful change.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kurt Kemple&#39;s &lt;a href=&#34;https://theworst.dev/a-plea-for-action/&#34;&gt;Plea for Action&lt;/a&gt; suggests steps that tech companies must take if they truly mean the statements in their corporate &amp;ldquo;Black Lives Matter&amp;rdquo; posts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Captain Awkward points out that &lt;a href=&#34;https://captainawkward.com/2020/06/05/1272-white-family-facebook-drama-over-police-racism/&#34;&gt;arguing with your racist white family members on Facebook maybe isn&#39;t the best use of your time&lt;/a&gt; and provides tangible actions to consider instead.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Annie D&#39;Souza writes &lt;a href=&#34;http://www.themidwestival.com/blog/2020/6/how-to-find-your-place-in-the-social-change-ecosystem&#34;&gt;how to find your place in the social change ecosystem&lt;/a&gt; and points out some of the useful roles in a social movement that don&#39;t involve going to protests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;From The Midwestival I discovered the Building Movement Project, and Deepa Iyer&#39;s post &lt;a href=&#34;https://buildingmovement.org/blog/beyond-hashtags-and-slogans-when-solidarity-becomes-transformative/&#34;&gt;Beyond Hashtags and Slogans: When Solidarity Becomes Transformative&lt;/a&gt;. Need to read more from this site.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Barack Obama suggests &lt;a href=&#34;https://medium.com/@BarackObama/how-to-make-this-moment-the-turning-point-for-real-change-9fa209806067&#34;&gt;making this moment the turning point for real change&lt;/a&gt; will require both protest and political action. A bit of a moderate statement, but well-worded.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Michelle Weber collects a long &lt;a href=&#34;https://kingofstates.com/2020/06/01/racial-justice-a-list-of-resources-for-white-people-who-are-not-on-twitter-24-hours-a-day/&#34;&gt;list of resources for white people who are not on Twitter 24 hours a day&lt;/a&gt;, which is a great list and a great title.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;engineering-management&#34;&gt;Engineering management&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Rachel Hands points out in her post &lt;a href=&#34;https://rachelhands.com/2020/06/02/on-anti-racist-management-practices/&#34;&gt;on anti-racist management practices&lt;/a&gt; that leaders have a responsibility to do more than just be not-racist, and points to some good resources for managers looking to do better at creating an inclusive work environment.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ben French has three lessons for &lt;a href=&#34;https://www.opml.co.uk/blog/making-teams-work-in-volatile-and-uncertain-environments&#34;&gt;building teams that can adapt to change&lt;/a&gt;, which is a little focused on government/policy initiatives but could work for tech teams too&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;effective-engineering&#34;&gt;Effective engineering&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Aleksandra Sikora in the spicily-named &lt;a href=&#34;https://www.aleksandra.codes/tech-content-consumer&#34;&gt;Most tech content is bullshit&lt;/a&gt; points out why we shouldn&#39;t blindly copy-paste solutions we find on the internet.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Toby W has tips on &lt;a href=&#34;https://www.ncsc.gov.uk/blog-post/drawing-good-architecture-diagrams&#34;&gt;drawing good architecture diagrams&lt;/a&gt;, which mostly comes down to &amp;ldquo;keep it simple&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Julia Evans describes her process for writing &lt;a href=&#34;https://jvns.ca/blog/2020/06/14/questions-to-help-you-learn/&#34;&gt;questions to help people decide what to learn&lt;/a&gt; and what she learned from the process.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Matt Belcher lists &lt;a href=&#34;https://codurance.com/2020/06/09/signs-your-software-is-rotting/&#34;&gt;signs your software is rotting&lt;/a&gt; and some tools to address software rot.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Phil Sturgeon&#39;s long list of &lt;a href=&#34;https://apisyouwonthate.com/blog/theres-no-reason-to-write-openapi-by-hand&#34;&gt;the benefits and pitfalls of different techniques to automate writing OpenAPI specs&lt;/a&gt; is one of many articles on &lt;a href=&#34;https://apisyouwonthate.com/&#34;&gt;APIs you won&#39;t hate&lt;/a&gt;, which seems to be a useful resource for anyone who writes APIs&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;big-ideas-in-tech&#34;&gt;Big ideas in tech&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Greg Epstein, TechCrunch&#39;s Ethicist in Residence &lt;a href=&#34;https://techcrunch.com/2020/06/13/so-you-want-to-talk-about-race-in-tech-with-ijeoma-oluo/&#34;&gt;interviewed author Ijeoma Oluo about ethics in tech&lt;/a&gt;, which left me wanting to know more about how tech and the internet are designed and used in non-Western regions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jesse Li&#39;s long essay &lt;a href=&#34;https://blog.jse.li/posts/software/&#34;&gt;Where Did Software Go Wrong?&lt;/a&gt; meditates on how software cannot be separated from human voices and systems, but stops short of suggesting answers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I love the phrase &lt;em&gt;omnia contexta sunt&lt;/em&gt; from John D Cooks&amp;rsquo; post on &lt;a href=&#34;https://www.johndcook.com/blog/2020/01/16/memento-complexitatis/&#34;&gt;having reminders that the world is complex&lt;/a&gt;. The aphorism, proposed by Latin scholar Lily Hart, literally means &amp;ldquo;all things have been braided&amp;rdquo;, thus suggesting not only complexity, but interdependence.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;coding-tools&#34;&gt;Coding tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Interesting to see projects like &lt;a href=&#34;https://github.com/oss-review-toolkit/ort/&#34;&gt;OSS Review Toolkit&lt;/a&gt; trying to automate cross-language FOSS license compliance checks and security advisories (project currently incomplete)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;New edition of &lt;a href=&#34;https://www.thoughtworks.com/radar&#34;&gt;Thoughtworks Technology Radar&lt;/a&gt; includes a lot of Kubernetes, ethical bias testing, and a sudden uptick in remote work tooling.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Techradar seems to be an annoying site that tries to embed as many links to their other articles as actual content, this &lt;a href=&#34;https://www.techradar.com/news/open-source-software-vulnerabilities-see-huge-rise&#34;&gt;summary of findings from RiskSense&#39;s new report &amp;ldquo;The Dark Reality of Open Source&amp;rdquo;&lt;/a&gt; at least doesn&#39;t require your email to see it, unlike &lt;a href=&#34;https://info.risksense.com/open-source-spotlight-report-pr&#34;&gt;the report itself&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://venturebeat.com/2020/06/08/facebooks-transcoder-ai-converts-code-from-one-programming-language-into-another/&#34;&gt;Venturebeat summary&lt;/a&gt; of the paper &lt;a href=&#34;https://arxiv.org/abs/2006.03511&#34;&gt;Unsupervised Translation of Programming Languages&lt;/a&gt; contains some credulous quotes about how AI will allow non-technical users to write expert code, but it does contain the bare bones of how Facebook&#39;s transcompiler was trained using unsupervised machine learning and gets decent results.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: June 6</title>
@@ -43,7 +134,7 @@
 &lt;p&gt;Harry Kopyto asks &lt;a href=&#34;https://canadiandimension.com/articles/view/can-we-truly-transform-or-democratize-the-police&#34;&gt;Can we ever truly transform or democratize the police&lt;/a&gt; as a response to to other essays on how to address police brutality. Article is a little wordy but I enjoyed the history on how police forces were invented.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;a href=&#34;https://tinyurl.com/supportBlackcommunitiesCanada&#34;&gt;Resources to support Black communities in Canada&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.huffingtonpost.ca/entry/black-organizations-anti-racist-groups-canada_ca_5ed57ea1c5b6867b30853e20&#34;&gt;Resources to support Black communities in Canada&lt;/a&gt; (original link was removed, here&#39;s a different one I read)&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Nate Powell&#39;s &lt;a href=&#34;https://popula.com/2019/02/24/about-face/&#34;&gt;fascinating 2019 comic About Face&lt;/a&gt; explores how a certain aesthetic militarism became normalised in modern American society.&lt;/p&gt;
