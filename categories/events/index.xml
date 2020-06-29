@@ -13,6 +13,71 @@
    
    
      <item>
+       <title>what i&#39;m reading: June 28</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-june-28/</link>
+       <pubDate>Sun, 28 Jun 2020 18:40:15 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-june-28/</guid>
+       <description>&lt;p&gt;For some reason writing these link posts takes an incredible amount of time—I intended to write a bunch of code today and instead read a few articles, segments of several books, and set up a Twitch channel. (Guess I can&#39;t &lt;em&gt;really&lt;/em&gt; blame the latter on this post.)&lt;/p&gt;
+&lt;p&gt;At some point I will have to figure out a convenient method of communicating all the links I read on my work computer to my personal laptop, but that&#39;s now a problem for July.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Finished &lt;em&gt;Broad Band&lt;/em&gt; (audiobook) and moved on to a different aspect of unequal treatment of computing history with Charlton D. McIlwain&#39;s &lt;a href=&#34;https://www.indiebound.org/book/9780190863845&#34;&gt;&lt;em&gt;Black Software: The Internet and Racial Justice, from the AfroNet to Black Lives Matter&lt;/em&gt;&lt;/a&gt; (audiobook).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finally got my backordered copy of &lt;a href=&#34;https://www.indiebound.org/book/9780525509288&#34;&gt;&lt;em&gt;How to be an Antiracist&lt;/em&gt;&lt;/a&gt; by Ibram X. Kendi, which looks to be an engaging read. Thinking of asking if anyone at work wants to book club it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Impulse read Anne McCaffrey&#39;s &lt;em&gt;Dragonsong&lt;/em&gt; and &lt;em&gt;Dragonsinger&lt;/em&gt; the other night, after a discussion about how a lot of SFF that was formative to our younger selves turns out to be extremely problematic. These two aren&#39;t as cringey as some other classic McCaffrey.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Enjoying &lt;a href=&#34;https://evolutionaryarchitecture.com/&#34;&gt;&lt;em&gt;Building Evolutionary Architectures&lt;/em&gt;&lt;/a&gt; by Neal Ford, Rebecca Parsons, and Patrick Kua, but I keep reading it late at night, when I can only read a few pages before I&#39;m too sleepy for the highly conceptual language.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gave in to temptation to start Cyrille Martraire&#39;s &lt;a href=&#34;https://www.goodreads.com/book/show/34927405-living-documentation&#34;&gt;&lt;em&gt;Living Documentation: Continuous Knowledge Sharing by Design&lt;/em&gt;&lt;/a&gt; even though I&#39;m still reading another tech book. I&#39;m just so excited to read about how to make better documentation!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Coincidental to my recently learning what a trie is, I discovered Henry Robinson&#39;s &lt;a href=&#34;https://www.the-paper-trail.org/post/art-paper-notes/&#34;&gt;summary of a paper on Adaptive Radix Trees&lt;/a&gt;, complete with implementation details. Tempted to try implementing this in Rust?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apparently Microsoft is officially &lt;a href=&#34;https://thenewstack.io/microsoft-rust-is-the-industrys-best-chance-at-safe-systems-programming/&#34;&gt;throwing their support behind Rust&lt;/a&gt; for writing mission-critical software because of its improved memory safety over C++. C and C++ have been the dominant low-level systems languages since I first learned to program, so this feels momentous!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Really love Clare Liguori&#39;s deep dive into &lt;a href=&#34;https://aws.amazon.com/builders-library/automating-safe-hands-off-deployments/&#34;&gt;automating continuous deployment at Amazon&lt;/a&gt;, which has a ton of useful things to think about regarding deployment and automated rollbacks.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ipsita Agarwal digs into some of the particular design challenges of &lt;a href=&#34;https://increment.com/frontend/case-study-mobile-payments-in-india/&#34;&gt;building a mobile payments app for an Indian market&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In Slack someone suggested using &amp;ldquo;DP&amp;rdquo; to write a sudoku solver, and since I had no idea what that meant I ended up reading this &lt;a href=&#34;https://www.hackerearth.com/practice/algorithms/dynamic-programming/introduction-to-dynamic-programming-1/tutorial/&#34;&gt;intro to dynamic programming&lt;/a&gt;, which is clear, but still not enough for me to feel capable of applying it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I was intrigued enough by Stephen Anderson&#39;s &lt;a href=&#34;https://xd.adobe.com/ideas/perspectives/leadership-insights/design-leadership-facilitating-structures/&#34;&gt;Facilitating Structures&lt;/a&gt; that I joined his &lt;a href=&#34;https://www.producthunt.com/upcoming/the-mighty-minds-club&#34;&gt;Mighty Minds Club&lt;/a&gt;, hoping to find more insights and tools to get better at facilitating discussions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I liked Jason Yip&#39;s Twitter thread about how &lt;a href=&#34;https://twitter.com/jchyip/status/1269668710442287106&#34;&gt;changing people&#39;s behavior to change the culture&lt;/a&gt; is more effective than the reverse.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Heard about some recent trouble with website certificates but don&#39;t understand the details of Certificate Authorities very well, so I appreciated Scott Helme&#39;s overview of the &lt;a href=&#34;https://scotthelme.co.uk/impending-doom-root-ca-expiring-legacy-clients/&#34;&gt;impending doom of expiring root CAs&lt;/a&gt;. Through this I also learned about the &lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/API/Reporting_API&#34;&gt;new W3C Reporting API&lt;/a&gt;!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Denis Bakhvalov just &lt;a href=&#34;https://easyperf.net/blog/2020/06/24/Draft-Of-Perf-Book#mc_embed_signup&#34;&gt;announced a new book on performance analysis and tuning&lt;/a&gt; which sounds very interesting! Unfortunately there&#39;s no publication date, but Bakhvalov claims it will be released as a free PDF, so I&#39;ll be keeping my eye out.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jacob Gabrielson writes a compelling article about &lt;a href=&#34;https://aws.amazon.com/builders-library/avoiding-fallback-in-distributed-systems/&#34;&gt;the perils of &amp;ldquo;fallback&amp;rdquo; mechanisms in distributed systems&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;papers&#34;&gt;Papers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Given that I&#39;m in the middle of trying to gather metrics using—among other tools—SonarQube, I felt compelled to read &lt;a href=&#34;https://arxiv.org/pdf/1907.00376.pdf&#34;&gt;Are SonarQube Rules Inducing Bugs?&lt;/a&gt; by Valentina Lenarduzzi, Francesco Lomio, Heikki Huttunen, and Davide Taibi. In summary: the authors found that SonarQube&#39;s severity ratings do not necessarily reflect the actual likelihood of a rule violation to be a bug, but that is far from showing that blindly following static code analysis rules &lt;em&gt;causes&lt;/em&gt; bugs.&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
+   
+     <item>
        <title>what i&#39;m reading: June 14</title>
        <link>https://blog.fabrefact.ca/posts/what-i-m-reading-june-14/</link>
        <pubDate>Sun, 14 Jun 2020 10:25:00 -0700</pubDate>
