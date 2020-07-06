@@ -7,10 +7,119 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 28 Jun 2020 18:40:15 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 05 Jul 2020 19:00:54 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/tags/links/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: July 5</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-july-5/</link>
+       <pubDate>Sun, 05 Jul 2020 19:00:54 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-july-5/</guid>
+       <description>&lt;p&gt;Catching up on a lot of links from mailing lists I&#39;m subscribed to at my work email, but haven&#39;t found a better way to do it than emailing the most intriguing links to myself.&lt;/p&gt;
+&lt;p&gt;I&#39;m now fully set up to stream coding on &lt;a href=&#34;https://twitch.tv/fabrefact&#34;&gt;my Twitch channel&lt;/a&gt;, but instead of writing code I spent 6 hours reading articles for this post. I suspect I need to curtail my Twitter time again to get on top of all the things I want to do in life.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Took the arrival of Canada Day as an opportunity to read &lt;a href=&#34;https://arsenalpulp.com/Books/T/The-500-Years-of-Resistance-Comic-Book&#34;&gt;The 500 Years of Resistance comic book&lt;/a&gt; by Gord Hill and think about how, even though I remember news reports about the Ts&#39;peten (Gustafsen Lake) standoff, in school I learned about colonization as if Indigenous resistance was either non-existent or over hundreds of years ago.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;repositories&#34;&gt;Repositories&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Came across Lingdong Huang&#39;s &lt;a href=&#34;https://github.com/LingDong-/shan-shui-inf&#34;&gt;procedurally-generated Chinese landscape scrolls&lt;/a&gt; project, which is one of many &lt;a href=&#34;https://lingdong.works/&#34;&gt;interesting procedurally-generated art projects&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;learning-about-computing&#34;&gt;Learning about computing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Donne Martin&#39;s &lt;a href=&#34;https://github.com/donnemartin/system-design-primer&#34;&gt;System Design Primer&lt;/a&gt; is an invaluable source of realistic system design problems with solutions, brief overviews of the concepts needed to do these sorts of problems, and links to further reading.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;John Washam&#39;s &lt;a href=&#34;https://github.com/jwasham/coding-interview-university&#34;&gt;Coding Interview University repo&lt;/a&gt; relies mostly on video resources, which I hate, but it&#39;s a nice, very detailed list of topics to practice for self-directed computer science knowledge. Bookmarking to suggest to people who like video lectures.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This is a week for finding GitHub repos as educational resources! Veeral Patel&#39;s &lt;a href=&#34;https://github.com/veeral-patel/learn-security-engineering&#34;&gt;Learn Security Engineering&lt;/a&gt; is currently lacking in practical exercises, but contains a solid list of resources and papers on various topics in Security Engineering.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h2 id=&#34;paper-summaries&#34;&gt;Paper summaries&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The problem of protecting secure communication against eavesdropping when the communications devices are untrusted seems obvious, yet this new research on &lt;a href=&#34;https://www.unibas.ch/en/News-Events/News/Uni-Research/Adding-noise-for-completely-secure-communication.html&#34;&gt;adding noise to guarantee security&lt;/a&gt; is still opaque to me. Maybe as I read more I will gain intuition for how the efficiency at detecting information relates to the security of the protocol.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This press release from University of Texas San Antonio about &lt;a href=&#34;https://www.utsa.edu/today/2020/06/story/cloud-storm-prevention-algorithm.html&#34;&gt;mitigating resource surges caused by the sudden uptick in work-from-home&lt;/a&gt; is pretty twee in calling the &amp;ldquo;cloud-computing storms&amp;rdquo;, but it&#39;s an interesting topic and made me bookmark IEEE Transactions in Cloud Computing to check out later. Not sure this Orchestra algorithm is anything groundbreaking, but it would be neat to read about the state of the art in resource management of cloud systems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Very intrigued by Amazon&#39;s project to &lt;a href=&#34;https://www.amazon.science/blog/how-to-integrate-formal-proofs-into-software-development&#34;&gt;integrate formal proofs into software development&lt;/a&gt;, as written up by Daniel Schwartz-Narbonne! I&#39;ve only recently learned about formal software proofs, but I can see a future where including verification tests in your CI/CD pipeline becomes as much an expectation as unit tests.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Haven&#39;t dug into it, but &lt;a href=&#34;https://www.connectedpapers.com/&#34;&gt;Connected Papers&lt;/a&gt; looks like it might be an good way to dive deeper into topics after reading an interesting paper.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;being-human-in-the-workplace&#34;&gt;Being human in the workplace&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This Twitter thread from Dr. Erin Thomas is a good lens of &lt;a href=&#34;https://twitter.com/ErinLThomasPhD/status/1229046034569027585&#34;&gt;how to be an effective ally in the workplace by removing barriers&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dan Moore&#39;s &lt;a href=&#34;https://letterstoanewdeveloper.com/2019/04/01/the-best-code-is-no-code/&#34;&gt;&amp;ldquo;the best code is no code&amp;rdquo;&lt;/a&gt; is valuable in that it not only states that custom code isn&#39;t always the best solution to a problem, but gives concrete examples of situations better solved another way and potential other solutions. Good reading for any junior developer.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This Google Cloud blog post from Eric Harvieux about &lt;a href=&#34;https://cloud.google.com/blog/products/management-tools/identifying-and-tracking-toil-using-sre-principles&#34;&gt;identifying and tracking &amp;ldquo;toil&amp;rdquo;&lt;/a&gt; provides a useful framework about how to start measuring unrewarding work that can be automated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Can&#39;t remember if I&#39;d read Daniel Irvine&#39;s &lt;a href=&#34;https://dev.to/d_ir/clean-code-dirty-code-human-code-6nm&#34;&gt;expansion on &amp;ldquo;goodbye clean code&amp;rdquo; discussion&lt;/a&gt; from January, but it came across my feed and I like the points about how the term &amp;ldquo;clean&amp;rdquo; introduces a false binary that code must either be &amp;ldquo;clean&amp;rdquo; or &amp;ldquo;dirty&amp;rdquo;, which is an unhelpful shaming framework.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Some good examples from Tom Foster about &lt;a href=&#34;https://managementblog.org/2020/06/29/interviewing-for-soft-skills/&#34;&gt;how to frame interview questions to evaluate core skills&lt;/a&gt; by identifying a behaviour connected with that skill, and designing questions around circumstances where an interviewee might have shown that behaviour.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pat Kua lists a bunch of &lt;a href=&#34;https://www.patkua.com/blog/start-saying-no/&#34;&gt;useful ways to say no&lt;/a&gt; to requests, a key leadership skill.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lessons-learned-from-scaling-incidents&#34;&gt;Lessons learned from scaling incidents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m still ambivalent about Basecamp&#39;s new app HEY, but Blake Stoddard&#39;s post on &lt;a href=&#34;https://m.signalvnoise.com/running-spot-instances-effectively-with-amazon-eks/&#34;&gt;running AWS spot instances with kubernetes&lt;/a&gt; is a valuable source of real-world lessons learned for high-scaling architectures.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://www.ably.io/blog/cassandra-counter-columns-nice-in-theory-hazardous-in-practice&#34;&gt;incident retrospective lambasting Cassandra counter columns&lt;/a&gt; from the Ably tech blog has some neat summaries of Cassandra&#39;s strengths and weaknesses and how counter columns caused a major failure, but I need to read more to understand how exactly counter columns are implemented and if they have any good use cases. I&#39;m intrigued by the declaration that Cassandra itself works as a CRDT.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Laura Nolan&#39;s &lt;a href=&#34;https://slack.engineering/a-terrible-horrible-no-good-very-bad-day-at-slack-dfe05b485f82&#34;&gt;A Terrible, Horrible, No-Good, Very Bad Day at Slack&lt;/a&gt; is an excellent technical deep-dive into how two minor bugs and a broken monitoring system combined into a major production outage at Slack.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;new-approaches-in-systems-design&#34;&gt;New approaches in systems design&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The &lt;a href=&#34;http://stratus3d.com/blog/2020/01/20/applying-the-let-it-crash-philosophy-outside-erlang/&#34;&gt;Let It Crash philosophy&lt;/a&gt; was new to me by that name (and seems antithetical to the Java &amp;ldquo;warn about unhandled exceptions&amp;rdquo; style), but this article makes some good arguments for allowing errors to halt execution (and displaying the original error!) Still not sure how this would apply in say, a large SaaS system, but I learned some useful bash flags!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Apparently &lt;a href=&#34;https://redmonk.com/jgovernor/2020/06/26/the-coming-smokestack-rethinking-and-retooling-multi-cloud/&#34;&gt;SMOKEstack is the new JAMstack&lt;/a&gt;—by which I mean an initialism for a technology stack I should expect to see on TechRadar any day now. SMOKEstack is less specific tech and more concepts that fit a paradigm of composing applications out of multiple high-level services across multiple cloud providers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-rabbit-holes&#34;&gt;Technical rabbit holes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I hadn&#39;t thought much about the problem of OCR technologies needing to be able to &lt;a href=&#34;https://nanonets.com/blog/table-extraction-deep-learning/&#34;&gt;recognize and extract tabular data&lt;/a&gt;, but this article has a good review of both traditional and various deep-learning approaches to doing it. The article appears to have been edited out of order however, so it&#39;s a little confusing to read.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This Firefox &amp;ldquo;security internals&amp;rdquo; blog post about &lt;a href=&#34;https://blog.mozilla.org/attack-and-defense/2020/06/10/understanding-web-security-checks-in-firefox-part-1/&#34;&gt;Web Security checks&lt;/a&gt; is &lt;em&gt;extremely&lt;/em&gt; in the weeds of the Firefox codebase, but I still feel like I learned a little bit from it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security-tools&#34;&gt;Security tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Chris Romeo has some tips for &lt;a href=&#34;https://blog.securityjourney.com/three-ways-to-empower-remote-threat-modeling/&#34;&gt;remote threat modeling&lt;/a&gt;, which mainly involve picking a good online whiteboarding tool and setting it up in advance!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Skimmed through AWS&#39;s experimental &lt;a href=&#34;https://github.com/awslabs/amazon-s3-find-and-forget&#34;&gt;S3 find and forget&lt;/a&gt; tool to delete data from data lakes after GDPR requests. Like all AWS architecture it looks overly convoluted to me, but it&#39;s a useful case study to think about.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stumbled across a &lt;a href=&#34;https://github.com/ajinabraham/nodejsscan&#34;&gt;few&lt;/a&gt; &lt;a href=&#34;https://github.com/ajinabraham/libsast&#34;&gt;tools&lt;/a&gt; for static application security testing (SAST), wonder how e.g. &lt;a href=&#34;https://github.com/returntocorp/semgrep&#34;&gt;semgrep&lt;/a&gt; compares to static analysis in other tools I&#39;m familiar with?&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: June 28</title>
