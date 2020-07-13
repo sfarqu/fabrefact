@@ -7,10 +7,102 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 05 Jul 2020 19:00:54 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 12 Jul 2020 00:22:45 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: July 12</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-july-12/</link>
+       <pubDate>Sun, 12 Jul 2020 00:22:45 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-july-12/</guid>
+       <description>&lt;p&gt;Starting to feel a little more on top of life—I restarted my bullet journal and exercise routine this week! Too early to see if it&#39;ll stick, but feels nice for now.&lt;/p&gt;
+&lt;p&gt;Despite that, I don&#39;t feel particularly on top of my reading list. I read across at least four devices and I only have a coherent strategy for collecting links from one of them. I also have a bunch of &lt;em&gt;actual blog posts&lt;/em&gt; half-written that&amp;hellip;someday I will get to. Someday.&lt;/p&gt;
+&lt;p&gt;A friend of mine started doing charitable donations every Sunday, so I&#39;m taking it as motivation to set up more recurring monthly donations. Last week I added &lt;a href=&#34;https://wish-vancouver.net/&#34;&gt;WISH Drop-In Centre&lt;/a&gt;, and this week will be &lt;a href=&#34;https://detroitwaterproject.org/&#34;&gt;The Human Utility&lt;/a&gt;. What ways are you finding to do good in the world?&lt;/p&gt;
+&lt;h1 id=&#34;papers&#34;&gt;Papers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/2006.16140&#34;&gt;Distributed consent and its impact on privacy and observability in social networks&lt;/a&gt; by Juniper Lovato, Antoine Allard, Randall Harp, Laurent Hébert-Dufresne proposes additional privacy settings for social networks that could limit this ability of third parties to build profiles of non-consenting individuals entirely from their social connections. The authors emphasise that this is only one piece of a multi-faceted approach to rethinking privacy on the internet. I liked this because it contained easy-to-explain descriptions of the current issues with how consent is managed online.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Bookmarking &lt;a href=&#34;https://readrust.net/&#34;&gt;Read Rust&lt;/a&gt; for later reference. Guess I need a blogroll?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;programming-language-details&#34;&gt;Programming language details&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I don&#39;t remember where I found this link about &lt;a href=&#34;https://fullstackmilk.dev/efficiently_escaping_strings_using_cow_in_rust/&#34;&gt;escaping strings using Cow in Rust&lt;/a&gt; but now I know a little more about using strings and Rust&#39;s &lt;code&gt;Cow&lt;/code&gt; 🐄 enum.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jon Bodner posits that &lt;a href=&#34;https://www.capitalone.com/tech/software-engineering/go-is-boring/&#34;&gt;Go is a boring language, and that&#39;s a good thing&lt;/a&gt;. I like reading about philosophical choices behind programming language design, because it helps in using that language&#39;s strengths.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Matthias Endler reviews &lt;a href=&#34;https://endler.dev/2020/review/&#34;&gt;how programming changed in the 2010s&lt;/a&gt;, which captures some of the seismic shifts that made it disorienting to try to re-enter the tech world after a decade absence!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This Live Code Stream collection of &lt;a href=&#34;https://livecodestream.dev/post/2020-06-08-make-your-code-great-python-style/&#34;&gt;tips for writing more &amp;ldquo;pythonic&amp;rdquo; code&lt;/a&gt; contains some bits I&#39;d never encountered before, since I don&#39;t spend a lot of time in Python. The more languages I dabble in, the more I appreciate resources that explicitly tell you how to write idiomatic code!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-do-a-technical-thing&#34;&gt;How to do a technical thing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Julia Evans &lt;a href=&#34;https://jvns.ca/blog/2020/06/28/entr/&#34;&gt;explains the &lt;code&gt;entr&lt;/code&gt; command-line tool&lt;/a&gt;, which allows you to run commands every time your files change, even if your build tools don&#39;t natively support that—without having to dig into the bowels of &lt;code&gt;inotify&lt;/code&gt;!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Travis Downs&amp;rsquo; article on &lt;a href=&#34;https://travisdowns.github.io/blog/2020/07/06/concurrency-costs.html&#34;&gt;Concurrency Costs&lt;/a&gt; was a fascinating look at optimising concurrency strategies, though it assumes an understanding of concurrency primitives and more fluency in C++ than I possess. Bookmarking to review in the future after absorbing more content on this topic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m rewriting a lost work project in Go partly because I don&#39;t know how to write an API client in Go and want to learn, so I ran across Carl M.
+Johnson&#39;s &lt;a href=&#34;https://blog.carlmjohnson.net/post/2020/go-cli-how-to-and-advice/&#34;&gt;Writing Go CLIs With Just Enough Architecture&lt;/a&gt; at exactly the right time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Erin Shepherd posted a tweet thread about &lt;a href=&#34;https://twitter.com/erincandescent/status/1281280157073002496&#34;&gt;a fascinating distributed debugging challenge&lt;/a&gt; that illustrates how hard it can be to reason about distributed systems.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;being-human-in-tech&#34;&gt;Being human in tech&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Bruce Hughes offers a non-binary person&#39;s perspective on &lt;a href=&#34;https://undevelopedbruce.com/2020/07/06/non-binary-in-tech/&#34;&gt;how to be an ally to non-binary people in tech&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sailor Ghoul&#39;s account of &lt;a href=&#34;https://medium.com/@soandsos/my-time-as-a-black-woman-software-engineer-at-capital-one-5c05fa8faed&#34;&gt;being gaslit out of a job as a Black women software engineer&lt;/a&gt; struck a chord with many Black women I follow on Twitter, so it&#39;s worth thinking about how these hostile engineering cultures get perpetuated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Chelsea Troy&#39;s post on &lt;a href=&#34;https://chelseatroy.com/2020/06/24/anti-racist-pedagogy-in-a-graduate-computer-science-class/&#34;&gt;anti-racist pedagogy&lt;/a&gt; digs into things she learned from Chris Emden&#39;s book &lt;a href=&#34;https://www.penguinrandomhouse.com/books/237679/for-white-folks-who-teach-in-the-hood-and-the-rest-of-yall-too-by-christopher-emdin/9780807028025/&#34;&gt;For White Folks Who Teach in the Hood&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Cindy Sridharan extolls the benefits of &lt;a href=&#34;https://medium.com/@copyconstruct/post-commit-reviews-b4cc2163ac7a&#34;&gt;post-commit code reviews&lt;/a&gt;, and I admit it&#39;s a compelling argument if you have a resilient CI/CD pipeline and culture.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;performance-tracking&#34;&gt;Performance tracking&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Charity majors answers a question about &lt;a href=&#34;https://charity.wtf/2020/07/07/questionable-advice-can-engineering-productivity-be-measured/amp/&#34;&gt;whether you can measure individual developer productivity&lt;/a&gt; (tl;dr: NO), then links to &lt;a href=&#34;https://martinfowler.com/bliki/CannotMeasureProductivity.html&#34;&gt;Martin Fowler saying the same thing&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;No real surprises in Ranjan Sakalley&#39;s post about &lt;a href=&#34;https://rnjn.in/articles/set-specific-goals-and-iterate/&#34;&gt;goal-based performance and progress tracking&lt;/a&gt;, but its emphasis on regular progress evaluations of KPIs makes me think I should probably look at and tweak my official objectives in Workday.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;systems-design&#34;&gt;Systems design&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Sonja Blignaut discusses &lt;a href=&#34;https://blog.usejournal.com/7-differences-between-complex-and-complicated-fa44e0844606&#34;&gt;the difference between complex systems and complicated systems&lt;/a&gt;. I&#39;m left feeling that software alone is usually merely complicated, but add human behaviour and motivation and it quickly becomes complex.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Simon Brown outlines some &lt;a href=&#34;https://dev.to/simonbrown/visio-draw-io-lucidchart-gliffy-etc-not-recommended-for-software-architecture-diagrams-4bmm&#34;&gt;weaknesses of using general-purpose diagramming tools for software architecture diagrams&lt;/a&gt;, which is how I stumbled onto his &lt;a href=&#34;https://dev.to/simonbrown/modelling-software-architecture-with-plantuml-56fc&#34;&gt;5-part series about architecture diagrams as text&lt;/a&gt;. Mostly a selling-point of the Structurizr DSL, but it&#39;s open source so worth looking in to!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;documentation&#34;&gt;Documentation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Google style guide has some interesting tips about &lt;a href=&#34;https://developers.google.com/style/inclusive-documentation&#34;&gt;writing inclusive documentation&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Malte Ubl writes about &lt;a href=&#34;https://www.industrialempathy.com/posts/design-docs-at-google/&#34;&gt;design docs at Google&lt;/a&gt; with a lot of transferable advice about design docs in general.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: July 5</title>
