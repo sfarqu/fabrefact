@@ -7,10 +7,95 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 19 Jul 2020 12:14:37 -0700</lastBuildDate>
+   <lastBuildDate>Tue, 18 Aug 2020 21:14:56 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
+   
+     <item>
+       <title>what i&#39;m reading: August 18</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-18/</link>
+       <pubDate>Tue, 18 Aug 2020 21:14:56 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-18/</guid>
+       <description>&lt;p&gt;For a few weeks I felt too overwhelmed to write a link post, so now I am overwhelmed with my reading list. It seems all I do in these posts is complain that my reading list is too long, but I still find value in recording what I&#39;ve read. Just need to get&amp;hellip;better at it? Or acknowledge that I can&#39;t fit reading everything that sounds interesting into my life, but not ready to admit that yet.&lt;/p&gt;
+&lt;p&gt;I have a lot of papers bookmarked, but have absolutely stopped reading them.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Started on &lt;a href=&#34;https://teamtopologies.com/&#34;&gt;&lt;em&gt;Team Topologies&lt;/em&gt;&lt;/a&gt; in audiobook, which is probably not the ideal format. Especially when I&#39;ve normally been listening while biking through the city, so I feel sure I have missed some details. I&#39;m definitely thinking a lot about team structures and interactions though, and glad I&#39;m absorbing the book in some fashion, though I may want to read through a physical copy in the future.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;stories&#34;&gt;Stories&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Holly Mintzer&#39;s &lt;a href=&#34;https://slate.com/technology/2020/07/legal-salvage-holli-mintzer.html&#34;&gt;&lt;em&gt;Legal Salvage&lt;/em&gt;&lt;/a&gt; was a fun near-future sci-fi with very realistic characters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h2 id=&#34;career-advice&#34;&gt;Career advice&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m intrigued by the StaffEng site because I&#39;m looking toward a Staff/Principal role in my future. Especially enjoying the guides such as this one on &lt;a href=&#34;https://staffeng.com/guides/staff-archetypes&#34;&gt;staff engineer archetypes&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Even though I&#39;m not a manager I enjoyed reading Cassie McDaniel&#39;s piece on &lt;a href=&#34;https://medium.com/swlh/everyones-sad-and-getting-sadder-c8e6b23e69a5&#34;&gt;compassionate ways for managers to reduce stress on their teams&lt;/a&gt; (though I had to open it in a private window because of Medium paywall)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I don&#39;t put much stock in anything published by HBR, but this study on how &lt;a href=&#34;https://hbr.org/2019/03/making-jokes-during-a-presentation-helps-men-but-hurts-women&#34;&gt;making jokes during a presentation is judged positively when men do it but negatively when women do it&lt;/a&gt; was interesting. I am probably still going to make jokes?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Productivity advice is unpopular in my circles right now, but these &lt;a href=&#34;https://www.inc.com/minda-zetlin/google-productivity-trainer-laura-mae-martin-advice-priorities.html&#34;&gt;three tips from Laura Mae Martin&lt;/a&gt; are comfortingly human and realistic. I especially like &amp;ldquo;productivity is doing what you intended&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rah rah product announcement woo, but intriguing to hear that companies as big as Google are experimenting with &lt;a href=&#34;https://techcrunch.com/2019/07/17/googles-area-120-launches-byteboard-to-improve-technical-interviews/&#34;&gt;alternatives to whiteboard interviews&lt;/a&gt; for technical roles.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;learning-new-things&#34;&gt;Learning new things&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;A programming community I&#39;m a part in had a discussion on dynamic programming which quickly left me in the dust, so I ended up investigating stuff like &lt;a href=&#34;https://whatthefuck.is/memoization&#34;&gt;memoization&lt;/a&gt; on my own.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Shortly afterward I encountered Dan Abramov&#39;s tweet thread about &lt;a href=&#34;https://twitter.com/dan_abramov/status/1285947749301719040&#34;&gt;how Dynamic Programming is an obscure term&lt;/a&gt; and felt immensely validated.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m trying to start saving links to some of the many, many articles I read while trying to learn a new programming thing, and one of the first I remembered was this from Sunil Sandhu on &lt;a href=&#34;https://medium.com/javascript-in-plain-english/how-to-loop-through-arrays-in-react-3eaa8a14445&#34;&gt;how to loop through arrays in React&lt;/a&gt;. I took two weeks off this React project and this all looks like a foreign language again.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;At my Recurse Center mini-batch, I was really struggling with translating a feature in my original C++ code to Rust, even after I decided to implement it using the observer pattern, until I read Brooks Patton&#39;s article on &lt;a href=&#34;https://dev.to/brookzerker/observer-pattern-in-rust-57hl&#34;&gt;implementing the Observer Pattern in Rust&lt;/a&gt;. I&#39;d found plenty of stack overflow answers on how to use reference-counting pointers and RefCells, but this was the first thing I read that made clear you have to &lt;em&gt;clone&lt;/em&gt; the pointer when adding the observer. I still, uh, don&#39;t fully understand how it works, but at least my code compiles.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;theres-still-a-pandemic-on-hey&#34;&gt;There&#39;s still a pandemic on, hey&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This long read by Roxanne Khamsi covers &lt;a href=&#34;https://elemental.medium.com/amp/p/3c0c11a6bd10&#34;&gt;the unclear science of how long COVID-19 lasts in the body&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pretty convinced by Zeynep Tufekci&#39;s article on &lt;a href=&#34;https://www.theatlantic.com/health/archive/2020/07/why-arent-we-talking-more-about-airborne-transmission/614737/&#34;&gt;how important ventilation is to preventing airborne transmission of coronavirus&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;art&#34;&gt;Art&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I went into a rabbit hole of tarot deck art while writing a character creator for the Blue Rose RPG, which led me to this &lt;a href=&#34;http://blog.littleredtarot.com/personal-narratives-in-tarot-art-trung-nguyen/&#34;&gt;interview with artist Trung Nguyen&lt;/a&gt; about the beginnings of what became his beautiful &lt;a href=&#34;http://www.trungles.com/star-spinner-tarot&#34;&gt;Star Spinner Tarot deck&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sarah Drasner&#39;s twitter thread on &lt;a href=&#34;https://twitter.com/sarah_edo/status/1287078859725103106&#34;&gt;a painting she started&lt;/a&gt; was amazing to me because I have always had artistic aspirations but 100% cannot paint at all. It&#39;s a form of wizardry.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;doing-technical-things-well&#34;&gt;Doing technical things well&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;m interested in doing metrics right at work, so bookmarking &lt;a href=&#34;https://twitter.com/hillelogram/status/1287600966318030848&#34;&gt;Hillel Wayne&#39;s tweet thread on how metrics should drive structural policy changes&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sandy Maguire&#39;s post on &lt;a href=&#34;https://reasonablypolymorphic.com/blog/writing-technical-posts/&#34;&gt;how to write technical posts so people will read them&lt;/a&gt; reminds me that my sentences and paragraphs are pretty much always too long.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Emily Stark&#39;s post on &lt;a href=&#34;https://emilymstark.com/2020/07/30/should-web-apps-use-pakes.html&#34;&gt;why Password Authenticated Key Exchange (PAKE) isn&#39;t a noticeable security benefit over hashing passwords&lt;/a&gt; was almost-but-not-quite past my understanding of cryptographic protocols, but the historical info on why PAKEs didn&#39;t catch on is fascinating.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Eliza Weisman has &lt;a href=&#34;https://twitter.com/mycoliza/status/1289318252280070144&#34;&gt;an interesting Rust performance story&lt;/a&gt; on Twitter, including the importance of not making assumptions about what to optimize for&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: July 19</title>
