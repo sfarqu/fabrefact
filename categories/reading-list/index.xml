@@ -12,6 +12,8 @@
        <atom:link href="https://blog.fabrefact.ca/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
    
+   
+   
      <item>
        <title>what i&#39;m reading: August 20</title>
        <link>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-20/</link>
@@ -1088,78 +1090,6 @@ Johnson&#39;s &lt;a href=&#34;https://blog.carlmjohnson.net/post/2020/go-cli-how
      </item>
    
      <item>
-       <title>Refactoring Legacy Javascript: Part 1</title>
-       <link>https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/</link>
-       <pubDate>Thu, 07 May 2020 22:49:41 -0700</pubDate>
-       
-       <guid>https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/</guid>
-       <description>&lt;h2 id=&#34;enter-the-haunted-forest&#34;&gt;Enter the haunted forest&lt;/h2&gt;
-&lt;p&gt;My workplace has the expected share of legacy code, and one piece nestles at the heart of a major product I supported for years as a developer. This very successful product dates back to when the company was a frantic handful of developers trying to do too much work in too little time, and by the time I joined the company it had attained nigh-on &lt;a href=&#34;https://softwareexorcist.com/writing/haunted-graveyards&#34;&gt;haunted graveyard&lt;/a&gt; status. Little documentation, no tests, a tangled mess of tightly-dependent code in at least three languages, relied upon daily by many Important Clients.&lt;/p&gt;
-&lt;p&gt;One of my first tasks was a backlog ticket to add an insignificant feature to this product, and it took me a full month to feel like I understood it well enough to not break it. (Spoiler: even then I didn&#39;t understand it.) Over the years tiny changes broke production more often than not, and every developer who touched it had to spend days chasing down arcane undocumented trivia, like how to even build the localization files.&lt;/p&gt;
-&lt;p&gt;Did I mention no tests?&lt;/p&gt;
-&lt;p&gt;Of course I adopted this orphaned codebase as my ugly, precious baby. I spent many hours thinking about how to make it beautiful, even while knowing it would never be a priority. At one point I demanded the opportunity to refactor the entire PHP codebase for testability as a prerequisite for adding a new feature, but the Javascript was deemed out of scope. None of us had a background in Javascript development, and the code worked until now, might as well just cross our fingers and hope it held out until this product&#39;s inevitable retirement.&lt;/p&gt;
-&lt;p&gt;The problem with decade-old Javascript, however, is that the browser landscape keeps changing, and suddenly you get an emergency bug ticket from an Important Client because your product doesn&#39;t work in a new browser. And nobody understands how the code works, or how to test it, or where the script to build the localization files lives.&lt;/p&gt;
-&lt;p&gt;I didn&#39;t get that ticket because I&#39;ve moved on to another role, so I only watched Slack in dismay as the dev described a week struggling to implement and verify a ten-line fix, some of which could have been avoided if I&#39;d documented my own fights more thoroughly. (She is a better dev than I, and wrote down the entire elaborate build process as she figured it out.)&lt;/p&gt;
-&lt;h2 id=&#34;the-purpose-of-refactoring&#34;&gt;The purpose of refactoring&lt;/h2&gt;
-&lt;p&gt;If you&#39;re not familiar with a language, figuring out &lt;em&gt;how&lt;/em&gt; to write tests or run the code can be an insurmountable barrier. The curse of haunted Javascript is that all today&#39;s snazzy test frameworks assume you are using modern techniques like modules or ES6 syntax or a framework. Nothing like that in legacy files! Only a bunch of functions, dumped into an inline script tag.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.fabrefact.ca/figures/legacy-script.png&#34; alt=&#34;Drawing of code being inserted between &amp;ldquo;script&amp;rdquo; HTML tags&#34;&gt;&lt;/p&gt;
-&lt;p&gt;You can&#39;t get code coverage unless you can &lt;code&gt;require&lt;/code&gt; your files in your tests, and you can&#39;t tell what parts of the 3000-line monolith to put in a &lt;code&gt;module.exports&lt;/code&gt; without either writing a test, or painstakingly stepping through in a way no one ever seems to have the time for. Last year I spent a weekend trying to get at least a test framework running, and ended up lost in the bowels of &lt;a href=&#34;https://istanbul.js.org/&#34;&gt;Istanbul&lt;/a&gt; source code.&lt;/p&gt;
-&lt;p&gt;But improving the code coverage metrics is just something I &lt;em&gt;want&lt;/em&gt; to do. There are some genuine reasons to want to modernize the code to do things like remove global variables, but even that is mostly personal preference. The real problem is that it takes too long to check if your changes worked.&lt;/p&gt;
-&lt;p&gt;I came back to this on Tuesday full of renewed determination to make the process of building and testing this code easier. Right now &amp;ldquo;the process&amp;rdquo; involves running two different command line scripts manually and checking in the processed artifacts. These artifacts are dynamically injected into a &lt;code&gt;&amp;lt;script&amp;gt;&lt;/code&gt; tag at run time.&lt;/p&gt;
-&lt;p&gt;Let&#39;s draw that as a picture:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://blog.fabrefact.ca/figures/build-flow.png&#34; alt=&#34;Flow diagram of the build process, from CSV file through a legacy PHP script, then compiled by a different legacy PHP script along with a variable number of other script files into a concatenated and minified version, which is checked into source control, then included inline at run time&#34;&gt;&lt;/p&gt;
-&lt;p&gt;This diagram makes it look more straightforward than it is currently:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Every one of these files lives in a different directory&lt;/li&gt;
-&lt;li&gt;There are several customer-specific builds, which require passing command-line parameters to the manual scripts&lt;/li&gt;
-&lt;li&gt;One of the scripts can only be run in a VM environment, and getting the processed file back to your laptop is complicated.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;how-can-we-make-this-easier&#34;&gt;How can we make this easier?&lt;/h3&gt;
-&lt;p&gt;First I decided on my goals:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;A developer new to this project should be able to build a testable artifact in one step after making a code change&lt;/li&gt;
-&lt;li&gt;The whole build should be able to run on different environments—developer laptop, VM, or CI pipeline—without a lot of custom setup&lt;/li&gt;
-&lt;li&gt;The build should allow us to move a lot of these steps to the existing automated build pipeline&lt;/li&gt;
-&lt;li&gt;Artifacts produced by this new build process should be identical to the old process&lt;/li&gt;
-&lt;li&gt;None of the existing files should be changed&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;The last one is possibly overkill, but I want to be absolutely sure that my desire to improve the developer experience doesn&#39;t impact the actual production code.&lt;/p&gt;
-&lt;h2 id=&#34;choosing-tools&#34;&gt;Choosing tools&lt;/h2&gt;
-&lt;p&gt;First things first, we need a package manager. I went with npm over yarn because I&#39;ve used npm before and it&#39;s already installed on my computer. At least one other project also uses npm, so it&#39;s pretty likely to be on other developers&amp;rsquo; computers too.&lt;/p&gt;
-&lt;h3 id=&#34;running-tasks&#34;&gt;Running tasks&lt;/h3&gt;
-&lt;p&gt;For my needs I knew I wanted to use a task runner. As I said before, I am not a Javascript expert, and neither are the people who maintain this product. There aren&#39;t many other Javascript projects in the company that I can use for reference, and I&#39;m not familiar with the common Javascript toolchain.&lt;/p&gt;
-&lt;p&gt;I considered using a custom script or a task runner in another language—gradle is commonly used even for projects that aren&#39;t Java. I decided to pick a JS tool despite that for a few reasons:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Custom scripts are how we got in this mess—if you spend enough time to make a script that&#39;s resilient and extendable, you&#39;ve basically written another task runner. Better to use one that&#39;s actively maintained.&lt;/li&gt;
-&lt;li&gt;A tool that&#39;s designed to work with Javascript is more likely to have built-in support for the kind of steps used in Javascript pipelines, like running Google Closure Compiler.&lt;/li&gt;
-&lt;li&gt;I hold a grudge against Gradle after years of having to deal with build chains I didn&#39;t understand.&lt;/li&gt;
-&lt;li&gt;I wanted to learn more about Javascript toolchains.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;A quick search for Javascript build tools got me a few options:&lt;/p&gt;
-&lt;h4 id=&#34;webpack&#34;&gt;Webpack&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;PRO: Used by another project at work; might have some crossover expertise&lt;/li&gt;
-&lt;li&gt;PRO: Extremely popular&lt;/li&gt;
-&lt;li&gt;CON: Primary use case is transpiling modern syntax into backwards-compatible Javascript; almost no references found for how to use it &lt;em&gt;without&lt;/em&gt; transpiling&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;gulp&#34;&gt;Gulp&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;PRO: Very fast&lt;/li&gt;
-&lt;li&gt;CON: Relatively complicated to use&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&#34;grunt&#34;&gt;Grunt&lt;/h4&gt;
-&lt;ul&gt;
-&lt;li&gt;PRO: Described as simpler to learn than Gulp&lt;/li&gt;
-&lt;li&gt;CON: I can&#39;t remember, but surely there was something?&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Webpack was clearly out because it is a bundler, not a task runner, and trying to force it to be a task runner would lead to heartache. Grunt and Gulp seemed to be a toss-up, with &lt;a href=&#34;https://www.ionos.ca/digitalguide/websites/web-development/gulp-vs-grunt-differentiating-between-the-task-runners/&#34;&gt;some articles&lt;/a&gt; describing Grunt having more a focus on configuration, and Gulp more on programming. I decided to try Gulp first, for nebulous reasons including the fact that it was supposed to be faster, and I didn&#39;t like the &lt;a href=&#34;https://gruntjs.com/&#34;&gt;Grunt logo&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;I fully planned to delete Gulp if I got frustrated with it, because there are clearly other options that work very well.&lt;/p&gt;
-&lt;h3 id=&#34;next-steps&#34;&gt;Next steps&lt;/h3&gt;
-&lt;p&gt;In the next post I&#39;ll talk about how I set up a working build script in 4 hours, and then spent until sunrise debugging a single configuration option.&lt;/p&gt;
-</description>
-     </item>
-   
-     <item>
        <title>what i&#39;m reading: April 21</title>
        <link>https://blog.fabrefact.ca/posts/what-i-m-reading-apr-21/</link>
        <pubDate>Tue, 21 Apr 2020 20:11:50 -0700</pubDate>
@@ -1740,66 +1670,6 @@ Johnson&#39;s &lt;a href=&#34;https://blog.carlmjohnson.net/post/2020/go-cli-how
      </item>
    
      <item>
-       <title>(framework) mistakes were made</title>
-       <link>https://blog.fabrefact.ca/posts/framework-mistakes-were-made/</link>
-       <pubDate>Sat, 07 Dec 2019 23:13:25 -0800</pubDate>
-       
-       <guid>https://blog.fabrefact.ca/posts/framework-mistakes-were-made/</guid>
-       <description>&lt;p&gt;It took a long time for me to go from &amp;ldquo;I want to write blog posts&amp;rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was &lt;em&gt;so exhausting&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;Even once I decided to use a static site generator, I had to choose &lt;em&gt;which&lt;/em&gt; generator, and then a template&amp;hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.&lt;/p&gt;
-&lt;p&gt;That turned out to be a mistake. How could I have done better?&lt;/p&gt;
-&lt;h2 id=&#34;the-perils-of-picking-tools&#34;&gt;The perils of picking tools&lt;/h2&gt;
-&lt;p&gt;Once, back in the before times, when we wanted to create a webpage we would write plain HTML in a text editor (uphill both ways in the snow) but that hasn&#39;t been the in thing for decades now. The last time I had a go at creating a new website (circa 2010) it still seemed like content management systems were the way to go. Spend days or weeks choosing a platform that had all the features you need but wasn&#39;t too complicated, or write your own from scratch and be responsible for all the database management, user authentication, and API design.&lt;/p&gt;
-&lt;p&gt;I&#39;ve always fallen in the &amp;ldquo;roll your own&amp;rdquo; camp, which is why I have not had a functioning website in a decade.&lt;/p&gt;
-&lt;p&gt;When this new blogging impulse hit, I, older and wiser, determined to use a tool to abstract away all the blog boilerplate and website design. I wanted to simply publish posts without having to babysit my own Linux server. Conveniently, while I was ignoring the world of web, the tide had shifted away from databases and admin consoles to static HTML sites on free hosting.&lt;/p&gt;
-&lt;p&gt;Turns out I still don&#39;t like outsourcing most of my application to other programmers, but it&#39;s either that or go back to never finishing my own framework so what choice did I have?&lt;/p&gt;
-&lt;h2 id=&#34;decisions-decisions&#34;&gt;Decisions, decisions&lt;/h2&gt;
-&lt;p&gt;A lot of choice! There are approximately eleventy-billion static site generators out there, so how to pick one, if you only barely understand what a static site generator is? I settled on a few heuristics to get the fastest start on a new site:&lt;/p&gt;
-&lt;h3 id=&#34;1-how-good-is-the-documentation&#34;&gt;1. How good is the documentation?&lt;/h3&gt;
-&lt;p&gt;If you want to get started as fast as possible, be on the lookout for step-by-step instructions for getting up and running with all the features you&#39;re looking for.&lt;/p&gt;
-&lt;h3 id=&#34;2-is-the-generator-written-in-a-programming-language-you-know-or-want-to-learn&#34;&gt;2. Is the generator written in a programming language you know (or want to learn?)&lt;/h3&gt;
-&lt;p&gt;Eventually you may want to understand what is happening inside the generator, or edit some of the templates. Even if you are not interested in tinkering, the tooling around installing, updating, and running the generator will be tied to the language it&#39;s written in. Some familiarity with that programming language will make the whole process easier.&lt;/p&gt;
-&lt;h3 id=&#34;3-are-there-prebuilt-themes-you-like-the-look-of&#34;&gt;3. Are there pre-built themes you like the look of?&lt;/h3&gt;
-&lt;p&gt;Even if you intend to make a custom theme, starting with one that is most of what you want will give you a vast head start.&lt;/p&gt;
-&lt;h3 id=&#34;4-how-popular-is-it&#34;&gt;4. How popular is it?&lt;/h3&gt;
-&lt;p&gt;The larger the user community, the more likely you are to find tutorials, Stack Overflow answers, and lots of themes or other sites for reference.&lt;/p&gt;
-&lt;h3 id=&#34;5-is-it-actively-maintained&#34;&gt;5. Is it actively maintained?&lt;/h3&gt;
-&lt;p&gt;How often is it updated? Are there any problems regularly reported by users that aren&#39;t getting fixed?&lt;/p&gt;
-&lt;h2 id=&#34;mistakes-were-made&#34;&gt;Mistakes were made&lt;/h2&gt;
-&lt;p&gt;Where I went wrong was in prioritizing a pre-made theme I liked over community, language, and support. Hexo is a fairly popular static site generator written in node.js, but it turned out to have some fatal flaws for my needs.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Turns out I don&#39;t like Node&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I didn&#39;t have strong feelings about language choice when I started, and I thought learning Node a little better might be useful. Instead I just felt annoyed whenever I had to debug anything, because I don&#39;t care enough about getting familiar with the framework, and it has a few quirks that frustrated me:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Node doesn&#39;t have a standard templating language&lt;/strong&gt;.
-Almost every theme I looked at used a different templating style, which made it difficult to generalize about how templates worked and how to customize them. On top of that, the templating framework used by the theme I chose turned out to be obsolete.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;There are too many dependencies&lt;/strong&gt;.
-The quick-start instructions for setting up my Hexo site didn&#39;t include checking in a dependency lockfile. As a result, some transitive dependency updated and for unknown reasons broke Hexo&#39;s ability to generate my site. This crystallized my frustration with the overall Node dependency ecosystem.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;The support community is not accessible to me&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Hexo has a reasonable number of users, but many of them are Chinese-speaking. Many times when trying to debug an error or find a tutorial, I had trouble finding any results in my native language. I didn&#39;t think this would be an issue when I chose it, but I ended up having to debug a lot more than I predicted.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Some of the defaults result in undesireable behaviour&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The final nail in the coffin of my Hexo experiment was realizing that by default permalinks include date information, but default date-time stamps in posts don&#39;t include time zone. This meant that URIs for all my posts sometimes changed depending on which timezone I was in when I generated the static files. This broke any links to my site and was overall much less permanent than &amp;ldquo;permalink&amp;rdquo; implies.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I probably could have worked all of these problems out, but the entire reason for using a static site generator is to not have to do all this code tweaking and maintenance!&lt;/p&gt;
-&lt;h2 id=&#34;enter-hugo&#34;&gt;Enter Hugo&lt;/h2&gt;
-&lt;p&gt;After a week or two of sulking, I picked Hugo as a replacement generator. I don&#39;t love any of the themes, but found one I can tolerate until I find time to make something custom. Hugo has the following selling points:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;The community and support seem vibrant. I haven&#39;t had any trouble so far finding documentation or tutorials for any issues I&#39;ve run in to.&lt;/li&gt;
-&lt;li&gt;I am actively interested in learning more Go and find it straightforward to read both code and templates.&lt;/li&gt;
-&lt;li&gt;The specific date issues I had with Hexo don&#39;t exist in Hugo.&lt;/li&gt;
-&lt;li&gt;The post and front matter formats are identical, so I was able to simply copy-paste my previous source files into the new generator.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Fingers crossed this will be the last major shakeup for a while, but at the very least I am moving on to new and different problems.&lt;/p&gt;</description>
-     </item>
-   
-     <item>
        <title>what I&#39;m reading this week: Nov 23</title>
        <link>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-3/</link>
        <pubDate>Sat, 23 Nov 2019 22:21:53 -0800</pubDate>
@@ -1986,87 +1856,6 @@ The quick-start instructions for setting up my Hexo site didn&#39;t include chec
 &lt;p&gt;Even if the idea is sound, does this specific charity do a good job of implementing it?&lt;/p&gt;
 &lt;h4 id=&#34;5-does-the-charity-need-additional-funds&#34;&gt;5. Does the charity need additional funds?&lt;/h4&gt;
 &lt;p&gt;Does your donation make any perceptible difference to this charity&#39;s ability to succeed?&lt;/p&gt;</description>
-     </item>
-   
-     <item>
-       <title>Women Unite Over CTF - Solving Challenges</title>
-       <link>https://blog.fabrefact.ca/posts/women-unite-over-ctf-solving-challenges/</link>
-       <pubDate>Mon, 04 Nov 2019 16:04:02 -0800</pubDate>
-       
-       <guid>https://blog.fabrefact.ca/posts/women-unite-over-ctf-solving-challenges/</guid>
-       <description>&lt;p&gt;The winner of the Women Unite Over CTF, Jaime Lightfoot, quickly posted writeups about how she solved the challenges. These posts (&lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;networking challenges&lt;/a&gt;, &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-reverse-engineering-challenges/&#34;&gt;reverse engineering&lt;/a&gt;, and &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-linux-exploitation/&#34;&gt;Linux exploitation&lt;/a&gt;) are excellent for the same reasons I enjoyed the event in general: my main barrier to entry is not knowing what tools to use or what to look for.&lt;/p&gt;
-&lt;p&gt;I thought of including details of my own problem-solving approach in my &lt;a href=&#34;https://blog.fabrefact.ca/fabrefact/posts/wtf-is-a-ctf/&#34;&gt;last post&lt;/a&gt;, but I didn&#39;t have the forethought to take any screenshots. Since I was working in a provided VM, I don&#39;t even have any of the challenge files or tools on my own computer. However, I ended up solving exactly the same problems as two of Jaime&#39;s posts, so here I will simply talk about how my solutions differed from hers.&lt;/p&gt;
-&lt;h1 id=&#34;networking-challenges&#34;&gt;Networking challenges&lt;/h1&gt;
-&lt;p&gt;(See &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-networking-challenges/&#34;&gt;Women Unite Over CTF - Networking Challenges&lt;/a&gt; for Jaime&#39;s solutions, with screenshots.)&lt;/p&gt;
-&lt;p&gt;I opened up the networking challenges because technical difficulties delayed the start of the reverse engineering walkthroughs. I hovered over random icons in the Kali Linux VM, hoping that one of them was a tool for looking at network information. Luckily Wireshark was prominently placed!&lt;/p&gt;
-&lt;p&gt;I have literally never used Wireshark before, but it&#39;s the tool everyone talks about so it seemed an obvious choice. I solved these pretty slowly, but now that I know a little bit about Wireshark I expect to be faster next time.&lt;/p&gt;
-&lt;h3 id=&#34;level-1-helpfulwine&#34;&gt;level 1: helpfulwine&lt;/h3&gt;
-&lt;p&gt;As soon as I opened the file and selected a packet at random, the flag showed up in the bottom pane. My first flag! It took a bit of trial and error to figure out how to copy it—I eventually had to paste whatever I copied into a text editor in order to strip out all the extraneous content before pasting the flag into the form.&lt;/p&gt;
-&lt;h3 id=&#34;level-2-rhetoricalairplane&#34;&gt;level 2: rhetoricalairplane&lt;/h3&gt;
-&lt;p&gt;Jaime used &lt;code&gt;frame contains &amp;quot;flag&amp;quot;&lt;/code&gt; in all of these to narrow down which packet contained the flag text, but I just clicked around randomly until I found it.&lt;/p&gt;
-&lt;h3 id=&#34;level-3-numberlesslove&#34;&gt;level 3: numberlesslove&lt;/h3&gt;
-&lt;p&gt;Again I just clicked around randomly looking for something called &amp;ldquo;flag&amp;rdquo;. Used the exact same strategy as Jaime here, which is heartening!&lt;/p&gt;
-&lt;h3 id=&#34;level-4-warmsong&#34;&gt;level 4: warmsong&lt;/h3&gt;
-&lt;p&gt;This is where I slowed down a lot, because I didn&#39;t know about the Export Objects function. I could see from the headers that it was a .docx so I assumed I had to extract the doc and open it&amp;hellip;but I didn&#39;t know how. I tried looking at a bunch of different packets, right clicking on things, copying and pasting the bytes into a file&amp;hellip;eventually I realized this must be a common problem and started looking for an export function.&lt;/p&gt;
-&lt;p&gt;Once I successfully save the .doc, my next challenge was how to open a Word document in an unfamiliar OS. I searched for something like &amp;ldquo;how to open word doc linux command line&amp;rdquo; and learned &lt;code&gt;lowriter flag.doc&lt;/code&gt;.&lt;/p&gt;
-&lt;h3 id=&#34;level-5-savoryhill&#34;&gt;level 5: savoryhill&lt;/h3&gt;
-&lt;p&gt;Now that I knew about Export Objects function this went quickly. Export object as PNG, do a quick search to figure out what kind of program on Linux can open PNGs. The first search result suggested that &lt;code&gt;xdg-open&lt;/code&gt; is a good way to open a file in its default program.&lt;/p&gt;
-&lt;h1 id=&#34;reverse-engineering-challenges&#34;&gt;Reverse engineering challenges&lt;/h1&gt;
-&lt;p&gt;(See &lt;a href=&#34;https://jaimelightfoot.com/blog/women-unite-over-ctf-reverse-engineering-challenges/&#34;&gt;Women Unite Over CTF – Reverse Engineering Challenges&lt;/a&gt; for Jaime&#39;s solutions, with screenshots.)&lt;/p&gt;
-&lt;p&gt;The reverse engineering challenges had walkthroughs on the live stream, which is good because I definitely wouldn&#39;t have gotten anywhere without them!&lt;/p&gt;
-&lt;h3 id=&#34;level-1-calculateerratic&#34;&gt;level 1: calculateerratic&lt;/h3&gt;
-&lt;p&gt;I followed Nada&#39;s walkthrough and used Binary Ninja, using the &lt;code&gt;View &amp;gt; Strings&lt;/code&gt; option Jaime mentions in the next problem. Nada talked about the &lt;code&gt;strings&lt;/code&gt; command but I never tried it.&lt;/p&gt;
-&lt;h3 id=&#34;level-2-dustyabandon&#34;&gt;level 2: dustyabandon&lt;/h3&gt;
-&lt;p&gt;The walkthroughs were also available as PDFs shared in the event Slack, so I started working a little ahead of the livestream. I spent a bunch of time in Binary Ninja, clicking on different views and trying to remember everything I ever knew about assembly.&lt;/p&gt;
-&lt;p&gt;I found the password-constructing subfunction (&lt;code&gt;sub_40100&lt;/code&gt; highlighted in Jaime&#39;s writeup), and the PDF said something about using &lt;code&gt;R&lt;/code&gt; in Binary Ninja to switch to character representations, but I wasn&#39;t able to make heads nor tails of this code and didn&#39;t know what I was supposed to be switching. I waited for Nada&#39;s livestream to catch up. It seemed obvious as soon as Nada pointed out the hex codes!&lt;/p&gt;
-&lt;p&gt;Definitely don&#39;t recognize hex values in the ASCII range off the top of my head, but maybe that&#39;s a skill to acquire?&lt;/p&gt;
-&lt;h3 id=&#34;level-3-etherealshop&#34;&gt;level 3: etherealshop&lt;/h3&gt;
-&lt;p&gt;By now I expected a program with a similar design to the first two and opened it up in Binary Ninja to verify the same pattern of password comparison. I kind of went down a rabbit hole trying to understand what assembly was doing and tuned into the livestream to get back on track.&lt;/p&gt;
-&lt;p&gt;This is where my solution differed from Jaime&#39;s by a lot—the documentation suggested switching to dynamic analysis so I opened up the program in Ollydbg. (Sorry no screenshots for this part.) I used an address I had found in Binary Ninja to get to the right section of code, but mostly poked around trying to understand the interface until Nada started talking about setting a breakpoint.&lt;/p&gt;
-&lt;p&gt;Breakpoints I understand! The step-in/step-over commands are similar to every IDE debugger I&#39;ve used, so it didn&#39;t take long to step through until the flag showed up in a register.&lt;/p&gt;
-&lt;h3 id=&#34;level-4-expertquestion&#34;&gt;level 4: expertquestion&lt;/h3&gt;
-&lt;p&gt;By now the contest was well over, and the Escalate platform was actually quite responsive, so I decided to tackle one more difficult problem. This one didn&#39;t have a walkthrough!&lt;/p&gt;
-&lt;p&gt;I started the same process I&#39;d gone through with all the other RE problems. Like Jaime, I found that the password encryption now had three functions doing mysterious things to the encrypted password that looked very hairy to decipher in static analysis. Unlike Jaime, I did not have any insights over hard-coded bytes and encryption methods. Instead I opened up Ollydbg for some dynamic analysis.&lt;/p&gt;
-&lt;p&gt;This part was a bit of a slog. Unlike level 3, the password didn&#39;t show up conveniently in the little window that seemed to hold the current instruction. When I stepped through the comparison of the user-entered text to the password, it instead went straight to the &amp;ldquo;You are not leet enough&amp;rdquo; message. I went back further and started stepping through the entire decryption function.&lt;/p&gt;
-&lt;p&gt;Throughout this I was trying to piece together more about how Ollydbg works. There&#39;s a large pane in the top left that contains your program, and one on the top right that shows the contents of all the registers (as well as some other stuff that I never understood.) In the bottom right shows the stack—you can scroll down through it to see all the pointers in the call stack from other functions.&lt;/p&gt;
-&lt;p&gt;That left the pane in the lower left as being I assume the heap? While stepping through the decryption process I eventually saw stuff starting to change here. At first it appeared to be random gibberish, but it still looked like a clue.&lt;/p&gt;
-&lt;p&gt;The decryption has a bunch of loops, and I learned how to recognize what a loop looks like in assembly and skip to the next instruction if nothing relevant seems to happen inside. This was not the most efficient method, but I was worried if I skipped too far ahead I would miss the flag again!&lt;/p&gt;
-&lt;p&gt;After far too long of this, the flag unscrambled itself in the pane I decided was the heap. Victory!&lt;/p&gt;
-&lt;h1 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h1&gt;
-&lt;p&gt;Jaime&#39;s walkthroughs were a great refresher and a beginner-friendly introduction to some new techniques. I look forward to reading more from her, and maybe—just maybe—I&#39;ll remember to take some screenshots of my own next time.&lt;/p&gt;</description>
-     </item>
-   
-     <item>
-       <title>WTF is a CTF? A beginner&#39;s adventure</title>
-       <link>https://blog.fabrefact.ca/posts/wtf-is-a-ctf/</link>
-       <pubDate>Sat, 02 Nov 2019 18:24:49 -0700</pubDate>
-       
-       <guid>https://blog.fabrefact.ca/posts/wtf-is-a-ctf/</guid>
-       <description>&lt;p&gt;Today I reverse-engineered binaries and pored over packet captures to find hidden information under a deadline, thereby checking another box in my quest to be the coolest person my 14-year-old self could imagine. This was all part of &lt;a href=&#34;https://ittakesahuman.com/lp/WomenUniteOverCTF.html&#34;&gt;Women Unite Over CTF&lt;/a&gt;, an online competition hosted by a number of cybersecurity communities.&lt;/p&gt;
-&lt;h2 id=&#34;so-what-is-a-ctf&#34;&gt;So what &lt;em&gt;is&lt;/em&gt; a CTF?&lt;/h2&gt;
-&lt;p&gt;A few weeks ago I had this exact question, after seeing the Women Unite event promoted by several people I follow on Twitter. A &lt;a href=&#34;https://ctftime.org/ctf-wtf/&#34;&gt;quick search&lt;/a&gt; told me CTF stands for &amp;ldquo;Capture the Flag&amp;rdquo;, and means a type of information security competition where players or teams compete to collect &amp;ldquo;flags&amp;rdquo; for points. This sounds, to be honest, &lt;em&gt;deeply intimidating&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;I may be a professional software developer, but I have never been a hacker. I don&#39;t decompile software or use cheat codes in games, and I only switched my IDE to dark mode due to peer pressure from my coworkers. I hate the way the hacker stereotype involves taking joy from making other people feel stupid. I particularly hate feeling stupid.&lt;/p&gt;
-&lt;p&gt;But I &lt;em&gt;love&lt;/em&gt; puzzle games.&lt;/p&gt;
-&lt;p&gt;Removed from the competitive aspect, a Capture the Flag event is solving a series of puzzles using techniques like forensics and cryptography. This sounds fun to me! But the problem remains: how do you learn those techniques if you&#39;re just a regular person who has never considered exploiting a web server?&lt;/p&gt;
-&lt;p&gt;It turns out CTFs are &lt;em&gt;not&lt;/em&gt; exclusively high-pressure clashes between technowizards who are out to crush your self esteem. Some events are explicitly aimed at beginners, and can serve as educational opportunities to get familiar with the tools and techniques.&lt;/p&gt;
-&lt;h2 id=&#34;women-unite-over-ctf&#34;&gt;Women Unite Over CTF&lt;/h2&gt;
-&lt;p&gt;I clicked on the Women Unite event with the thought of sending it to my coworker, who is actively studying security. However, my attention was caught by wording like &amp;ldquo;laidback&amp;rdquo; and &amp;ldquo;we&#39;ll give you a tutorial&amp;rdquo;. Could this be a friendly way to get started? I signed up on a whim.&lt;/p&gt;
-&lt;h3 id=&#34;the-event&#34;&gt;The event&lt;/h3&gt;
-&lt;p&gt;I was not precisely thrilled at getting up before 9am on a Saturday, but I was excited to learn new things! I still wasn&#39;t convinced I would solve a single puzzle.&lt;/p&gt;
-&lt;h4 id=&#34;the-bad&#34;&gt;The bad&lt;/h4&gt;
-&lt;p&gt;The online event had a bit of a rough start. The competition was hosted on Point3 Security&#39;s ESCALATE platform, which is supposed to provide a sandboxed environment full of well-designed challenges in various categories. Unfortunately, under the hammering of hundreds of attendees trying to log in, the system mostly provided 504 Gateway Timeouts.&lt;/p&gt;
-&lt;p&gt;Look, I get it. I work in the tech industry, and sometimes despite your best efforts your system falls over and users are angry. &lt;em&gt;However&lt;/em&gt;, if you have a scheduled event coming up with a thousand people registered, please for the love of little fishes test what 1000 concurrent connections will do to your web app!&lt;/p&gt;
-&lt;p&gt;I didn&#39;t care about prizes so wasn&#39;t too bummed about the late start, but it was still frustrating. It took well over an hour before I could even log in, and even then clicking any link could take up to five minutes or time out entirely. Since completing each challenge took at least five clicks, this was a huge tax on participation.&lt;/p&gt;
-&lt;h4 id=&#34;the-good&#34;&gt;The good&lt;/h4&gt;
-&lt;p&gt;Even so, the ESCALATE platform was pretty cool. The provided Linux VM was stocked with every conceivable application used for decompiling or inspecting files, and the problems themselves escalated in difficulty in a way that I was able to take what I&#39;d learned from one challenge and apply it to the next. After the competition was over and (I assume) most people had logged off, all the fancier features were able to load and I found the tool quite pleasant.&lt;/p&gt;
-&lt;p&gt;The best part, however, were the tutorials. On the livestream the presenter Nada gave walkthroughs for three of the reverse-engineering challenges, including demonstrating which tools to use and some of the features of those tools. This was, to my mind, the most critical part.&lt;/p&gt;
-&lt;p&gt;The tutorials themselves had some pretty advanced concepts compressed into a very short lesson, so I don&#39;t know how they would feel for complete beginners. Since I already know how to code and even have a vague understanding of assembly language I got the most value out of the sections that explained the thought process of which tools to choose for which parts of the process. (Although the assembly reference was also essential—I didn&#39;t have &lt;em&gt;that&lt;/em&gt; strong an understanding going in!)&lt;/p&gt;
-&lt;p&gt;Due to the technical difficulties they extended the time of the contest and let everyone continue using the ESCALATE trial until the end of the day. This allowed me to keep plugging along at challenges on a system that was not currently being accidentally DDOSed. It was a rewarding and fun afternoon.&lt;/p&gt;
-&lt;h3 id=&#34;the-results&#34;&gt;The results&lt;/h3&gt;
-&lt;p&gt;I ended up solving 9 out of 28 challenges! I got all five in Network Foundations Level 1 and the easiest four Reverse Engineering problems. Three of those reverse engineering challenges had walkthroughs, but the last (and most complex!) I was able to extrapolate based on what I had learned in the previous lessons. The networking challenges I figured out for myself, starting from the knowledge of &amp;ldquo;Wireshark is a tool for looking at network stuff&amp;rdquo;.&lt;/p&gt;
-&lt;p&gt;I came out with a basic knowledge of how to use Wireshark, BinaryNinja, and Ollydbg. More generally I learned about static and dynamic analysis of binaries, and a little bit about when and why to use them.&lt;/p&gt;
-&lt;p&gt;After the event was over I was hype for more learning and signed up for a resource &lt;a href=&#34;https://dev.to/atan/what-is-ctf-and-how-to-get-started-3f04&#34;&gt;recommended for newcomers&lt;/a&gt;. Instead it has opaque problems with zero guidance labelled &amp;ldquo;very easy&amp;rdquo; and I hate it. Let&#39;s just say there&#39;s still room for improvement in this space.&lt;/p&gt;
-&lt;p&gt;Thanks to &lt;a href=&#34;https://www.ittakesahuman.com/&#34;&gt;Point3 Security&lt;/a&gt;, &lt;a href=&#34;https://gatebreachers.org/&#34;&gt;Gatebreachers&lt;/a&gt;, &lt;a href=&#34;https://womenscyberjutsu.org/&#34;&gt;Women&#39;s Society of Cyberjutsu&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/WoSECtweets&#34;&gt;WoSEC&lt;/a&gt;, and &lt;a href=&#34;https://www.womenhackerz.com/&#34;&gt;WomenHackerz&lt;/a&gt; for putting on an event that, technical difficulties aside, succeeded in making security feel accessible.&lt;/p&gt;</description>
      </item>
    
      <item>
