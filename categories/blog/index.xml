@@ -7,12 +7,53 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Thu, 07 May 2020 22:49:41 -0700</lastBuildDate>
+   <lastBuildDate>Mon, 24 Aug 2020 22:40:34 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/categories/blog/index.xml" rel="self" type="application/rss+xml" />
    
    
    
+   
+     <item>
+       <title>Lessons learned from a Recurse Center mini-batch</title>
+       <link>https://blog.fabrefact.ca/posts/lessons-from-recurse-mini-batch/</link>
+       <pubDate>Mon, 24 Aug 2020 22:40:34 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/lessons-from-recurse-mini-batch/</guid>
+       <description>&lt;p&gt;A few weeks ago I impulsively applied for the August mini-batch at the Recurse Center. I&#39;d been idly daydreaming about attending Recurse when traveling to New York seems feasible again, assuming I could figure out how to make it work with my job. I then realised that the one-week mini-batch would only require me to take a week&#39;s vacation, and this year&#39;s virtual events meant I wouldn&#39;t even have to tack on the stress of travel!&lt;/p&gt;
+&lt;p&gt;My 5-day batch in mid-August was over in a flash, but I had a lot of fun. Here&#39;s some things I learned, in no particular order:&lt;/p&gt;
+&lt;h2 id=&#34;lesson-1-rc-isnt-just-for-coding-wizards&#34;&gt;Lesson 1: RC isn&#39;t just for coding wizards&lt;/h2&gt;
+&lt;p&gt;I stressed out quite a bit about applying, because I had in my head that RC was for &amp;ldquo;real&amp;rdquo; programmers who do things like write compilers and start open-source art projects and understand Haskell and finish any of their side projects. Mostly this was because everyone I talked to who had been through RC seemed so smart and accomplished. It was intimidating!&lt;/p&gt;
+&lt;p&gt;Despite my fears about not meeting the &amp;ldquo;higher standards&amp;rdquo; for the mini batch, I was accepted and made to feel totally welcome. I met people at Recurse with all sorts of backgrounds, from career changers and bootcamp grads to very experienced engineers. The only thing everyone has in common is a drive to learn new things.&lt;/p&gt;
+&lt;p&gt;I don&#39;t know that I would have applied to RC earlier if I had known I wasn&#39;t &amp;ldquo;too junior&amp;rdquo; to be considered, but I sure would have been less anxious about my application!&lt;/p&gt;
+&lt;h2 id=&#34;lesson-2-about-50-of-a-minibatch-is-socializing&#34;&gt;Lesson 2: About 50% of a mini-batch is socializing&lt;/h2&gt;
+&lt;p&gt;The mini batches happen during the first week of each incoming batch. For the people attending a full or half batch, this first week is a chance to get familiar with Recurse, meet everyone, and figure out what you&#39;re going to work on. There&#39;s a lot of events scheduled, and new members are encouraged to attend as many as possible. It makes sense to focus on mingling if you have five-plus more weeks to work on projects, but what if that week is all you get?&lt;/p&gt;
+&lt;p&gt;I planned to spend the whole week heads-down coding, but in the days leading up to the start, the escalating number of emails and invites and meetups forced me to reconsider. While it would certainly be &lt;em&gt;possible&lt;/em&gt; to attend a Recurse batch and not participate in the social events, it seems like a giant waste of opportunity.&lt;/p&gt;
+&lt;p&gt;The first day is pretty heavy on scheduled events, which I decided to lean into and not worry about &amp;ldquo;being productive&amp;rdquo;. After that I made sure to attend one or two events that sounded interesting every day, and let focused work happen where it may.&lt;/p&gt;
+&lt;p&gt;I unfortunately picked a project that was hard to collaborate on, but I did do a few pairing sessions on unrelated problems and overall was happy with how I divided my time.&lt;/p&gt;
+&lt;h2 id=&#34;lesson-3-remote-pairing-requires-clear-communication&#34;&gt;Lesson 3: Remote pairing requires clear communication&lt;/h2&gt;
+&lt;p&gt;I was excited to try out pair programming at RC, since it&#39;s not something I&#39;ve had much opportunity to do at work. One of the first events was a pair-programming workshop, which I think went really well. I did another pairing session that I felt I floundered a little on without the additional structure of the workshop.&lt;/p&gt;
+&lt;p&gt;It quickly became clear to me that if both parties have access to edit the code but can&#39;t see each other, clearly stating who is in the driver/navigator roles is very important. If you&#39;re both in the same room you have body language to work with (and can&#39;t both be typing at the same time) so there&#39;s a little more implicit communication, but over the internet it&#39;s all verbal. This is always harder than I think it&#39;s going to be!&lt;/p&gt;
+&lt;p&gt;There were inevitable technology glitches with the remote coding platform we used, which sometimes made it so the other person couldn&#39;t see what you typed. This drove home the importance of you both being in agreement about who is supposed to be typing.&lt;/p&gt;
+&lt;p&gt;I still don&#39;t know what the proper etiquette is when neither pair knows how to proceed and you need to look things up. Do you both halt and research? One person read their findings out loud? There&#39;s probably no one right answer to this.&lt;/p&gt;
+&lt;h2 id=&#34;lesson-4-dont-try-to-learn-a-language-and-complete-a-project-in-one-week&#34;&gt;Lesson 4: Don&#39;t try to learn a language and complete a project in one week&lt;/h2&gt;
+&lt;p&gt;My goal was to make some serious progress on writing a distributed key-value store in Rust, and by mid-week I was buried in error messages about lifetimes and borrowing. This phase of learning Rust is apparently known as &amp;ldquo;fighting the borrow checker&amp;rdquo;. I felt a little frustrated at my lack of progress, and also blocked from working collaboratively.&lt;/p&gt;
+&lt;p&gt;It&#39;s possible a more outgoing person would have found a way to turn these error messages into a pairing problem, but my reaction to being confused is to silently read seventeen different articles, which isn&#39;t ideal for collaboration. Instead I only worked with other people while ignoring my main project.&lt;/p&gt;
+&lt;p&gt;If I were to do this again, I would pick a goal of &lt;em&gt;either&lt;/em&gt; learning a new language (ie, learn Rust by doing small problems every day) &lt;em&gt;or&lt;/em&gt; a specific project (make a web app), but not both at the same time in one week.&lt;/p&gt;
+&lt;h2 id=&#34;lesson-5-virtual-rc-replicates-many-aspects-of-inperson-eventsincluding-the-social-anxiety&#34;&gt;Lesson 5: Virtual RC replicates many aspects of in-person events—including the social anxiety&lt;/h2&gt;
+&lt;p&gt;My first reaction to logging in to Virtual RC was exactly the same as when I showed up to !!Con—panic that I didn&#39;t know where I was supposed to go or which room the first event was being held in! Is it ok if I stand near these people or are they all friends who know each other and I&#39;m just being weird?! I don&#39;t know the etiquette for touching things so I don&#39;t want to touch anything! o no! (In both cases things turned out fine.)&lt;/p&gt;
+&lt;p&gt;There were very cool aspects of the Virtual RC platform: I got the feeling of being in a space with other people without having to be in a Zoom call all day, there were defined places to go for events, and the audio rooms were a cool way to create and join voice chats in a low-friction way. It took most of the week before I got comfortable making links and notes, but if I spend more time there I can see it feeling second nature.&lt;/p&gt;
+&lt;p&gt;The main downsides I found were that the interface is a little opaque if you&#39;ve never seen it before, and there was rarely an easy way to casually discover what other people are up to without asking them directly. On the one hand this latter point helps enforce the &amp;ldquo;no back-seat driving&amp;rdquo; social rule (you can&#39;t shout into a conversation without joining it); on the other hand approaching people directly without first receiving social cues that I would be welcome is a major anxiety trigger for me.&lt;/p&gt;
+&lt;p&gt;Virtual RC has ways for people to indicate what is going on in a given room, but I found they were used haphazardly. Often I would see a group of interesting people on a call and have no idea if it was ok to wander in, or if it was something you had to sign up for in advance.&lt;/p&gt;
+&lt;p&gt;This was counteracted by the fact that many events were announced on Zulip and visible on the calendar so it&#39;s not like I had a shortage of events. I just wish there was a way to casually overhear what&#39;s going on in a room without (metaphorically) throwing open the door and announcing your name!&lt;/p&gt;
+&lt;p&gt;I am interested in seeing how the platform continues to evolve, and also looking into other &amp;ldquo;hallway track&amp;rdquo; platforms.&lt;/p&gt;
+&lt;h2 id=&#34;lesson-6-its-okay-to-relax&#34;&gt;Lesson 6: It&#39;s okay to relax&lt;/h2&gt;
+&lt;p&gt;My week at Recurse coincided with a week of beautiful weather in my city and a few social commitments I hadn&#39;t planned on. Rather than stress out about all the coding I wasn&#39;t getting done and working late into the night, I tended to log off shortly after the East Coast contingent disappeared (mid-afternoon my time), and go read a book in the sunshine.&lt;/p&gt;
+&lt;p&gt;I was a little disappointed in my lack of coding progress, but when my week ended I still felt excited about programming! I continued working on my Rust project through the weekend and got it working by Sunday.&lt;/p&gt;
+&lt;p&gt;The end result of not pushing myself was I had a relaxing vacation, met a bunch of cool people, and still succeeded in achieving my target for my Rust project (if a couple days late.) A++ would recommend taking breaks and naps and coffee chats!&lt;/p&gt;
+&lt;p&gt;Overall I had a very good time at virtual Recurse Center, and I look forward to maybe attending a batch in New York in the future.&lt;/p&gt;
+</description>
+     </item>
    
      <item>
        <title>Refactoring Legacy Javascript: Part 1</title>

@@ -4,21 +4,56 @@
   
   <url>
     <loc>https://blog.fabrefact.ca/posts/</loc>
-    <lastmod>2020-08-20T22:49:47-07:00</lastmod>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.fabrefact.ca/tags/books/</loc>
-    <lastmod>2020-08-20T22:49:47-07:00</lastmod>
+    <loc>https://blog.fabrefact.ca/categories/blog/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.fabrefact.ca/categories/</loc>
-    <lastmod>2020-08-20T22:49:47-07:00</lastmod>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/categories/events/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.fabrefact.ca/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/posts/lessons-from-recurse-mini-batch/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/tags/pairing/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/tags/recurse-center/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/tags/rust/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/tags/</loc>
+    <lastmod>2020-08-24T22:40:34-07:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.fabrefact.ca/tags/books/</loc>
     <lastmod>2020-08-20T22:49:47-07:00</lastmod>
   </url>
   
@@ -29,11 +64,6 @@
   
   <url>
     <loc>https://blog.fabrefact.ca/categories/reading-list/</loc>
-    <lastmod>2020-08-20T22:49:47-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fabrefact.ca/tags/</loc>
     <lastmod>2020-08-20T22:49:47-07:00</lastmod>
   </url>
   
@@ -95,11 +125,6 @@
   <url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-may-9/</loc>
     <lastmod>2020-05-09T22:51:49-07:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fabrefact.ca/categories/blog/</loc>
-    <lastmod>2020-05-07T22:49:41-07:00</lastmod>
   </url>
   
   <url>
@@ -194,11 +219,6 @@
   
   <url>
     <loc>https://blog.fabrefact.ca/tags/ctf/</loc>
-    <lastmod>2019-11-04T16:04:02-08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.fabrefact.ca/categories/events/</loc>
     <lastmod>2019-11-04T16:04:02-08:00</lastmod>
   </url>
   
