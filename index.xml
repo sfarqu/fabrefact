@@ -7,12 +7,117 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Mon, 24 Aug 2020 22:40:34 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 30 Aug 2020 11:24:03 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/index.xml" rel="self" type="application/rss+xml" />
    
    
    
+   
+     <item>
+       <title>what i&#39;m reading: August 30</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-30/</link>
+       <pubDate>Sun, 30 Aug 2020 11:24:03 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-30/</guid>
+       <description>&lt;p&gt;Latest batch of reading tipped me over the threshold of having to look up the etymology of &amp;ldquo;footgun&amp;rdquo;, which seems to be everywhere in programming language discussions. As jargon I think this term is memorable but ineffective—before looking it up I assumed the meaning was &amp;ldquo;pointless extra feature that sounds cool but is impossible to use properly&amp;rdquo;, vs the intended meaning of &amp;ldquo;feature that will lead users into trouble&amp;rdquo;.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Started the audiobook of &lt;a href=&#34;https://greystonebooks.com/products/gut-revised-edition&#34;&gt;Gut: The Inside Story of Our Body&#39;s Most Underrated Organ&lt;/a&gt; and have been excitedly inserting anecdotes about digestion into every conversation with my very patient loved ones.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;papers&#34;&gt;Papers&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Have had Leslie Lamport&#39;s 1978 paper &lt;a href=&#34;http://lamport.azurewebsites.net/pubs/time-clocks.pdf&#34;&gt;Time, Clocks, and the Ordering of Events in a Distributed System&lt;/a&gt; open in a tab for weeks, and finally found the mental energy to read it. I quite enjoy reading older papers about distributed systems and seeing where some of the field&#39;s current best practices come from! Someday I&#39;m going to have to learn more mathematical symbols in order to understand more of the proofs though.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h1 id=&#34;effective-leadership-and-managing-people&#34;&gt;Effective leadership and managing people&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;David Daly&#39;s post about &lt;a href=&#34;https://www.daviddaly.me/2020/08/im-no-longer-manager-and-thats-good.html&#34;&gt;returning to an IC role after being a manager for a few years&lt;/a&gt; was interesting to me mostly for the example of self-reflecting to identify what specific parts of your job make you happy.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I liked how practical Sally Lait&#39;s tips about &lt;a href=&#34;https://sallylait.com/blog/2020/08/24/scaling-yourself/&#34;&gt;how to scale yourself as an engineering manager&lt;/a&gt; were!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Even though I don&#39;t know if this will ever be directly applicable to me, I enjoyed Claire Lew&#39;s &lt;a href=&#34;https://twitter.com/clairejlew/status/1299118371221377024&#34;&gt;practical advice on how to help new managers level up quickly&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Adrienne Lowe has a bunch of &lt;a href=&#34;https://leadingwithspoons.com/2020/08/27/leading-senior-engineers-lessons-learned/&#34;&gt;good, specific advice for managing senior engineers&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;This LeadDev article from Katie Womersley is about &lt;a href=&#34;https://leaddev.com/myths-and-traps-managing&#34;&gt;effective vs counterproductive ways to &amp;ldquo;manage up&amp;rdquo;&lt;/a&gt;, but I think it identifies patterns and anti-patterns for forming good collaborative relationships with anyone you work with.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;a href=&#34;https://leaddev.com/reality-being-principal-engineer&#34;&gt;The reality of being a Principal Engineer&lt;/a&gt; by Silvia Botros mostly contained validation of things I already believe, but I liked the emphasis on influencing other people and being a role model, intentional or not.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;difficult-problems-in-software-development-that-are-only-a-little-about-managing-people&#34;&gt;Difficult problems in software development that are only a little about managing people&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I really enjoyed Rain&#39;s post on &lt;a href=&#34;https://sunshowers.io/posts/dependencies/&#34;&gt;the problems with software dependencies&lt;/a&gt;, which covers a lot of the history of dependency management, the current tradeoffs which need to be made in every language/project, and a focus on the choices being made by Rust&#39;s package manager Cargo.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Captivated by Carmen Andoh&#39;s twitter thread about &lt;a href=&#34;https://twitter.com/carmatrocity/status/1298725084232728578&#34;&gt;how modern collaboration tooling like GitHub increases burnout among maintainers of large OSS projects&lt;/a&gt;, and how some modern projects are building collaboration tooling to deal with this problem, even as Linux is trying to modernize its workflows in the other direction. An interesting tradeoff I was not aware of before!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paul Börding and Steve Upton&#39;s post on &lt;a href=&#34;https://www.thoughtworks.com/insights/blog/managing-feature-toggles-teams&#34;&gt;managing feature toggles&lt;/a&gt; covers the nitty-gritty details I&#39;ve always been curious about how to implement like: what process can you implement to make sure teams remember to remove the toggle after it&#39;s no longer needed?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jacques Mattheij states almost exactly &lt;a href=&#34;https://jacquesmattheij.com/why-johnny-wont-upgrade/&#34;&gt;why I avoid installing software updates&lt;/a&gt;, even though I am aware of the security risks that causes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Selected an article in Increment&#39;s new &lt;a href=&#34;https://increment.com/apis/&#34;&gt;API edition&lt;/a&gt; almost at random, and found Darius Kazemi&#39;s delicious dive into &lt;a href=&#34;https://increment.com/apis/land-before-modern-apis/&#34;&gt;the history of HTTP status codes&lt;/a&gt; as an example of how API decisions can have an outsized effect on the future of technology.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;building-inclusive-teams&#34;&gt;Building inclusive teams&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Erica Stanley&#39;s LeadDev article &lt;a href=&#34;https://leaddev.com/so-you-want-build-antiracist-teams&#34;&gt;So you want to build antiracist teams&lt;/a&gt; includes a number of specific actions companies can take to build an inclusive culture, as well as resources for Black technologists to combat isolation if their current company is not very diverse.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Not hype about linking to LinkedIn posts, but Andrew Hedges&amp;rsquo; post about &lt;a href=&#34;https://www.linkedin.com/pulse/we-mentor-early-career-developers-heres-what-need-succeed-hedges&#34;&gt;what early-career developers need to succeed&lt;/a&gt; contains some good guidelines on how to design a good learning experience for new developers.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Kat Fukui&#39;s account of &lt;a href=&#34;https://www.tinykat.cafe/on-all-that-fuckery&#34;&gt;receiving targeted harassment through her employer&#39;s platform&lt;/a&gt; (CW: screencaps and descriptions of racist, sexist, transphobic, abusive language and actions) contains a coda about what tech leaders need to think about in creating a safe working environment for employees.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;programming-language-wonkery&#34;&gt;Programming language wonkery&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Steve Klabnik wrote a post that is mostly about a debate in the Rust community around a macro called CXX, which is above my pay grade, but I found it valuable for the &lt;a href=&#34;https://steveklabnik.com/writing/the-cxx-debate&#34;&gt;explanation of what the &lt;code&gt;unsafe&lt;/code&gt; keyword in Rust means and how to use it&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Andreas Rossberg&#39;s explanation of the &lt;a href=&#34;https://stackoverflow.blog/2020/08/24/motoko-the-language-that-turns-the-web-into-a-computer/&#34;&gt;design decisions behind his new programming language, Motoko&lt;/a&gt;, was an interesting read, since it included approachable overviews of Wasm and the actor model in programming languages. The overall project seems a little buzzwordy, but I liked reading about why specific choices were made for a language, and now have the original Wasm research in my reading queue.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;wip-learning-resources&#34;&gt;WIP learning resources&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;One of the projects I&#39;m working on is a tiny web app using React. As soon as I needed to persist data between components I have been leaning heavily on the &lt;a href=&#34;https://react-redux.js.org/introduction/basic-tutorial&#34;&gt;React-Redux basic tutorial&lt;/a&gt; and Dan Abramov&#39;s &lt;a href=&#34;https://egghead.io/lessons/javascript-redux-persisting-the-state-to-the-local-storage?course=building-react-applications-with-idiomatic-redux#t=106&#34;&gt;Persisting the State to the Local Storage&lt;/a&gt; in order to solve my specific use-cases without needing to stop coding entirely in order to learn a new subject.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Also for this project, &lt;a href=&#34;https://css-tricks.com/snippets/css/a-guide-to-flexbox/&#34;&gt;A Complete Guide to Flexbox&lt;/a&gt; has been invaluable to get even the roughest positioning using modern CSS techniques.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;learning-in-public&#34;&gt;Learning in public&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Vishnu Bharathi wrote a cool investigation of &lt;a href=&#34;https://vishnubharathi.codes/blog/levenshtein-distance/&#34;&gt;practical uses of Levenshtein distance&lt;/a&gt; using examples of several command-line parsers, including descriptions of how he analysed the code to learn and practice dynamic programming.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Christina Austin wrote an in-depth explanation of &lt;a href=&#34;https://medium.com/@clausti/content-notes-using-css-declarative-state-machine-28f7b29e1ebd&#34;&gt;making two divs toggle using only CSS with no Javascript&lt;/a&gt;, including a lot of browser wonkery I&#39;d never heard of before.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Bas Alberts posted the first in a series about &lt;a href=&#34;https://securitylab.github.com/research/now-you-c-me&#34;&gt;finding C vulnerabilities in interpreted languages like PHP and Perl&lt;/a&gt;, and I am already eagerly awaiting the next installment!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Maddie Stone has a great post on the Project Zero blog about how &lt;a href=&#34;https://googleprojectzero.blogspot.com/2020/07/detection-deficit-year-in-review-of-0.html&#34;&gt;limitations in how 0-day vulnerabilities are detected mean we can&#39;t draw many conclusions from the data&lt;/a&gt;, including some hypotheses on why so few 0-day exploits are detected.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>Lessons learned from a Recurse Center mini-batch</title>
