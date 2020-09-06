@@ -7,12 +7,112 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 30 Aug 2020 11:24:03 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 06 Sep 2020 11:54:54 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/tags/links/index.xml" rel="self" type="application/rss+xml" />
    
    
    
+   
+     <item>
+       <title>what i&#39;m reading: September 6</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-sep-6/</link>
+       <pubDate>Sun, 06 Sep 2020 11:54:54 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-sep-6/</guid>
+       <description>&lt;p&gt;Oh no friends, I found a huge cache of unread links in my inbox. On average I spend four to eight hours putting together these posts, much of it reading articles that I&#39;ve collected throughout the week. Time to be ruthless about what I consider interesting enough to give my attention to!&lt;/p&gt;
+&lt;p&gt;Hoping to resume streaming code on Twitch soon. Sundays seems like a likely time slot, so long as I can reign in my article reading to something manageable.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Instead of reading tech stuff I read four historical romances by Jeannie Lin last Tuesday. I often have trouble with romances outside of Regencies, which I imprinted on as a teen, but one of my favourite historical romance authors Courtney Milan was promoting Lin&#39;s &lt;a href=&#34;https://www.goodreads.com/series/108961-the-pingkang-li-mysteries&#34;&gt;Lotus Palace mysteries&lt;/a&gt;, a wuxia-inspired series set in Tang-dynasty China. It has all the delicious clothing details and elaborate etiquette rituals I want in a lighthearted read, and murder mysteries to boot. Sometimes a little thin, but fun!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;papers&#34;&gt;Papers?&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://cacm.acm.org/magazines/2018/12/232881-bringing-the-web-up-to-speed-with-webassembly/fulltext&#34;&gt;Bringing the Web Up to Speed with WebAssembly&lt;/a&gt; is an introduction to Wasm that is maybe not quite a technical paper, but definitely not easy reading either. I&#39;m glad I got through it, because I keep hearing about WebAssembly and wanting to know more about it, but I didn&#39;t understand pretty much anything in section 3, and now I need a nap.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Jessie Frazelle&#39;s column on &lt;a href=&#34;https://queue.acm.org/detail.cfm?id=3419941&#34;&gt;the history of storage media&lt;/a&gt; contained a lot of factoids I didn&#39;t know, including the existence of hand-woven rope memory in space?!&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;performance-engineering&#34;&gt;Performance engineering&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Nikhil Thomas had a great blog post about how &lt;a href=&#34;https://nthomas.org/2020-09-03-All-My-Good-Habits-Are-Bad/&#34;&gt;high performance coding often conflicts with other coding best practices&lt;/a&gt;. Still thinking about his disparagement of &amp;ldquo;functional-lite&amp;rdquo; JS, since I have been trying to learn this functional-ish JS style despite my intuition that it&#39;s inefficient.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Malte Skarupke&#39;s extremely performance-wonky post about &lt;a href=&#34;https://probablydance.com/2020/08/31/on-modern-hardware-the-min-max-heap-beats-a-binary-heap/&#34;&gt;how mix-max heaps beat binary heaps on modern hardware&lt;/a&gt; contained an refreshingly clear explanation of what a heap even is and how different types are implemented, along with a proof of his titular assertion.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;career-moves&#34;&gt;Career moves&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Jen Hamilton provides an &lt;a href=&#34;https://medium.com/jen-hamilton/do-you-have-any-questions-for-me-ac6a53da1f2&#34;&gt;excellent starter list of questions for candidates to ask in interviews&lt;/a&gt; along with guidance for creating your own list.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;An interesting thought experiment by Aaron Randall and Amy Phillips about &lt;a href=&#34;https://humansplus.tech/building-the-perfect-tech-team/&#34;&gt;how to build the perfect tech team&lt;/a&gt; which starts by making &lt;em&gt;really, really sure&lt;/em&gt; that you need to hire people at all.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Daniel Miessler&#39;s post on &lt;a href=&#34;https://danielmiessler.com/blog/how-to-initiate-first-contact-with-a-mentor/&#34;&gt;how to initiate contact with a mentor&lt;/a&gt; has some interesting and useful tips, though the final example of &amp;ldquo;offer an improvement to something they&#39;ve made&amp;rdquo; has a catastrophic failure mode of &amp;ldquo;badly explain an expert&#39;s work back to them&amp;rdquo;, and I would tend to avoid that.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;system-architecture&#34;&gt;System architecture&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Matt Klein&#39;s &lt;a href=&#34;https://blog.envoyproxy.io/introduction-to-modern-network-load-balancing-and-proxying-a57f6ff80236&#34;&gt;introduction to modern network load balancing and proxying&lt;/a&gt; is absolute magic, and now I maybe have an inkling of what &amp;ldquo;service mesh&amp;rdquo; means. Interested to know what new developments have happened since 2017.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Paulo Merson&#39;s &lt;a href=&#34;https://www.infoq.com/articles/microservices-design-ideals/&#34;&gt;principles for microservice design&lt;/a&gt; provides an acronym (IDEALS) to remember architecture principles for microservices, and helpfully includes examples too.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tools-for-developers&#34;&gt;Tools for developers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Katie Sylor-Miller wrote a piece about &lt;a href=&#34;https://ksylor.github.io/2020/08/26/bullet-journaling.html&#34;&gt;Bullet Journalling for software engineers&lt;/a&gt; which is very close to my own experience with BuJo. I will fall off it for weeks or months at a time, but find it easier to pick back up again than any other organizational system. When I&#39;m on top of my BuJo I get so much more done!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monica Powell has a quick explanation of &lt;a href=&#34;https://www.aboutmonica.com/blog/how-to-make-your-vs-code-sparkle&#34;&gt;how to add sparkle typing effects to VS Code&lt;/a&gt; using the Power Mode extension, which I had been craving but hadn&#39;t taken the time to look up how to add custom animations. Now my code is 90% sparklier!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;short-technical-dives&#34;&gt;Short technical dives&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This &lt;a href=&#34;https://www.netburner.com/learn/getting-back-on-the-horse-tls-session-resumption/&#34;&gt;intro to resuming TLS sessions&lt;/a&gt; by Dann McCreary gives a clear explanation of the different session persistence mechanisms in TLS 1.2 with an eye specifically on IoT implementations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alison Quaglia reveals some &lt;a href=&#34;https://levelup.gitconnected.com/the-truth-about-hoisting-in-js-8ac79a08a5f9&#34;&gt;odd details about variable hoisting in Javascript and the Temporal Dead Zone&lt;/a&gt;. Features many references to &lt;a href=&#34;https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed/scope-closures&#34;&gt;You Don&#39;t Know JS&lt;/a&gt;, which I should really finish reading one of these days.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I still don&#39;t know what Glauber Costa&#39;s article on &lt;a href=&#34;https://medium.com/@glaubercosta_11125/c-vs-rust-an-async-thread-per-core-story-28c4b43c410c&#34;&gt;C++ vs Rust async bugs&lt;/a&gt; has to do with thread-per-core, but I learned a little bit more about working with the Rust borrow checker.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The Trail of Bits post about &lt;a href=&#34;https://blog.trailofbits.com/2020/06/09/how-to-check-if-a-mutex-is-locked-in-go/&#34;&gt;checking if a mutex is locked in Go&lt;/a&gt; I don&#39;t think spends enough time emphasizing that this solution is only good for test assertions, not live code, but it is a potentially handy and concise trick.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;leading-engineers&#34;&gt;Leading engineers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Andreas Klinger has a &lt;a href=&#34;https://klinger.io/post/613532774806192128/how-i-think-about-code-management&#34;&gt;compelling post about managing code to improve your codebase&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I hesitated on including Sean J. Taylor&#39;s piece on &lt;a href=&#34;https://medium.com/@seanjtaylor/designing-and-evaluating-metrics-5902ad6873bf&#34;&gt;designing and evaluating metrics&lt;/a&gt; because I found it a little dense and the Simpsons gifs off-putting, but I think there&#39;s valuable ideas here on properties of metrics worth evaluating before you try to use them to measure your organization.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mario Fernandez has practical advice about &lt;a href=&#34;https://hceris.com/dev-huddle-as-a-tool-to-achieve-alignment-among-developers/&#34;&gt;how and why to implement a &amp;ldquo;dev huddle&amp;rdquo; meeting with your team&lt;/a&gt; that is making me think about my current meetings.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ross Pettit&#39;s post on &lt;a href=&#34;http://www.rosspettit.com/2020/08/legacy-modernization.html&#34;&gt;legacy modernization&lt;/a&gt; points out that the biggest hurdle of migrating legacy software is identifying a good enough value proposition to even start.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The other day I did a short tech talk about GraphQL (which was terrible but I&#39;ll talk about that another time), and one of the questions was how authorization is handled. I didn&#39;t have a ready answer but it seems to be&amp;hellip;up to whoever&#39;s writing the server? Dominic Couture&#39;s post about &lt;a href=&#34;https://blog.deesee.xyz/graphql/security/2020/04/13/graphql-permission-testing.html&#34;&gt;how to enumerate paths to validate authorization logic&lt;/a&gt; indicates that this is a running security concern with GraphQL implementations.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I pretty much never feel like watching talks, so I&#39;m definitely missing context by reading the slides from Stefan Edwards and Bobby Tonic&#39;s presentation on &lt;a href=&#34;https://github.com/lojikil/kyoto-go-nihilism/blob/master/go-ing-for-a-stroll/presentation.md&#34;&gt;vulnerabilities in Go&lt;/a&gt; but I still learned some tips! Mostly that I don&#39;t understand anything about &lt;code&gt;defer&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: August 30</title>
