@@ -7,12 +7,124 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 13 Sep 2020 16:19:03 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 04 Oct 2020 11:16:42 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/index.xml" rel="self" type="application/rss+xml" />
    
    
    
+   
+     <item>
+       <title>what i&#39;m reading: Oct 4</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-oct-4/</link>
+       <pubDate>Sun, 04 Oct 2020 11:16:42 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-oct-4/</guid>
+       <description>&lt;p&gt;I spent a lot of September in a bit of a funk with regards to reading, especially technical topics. I also started building a Slack bot on a whim, so a lot of time I would otherwise have devoted to reading and collating links went instead to poring over API docs for the Bolt library and various AWS services. Hope to write a post about that soon!&lt;/p&gt;
+&lt;p&gt;I spent today merely curating the things I&#39;d already read, leaving next-week-Sara a massive reading list that I&#39;m sure she will have time for. In the meantime, I&#39;m going outside today while the autumn weather is still pleasant!&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;After a Board of Directors strategic retreat for a charity I&#39;m involved with, I thought I&#39;d better get more acquainted with the literature on strategy for nonprofits. Started with &lt;a href=&#34;https://www.wiley.com/en-ca/Creating+Your+Strategic+Plan%3A+A+Workbook+for+Public+and+Nonprofit+Organizations%2C+3rd+Edition-p-9780470405352&#34;&gt;Creating Your Strategic Plan&lt;/a&gt; workbook by John M. Bryson &amp;amp; Farnu K. Alston, followed up by the more readable &lt;a href=&#34;https://www.goodreads.com/book/show/884060.Strategic_Planning_for_Nonprofit_Organizations&#34;&gt;Strategic Planning for Nonprofit Organizations&lt;/a&gt; by Michael Allison &amp;amp; Jude Kaye&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Courtney Milan&#39;s new book &lt;a href=&#34;https://www.courtneymilan.com/the-duke-who-didnt/&#34;&gt;The Duke Who Didn&#39;t&lt;/a&gt; dropped in late September, so when my preorder showed up I read it immediately. I loved the subversion of a trope at the end, and deeply enjoyed the attention to detail of the Chinese inhabitants of the fictional English village of Wedgeford, down to the different languages and name choices used depending on the character&#39;s background. For the latter reason I also adored the author&#39;s note, since I wasn&#39;t familiar with Hakka culture at all.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;After being reminded of new works by historical romance authors I like, I also picked up the newest Tessa Dare (&lt;a href=&#34;https://tessadare.com/bookshelf/the-wallflower-wager/&#34;&gt;The Wallflower Wager&lt;/a&gt;) and Julia Quinn (&lt;a href=&#34;https://juliaquinn.com/books/first-comes-scandal/&#34;&gt;First Comes Scandal&lt;/a&gt;), each the latest in a quartet of related books.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I asked for &lt;a href=&#34;https://www.goodreads.com/book/show/21416690-the-invisible-library&#34;&gt;The Invisible Library&lt;/a&gt; by Genevieve Cogman for Christmas on the strength of the cover and the summary, and finally pulled it off the TBR shelf. It delivered a fun, Steampunk-y spy adventure.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Finished the Gut audiobook and started on &lt;a href=&#34;https://www.goodreads.com/book/show/35721140-liquid-rules&#34;&gt;Liquid Rules: the delightful &amp;amp; dangerous substances that flow through our lives&lt;/a&gt; by Mark Miodownik, which is a fun scientific romp as I expected, but the framing device of a plane ride is a little grim so far.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h2 id=&#34;engineering-leadership&#34;&gt;Engineering leadership&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This Lead Dev article from Jaun Pablo Buriticá about &lt;a href=&#34;https://leaddev.com/scaling-software-systems/primer-engineering-delivery-metrics&#34;&gt;engineering delivery metrics&lt;/a&gt; doesn&#39;t necessarily say anything new or groundbreaking if you read a lot about how to implement metrics, but it&#39;s a good primer and contains some conclusions that are worth remembering if you&#39;ve lost focus.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I found the quote-tweeted story about a screwed-up engineering culture at Twitter fascinating, but John Turner&#39;s &lt;a href=&#34;https://twitter.com/while1malloc0/status/1311643616775938049&#34;&gt;thread about how leadership can enforce a consistent tech stack while allowing room for experimentation and growth&lt;/a&gt; is a good takeaway.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Laurie Barth&#39;s excellent title &lt;a href=&#34;https://laurieontech.com/posts/senior-interviews/&#34;&gt;Senior Interviews != Three Junior Interviews in a Trench Coat&lt;/a&gt; delivers an article about why harder coding problems are probably the wrong approach for an interview, and some suggestions of better directions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;skills-for-developers&#34;&gt;Skills for developers&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Nicolas Carlo&#39;s &lt;a href=&#34;https://understandlegacycode.com/blog/when-should-you-stop-refactoring-legacy-code/&#34;&gt;When should you stop refactoring Legacy Code?&lt;/a&gt; ends on a helpful list of tips on how to avoid getting lost in the weeds of refactoring.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Trisha Gee&#39;s &lt;a href=&#34;https://trishagee.com/2020/09/07/reading-code-is-a-skill/&#34;&gt;Reading Code is a Skill&lt;/a&gt; is an excellent breakdown of why admonishing developers to &amp;ldquo;write readable code&amp;rdquo; does not absolve us from having to learn and practice code reading as a distinct skillset.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Alex Bachuk&#39;s article about &lt;a href=&#34;https://pragmaticlead.com/posts/unlock-your-productivity-by-taling-better-notes-zettlekasten&#34;&gt;taking better notes&lt;/a&gt; is not as actionable as I&#39;d like, but contains some suggestions I don&#39;t do (prepare for the week ahead by re-reading notes &amp;amp; scheduling follow ups) and some things I do poorly (extract action items from notes and complete them on time), as well as links to additional resources on note taking.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;software-best-practices-revisited&#34;&gt;Software best practices revisited&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Cindy Sridharan &lt;a href=&#34;https://medium.com/@copyconstruct/small-functions-considered-harmful-91035d316c29&#34;&gt;pushes back against the common Agile dogma that small functions are always better&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Einar W. Høst transcribes a talk about &lt;a href=&#34;https://einarwh.wordpress.com/2020/04/05/death-of-a-craftsman/&#34;&gt;why he no longer identifies with the &amp;ldquo;software craftsman&amp;rdquo; movement&lt;/a&gt; and dives into how craftsmanship fetishizes code and the Hero&#39;s Journey at the expense of the complex reality of how software gets made.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Gilad Peleg &lt;a href=&#34;https://www.giladpeleg.com/blog/better-code-review/&#34;&gt;takes a critical look at pre-merge code reviews&lt;/a&gt; and how they can be improved, but also puts them in the wider context of quality control gates in the delivery pipeline.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;career-moves&#34;&gt;Career moves&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Apoorva Govind provides a rubric for &lt;a href=&#34;https://apoorvagovind.substack.com/p/how-to-waste-your-career-one-comfortable&#34;&gt;identifying if your current role suits your career ambitions&lt;/a&gt; or if it is time to shake off complacency and move on to something more challenging. Govind is more ruthless about &amp;ldquo;wasting time&amp;rdquo; than I am, but I still like the framework for regularly evaluating your job and looking into changing it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Jess Iandiorio asserts that &lt;a href=&#34;https://medium.com/swlh/the-real-reason-women-arent-getting-ahead-in-tech-she-s-not-strategic-5ba98ad91f77&#34;&gt;women are often labelled &amp;ldquo;not strategic&amp;rdquo;&lt;/a&gt; and therefore unsuited to leadership roles, and unpacks several potential reasons and solutions.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stephanie Hurlburt&#39;s &lt;a href=&#34;https://twitter.com/sehurlburt/status/1311354887326883840&#34;&gt;thread about tech NDAs&lt;/a&gt; was an interesting insight into things to look out for in contracts.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;history-and-covid&#34;&gt;History and COVID&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;I&#39;ve enjoyed a lot of funny pieces from salty Medieval historians about how their era gets an unfair bad rap, but this massive essay by Renaissance historian Ada Palmer about &lt;a href=&#34;https://www.exurbe.com/black-death-covid-and-why-we-keep-telling-the-myth-of-a-renaissance-golden-age-and-bad-middle-ages/&#34;&gt;how the Renaissance was pretty bad, actually, and also Golden Ages are propaganda&lt;/a&gt; is funny, insightful, and jam-packed with great images and many facts I didn&#39;t know. Now I give the side-eye to anyone who talks about how the Black Death led to an economic revival&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mar Hicks wrote a fascinating &lt;a href=&#34;https://logicmag.io/care/built-to-last/&#34;&gt;history of COBOL and its amazing stability&lt;/a&gt;, which covers why systems in the venerable language were scapegoated when unemployment systems failed under the pressure of claims during the early part of the COVID pandemic.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;false-economies-of-software-development&#34;&gt;False economies of software development&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Simon Wardley &lt;a href=&#34;https://twitter.com/swardley/status/1301497243288186882&#34;&gt;drops some truth about the long-term cost of custom features for individual clients&lt;/a&gt; as a fictionalized conversation in this Twitter thread.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sean Boots article on &lt;a href=&#34;https://sboots.ca/2020/09/16/fake-cots-and-the-one-day-rule/&#34;&gt;&amp;ldquo;fake COTS&amp;rdquo; products are a false economy in government IT&lt;/a&gt; resonated strongly with me! I have never worked in government, but I have many years of interacting with clearly-poor-fit government/large enterprise tech solutions, and also the headache of trying to support a customized version of an &amp;ldquo;off the shelf&amp;rdquo; tech solution.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;security--privacy&#34;&gt;Security &amp;amp; Privacy&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Alex Hope&#39;s hilarious story about &lt;a href=&#34;https://mango.pdf.zone/finding-former-australian-prime-minister-tony-abbotts-passport-number-on-instagram&#34;&gt;finding a former Australian Prime Minister&#39;s passport number from a social media photo&lt;/a&gt; has a surprisingly heartwarming conclusion.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Rebecca Richards writes about &lt;a href=&#34;https://iapp.org/news/a/covid-19-privacy-and-school-recordings/&#34;&gt;how the leap to online learning during COVID-19 is resulting in massive privacy invasions for children&lt;/a&gt;, and provides a model for how parents can impact school policies on this front.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;environment-news&#34;&gt;Environment news&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;This NPR investigation by Laura Sullivan about &lt;a href=&#34;https://www.npr.org/2020/09/11/897692090/how-big-oil-misled-the-public-into-believing-plastic-would-be-recycled&#34;&gt;how plastic recycling is in large part a scam perpetuated by oil companies&lt;/a&gt; is one part confirmation of something I already knew/suspected, and one part still crushing anxiety.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;architecture-at-scale&#34;&gt;Architecture at scale&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Archie Gunasekara posted a fascinating look at &lt;a href=&#34;https://slack.engineering/building-the-next-evolution-of-cloud-networks-at-slack/&#34;&gt;new cloud architecture at Slack&lt;/a&gt; using features such as AWS shared VPCs and Inter-Region Peering, and how they implemented incremental migration to the new architecture. I know almost enough about AWS now to understand this!&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>Why I use a Bullet Journal</title>
