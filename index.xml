@@ -7,12 +7,116 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 04 Oct 2020 11:16:42 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 18 Oct 2020 22:05:46 -0700</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/index.xml" rel="self" type="application/rss+xml" />
    
    
    
+   
+     <item>
+       <title>what i&#39;m reading: October 18</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-oct-18/</link>
+       <pubDate>Sun, 18 Oct 2020 22:05:46 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-oct-18/</guid>
+       <description>&lt;p&gt;I spent all of yesterday defrosting my fridge instead of writing a blog post, but on my list of things to do both of those things count as accomplishments. I&#39;m making a tiny bit of progress on my backlog of half-completed ideas.&lt;/p&gt;
+&lt;p&gt;I&#39;ve been following along with the protests in Nigeria via Twitter, but don&#39;t have any good links to share about it except the &lt;a href=&#34;https://twitter.com/search?q=%23EndSARS&#34;&gt;#EndSARS hashtag&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;h2 id=&#34;frameworks&#34;&gt;Frameworks&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Nikhyl Singhal provides a framework to &lt;a href=&#34;https://theskip.substack.com/p/stage-of-company-not-name-of-company&#34;&gt;categorize what growth stage a company is in&lt;/a&gt; and deciding which stages fit your current career ambitions, as a way to make better choices when searching for a new role.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;John Cutler outlines a framework for &lt;a href=&#34;https://amplitude.com/blog/asking-better-questions&#34;&gt;getting people to ask better questions in a workshop&lt;/a&gt;, which seems useful reading for facilitation.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I signed up for Stephen P. Anderson&#39;s Mighty Minds Club, but honestly there&#39;s so much content I often don&#39;t have time to absorb it. I&#39;m very glad I took the time for Anderson&#39;s &lt;a href=&#34;https://medium.com/@stephenanderson/hopeful-and-powerless-design-in-a-crisis-bb867bba9ff1&#34;&gt;transcript of his &lt;em&gt;Hopeful and Powerless? Design in a Crisis&lt;/em&gt; keynote&lt;/a&gt; though—there&#39;s a lot of tangents and frameworks and things to think about, but the overall message is answering the question &amp;ldquo;how do I do work in today&#39;s world?&amp;rdquo;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;commentary-on-tech-news&#34;&gt;Commentary on tech news&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Kat Maddox is consistently hilarious on Twitter, and that follows through into her newsletter, &lt;a href=&#34;https://leftalign.substack.com/p/kill-pods-in-your-kubernetes-cluster&#34;&gt;the most recent of which&lt;/a&gt; caught my attention by introducing me to an open-source project that lets you kill kubernetes pods by shooting them in Doom.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I saw some of Emily Kager&#39;s &lt;a href=&#34;https://twitter.com/EmilyKager/status/1314376945765810179?s=20&#34;&gt;satirical TikToks&lt;/a&gt; before reading her post about &lt;a href=&#34;https://www.emilykager.com/writing/2020/10/08/virality.html&#34;&gt;going viral as a woman in tech&lt;/a&gt;, and almost didn&#39;t read it because I knew what to expect. There was a surprisingly positive twist to the story though!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Felienne has a great rant about &lt;a href=&#34;https://www.felienne.com/archives/3355&#34;&gt;why blaming Excel or its users for data problems is pointless&lt;/a&gt;, which became relevant again with the recent spreadsheet error that misplaced Covid-19 testing data in the UK.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;technical-rabbit-holes&#34;&gt;Technical rabbit holes&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;The topic of &amp;ldquo;why did MySQL ever get so popular&amp;rdquo; has come across my radar multiple ways in the past few weeks. For me it was the only database I was really introduced to and thus the only one I knew, but posts like Gabriel Maia&#39;s deep dive into &lt;a href=&#34;https://gbl08ma.com/time-for-a-wtf-mysql-moment/&#34;&gt;why MySQL&#39;s TIME type can only handle intervals of slightly less than 35 days&lt;/a&gt; really make me wonder&amp;hellip;why &lt;em&gt;is&lt;/em&gt; MySQL so popular?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Eugene Wei analyses &lt;a href=&#34;https://www.eugenewei.com/blog/2020/9/18/seeing-like-an-algorithm&#34;&gt;why TikTok&#39;s design is particularly tailored to feed the algorithm information about what you want to watch&lt;/a&gt;, which I found interesting, especially since I have never used TikTok and am unfamiliar with its UX.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mike Hoye &lt;a href=&#34;https://mobile.twitter.com/sliminality/status/1317331148360437760&#34;&gt;dives deep into the history of why zero-indexed arrays were invented&lt;/a&gt;, and along the way dunks on programmers&amp;rsquo; attachment to folk tales and the difficulty of accessing historical sources.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I was fascinated by Rhodri Leng&#39;s &lt;a href=&#34;https://www.the-matter-of-facts.com/amp/the-phantom-reference-and-the-propagation-of-error&#34;&gt;analysis of the phantom reference&lt;/a&gt;, a fictional paper from a style guide that has accidentally been cited by non-fictional works nearly 500 times.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;developer-learning&#34;&gt;Developer learning&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Nicolas Carlo has a neat &lt;a href=&#34;https://understandlegacycode.com/blog/key-points-of-legacy-code-programmer-toolbox/&#34;&gt;summary of The Legacy Code Programmer&#39;s Toolbox by Jonathan Roccara&lt;/a&gt; which covers at a high level a bunch of techniques for learning how to work with legacy code. I love legacy code, so I enjoyed this post and am now interested in the book!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Neil Kakkar has a &lt;a href=&#34;https://neilkakkar.com/things-I-learned-to-become-a-senior-software-engineer.html&#34;&gt;long list of things he&#39;s learned in the last year&lt;/a&gt;, which I&#39;m a little envious of. I wish I took better notes when I first started as a developer!&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;leadership&#34;&gt;Leadership&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Chris Schillinger writes about his idea of &lt;a href=&#34;https://medium.com/flatiron-engineering/abstract-management-interfaces-7bf70431450&#34;&gt;&amp;ldquo;Abstract Management Interfaces&amp;rdquo;&lt;/a&gt;, which seems to be a way of framing &amp;ldquo;separate results from techniques when judging performance&amp;rdquo; in a way that is satisfying to brains that are used of thinking in engineering terms.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Mikio L. Braun &lt;a href=&#34;https://margint.blog/2020/10/07/some-thoughts-on-the-principal-role/&#34;&gt;muses about what Principal roles are and are not&lt;/a&gt;, nothing particularly groundbreaking but I like to read a lot of perspectives on how to succeed at this sort of role.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Anna Shipman has an interesting post on &lt;a href=&#34;https://www.annashipman.co.uk/jfdi/meeting-everyone.html&#34;&gt;why senior leaders should meet one-to-one with everyone on their new team if it&#39;s fewer than 150 people&lt;/a&gt;. It&#39;s an interesting take and has lots of practical tips about how to make it functional.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;better-communication&#34;&gt;Better communication&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Stephanie Morillo provides a &lt;a href=&#34;https://www.stephaniemorillo.co/post/7-pieces-of-information-to-include-in-technical-blog-posts&#34;&gt;helpful list of information to include in your technical blog posts&lt;/a&gt; if you don&#39;t want to annoy developers reading it in the future. I found myself emphatically agreeing with a few of these!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Dvir Segal outlines &lt;a href=&#34;https://medium.com/@dvirsegal/congratulations-and-welcome-aboard-e936f948a173&#34;&gt;what a good onboarding plan should look like&lt;/a&gt; which is relevant to me as someone who wants to improve onboarding!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Tanya S has a presentation on &lt;a href=&#34;https://drive.google.com/file/d/0B4RwK7S5GMvbS1ZVamdZbU9qbXc/view&#34;&gt;using storytelling methods to make a compelling presentation&lt;/a&gt;, something I may not be very good at.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;philosophical-thoughts-on-computing&#34;&gt;Philosophical thoughts on computing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Shreya Shankar muses on Twitter about &lt;a href=&#34;https://twitter.com/sh_reya/status/1314338372073263112?s=20&#34;&gt;what constitutes a source of truth for a machine learning model&lt;/a&gt; when you can get different results every time you run the same code.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Thea Flowers has a very interesting take on &lt;a href=&#34;https://blog.thea.codes/we-need-to-talk-about-github/&#34;&gt;the downside of centralized source code hosting like GitHub&lt;/a&gt;, with a quick little history of version control, and some dreams of possible alternate futures.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Sarah Lim &lt;a href=&#34;https://mobile.twitter.com/sliminality/status/1317331148360437760&#34;&gt;defends dynamically-typed languages&lt;/a&gt; for their contributions to her preferred static types.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;i-couldnt-think-of-a-common-theme-for-these&#34;&gt;I couldn&#39;t think of a common theme for these&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;This article about &lt;a href=&#34;https://hbswk.hbs.edu/item/want-to-be-happier-make-more-free-time&#34;&gt;how free time is the key to happiness&lt;/a&gt; is mostly a promo for Ashley Whillans&amp;rsquo; book on the topic, but it does contain some reasonable strategies for making the most of your time.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ronnie Flathers post on &lt;a href=&#34;https://blog.ropnop.com/storing-tokens-in-browser/&#34;&gt;all the ways to store session tokens in Javascript&lt;/a&gt; and their security implications is exactly the type of content I wish I could have found when I was first starting to do professional Javascript development. He doesn&#39;t go into other complications like cross-browser support or private browsing mode, and his recommended techniques have some pretty serious drawbacks (a session that can&#39;t survive a page refresh?!), but it&#39;s neat to see a bunch of pros and cons laid out.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: Oct 4</title>
