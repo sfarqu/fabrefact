@@ -7,12 +7,72 @@
    <generator>Hugo -- gohugo.io</generator>
    <language>en-us</language>
    <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
-   <lastBuildDate>Sun, 18 Oct 2020 22:05:46 -0700</lastBuildDate>
+   <lastBuildDate>Sun, 08 Nov 2020 19:06:29 -0800</lastBuildDate>
    
        <atom:link href="https://blog.fabrefact.ca/categories/reading-list/index.xml" rel="self" type="application/rss+xml" />
    
    
    
+   
+     <item>
+       <title>what i&#39;m reading: November 8</title>
+       <link>https://blog.fabrefact.ca/posts/what-i-m-reading-nov-8/</link>
+       <pubDate>Sun, 08 Nov 2020 19:06:29 -0800</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/what-i-m-reading-nov-8/</guid>
+       <description>&lt;p&gt;Have spent more time on home-improvement projects than article-reading in the past few weeks, but it felt like time to pull the plug on the current list of stuff-to-read. It has been hard to focus on tech stuff during the tension of the US election. Coming up in the next few weeks I expect to be distracted by &lt;a href=&#34;https://desertbus.org/&#34;&gt;Desert Bus For Hope&lt;/a&gt; and the &lt;a href=&#34;https://worldbuilders.org/blog/2020-end-of-year-fundraiser-dates-announced/&#34;&gt;Worldbuilders end of year fundraiser&lt;/a&gt;, so I shouldn&#39;t get my hopes too high about a reading resurgence until the holidays.&lt;/p&gt;
+&lt;p&gt;Just learned about &lt;a href=&#34;https://libro.fm/&#34;&gt;libro.fm&lt;/a&gt; as a non-Amazon source for audiobooks, but I also just used up a big cache of Audible credits so may take a while to really make use of it.&lt;/p&gt;
+&lt;h1 id=&#34;books&#34;&gt;Books&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Started the audiobook of &lt;a href=&#34;http://radicalmarkets.com/&#34;&gt;Radical Markets: Uprooting capitalism and democracy for a just society&lt;/a&gt;, but can&#39;t quite remember what compelled me to add it to my shopping cart. I&#39;m not big on economics, and I&#39;m not certain I&#39;ll be able to follow the arguments being made in audio format, but may as well try. Not sure I&#39;m sold on the premise.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I tend to hopscotch around in O&#39;Reilly books when I&#39;m looking for bed-time reading and not stick with one book for long, but I might dig more into Eben Hewitt&#39;s &lt;a href=&#34;https://www.oreilly.com/library/view/technology-strategy-patterns/9781492040866/&#34;&gt;Technology Strategy Patterns&lt;/a&gt;. It&#39;s not precisely riveting reading, but I&#39;ve been able to at least vaguely follow along even though I mostly only read it as I&#39;m preparing to fall asleep.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;short-fiction&#34;&gt;Short fiction&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Intrigued by Sumana Harihareswara&#39;s &lt;a href=&#34;https://www.harihareswara.net/sumana/2020/10/28&#34;&gt;project to post short fiction recommendations every day&lt;/a&gt;, I went through the list and read a bunch of stories when I was supposed to be doing something else.
+&lt;ul&gt;
+&lt;li&gt;Veronica Schanoes &lt;a href=&#34;http://strangehorizons.com/fiction/the-regime-of-austerity/&#34;&gt;The Regime of Austerity&lt;/a&gt; was fine, but not particularly memorable.&lt;/li&gt;
+&lt;li&gt;Zen Cho&#39;s &lt;a href=&#34;http://mascarareview.com/zen-cho/&#34;&gt;The Four Generations of Chang E&lt;/a&gt; was more melancholy than I expected after reading Cho&#39;s other works.&lt;/li&gt;
+&lt;li&gt;Claire Humphrey&#39;s &lt;a href=&#34;http://strangehorizons.com/fiction/four-steps-to-the-perfect-smoky-eye/&#34;&gt;Four Steps to the Perfect Smoky Eye&lt;/a&gt; left me feeling unsettled. Hardly speculative at all.&lt;/li&gt;
+&lt;li&gt;T. Kingfisher&#39;s &lt;a href=&#34;https://www.fantasy-magazine.com/new/new-fiction/the-dryads-shoe/&#34;&gt;The Dryad&#39;s Shoe&lt;/a&gt; was my favourite of the stories. I love quirky, funny fairytale retellings.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;articles&#34;&gt;Articles&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Em Lazer-Walker released her highly-anticipated (at least by me) breakdown of the design considerations that went into the &lt;a href=&#34;https://dev.to/lazerwalker/using-game-design-to-make-virtual-events-more-social-24o&#34;&gt;custom virtual social space for Roguelike Celebration&lt;/a&gt;, which is highly relevant to my upcoming birthday plans.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I quite liked this list of &lt;a href=&#34;https://firstround.com/review/the-40-best-questions-to-ask-in-an-interview-how-to-go-deeper-than-whats-the-culture-like/&#34;&gt;thoughtful questions to ask in a job interview&lt;/a&gt;, one of the many aspects of interviews I have never been any good at.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pat Kua&#39;s post about &lt;a href=&#34;https://www.patkua.com/blog/the-power-of-community/&#34;&gt;the power of community in determining a good tool&lt;/a&gt; crossed my path at about the same time as a conversation about why MySQL became so popular when it&#39;s not the best free database, which seemed serendipitous.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Stefan Judis points out a side-effect of new browser privacy protections: &lt;a href=&#34;https://www.stefanjudis.com/notes/say-goodbye-to-resource-caching-across-sites-and-domains/&#34;&gt;the benefit of third-party CDNs for caching Javascript libraries and other resources will mostly disappear&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;I immediately clicked through on Pam Selle&#39;s post on &lt;a href=&#34;https://thewebivore.com/how-im-trying-to-stop-overcommitting/&#34;&gt;how she stopped overcommitting to projects&lt;/a&gt; because I have been extremely feeling this problem lately. Guess I need to start making Gantt charts instead of just lists in random text files.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Thanks to Allie Jones I now know that &lt;a href=&#34;https://alliejon.es/blog/2020/10/30/smoother-remote-live-demos-with-obs&#34;&gt;you can use OBS as a camera input in Zoom&lt;/a&gt;, allowing all the fancy Twitch streamer setup I&#39;ve done to have another use.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Julia Evans introduced &lt;a href=&#34;https://jvns.ca/blog/2020/10/26/ninja--a-simple-way-to-do-builds/&#34;&gt;a tiny build system called ninja&lt;/a&gt;, and manages to make build systems seem approachable and like a think I can learn more about, instead of a foreign wizard mystery.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Brian Hicks&amp;rsquo; post about &lt;a href=&#34;https://bytes.zone/posts/state-transition-tables/&#34;&gt;discovering what state-transition tables are&lt;/a&gt; taught me what state-transition tables are!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Malte Skarupke has some fascinating &lt;a href=&#34;https://probablydance.com/2020/11/08/looking-for-voter-fraud-in-old-elections-with-data-visualization/&#34;&gt;data visualizations of electoral fraud&lt;/a&gt;, contrasting the original graphs using Russian data (which display obvious fraud) with new graphs of US data, which does not show fraud, but instead indicates voter suppression.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</description>
+     </item>
    
      <item>
        <title>what i&#39;m reading: October 18</title>
