@@ -3,24 +3,117 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://blog.fabrefact.ca/posts/</loc>
-    <lastmod>2020-11-08T19:06:29-08:00</lastmod>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
   </url><url>
-    <loc>https://blog.fabrefact.ca/tags/books/</loc>
-    <lastmod>2020-11-08T19:06:29-08:00</lastmod>
+    <loc>https://blog.fabrefact.ca/tags/aws/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
   </url><url>
     <loc>https://blog.fabrefact.ca/categories/</loc>
-    <lastmod>2020-11-08T19:06:29-08:00</lastmod>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/categories/devlog/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
   </url><url>
     <loc>https://blog.fabrefact.ca/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/jitsi/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/party/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/</loc>
+    <lastmod>2021-02-11T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/ssl/</loc>
+    <lastmod>2021-02-03T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/</loc>
+    <lastmod>2021-02-03T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/</loc>
+    <lastmod>2021-02-01T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/docker/</loc>
+    <lastmod>2021-01-31T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/</loc>
+    <lastmod>2021-01-31T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/calla/</loc>
+    <lastmod>2021-01-30T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</loc>
+    <lastmod>2021-01-30T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/</loc>
+    <lastmod>2021-01-29T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/</loc>
+    <lastmod>2021-01-25T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</loc>
+    <lastmod>2021-01-23T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/phaser/</loc>
+    <lastmod>2021-01-22T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-15/</loc>
+    <lastmod>2021-01-22T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-14/</loc>
+    <lastmod>2021-01-19T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-13/</loc>
+    <lastmod>2021-01-18T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-12/</loc>
+    <lastmod>2021-01-17T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-11/</loc>
+    <lastmod>2021-01-16T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-10/</loc>
+    <lastmod>2021-01-15T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-9/</loc>
+    <lastmod>2021-01-14T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-8/</loc>
+    <lastmod>2021-01-13T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-7/</loc>
+    <lastmod>2021-01-12T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/</loc>
+    <lastmod>2021-01-10T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-5/</loc>
+    <lastmod>2021-01-09T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/webpack/</loc>
+    <lastmod>2021-01-09T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</loc>
+    <lastmod>2020-12-22T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/video-conferencing/</loc>
+    <lastmod>2020-12-21T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-3/</loc>
+    <lastmod>2020-12-21T23:59:00-07:00</lastmod>
+  </url><url>
+    <loc>https://blog.fabrefact.ca/tags/books/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
   </url><url>
     <loc>https://blog.fabrefact.ca/tags/links/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
   </url><url>
     <loc>https://blog.fabrefact.ca/categories/reading-list/</loc>
-    <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url><url>
-    <loc>https://blog.fabrefact.ca/tags/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
   </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-nov-8/</loc>

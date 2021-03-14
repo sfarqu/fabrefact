@@ -1,0 +1,553 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>jitsi on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/jitsi/</link>
+   <description>Recent content in jitsi on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Thu, 11 Feb 2021 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/jitsi/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #23: Connection interrupted</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/</link>
+       <pubDate>Thu, 11 Feb 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/</guid>
+       <description>&lt;p&gt;Spent a solid week tweaking and testing my AWS setup, only to discover mysterious connection issues that would cause all players to get booted off the server if more than a few people connected at a time.&lt;/p&gt;
+&lt;p&gt;At only 2 weeks before the event was originally scheduled, there&amp;rsquo;s no realistic way to fix this issue, actually finish the interface, and hold the event as planned. Putting this project on hold for now, mystery connection issue still unresolved.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;thursday-february-4&#34;&gt;Thursday, February 4&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;turns out scripts are constantly scraping my app looking for admin pages or vulns!
+&lt;ul&gt;
+&lt;li&gt;for some reason source IPs are not preserved though&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/premiumsupport/knowledge-center/elb-capture-client-ip-addresses/&#34;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/elb-capture-client-ip-addresses/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;finally put code on github in case something happens to my computer&lt;/li&gt;
+&lt;li&gt;looks like JVB has a memory leak? memory usage increases permanently after every CPU spike
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jitsi/jitsi-videobridge/issues/1396&#34;&gt;https://github.com/jitsi/jitsi-videobridge/issues/1396&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;friday-february-5&#34;&gt;Friday, February 5&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;looked at malleus, going to take some Java work to try to make it test my frontend&lt;/li&gt;
+&lt;li&gt;manual testing by opening a bunch of windows first
+&lt;ul&gt;
+&lt;li&gt;default config starts dropping connections at &amp;gt;4 people in conference&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can keep a permanent loadbalancer while killing the rest of the stack
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;x-aws-loadbalancer&lt;/code&gt; as a top-level element in your Compose file to set the ARN of an existing LoadBalancer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sunday-february-7&#34;&gt;Sunday, February 7&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;trying out new cloudformation configs
+&lt;ul&gt;
+&lt;li&gt;permanent load balancer, set using &lt;code&gt;x-aws-loadbalancer&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;took a long time for this to stabilize after bringing up, but seems to work now&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;setting HTTP2Preferred on TLS endpoint
+&lt;ul&gt;
+&lt;li&gt;broke everything, probably because of the hack to make non-SSL port 443 in nginx.&lt;/li&gt;
+&lt;li&gt;need to figure out how to re-encrypt traffic to instance while still keeping ELB certificate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;greater capacity for JVB server (8Gb RAM)
+&lt;ul&gt;
+&lt;li&gt;problem seems to be CPU, not RAM, but 8Gb is recommended for high load&lt;/li&gt;
+&lt;li&gt;can&amp;rsquo;t set both CPU and memory, so going with RAM&lt;/li&gt;
+&lt;li&gt;setting 8Gb forces 1vCPU, rather than default of .25 or .5&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/premiumsupport/knowledge-center/ecs-fargate-high-cpu-utilization/&#34;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/ecs-fargate-high-cpu-utilization/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;oh-no-a-big-problem&#34;&gt;Oh no a big problem&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Can&amp;rsquo;t seem to stably handle more than 4 concurrent users
+&lt;ul&gt;
+&lt;li&gt;jicofo reports that users are sending &amp;ldquo;MemberLeft&amp;rdquo; messages &amp;ldquo;Chat room event ChatRoomMemberPresenceChangeEvent&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;JS: Lots of &amp;ldquo;Ping timeout&amp;rdquo; from modules/xmpp/strophe.ping.js&lt;/li&gt;
+&lt;li&gt;JS: Often gets stuck in &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; from modules/RTC/BridgeChannel.js (groups of 4 every 10s)
+THEORY: nginx connections get saturated, leading to timeouts
+&lt;ul&gt;
+&lt;li&gt;default configs for Fargate task of .25 vCPU probably means work gets blocked if co-sharing&lt;/li&gt;
+&lt;li&gt;tried creating a second task instance, but HTTPS traffic was never routed to it (WHY?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;turning on &lt;a href=&#34;https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-access-logs.html&#34;&gt;access logs for ELB&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tuesday-february-9&#34;&gt;Tuesday, February 9&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;character creator
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropzonejs.com/#usage&#34;&gt;https://www.dropzonejs.com/#usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://camanjs.com/&#34;&gt;http://camanjs.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;no good existing dollmaker open source projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;thursday-february-11&#34;&gt;Thursday, February 11&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;trying to figure out why connections dropping
+&lt;ul&gt;
+&lt;li&gt;testing locally
+&lt;ul&gt;
+&lt;li&gt;local build requires local environment variables to be built into JS project
+&lt;ul&gt;
+&lt;li&gt;add &lt;code&gt;path&lt;/code&gt; parameter to &lt;code&gt;Dotenv&lt;/code&gt; instantiation in &lt;code&gt;webpack.config&lt;/code&gt; to set to &lt;code&gt;.env.local&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;rebuild docker container for local tag &lt;code&gt;docker- build -t sfarqu/party-app:latest .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use docker-compose and local .env file &lt;code&gt;docker--compose --env-file .env.local up -d&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;5 connections locally seem to run fine, but tons of &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; errors
+&lt;ul&gt;
+&lt;li&gt;probably related to &amp;ldquo;Firefox can’t establish a connection to the server at wss://meet.chicazul.com/colibri-ws/172.25.0.5/&amp;hellip;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;does this mean that app is failing to set up videobridge connections and is instead using P2P?
+&lt;ul&gt;
+&lt;li&gt;that could explain why local is way more stable that AWS version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;NEW INVESTIGATION TRACK: figure out why colibri websocket connections are failing&lt;/li&gt;
+&lt;li&gt;don&amp;rsquo;t recall consistently seeing that error in AWS version, so may be red herring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Investigating &amp;ldquo;connection interrupted&amp;rdquo; error in &lt;code&gt;lib-jitsi-meet&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;sometimes it was a different error, so it&amp;rsquo;s not just this thing, but it was an issue&lt;/li&gt;
+&lt;li&gt;both P2P errors and JVB errors throw the same interruption message.&lt;/li&gt;
+&lt;li&gt;in theory interruptions should be recoverable&amp;hellip;how?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #21: Let&#39;s Encrypt</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/</link>
+       <pubDate>Mon, 01 Feb 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/</guid>
+       <description>&lt;p&gt;Today I learned how to get an SSL certificate with Let&amp;rsquo;s Encrypt, and discovered a lot about health checks.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;lets-encrypt-go&#34;&gt;LETS ENCRYPT GO&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;reason why docker-jitsi-meet uses standalone mode may be that if container is directly exposed to internet, standalone server might be live fast enough for LE call to succeed.&lt;/li&gt;
+&lt;li&gt;in Fargate, container doesn&amp;rsquo;t last long enough to pass health check and become valid recipient for HTTP request forwarded from load balancer&lt;/li&gt;
+&lt;li&gt;need a way to get a live server that responds to HTTP requests
+&lt;ul&gt;
+&lt;li&gt;stood up EC2 instance, installed acme.sh &amp;amp; nginx, and attached it as a target for load balancer SUCCESS!
+&lt;ul&gt;
+&lt;li&gt;scp keys back to my computer, hack is store them in config directory baked into docker image (since only need them for 30 days)&lt;/li&gt;
+&lt;li&gt;modified server init script to install acme.sh keys to nginx on start, and not try to get keys.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;keys don&amp;rsquo;t work!
+&lt;ul&gt;
+&lt;li&gt;created keys with &amp;ndash;staging enabled to allow more retries&lt;/li&gt;
+&lt;li&gt;tried to recreate without staging, but got &amp;ldquo;keys are fine, didn&amp;rsquo;t recreate&amp;rdquo; from real server
+&lt;ul&gt;
+&lt;li&gt;guess have to use &amp;ndash;force once you&amp;rsquo;re sure your code works&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;for long-term fix, probably need a &lt;a href=&#34;https://autoize.com/automating-lets-encrypt-https-behind-a-load-balancer/&#34;&gt;dedicated cert-renewal server&lt;/a&gt;?
+&lt;ul&gt;
+&lt;li&gt;how does load balancer know to direct traffic to port 80 on a different type of server?
+&lt;ul&gt;
+&lt;li&gt;docker compose ECS group only lets you have one service with same port open, unsure how to manage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;testing-with-2-people&#34;&gt;Testing with 2 people&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;conference seems to die every 5 minutes, is JVB rebooting?
+&lt;ul&gt;
+&lt;li&gt;turns out yes, health checks for ports (10000/4443) are &amp;ldquo;failing&amp;rdquo; so Fargate kills the container&lt;/li&gt;
+&lt;li&gt;can I update health check?
+&lt;ul&gt;
+&lt;li&gt;not really, can&amp;rsquo;t change timeout or interval (and probably wouldn&amp;rsquo;t help, because UDP port isn&amp;rsquo;t going to respond to health check)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;JVB has &lt;a href=&#34;https://github.com/jitsi/jitsi-videobridge/blob/master/doc/health-checks.md&#34;&gt;health check endpoint&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;docker-compose has &lt;code&gt;healthcheck&lt;/code&gt; option, maybe this is what lets you make a custom health check?&lt;/li&gt;
+&lt;li&gt;apparently you can&amp;rsquo;t update the health check for a TargetGroup
+&lt;ul&gt;
+&lt;li&gt;deleting the target group broke updates for the Cloudformation Stack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #19: Containerizing an app</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</link>
+       <pubDate>Sat, 30 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</guid>
+       <description>&lt;p&gt;Today I finally turned my app into a Docker container, by reverse engineering how the Jitsi Dockerfiles work.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;tried using &lt;code&gt;--local&lt;/code&gt; context for docker compose CLI, doesn&amp;rsquo;t seem to do anything useful
+&lt;ul&gt;
+&lt;li&gt;doesn&amp;rsquo;t recreate the cloudmap service discovery, so back to services not talking to each another&lt;/li&gt;
+&lt;li&gt;try creating network aliases that use cloudmap format, to see if can pinpoint issue?&lt;/li&gt;
+&lt;li&gt;worried it might be related to &lt;a href=&#34;https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker#running-behind-nat-or-on-a-lan-environment&#34;&gt;lacking host ip&lt;/a&gt;, and really don&amp;rsquo;t know how to address not knowing public ip in advance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;dockerizing own app
+&lt;ul&gt;
+&lt;li&gt;currently only been running in dev mode, need to set up a container with nginx etc&lt;/li&gt;
+&lt;li&gt;can probably crib a lot from docker-jitsi-meet web container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Dockerfile tips
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/develop/dev-best-practices/&#34;&gt;https://docs.docker.com/develop/dev-best-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/solutions/best-practices-for-building-containers&#34;&gt;https://cloud.google.com/solutions/best-practices-for-building-containers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&#34;&gt;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html&#34;&gt;Tutorial&lt;/a&gt; for turning web app into container with multi-stage dockerfile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;how-does-docker-jisi-meet-work&#34;&gt;HOW DOES DOCKER-JISI-MEET WORK?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;project contains a &lt;code&gt;base&lt;/code&gt; image built on debian:buster-slim which contains:
+&lt;ul&gt;
+&lt;li&gt;apt-transport-https apt-utils ca-certificates gnupg wget&lt;/li&gt;
+&lt;li&gt;s6 for process management (via an &amp;ldquo;overlay&amp;rdquo;) &lt;a href=&#34;https://github.com/just-containers/s6-overlay&#34;&gt;https://github.com/just-containers/s6-overlay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jitsi&amp;rsquo;s GPG keys (what for?)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frep&lt;/code&gt; templating tool &lt;a href=&#34;https://github.com/subchen/frep&#34;&gt;https://github.com/subchen/frep&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;a couple wrapper commands &lt;code&gt;apt-dpkg-wrap&lt;/code&gt;, &lt;code&gt;apt-cleanup&lt;/code&gt;, and &lt;code&gt;tpl&lt;/code&gt; to be used in the other dockerfiles&lt;/li&gt;
+&lt;li&gt;if built using the &lt;code&gt;unstable&lt;/code&gt; release, also installs jq procps curl vim iputils-ping net-tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;base image sets &lt;code&gt;apt-get&lt;/code&gt; sources for debian and jitsi packages (so if want to use custom source, will have to add new)&lt;/li&gt;
+&lt;li&gt;each container image extends base by installing at least one jitsi package and some public packages
+&lt;ul&gt;
+&lt;li&gt;uses the wrapper commands from base image for installing and cleanup&lt;/li&gt;
+&lt;li&gt;web uses &lt;code&gt;ADD&lt;/code&gt; docker command instead of apt-get for acme, maybe not available in apt?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;each service contains a &lt;code&gt;rootfs&lt;/code&gt; folder containing config for the service
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;etc&lt;/code&gt; is mostly process running directions for s6
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cont-init.d&lt;/code&gt; contains bash script to run when the container initializes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;services.d&lt;/code&gt; contains run commands for processes that run in this service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;defaults&lt;/code&gt; is templates for things like nginx configs, including environment variables
+&lt;ul&gt;
+&lt;li&gt;these templates are expanded into the mapped &lt;code&gt;/config&lt;/code&gt; directory using the &lt;code&gt;tpl&lt;/code&gt; wrapper command around &lt;code&gt;frep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;upon container start, s6 runs &lt;code&gt;10-config&lt;/code&gt; init script, which contains &lt;code&gt;tpl&lt;/code&gt; commands to recreate &lt;code&gt;/config&lt;/code&gt; files from &lt;code&gt;/defaults&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;web&lt;/code&gt; container runs nginx and a cron that runs Lets Encrypt regularly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;more-about-whether-to-use-volumes-or-not&#34;&gt;more about whether to use volumes or not&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;By default all files created inside a container are stored on a writable container layer&amp;rdquo; &lt;a href=&#34;https://docs.docker.com/storage/&#34;&gt;https://docs.docker.com/storage/&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;not persistent when container goes down&lt;/li&gt;
+&lt;li&gt;hard to move to other hosts&lt;/li&gt;
+&lt;li&gt;storage driver reduces performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;for the most part, contents of volumes are just config files that are written every time the container starts
+&lt;ul&gt;
+&lt;li&gt;probably no need to use persistent storage, but also no need to copy in files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Let&amp;rsquo;s Encrypt certificates &lt;em&gt;do&lt;/em&gt; need to be persisted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;trying-new-more-ecs-friendly-setup-for-docker-jitsi-meet&#34;&gt;trying new, more ECS-friendly setup for docker-jitsi-meet&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;renamed network aliases to what CloudMap will call them&amp;ndash;seems to work locally, TBD remote&lt;/li&gt;
+&lt;li&gt;need to think about setting URIs etc in my app via environment variables
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa&#34;&gt;https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;dotenv library caused an error because I&amp;rsquo;m building for web, not node. Tried dotenv-webpack instead&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/webpack-contrib/css-loader/issues/447&#34;&gt;https://github.com/webpack-contrib/css-loader/issues/447&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/package/dotenv-webpack&#34;&gt;https://www.npmjs.com/package/dotenv-webpack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;getting &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; error a bunch, but doesn&amp;rsquo;t seem to actually be any configuration problem &amp;amp; went away on its own.
+&lt;ul&gt;
+&lt;li&gt;this usually means the UDP port for the JVB server isn&amp;rsquo;t accessible&lt;/li&gt;
+&lt;li&gt;may correlate to &amp;ldquo;WARNING: Took &amp;lt;##&amp;gt; ms to handle IQ:&amp;rdquo; messages in JVB log?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;found source of non-player avatar not moving when browser tab not focused bug
+&lt;ul&gt;
+&lt;li&gt;Most browsers pause activity when tab isn&amp;rsquo;t focused, so best case is to detect either blur/focus or pause/resume and change movement behaviour based on state&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403&#34;&gt;https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html&#34;&gt;https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-perils-of-libraries&#34;&gt;The perils of libraries&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Made some quick progress with dockerizing, but got blocked on Calla not being able to be included in any normal way
+&lt;ul&gt;
+&lt;li&gt;npm file:.. syntax being outside the Docker context was an issue, as expected&lt;/li&gt;
+&lt;li&gt;internet suggestion to use Dockerfile in parent directory was a nightmare because entire &lt;code&gt;projects&lt;/code&gt; directory gets loaded in as context, which is many Gb (still didn&amp;rsquo;t work)&lt;/li&gt;
+&lt;li&gt;tried including as tar.gz but kept running into issues with the &lt;code&gt;my-rollup&lt;/code&gt; dev dependency
+&lt;ul&gt;
+&lt;li&gt;I think this was actually due to &lt;code&gt;package-lock.json&lt;/code&gt;, and might have worked in the end&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Chosen path: turn Calla into a proper dependency (and by extension, its dependencies &lt;code&gt;kudzu&lt;/code&gt; and &lt;code&gt;my-rollup&lt;/code&gt;)
+&lt;ul&gt;
+&lt;li&gt;using &lt;a href=&#34;https://verdaccio.org/en/&#34;&gt;Verdaccio&lt;/a&gt; as local npm repository
+&lt;ul&gt;
+&lt;li&gt;(set as my default repository, remember this when working on other projects)&lt;/li&gt;
+&lt;li&gt;had to &amp;ldquo;log in&amp;rdquo;, created account and put in password manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;look up how to publish packages (&lt;code&gt;npm publish&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;npm pack&lt;/code&gt; on &lt;code&gt;my-rollup&lt;/code&gt; because it&amp;rsquo;s just a build script I don&amp;rsquo;t ever want to touch or use&lt;/li&gt;
+&lt;li&gt;publish &lt;code&gt;kudzu&lt;/code&gt; to verdaccio&lt;/li&gt;
+&lt;li&gt;publish &lt;code&gt;calla&lt;/code&gt; to verdaccio&lt;/li&gt;
+&lt;li&gt;install still fails due to complaining about some typescript syntax, because package contains TS
+&lt;ul&gt;
+&lt;li&gt;look into &lt;a href=&#34;https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd&#34;&gt;how you&amp;rsquo;re supposed to publish TS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Calla doesn&amp;rsquo;t use an outDir, so js files are intermingled with ts files
+&lt;ul&gt;
+&lt;li&gt;edit tsconfig, publish from ./dist folder (remember to actually include folder!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;app still can&amp;rsquo;t find calla, because &lt;code&gt;main&lt;/code&gt; was set incorrectly in package.json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Calla.js&lt;/code&gt; was incorrectly capitalized because I was trying to cheat and reuse the &lt;code&gt;dist&lt;/code&gt; directory, which already had &lt;code&gt;calla.js&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(this is going to be a problem if I accidentally run the build script instead of just &lt;code&gt;tsc&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;additional-configuration&#34;&gt;Additional configuration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;got all the server stuff in the same docker-compose as my app, just need to get the extra nginx stuff working
+&lt;ul&gt;
+&lt;li&gt;nginx configs contain environment variables, which need to get replaced with env vars passed in Docker build&lt;/li&gt;
+&lt;li&gt;jitsi containers use &lt;code&gt;frep&lt;/code&gt; for env variable replacements, could do that, but requires learning to start a script&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;envsubstr&lt;/code&gt; is a linux cli tool for replacing env vars, still requires a bit of scripting&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/nginx&#34;&gt;nginx alpine image&lt;/a&gt; supports &lt;code&gt;envsubstr&lt;/code&gt; automatically starting in 1.19 (mainline, not stable)
+&lt;ul&gt;
+&lt;li&gt;could potentially &lt;a href=&#34;https://unix.stackexchange.com/questions/294378/replacing-only-specific-variables-with-envsubst&#34;&gt;replace valid nginx confs that start with $&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;lets encrypt certificates are good for 90 days, so I only need to get one once and store on volume&lt;/li&gt;
+&lt;li&gt;made sure local lib-jitsi-meet got loaded so Calla doesn&amp;rsquo;t try to download it again&lt;/li&gt;
+&lt;li&gt;struggled with HTTPS for SO LONG and it looks like the problem was just reusing ports that another container was using.
+&lt;ul&gt;
+&lt;li&gt;copied over more of the jitsi web configs, probably didn&amp;rsquo;t need to do that&lt;/li&gt;
+&lt;li&gt;changing ports instantly worked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #13: Server-side architecture</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-13/</link>
+       <pubDate>Mon, 18 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-13/</guid>
+       <description>&lt;p&gt;Today I start looking into server-side architecture to support a large number of simultaneous users, and also put in pathfinding for other players&#39; avatars.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;More research into scalable architecture, looks like 150 participants is stretching the capabilities of Jitsi
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.jitsi.org/t/maximum-number-of-participants-on-a-meeting-on-meet-jit-si-server/22273/31&#34;&gt;https://community.jitsi.org/t/maximum-number-of-participants-on-a-meeting-on-meet-jit-si-server/22273/31&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.jitsi.org/t/whats-the-number-of-the-maximum-users-in-the-same-video-conference/82998/16&#34;&gt;https://community.jitsi.org/t/whats-the-number-of-the-maximum-users-in-the-same-video-conference/82998/16&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.jitsi.org/t/multi-shard-auto-scalable-kubernetes-setup/64685&#34;&gt;https://community.jitsi.org/t/multi-shard-auto-scalable-kubernetes-setup/64685&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.jitsi.org/t/support-for-large-100-user-conferences-timeline-and-contribution/32247/13&#34;&gt;https://community.jitsi.org/t/support-for-large-100-user-conferences-timeline-and-contribution/32247/13&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/blogs/opensource/getting-started-with-jitsi-an-open-source-web-conferencing-solution/&#34;&gt;https://aws.amazon.com/blogs/opensource/getting-started-with-jitsi-an-open-source-web-conferencing-solution/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://community.jitsi.org/t/tutorial-loadtesting-jitsi-with-malleusjitsificus-on-a-selenium-grid/33302&#34;&gt;load testing tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;architecture-conclusions&#34;&gt;Architecture conclusions&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;to be in same conference, all users need to hit same jicofo instance (can only scale vertically)&lt;/li&gt;
+&lt;li&gt;prosody is single-threaded and may also be a blocker &lt;a href=&#34;https://community.jitsi.org/t/site-slowing-down-on-concurrent-connections/80822/17&#34;&gt;https://community.jitsi.org/t/site-slowing-down-on-concurrent-connections/80822/17&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;jvb can be separate, and can load-balance multiple servers for same conference using Octo&lt;/li&gt;
+&lt;li&gt;limitation is bandwidth/client bandwidth
+&lt;ul&gt;
+&lt;li&gt;last-n is probably required if most people sending video&lt;/li&gt;
+&lt;li&gt;need to come up with distance-based-n solution&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;interface&#34;&gt;Interface&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;started putting pathfinding in to allow for other-player movement and also mouse-based movement
+&lt;ul&gt;
+&lt;li&gt;pulled in easystar&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;started changing gridphysics/player code to work with additional sprites
+&lt;ul&gt;
+&lt;li&gt;looked into improving isometric math, but it might actually be as good as it gets?&lt;/li&gt;
+&lt;li&gt;removed some extra Vector object creations from methods that get called every draw cycle
+&lt;ul&gt;
+&lt;li&gt;don&amp;rsquo;t know that this actually makes a difference but creating 60 objects/second must add up?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #10: Rendering isometric tiles</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-10/</link>
+       <pubDate>Fri, 15 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-10/</guid>
+       <description>&lt;p&gt;Today I struggle with videoconference connections and look into isometric rendering and pathfinding for the game interface.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;spent 4 hours trying to figure out why videobridge wasn&amp;rsquo;t connecting
+&lt;ul&gt;
+&lt;li&gt;turns out I made a poor choice to use host.docker.internal in docker .ENV, which doesn&amp;rsquo;t work. Replaced with IP RESOLVED&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tested with 2 users, mostly works fine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uigame&#34;&gt;UI/Game&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;made isometric depth work
+&lt;ul&gt;
+&lt;li&gt;load tilesets as spritesheets instead of images, load each tile individually&lt;/li&gt;
+&lt;li&gt;Algorithm: depth = x + y + (base depth for foreground objects)
+&lt;ul&gt;
+&lt;li&gt;means depth increases evenly on the diagonal&lt;/li&gt;
+&lt;li&gt;causes irregular results if player character is sharing same tile as another object (layered objects should be blocking)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;looked into pathfinding to enable mouse navigation/find-my-friend
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dynetisgames.com/2018/03/06/pathfinding-easystar-phaser-3/&#34;&gt;Easystar library&lt;/a&gt; Looks like a good option&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #4: Audio spatialization</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</link>
+       <pubDate>Tue, 22 Dec 2020 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</guid>
+       <description>&lt;p&gt;Today I tried to make audio spatialization work, and looked into Jitsi features and how to properly render isometric tiles.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;calla&#34;&gt;Calla&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Calla as a library seems to be more usable than expected
+&lt;ul&gt;
+&lt;li&gt;Tutorial exists in sub-project&amp;rsquo;s &lt;code&gt;doc&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;broken&amp;rdquo; UI is the minimal client implementation from tutorial&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;notes-for-calla-implementation&#34;&gt;Notes for Calla implementation&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;spatializer distance is in &amp;ldquo;meters&amp;rdquo;, may need to play around with math on this?&lt;/li&gt;
+&lt;li&gt;uses &lt;code&gt;omnitone&lt;/code&gt; preferred, but has a number of different spatializers, depending what browser supports&lt;/li&gt;
+&lt;li&gt;library handles interpolation of audio over time and assumes you&amp;rsquo;re using that for avatar movement, need to think how to integrate with sprite movement&lt;/li&gt;
+&lt;li&gt;audio sources set their own max distance (so players can control how far people can hear them, but not vice versa)
+&lt;ul&gt;
+&lt;li&gt;except Calla user messages don&amp;rsquo;t include audio properties? So this would be a universal setting for all users in their world&lt;/li&gt;
+&lt;li&gt;can add mute flag to user array to allow people to mute individuals?&lt;/li&gt;
+&lt;li&gt;environmental sound can be set to whatever I like&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jitsi&#34;&gt;Jitsi&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Jitsi includes text chat, need to examine that for use/abuse cases&lt;/li&gt;
+&lt;li&gt;Jitsi Videobridge last-N feature may be hackable to only show nearest-N video streams
+&lt;ul&gt;
+&lt;li&gt;locations are sent peer-to-peer by Calla, so clients would have to request specific list of streams with each update&lt;/li&gt;
+&lt;li&gt;all audio streams will always be sent, most likely&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uigame&#34;&gt;UI/Game&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;How to do appropriate layering in isometric view?&lt;/li&gt;
+&lt;li&gt;Phaser isometric sample seems to use at minimum a different layer for every grid-Y, and change sprite layer based on y value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

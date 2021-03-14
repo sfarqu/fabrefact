@@ -1,0 +1,309 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #16: AWS architecture with docker-compose - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #16: AWS architecture with docker-compose" />
+<meta property="og:description" content="Today I finally stopped procrastinating and started seriously looking into how to build this on AWS. (But also fixed a bunch of bugs!)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-23T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-23T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #16: AWS architecture with docker-compose"/>
+<meta name="twitter:description" content="Today I finally stopped procrastinating and started seriously looking into how to build this on AWS. (But also fixed a bunch of bugs!)"/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #16: AWS architecture with docker-compose</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-23T23:59:00-07:00">Jan 23, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/calla">#calla</a>
+                
+                    , 
+                    <a href="/tags/aws">#aws</a>
+                
+                    , 
+                    <a href="/tags/docker">#docker</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/" title="Virtual Party Space Devlog #16: AWS architecture with docker-compose">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Today I finally stopped procrastinating and started seriously looking into how to build this on AWS. (But also fixed a bunch of bugs!)</p>
+<h1 id="log">Log</h1>
+<ul>
+<li>looked into <a href="https://nolanlawson.com/2020/02/19/fixing-memory-leaks-in-web-applications/">memory leaks</a>
+<ul>
+<li>initial tests show that memory growth doesn&rsquo;t present over short timeframes</li>
+</ul>
+</li>
+<li>added userId to events to allow for multiple-player movement</li>
+<li>modified depth layers so player avatars always drawn in front of scenery at &ldquo;same&rdquo; depth (using step-2 as considered before)
+<ul>
+<li>still looks weird when player going behind things, but moving in front of buildings now looks right</li>
+</ul>
+</li>
+</ul>
+<h3 id="bug-fixes">Bug fixes</h3>
+<ul>
+<li>took forever to figure out mute bug!
+<ul>
+<li>calling toggleAudioMuted in conferenceJoined event handler was the problem
+<ul>
+<li>conferenceJoined event is dispatched before async setAudioInput completes, so toggle would find no input and create a new one, which would then get destroyed when the initial audio input tried to complete.</li>
+<li>always saw 2 adds, 2 removes, so maybe the async calls stepped on each other?</li>
+<li>left with no audio track, new audio track would then be created on hitting mute toggle or switching inputs</li>
+</ul>
+</li>
+<li>combined with Calla&rsquo;s not-great idea to use &ldquo;toggle&rdquo; instead of any way of setting directly
+<ul>
+<li>isAudioMuted was always null so would always toggle, regardless of &ldquo;set&rdquo; value</li>
+<li>even after patching that, initial state is always null, so leads to different behaviour depending if audio track exists or not</li>
+</ul>
+</li>
+<li>no easy way to create a track muted
+<ul>
+<li>startAudioMuted in Jitsi doesn&rsquo;t seem to do anything?</li>
+<li>also tried startMutedPolicy, also doesn&rsquo;t seem to do anything
+<ul>
+<li>maybe look into these later, but Jitsi is complicated.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>reverted a change to Calla and then discovered it&rsquo;s required to have the &ldquo;None&rdquo; option in audio/video dropdowns
+<ul>
+<li>redid fix and committed this time</li>
+<li>still on &ldquo;fixes&rdquo; branch of official repo, haven&rsquo;t recalled how to switch origins</li>
+</ul>
+</li>
+<li>remote user avatars now properly load to that user&rsquo;s reported position
+<ul>
+<li>addParticipant is getting sloppy, might want to break this out into somewhere else</li>
+</ul>
+</li>
+<li>figured out how to properly add user avatars &amp; positions for all users!
+<ul>
+<li>requires sending custom Jitsi messages. Calla doesn&rsquo;t have an interface for this, so now I&rsquo;ve polluted my conference code with hard-coded Jitsi references</li>
+</ul>
+</li>
+</ul>
+<h3 id="cannot-put-off-aws-anymore">CANNOT PUT OFF AWS ANYMORE</h3>
+<ul>
+<li><code>A</code> recommended Fargate and I guess I see it, going to try tutorials in that direction</li>
+<li>installed ecs cli and upgraded aws-cli
+<ul>
+<li>****TODO: set up AWS profile</li>
+</ul>
+</li>
+<li>Eventually get an <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html">Elastic IP</a>
+<ul>
+<li>cost &lt;$5 for a month</li>
+<li>add CNAME at domain registrar well in advance to get domain name</li>
+</ul>
+</li>
+</ul>
+<h4 id="using-docker-compose">Using docker-compose</h4>
+<ul>
+<li>It&rsquo;s possible to <a href="https://aws.amazon.com/blogs/containers/deploy-applications-on-amazon-ecs-using-docker-compose/">use docker-compose with ECS</a>
+<ul>
+<li><a href="https://docs.docker.com/cloud/ecs-integration/">https://docs.docker.com/cloud/ecs-integration/</a></li>
+<li>this seems to avoid the need to create cloudformation templates and just turns your docker-compose.yml into cloudformation
+<ul>
+<li>can use <code>docker compose convert</code> to just generate the cloudformation and manually tweak</li>
+</ul>
+</li>
+<li>can reuse much of the existing jitsi docker project, just update if I need to do something custom with jvb
+<ul>
+<li>I think I&rsquo;m getting the picture that despite the visualization in Docker Desktop, all the different containers are actually entirely separate</li>
+</ul>
+</li>
+<li>can also test AWS context locally <a href="https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/">https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/</a></li>
+<li>need to add features like:
+<ul>
+<li>resources (max CPU and memory per service)</li>
+<li>x-aws-* parameters</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Can specify a .env file for docker-compose <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html">https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html</a>
+<ul>
+<li>unfortunately this might not work for the docker binary, which is required for ECS features
+<ul>
+<li>.env file support added a couple weeks ago, might work? Installing new Docker Desktop version</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>****TODO: figure out SSL certificates</li>
+<li>****TODO: pull passwords out of .env and put them into secrets manager
+<ul>
+<li>learn how secrets work I guess</li>
+</ul>
+</li>
+</ul>
+<h3 id="other-considerations">Other considerations</h3>
+<ul>
+<li>I think the only thing the &ldquo;web&rdquo; docker container is used for is proxying http-bind on to xmpp.meet.jitsi:5280
+<ul>
+<li>could ditch &ldquo;web&rdquo; altogether, and replace it with a container of my app?</li>
+</ul>
+</li>
+<li>my code is getting complicated enough that I&rsquo;m starting to break features when adding a new feature, probably need tests
+<ul>
+<li>unfortunately most of my test needs are integration/e2e, not sure how to test ie jitsi connection events
+<ul>
+<li>a mock of lib-jitsi-meet would take so long to write</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-15/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #15: Tile-based pathfinding</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/">Virtual Party Space Devlog #17: Translating docker-compose files for AWS <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

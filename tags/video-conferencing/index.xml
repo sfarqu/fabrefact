@@ -1,0 +1,59 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>video conferencing on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/video-conferencing/</link>
+   <description>Recent content in video conferencing on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Mon, 21 Dec 2020 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/video-conferencing/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #3: Making web games</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-3/</link>
+       <pubDate>Mon, 21 Dec 2020 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-3/</guid>
+       <description>&lt;p&gt;Today I started making a 2D game to use as a front-end, and learned how to make isometric tile maps.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.mapeditor.org/&#34;&gt;Tiled map editor&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;Not too difficult for basic usage but glad I had a tutorial.&lt;/li&gt;
+&lt;li&gt;Most of the options are not that obvious&lt;/li&gt;
+&lt;li&gt;Still not really sure about collision boxes?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/swlh/grid-based-movement-in-a-top-down-2d-rpg-with-phaser-3-e3a3486eb2fd&#34;&gt;Phaser tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Assets are larger than they appear, 256px
+&lt;ul&gt;
+&lt;li&gt;bought &lt;a href=&#34;https://graphicriver.net/&#34;&gt;more asset packs&lt;/a&gt; for fancier maps (creator name: eldamien)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Trial-and-errored to the approximate right angle rotation for isometric movement, but it made the tile math all wonky
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://clintbellanger.net/articles/isometric_math/&#34;&gt;isometric math tutorial&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Do I really need tile-based movement?
+&lt;ul&gt;
+&lt;li&gt;might make audio math simpler but could also go by pixel distance?&lt;/li&gt;
+&lt;li&gt;what about for private rooms/determinine how many people fit in limited spaces?&lt;/li&gt;
+&lt;li&gt;character collision?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

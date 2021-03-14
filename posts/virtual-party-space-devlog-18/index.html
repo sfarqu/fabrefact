@@ -1,0 +1,231 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #18: Victory over AWS! - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #18: Victory over AWS!" />
+<meta property="og:description" content="A few more days struggling with docker-compose and AWS, and finally get the service running in ECS!" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-29T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-29T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #18: Victory over AWS!"/>
+<meta name="twitter:description" content="A few more days struggling with docker-compose and AWS, and finally get the service running in ECS!"/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #18: Victory over AWS!</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-29T23:59:00-07:00">Jan 29, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/aws">#aws</a>
+                
+                    , 
+                    <a href="/tags/docker">#docker</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/" title="Virtual Party Space Devlog #18: Victory over AWS!">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>A few more days struggling with docker-compose and AWS, and finally get the service running in ECS!</p>
+<h1 id="log">Log</h1>
+<h3 id="wednesday-january-27">Wednesday, January 27</h3>
+<ul>
+<li>asked for ECS help, didn&rsquo;t get it</li>
+<li>looking into making secondary conference rooms
+<ul>
+<li>made an interior map</li>
+<li>probably need additional scenes for each room
+<ul>
+<li>refactor GameScene to be a parent class, and have all specific maps/images in specific scene classes</li>
+<li><a href="http://netexl.com/blog/exploring-phaser-3-with-a-game-adding-multiple-scenes/">Tutorial for adding multiple scenes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Checked licenses on Jitsi &amp; Calla - no usage restrictions, so I can choose ethical source library</li>
+</ul>
+<h3 id="thursday-january-28">Thursday, January 28</h3>
+<ul>
+<li>tried out AWS again, still couldn&rsquo;t figure out how to get endpoint working
+<ul>
+<li>confirmed <code>docker compose down</code> works if context is passed</li>
+</ul>
+</li>
+<li>reconfigured Dockerfiles to contain config instead of bind mounts
+<ul>
+<li>learned how to build docker containers!</li>
+<li>works locally</li>
+</ul>
+</li>
+</ul>
+<h3 id="friday-january-29">Friday, January 29</h3>
+<ul>
+<li>looking into how to make services talk to one another
+<ul>
+<li>searching for <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html">ECS service discovery</a> seems promising</li>
+<li>read about <a href="https://docs.aws.amazon.com/cloud-map/latest/dg/what-is-cloud-map.html">CloudMap</a>, think I understand the &ldquo;service discovery&rdquo; portion of the Compose CLI docs now
+<ul>
+<li>need to change internal network base to be <!-- raw HTML omitted -->.local instead of meet.jitsi</li>
+<li>can refer to other containers directly by service name too</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>updated <code>docker-compose</code> and environment vars to use CloudMap syntax
+<ul>
+<li>WEB SERVER WORKS NOW!!</li>
+<li>https doesn&rsquo;t work (still need to set up domain I think in order to use LetsEncrypt?)</li>
+<li>probably still some settings wrong, can&rsquo;t connect to conference
+<ul>
+<li>websocket &ldquo;public url&rdquo; definitely wrong</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>since jicofo/prosody have to be single instance for single conference, how to turn off availability zones?</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #17: Translating docker-compose files for AWS</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/">Virtual Party Space Devlog #19: Containerizing an app <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

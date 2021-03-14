@@ -1,0 +1,678 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>aws on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/aws/</link>
+   <description>Recent content in aws on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Thu, 11 Feb 2021 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/aws/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #23: Connection interrupted</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/</link>
+       <pubDate>Thu, 11 Feb 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/</guid>
+       <description>&lt;p&gt;Spent a solid week tweaking and testing my AWS setup, only to discover mysterious connection issues that would cause all players to get booted off the server if more than a few people connected at a time.&lt;/p&gt;
+&lt;p&gt;At only 2 weeks before the event was originally scheduled, there&amp;rsquo;s no realistic way to fix this issue, actually finish the interface, and hold the event as planned. Putting this project on hold for now, mystery connection issue still unresolved.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;thursday-february-4&#34;&gt;Thursday, February 4&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;turns out scripts are constantly scraping my app looking for admin pages or vulns!
+&lt;ul&gt;
+&lt;li&gt;for some reason source IPs are not preserved though&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/premiumsupport/knowledge-center/elb-capture-client-ip-addresses/&#34;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/elb-capture-client-ip-addresses/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;finally put code on github in case something happens to my computer&lt;/li&gt;
+&lt;li&gt;looks like JVB has a memory leak? memory usage increases permanently after every CPU spike
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jitsi/jitsi-videobridge/issues/1396&#34;&gt;https://github.com/jitsi/jitsi-videobridge/issues/1396&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;friday-february-5&#34;&gt;Friday, February 5&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;looked at malleus, going to take some Java work to try to make it test my frontend&lt;/li&gt;
+&lt;li&gt;manual testing by opening a bunch of windows first
+&lt;ul&gt;
+&lt;li&gt;default config starts dropping connections at &amp;gt;4 people in conference&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can keep a permanent loadbalancer while killing the rest of the stack
+&lt;ul&gt;
+&lt;li&gt;Use &lt;code&gt;x-aws-loadbalancer&lt;/code&gt; as a top-level element in your Compose file to set the ARN of an existing LoadBalancer.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;sunday-february-7&#34;&gt;Sunday, February 7&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;trying out new cloudformation configs
+&lt;ul&gt;
+&lt;li&gt;permanent load balancer, set using &lt;code&gt;x-aws-loadbalancer&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;took a long time for this to stabilize after bringing up, but seems to work now&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;setting HTTP2Preferred on TLS endpoint
+&lt;ul&gt;
+&lt;li&gt;broke everything, probably because of the hack to make non-SSL port 443 in nginx.&lt;/li&gt;
+&lt;li&gt;need to figure out how to re-encrypt traffic to instance while still keeping ELB certificate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;greater capacity for JVB server (8Gb RAM)
+&lt;ul&gt;
+&lt;li&gt;problem seems to be CPU, not RAM, but 8Gb is recommended for high load&lt;/li&gt;
+&lt;li&gt;can&amp;rsquo;t set both CPU and memory, so going with RAM&lt;/li&gt;
+&lt;li&gt;setting 8Gb forces 1vCPU, rather than default of .25 or .5&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://aws.amazon.com/premiumsupport/knowledge-center/ecs-fargate-high-cpu-utilization/&#34;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/ecs-fargate-high-cpu-utilization/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;oh-no-a-big-problem&#34;&gt;Oh no a big problem&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Can&amp;rsquo;t seem to stably handle more than 4 concurrent users
+&lt;ul&gt;
+&lt;li&gt;jicofo reports that users are sending &amp;ldquo;MemberLeft&amp;rdquo; messages &amp;ldquo;Chat room event ChatRoomMemberPresenceChangeEvent&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;JS: Lots of &amp;ldquo;Ping timeout&amp;rdquo; from modules/xmpp/strophe.ping.js&lt;/li&gt;
+&lt;li&gt;JS: Often gets stuck in &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; from modules/RTC/BridgeChannel.js (groups of 4 every 10s)
+THEORY: nginx connections get saturated, leading to timeouts
+&lt;ul&gt;
+&lt;li&gt;default configs for Fargate task of .25 vCPU probably means work gets blocked if co-sharing&lt;/li&gt;
+&lt;li&gt;tried creating a second task instance, but HTTPS traffic was never routed to it (WHY?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;turning on &lt;a href=&#34;https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-access-logs.html&#34;&gt;access logs for ELB&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tuesday-february-9&#34;&gt;Tuesday, February 9&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;character creator
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dropzonejs.com/#usage&#34;&gt;https://www.dropzonejs.com/#usage&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://camanjs.com/&#34;&gt;http://camanjs.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;no good existing dollmaker open source projects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;thursday-february-11&#34;&gt;Thursday, February 11&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;trying to figure out why connections dropping
+&lt;ul&gt;
+&lt;li&gt;testing locally
+&lt;ul&gt;
+&lt;li&gt;local build requires local environment variables to be built into JS project
+&lt;ul&gt;
+&lt;li&gt;add &lt;code&gt;path&lt;/code&gt; parameter to &lt;code&gt;Dotenv&lt;/code&gt; instantiation in &lt;code&gt;webpack.config&lt;/code&gt; to set to &lt;code&gt;.env.local&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;rebuild docker container for local tag &lt;code&gt;docker- build -t sfarqu/party-app:latest .&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;use docker-compose and local .env file &lt;code&gt;docker--compose --env-file .env.local up -d&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;5 connections locally seem to run fine, but tons of &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; errors
+&lt;ul&gt;
+&lt;li&gt;probably related to &amp;ldquo;Firefox can’t establish a connection to the server at wss://meet.chicazul.com/colibri-ws/172.25.0.5/&amp;hellip;&amp;rdquo;&lt;/li&gt;
+&lt;li&gt;does this mean that app is failing to set up videobridge connections and is instead using P2P?
+&lt;ul&gt;
+&lt;li&gt;that could explain why local is way more stable that AWS version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;NEW INVESTIGATION TRACK: figure out why colibri websocket connections are failing&lt;/li&gt;
+&lt;li&gt;don&amp;rsquo;t recall consistently seeing that error in AWS version, so may be red herring&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Investigating &amp;ldquo;connection interrupted&amp;rdquo; error in &lt;code&gt;lib-jitsi-meet&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;sometimes it was a different error, so it&amp;rsquo;s not just this thing, but it was an issue&lt;/li&gt;
+&lt;li&gt;both P2P errors and JVB errors throw the same interruption message.&lt;/li&gt;
+&lt;li&gt;in theory interruptions should be recoverable&amp;hellip;how?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #22: Amazon Certificates Manager</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/</link>
+       <pubDate>Wed, 03 Feb 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/</guid>
+       <description>&lt;p&gt;In the past couple days I threw away all that work with Let&amp;rsquo;s Encrypt to use Amazon Certificates Manager instead.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h2 id=&#34;tuesday-february-2&#34;&gt;Tuesday, February 2&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Note for future: &lt;a href=&#34;https://aws.amazon.com/fr/blogs/containers/how-amazon-ecs-manages-cpu-and-memory-resources/&#34;&gt;CPU and memory in ECS&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Error &amp;ldquo;The VPC &lt;!-- raw HTML omitted --&gt; in region &lt;!-- raw HTML omitted --&gt; has already been associated with the hosted zone &lt;!-- raw HTML omitted --&gt; with the same domain name&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;Deleted VPC to fix this DO NOT DO THIS, need to have a default VPC to do anything&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;verified that ELB changes every time I delete the stack, so will have to keep updating CNAME record
+&lt;ul&gt;
+&lt;li&gt;unless I can figure out how to retain ELB without breaking create&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;updated health check by adding overlays, but have to delete whole stack for every change&lt;/li&gt;
+&lt;li&gt;had to expose port 8080 which I don&amp;rsquo;t love, but at least it works&lt;/li&gt;
+&lt;li&gt;tried out Amazon Certificate Manager to request a certificate for my domain, and that seems to have worked
+&lt;ul&gt;
+&lt;li&gt;think it should automatically use it for load balancer? Need to wait for domain to propagate to check&lt;/li&gt;
+&lt;li&gt;wasted all that time learning Let&amp;rsquo;s Encrypt and didn&amp;rsquo;t need it, but at least I learned something&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;wednesday-february-3&#34;&gt;Wednesday, February 3&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;How to make drastic changes to cloudformation template: &lt;a href=&#34;https://aws.amazon.com/premiumsupport/knowledge-center/failing-stack-updates-deleted/&#34;&gt;delete resource and manually recreate&lt;/a&gt; so update will work&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;acm-certificates&#34;&gt;ACM certificates&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;need to add certificate to a listener on port 443
+&lt;ul&gt;
+&lt;li&gt;change type from TCP to TLS&lt;/li&gt;
+&lt;li&gt;leave other settings as default I guess&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;PROBLEM: this causes &amp;ldquo;http request to https port&amp;rdquo; error
+&lt;ul&gt;
+&lt;li&gt;ELB terminates HTTPS and sends HTTP request to web server - need to tell nginx to stand down&lt;/li&gt;
+&lt;li&gt;SOLUTION:
+&lt;ul&gt;
+&lt;li&gt;remove &lt;code&gt;ssl http2&lt;/code&gt; from nginx &lt;code&gt;listen 443&lt;/code&gt; directives (this means probably want to turn on ALPN HTTP2 service on ELB listener)
+&lt;ul&gt;
+&lt;li&gt;if you get rid of &lt;code&gt;ssl&lt;/code&gt; but not &lt;code&gt;http2&lt;/code&gt; server will still &lt;em&gt;run&lt;/em&gt; but only return garbage - HTTP2 is SSL-only&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;remove all other ssl directives (conveniently packaged in &lt;code&gt;ssl.conf&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #21: Let&#39;s Encrypt</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/</link>
+       <pubDate>Mon, 01 Feb 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/</guid>
+       <description>&lt;p&gt;Today I learned how to get an SSL certificate with Let&amp;rsquo;s Encrypt, and discovered a lot about health checks.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;lets-encrypt-go&#34;&gt;LETS ENCRYPT GO&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;reason why docker-jitsi-meet uses standalone mode may be that if container is directly exposed to internet, standalone server might be live fast enough for LE call to succeed.&lt;/li&gt;
+&lt;li&gt;in Fargate, container doesn&amp;rsquo;t last long enough to pass health check and become valid recipient for HTTP request forwarded from load balancer&lt;/li&gt;
+&lt;li&gt;need a way to get a live server that responds to HTTP requests
+&lt;ul&gt;
+&lt;li&gt;stood up EC2 instance, installed acme.sh &amp;amp; nginx, and attached it as a target for load balancer SUCCESS!
+&lt;ul&gt;
+&lt;li&gt;scp keys back to my computer, hack is store them in config directory baked into docker image (since only need them for 30 days)&lt;/li&gt;
+&lt;li&gt;modified server init script to install acme.sh keys to nginx on start, and not try to get keys.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;keys don&amp;rsquo;t work!
+&lt;ul&gt;
+&lt;li&gt;created keys with &amp;ndash;staging enabled to allow more retries&lt;/li&gt;
+&lt;li&gt;tried to recreate without staging, but got &amp;ldquo;keys are fine, didn&amp;rsquo;t recreate&amp;rdquo; from real server
+&lt;ul&gt;
+&lt;li&gt;guess have to use &amp;ndash;force once you&amp;rsquo;re sure your code works&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;for long-term fix, probably need a &lt;a href=&#34;https://autoize.com/automating-lets-encrypt-https-behind-a-load-balancer/&#34;&gt;dedicated cert-renewal server&lt;/a&gt;?
+&lt;ul&gt;
+&lt;li&gt;how does load balancer know to direct traffic to port 80 on a different type of server?
+&lt;ul&gt;
+&lt;li&gt;docker compose ECS group only lets you have one service with same port open, unsure how to manage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;testing-with-2-people&#34;&gt;Testing with 2 people&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;conference seems to die every 5 minutes, is JVB rebooting?
+&lt;ul&gt;
+&lt;li&gt;turns out yes, health checks for ports (10000/4443) are &amp;ldquo;failing&amp;rdquo; so Fargate kills the container&lt;/li&gt;
+&lt;li&gt;can I update health check?
+&lt;ul&gt;
+&lt;li&gt;not really, can&amp;rsquo;t change timeout or interval (and probably wouldn&amp;rsquo;t help, because UDP port isn&amp;rsquo;t going to respond to health check)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;JVB has &lt;a href=&#34;https://github.com/jitsi/jitsi-videobridge/blob/master/doc/health-checks.md&#34;&gt;health check endpoint&lt;/a&gt;!&lt;/li&gt;
+&lt;li&gt;docker-compose has &lt;code&gt;healthcheck&lt;/code&gt; option, maybe this is what lets you make a custom health check?&lt;/li&gt;
+&lt;li&gt;apparently you can&amp;rsquo;t update the health check for a TargetGroup
+&lt;ul&gt;
+&lt;li&gt;deleting the target group broke updates for the Cloudformation Stack&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #18: Victory over AWS!</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/</link>
+       <pubDate>Fri, 29 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/</guid>
+       <description>&lt;p&gt;A few more days struggling with docker-compose and AWS, and finally get the service running in ECS!&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;wednesday-january-27&#34;&gt;Wednesday, January 27&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;asked for ECS help, didn&amp;rsquo;t get it&lt;/li&gt;
+&lt;li&gt;looking into making secondary conference rooms
+&lt;ul&gt;
+&lt;li&gt;made an interior map&lt;/li&gt;
+&lt;li&gt;probably need additional scenes for each room
+&lt;ul&gt;
+&lt;li&gt;refactor GameScene to be a parent class, and have all specific maps/images in specific scene classes&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://netexl.com/blog/exploring-phaser-3-with-a-game-adding-multiple-scenes/&#34;&gt;Tutorial for adding multiple scenes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Checked licenses on Jitsi &amp;amp; Calla - no usage restrictions, so I can choose ethical source library&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;thursday-january-28&#34;&gt;Thursday, January 28&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;tried out AWS again, still couldn&amp;rsquo;t figure out how to get endpoint working
+&lt;ul&gt;
+&lt;li&gt;confirmed &lt;code&gt;docker compose down&lt;/code&gt; works if context is passed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reconfigured Dockerfiles to contain config instead of bind mounts
+&lt;ul&gt;
+&lt;li&gt;learned how to build docker containers!&lt;/li&gt;
+&lt;li&gt;works locally&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;friday-january-29&#34;&gt;Friday, January 29&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;looking into how to make services talk to one another
+&lt;ul&gt;
+&lt;li&gt;searching for &lt;a href=&#34;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html&#34;&gt;ECS service discovery&lt;/a&gt; seems promising&lt;/li&gt;
+&lt;li&gt;read about &lt;a href=&#34;https://docs.aws.amazon.com/cloud-map/latest/dg/what-is-cloud-map.html&#34;&gt;CloudMap&lt;/a&gt;, think I understand the &amp;ldquo;service discovery&amp;rdquo; portion of the Compose CLI docs now
+&lt;ul&gt;
+&lt;li&gt;need to change internal network base to be &lt;!-- raw HTML omitted --&gt;.local instead of meet.jitsi&lt;/li&gt;
+&lt;li&gt;can refer to other containers directly by service name too&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;updated &lt;code&gt;docker-compose&lt;/code&gt; and environment vars to use CloudMap syntax
+&lt;ul&gt;
+&lt;li&gt;WEB SERVER WORKS NOW!!&lt;/li&gt;
+&lt;li&gt;https doesn&amp;rsquo;t work (still need to set up domain I think in order to use LetsEncrypt?)&lt;/li&gt;
+&lt;li&gt;probably still some settings wrong, can&amp;rsquo;t connect to conference
+&lt;ul&gt;
+&lt;li&gt;websocket &amp;ldquo;public url&amp;rdquo; definitely wrong&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;since jicofo/prosody have to be single instance for single conference, how to turn off availability zones?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #17: Translating docker-compose files for AWS</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/</link>
+       <pubDate>Mon, 25 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/</guid>
+       <description>&lt;p&gt;Spent a couple days fighting with Docker and the ECS integration of docker-compose.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h2 id=&#34;sunday-january-24&#34;&gt;Sunday, January 24&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;turns out can&amp;rsquo;t connect to Jitsi server when using &lt;code&gt;docker compose&lt;/code&gt; instead of &lt;code&gt;docker-compose&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;getting &lt;code&gt;PR_END_OF_FILE_ERROR&lt;/code&gt;, so probably SSL certificates aren&amp;rsquo;t set up properly? (not even whatever self-signed one I&amp;rsquo;m using)&lt;/li&gt;
+&lt;li&gt;switched back to &lt;code&gt;docker-compose&lt;/code&gt; for the purpose of playing around&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed bug where leaving and rejoining the same conference would not reload the avatars for participants who had stayed in
+&lt;ul&gt;
+&lt;li&gt;addParticipant was tied to the loadImage callback, but in this case the image was already loaded&lt;/li&gt;
+&lt;li&gt;tried just deleting image from textureManager on participant remove, but that caused a game crash when phaser tried to render nonexistent texture
+&lt;ul&gt;
+&lt;li&gt;only happened on second time (consistently), no idea why&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;made loading of image conditional on if texture already exists, all other stuff the same
+&lt;ul&gt;
+&lt;li&gt;should player avatars ever be unloaded? If so how?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed bug where pathfinder didn&amp;rsquo;t recognize obstacles on anything but scenery layer, and treated some ground tiles as obstacles
+&lt;ul&gt;
+&lt;li&gt;possibly should simplify by consolidating most tiles onto single layer?
+&lt;ul&gt;
+&lt;li&gt;might be more complicated for other existing logic/image loading though&lt;/li&gt;
+&lt;li&gt;may also suggest consolidating tilesets, which is a good idea but not until i&amp;rsquo;ve finalized the map&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Simply check for collisions in other layers, otherwise just use ground tile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tuesday-january-26&#34;&gt;Tuesday, January 26&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;UGH DOCKER
+&lt;ul&gt;
+&lt;li&gt;still can&amp;rsquo;t figure out why &lt;code&gt;docker compose&lt;/code&gt; doesn&amp;rsquo;t like SSL&lt;/li&gt;
+&lt;li&gt;fine then, set up AWS credentials and context&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;trying the docker-&amp;gt;ecs auto deploy thing
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;published port can&amp;rsquo;t be set to a distinct value than container port: incompatible attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;can&amp;rsquo;t use custom ports for 80/443&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;ECS Fargate does not support bind mounts from host: incompatible attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;have to learn &lt;a href=&#34;https://maximorlov.com/docker-compose-syntax-volume-or-bind-mount/&#34;&gt;the difference between &amp;ldquo;volumes&amp;rdquo; and &amp;ldquo;bind mounts&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;jitsi docker-compose binds config directory for all mounts, have to figure out how to turn those into volumes&lt;/li&gt;
+&lt;li&gt;replaced all bind mounts with empty volumes, simply for the purpose of getting to the next error
+&lt;ul&gt;
+&lt;li&gt;possibly build config directories into docker containers rather than messing around with EFS?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;WARN[0001] services.networks.aliases: unsupported attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;services.networks may not be supported at all?
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Communication between services is implemented by SecurityGroups within the application VPC.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;WARN[0001] services.restart: unsupported attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;Replaced by service.deployment.restart_policy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker compose down&lt;/code&gt; always fails with ENV variables in ports
+&lt;ul&gt;
+&lt;li&gt;hard coded ports in docker-compose.yml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker compose down&lt;/code&gt; doesn&amp;rsquo;t actually&amp;hellip;do anything
+&lt;ul&gt;
+&lt;li&gt;use CloudFormation service in AWS console to delete stack&lt;/li&gt;
+&lt;li&gt;I WASN&amp;rsquo;T PASSING THE CONTEXT UGH this was user error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;AWS doesn&amp;rsquo;t provide an easy way to look at every resource you created
+&lt;ul&gt;
+&lt;li&gt;have to assume cloudformation stack listed them all correctly and deleted all&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;requested ElasticIP in us-west-2 (it was very easy)
+&lt;ul&gt;
+&lt;li&gt;****TODO: assign URL to IP so I can create a Let&amp;rsquo;s Encrypt&lt;/li&gt;
+&lt;li&gt;****TODO: verify which region I want to use&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;notes-for-next-attempt&#34;&gt;notes for next attempt&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Config bind-mounts don&amp;rsquo;t work
+&lt;ul&gt;
+&lt;li&gt;need to find alternate way to get config directories into containers&lt;/li&gt;
+&lt;li&gt;(I think build my own versions of the docker containers with appropriate configs?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Internal domain aliases don&amp;rsquo;t work (ie xmpp.meet.jitsi)
+&lt;ul&gt;
+&lt;li&gt;need to find alternate way for services to talk to each other&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #16: AWS architecture with docker-compose</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</link>
+       <pubDate>Sat, 23 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</guid>
+       <description>&lt;p&gt;Today I finally stopped procrastinating and started seriously looking into how to build this on AWS. (But also fixed a bunch of bugs!)&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;looked into &lt;a href=&#34;https://nolanlawson.com/2020/02/19/fixing-memory-leaks-in-web-applications/&#34;&gt;memory leaks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;initial tests show that memory growth doesn&amp;rsquo;t present over short timeframes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;added userId to events to allow for multiple-player movement&lt;/li&gt;
+&lt;li&gt;modified depth layers so player avatars always drawn in front of scenery at &amp;ldquo;same&amp;rdquo; depth (using step-2 as considered before)
+&lt;ul&gt;
+&lt;li&gt;still looks weird when player going behind things, but moving in front of buildings now looks right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;took forever to figure out mute bug!
+&lt;ul&gt;
+&lt;li&gt;calling toggleAudioMuted in conferenceJoined event handler was the problem
+&lt;ul&gt;
+&lt;li&gt;conferenceJoined event is dispatched before async setAudioInput completes, so toggle would find no input and create a new one, which would then get destroyed when the initial audio input tried to complete.&lt;/li&gt;
+&lt;li&gt;always saw 2 adds, 2 removes, so maybe the async calls stepped on each other?&lt;/li&gt;
+&lt;li&gt;left with no audio track, new audio track would then be created on hitting mute toggle or switching inputs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;combined with Calla&amp;rsquo;s not-great idea to use &amp;ldquo;toggle&amp;rdquo; instead of any way of setting directly
+&lt;ul&gt;
+&lt;li&gt;isAudioMuted was always null so would always toggle, regardless of &amp;ldquo;set&amp;rdquo; value&lt;/li&gt;
+&lt;li&gt;even after patching that, initial state is always null, so leads to different behaviour depending if audio track exists or not&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;no easy way to create a track muted
+&lt;ul&gt;
+&lt;li&gt;startAudioMuted in Jitsi doesn&amp;rsquo;t seem to do anything?&lt;/li&gt;
+&lt;li&gt;also tried startMutedPolicy, also doesn&amp;rsquo;t seem to do anything
+&lt;ul&gt;
+&lt;li&gt;maybe look into these later, but Jitsi is complicated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reverted a change to Calla and then discovered it&amp;rsquo;s required to have the &amp;ldquo;None&amp;rdquo; option in audio/video dropdowns
+&lt;ul&gt;
+&lt;li&gt;redid fix and committed this time&lt;/li&gt;
+&lt;li&gt;still on &amp;ldquo;fixes&amp;rdquo; branch of official repo, haven&amp;rsquo;t recalled how to switch origins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;remote user avatars now properly load to that user&amp;rsquo;s reported position
+&lt;ul&gt;
+&lt;li&gt;addParticipant is getting sloppy, might want to break this out into somewhere else&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;figured out how to properly add user avatars &amp;amp; positions for all users!
+&lt;ul&gt;
+&lt;li&gt;requires sending custom Jitsi messages. Calla doesn&amp;rsquo;t have an interface for this, so now I&amp;rsquo;ve polluted my conference code with hard-coded Jitsi references&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cannot-put-off-aws-anymore&#34;&gt;CANNOT PUT OFF AWS ANYMORE&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;A&lt;/code&gt; recommended Fargate and I guess I see it, going to try tutorials in that direction&lt;/li&gt;
+&lt;li&gt;installed ecs cli and upgraded aws-cli
+&lt;ul&gt;
+&lt;li&gt;****TODO: set up AWS profile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Eventually get an &lt;a href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&#34;&gt;Elastic IP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;cost &amp;lt;$5 for a month&lt;/li&gt;
+&lt;li&gt;add CNAME at domain registrar well in advance to get domain name&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;using-docker-compose&#34;&gt;Using docker-compose&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s possible to &lt;a href=&#34;https://aws.amazon.com/blogs/containers/deploy-applications-on-amazon-ecs-using-docker-compose/&#34;&gt;use docker-compose with ECS&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/cloud/ecs-integration/&#34;&gt;https://docs.docker.com/cloud/ecs-integration/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;this seems to avoid the need to create cloudformation templates and just turns your docker-compose.yml into cloudformation
+&lt;ul&gt;
+&lt;li&gt;can use &lt;code&gt;docker compose convert&lt;/code&gt; to just generate the cloudformation and manually tweak&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can reuse much of the existing jitsi docker project, just update if I need to do something custom with jvb
+&lt;ul&gt;
+&lt;li&gt;I think I&amp;rsquo;m getting the picture that despite the visualization in Docker Desktop, all the different containers are actually entirely separate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can also test AWS context locally &lt;a href=&#34;https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/&#34;&gt;https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;need to add features like:
+&lt;ul&gt;
+&lt;li&gt;resources (max CPU and memory per service)&lt;/li&gt;
+&lt;li&gt;x-aws-* parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can specify a .env file for docker-compose &lt;a href=&#34;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html&#34;&gt;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;unfortunately this might not work for the docker binary, which is required for ECS features
+&lt;ul&gt;
+&lt;li&gt;.env file support added a couple weeks ago, might work? Installing new Docker Desktop version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;****TODO: figure out SSL certificates&lt;/li&gt;
+&lt;li&gt;****TODO: pull passwords out of .env and put them into secrets manager
+&lt;ul&gt;
+&lt;li&gt;learn how secrets work I guess&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other-considerations&#34;&gt;Other considerations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;I think the only thing the &amp;ldquo;web&amp;rdquo; docker container is used for is proxying http-bind on to xmpp.meet.jitsi:5280
+&lt;ul&gt;
+&lt;li&gt;could ditch &amp;ldquo;web&amp;rdquo; altogether, and replace it with a container of my app?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;my code is getting complicated enough that I&amp;rsquo;m starting to break features when adding a new feature, probably need tests
+&lt;ul&gt;
+&lt;li&gt;unfortunately most of my test needs are integration/e2e, not sure how to test ie jitsi connection events
+&lt;ul&gt;
+&lt;li&gt;a mock of lib-jitsi-meet would take so long to write&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #14: From dev to cloud</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-14/</link>
+       <pubDate>Tue, 19 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-14/</guid>
+       <description>&lt;p&gt;Today I dig into how to get my app running in the cloud instead of just on my laptop.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;realised Calla is sending a network message on every draw cycle, so rejiggered movePlayer to only fire on tile move
+&lt;ul&gt;
+&lt;li&gt;use Calla math to adjust audio over time (not necessarily synced with sprite movement)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;aws-architecture-ideas&#34;&gt;AWS architecture ideas&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;A&lt;/code&gt; recommends sticking with Docker for production env
+&lt;ul&gt;
+&lt;li&gt;explained how docker-jitsi-meet works
+&lt;ul&gt;
+&lt;li&gt;docker-compose is like a build runner for docker, don&amp;rsquo;t necessarily need to use it but whatever, it&amp;rsquo;s what&amp;rsquo;s there
+&lt;ul&gt;
+&lt;li&gt;file pulls images from public docker repository&lt;/li&gt;
+&lt;li&gt;if I want to use my own changes, edit the project and build using makefile, and change the tag in the docker-compose
+&lt;ul&gt;
+&lt;li&gt;(this is probably what the documentation says but I understand it now)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;the selenium grid tutorial is a good approach but their way of handing VMs is hard to follow, just use docker instead&lt;/li&gt;
+&lt;li&gt;use ECS fargate for cost savings
+&lt;ul&gt;
+&lt;li&gt;going by recommended instance size from jitsi docs, basic shard should be ~$1/hr&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can get a public IP from AWS for ~a month to point my DNS record at&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;found a &lt;a href=&#34;https://github.com/taktakpeops/selenium-grid-ecs-fargate&#34;&gt;selenium grid fargate/cloudformation github project&lt;/a&gt;, maybe can use as load testing base&lt;/li&gt;
+&lt;li&gt;still need to figure out where my code will live, probably on the web server. Can I jettison all the meet front end?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

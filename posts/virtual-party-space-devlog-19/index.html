@@ -1,0 +1,349 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #19: Containerizing an app - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #19: Containerizing an app" />
+<meta property="og:description" content="Today I finally turned my app into a Docker container, by reverse engineering how the Jitsi Dockerfiles work." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-30T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-30T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #19: Containerizing an app"/>
+<meta name="twitter:description" content="Today I finally turned my app into a Docker container, by reverse engineering how the Jitsi Dockerfiles work."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #19: Containerizing an app</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-30T23:59:00-07:00">Jan 30, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/docker">#docker</a>
+                
+                    , 
+                    <a href="/tags/jitsi">#jitsi</a>
+                
+                    , 
+                    <a href="/tags/calla">#calla</a>
+                
+            </em>
+        </li>
+        
+
+        <li>6 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/" title="Virtual Party Space Devlog #19: Containerizing an app">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Today I finally turned my app into a Docker container, by reverse engineering how the Jitsi Dockerfiles work.</p>
+<h1 id="log">Log</h1>
+<ul>
+<li>tried using <code>--local</code> context for docker compose CLI, doesn&rsquo;t seem to do anything useful
+<ul>
+<li>doesn&rsquo;t recreate the cloudmap service discovery, so back to services not talking to each another</li>
+<li>try creating network aliases that use cloudmap format, to see if can pinpoint issue?</li>
+<li>worried it might be related to <a href="https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker#running-behind-nat-or-on-a-lan-environment">lacking host ip</a>, and really don&rsquo;t know how to address not knowing public ip in advance</li>
+</ul>
+</li>
+<li>dockerizing own app
+<ul>
+<li>currently only been running in dev mode, need to set up a container with nginx etc</li>
+<li>can probably crib a lot from docker-jitsi-meet web container</li>
+</ul>
+</li>
+<li>Dockerfile tips
+<ul>
+<li><a href="https://docs.docker.com/develop/dev-best-practices/">https://docs.docker.com/develop/dev-best-practices/</a></li>
+<li><a href="https://cloud.google.com/solutions/best-practices-for-building-containers">https://cloud.google.com/solutions/best-practices-for-building-containers</a></li>
+<li><a href="https://docs.docker.com/develop/develop-images/dockerfile_best-practices/">https://docs.docker.com/develop/develop-images/dockerfile_best-practices/</a></li>
+<li><a href="https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html">Tutorial</a> for turning web app into container with multi-stage dockerfile</li>
+</ul>
+</li>
+</ul>
+<h3 id="how-does-docker-jisi-meet-work">HOW DOES DOCKER-JISI-MEET WORK?</h3>
+<ul>
+<li>project contains a <code>base</code> image built on debian:buster-slim which contains:
+<ul>
+<li>apt-transport-https apt-utils ca-certificates gnupg wget</li>
+<li>s6 for process management (via an &ldquo;overlay&rdquo;) <a href="https://github.com/just-containers/s6-overlay">https://github.com/just-containers/s6-overlay</a></li>
+<li>Jitsi&rsquo;s GPG keys (what for?)</li>
+<li><code>frep</code> templating tool <a href="https://github.com/subchen/frep">https://github.com/subchen/frep</a></li>
+<li>a couple wrapper commands <code>apt-dpkg-wrap</code>, <code>apt-cleanup</code>, and <code>tpl</code> to be used in the other dockerfiles</li>
+<li>if built using the <code>unstable</code> release, also installs jq procps curl vim iputils-ping net-tools</li>
+</ul>
+</li>
+<li>base image sets <code>apt-get</code> sources for debian and jitsi packages (so if want to use custom source, will have to add new)</li>
+<li>each container image extends base by installing at least one jitsi package and some public packages
+<ul>
+<li>uses the wrapper commands from base image for installing and cleanup</li>
+<li>web uses <code>ADD</code> docker command instead of apt-get for acme, maybe not available in apt?</li>
+</ul>
+</li>
+<li>each service contains a <code>rootfs</code> folder containing config for the service
+<ul>
+<li><code>etc</code> is mostly process running directions for s6
+<ul>
+<li><code>cont-init.d</code> contains bash script to run when the container initializes</li>
+<li><code>services.d</code> contains run commands for processes that run in this service</li>
+</ul>
+</li>
+<li><code>defaults</code> is templates for things like nginx configs, including environment variables
+<ul>
+<li>these templates are expanded into the mapped <code>/config</code> directory using the <code>tpl</code> wrapper command around <code>frep</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>upon container start, s6 runs <code>10-config</code> init script, which contains <code>tpl</code> commands to recreate <code>/config</code> files from <code>/defaults</code></li>
+<li><code>web</code> container runs nginx and a cron that runs Lets Encrypt regularly</li>
+</ul>
+<h3 id="more-about-whether-to-use-volumes-or-not">more about whether to use volumes or not</h3>
+<ul>
+<li>&ldquo;By default all files created inside a container are stored on a writable container layer&rdquo; <a href="https://docs.docker.com/storage/">https://docs.docker.com/storage/</a>
+<ul>
+<li>not persistent when container goes down</li>
+<li>hard to move to other hosts</li>
+<li>storage driver reduces performance</li>
+</ul>
+</li>
+<li>for the most part, contents of volumes are just config files that are written every time the container starts
+<ul>
+<li>probably no need to use persistent storage, but also no need to copy in files</li>
+</ul>
+</li>
+<li>Let&rsquo;s Encrypt certificates <em>do</em> need to be persisted</li>
+</ul>
+<h3 id="trying-new-more-ecs-friendly-setup-for-docker-jitsi-meet">trying new, more ECS-friendly setup for docker-jitsi-meet</h3>
+<ul>
+<li>renamed network aliases to what CloudMap will call them&ndash;seems to work locally, TBD remote</li>
+<li>need to think about setting URIs etc in my app via environment variables
+<ul>
+<li><a href="https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa">https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa</a></li>
+<li>dotenv library caused an error because I&rsquo;m building for web, not node. Tried dotenv-webpack instead</li>
+<li><a href="https://github.com/webpack-contrib/css-loader/issues/447">https://github.com/webpack-contrib/css-loader/issues/447</a></li>
+<li><a href="https://www.npmjs.com/package/dotenv-webpack">https://www.npmjs.com/package/dotenv-webpack</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="bug-fixes">Bug fixes</h3>
+<ul>
+<li>getting &ldquo;Bridge Channel send: no opened channel.&rdquo; error a bunch, but doesn&rsquo;t seem to actually be any configuration problem &amp; went away on its own.
+<ul>
+<li>this usually means the UDP port for the JVB server isn&rsquo;t accessible</li>
+<li>may correlate to &ldquo;WARNING: Took &lt;##&gt; ms to handle IQ:&rdquo; messages in JVB log?</li>
+</ul>
+</li>
+<li>found source of non-player avatar not moving when browser tab not focused bug
+<ul>
+<li>Most browsers pause activity when tab isn&rsquo;t focused, so best case is to detect either blur/focus or pause/resume and change movement behaviour based on state</li>
+<li><a href="https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403">https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403</a></li>
+<li><a href="https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html">https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="the-perils-of-libraries">The perils of libraries</h3>
+<ul>
+<li>Made some quick progress with dockerizing, but got blocked on Calla not being able to be included in any normal way
+<ul>
+<li>npm file:.. syntax being outside the Docker context was an issue, as expected</li>
+<li>internet suggestion to use Dockerfile in parent directory was a nightmare because entire <code>projects</code> directory gets loaded in as context, which is many Gb (still didn&rsquo;t work)</li>
+<li>tried including as tar.gz but kept running into issues with the <code>my-rollup</code> dev dependency
+<ul>
+<li>I think this was actually due to <code>package-lock.json</code>, and might have worked in the end</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Chosen path: turn Calla into a proper dependency (and by extension, its dependencies <code>kudzu</code> and <code>my-rollup</code>)
+<ul>
+<li>using <a href="https://verdaccio.org/en/">Verdaccio</a> as local npm repository
+<ul>
+<li>(set as my default repository, remember this when working on other projects)</li>
+<li>had to &ldquo;log in&rdquo;, created account and put in password manager</li>
+</ul>
+</li>
+<li>look up how to publish packages (<code>npm publish</code>)</li>
+<li>use <code>npm pack</code> on <code>my-rollup</code> because it&rsquo;s just a build script I don&rsquo;t ever want to touch or use</li>
+<li>publish <code>kudzu</code> to verdaccio</li>
+<li>publish <code>calla</code> to verdaccio</li>
+<li>install still fails due to complaining about some typescript syntax, because package contains TS
+<ul>
+<li>look into <a href="https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd">how you&rsquo;re supposed to publish TS</a></li>
+</ul>
+</li>
+<li>Calla doesn&rsquo;t use an outDir, so js files are intermingled with ts files
+<ul>
+<li>edit tsconfig, publish from ./dist folder (remember to actually include folder!)</li>
+</ul>
+</li>
+<li>app still can&rsquo;t find calla, because <code>main</code> was set incorrectly in package.json</li>
+<li><code>Calla.js</code> was incorrectly capitalized because I was trying to cheat and reuse the <code>dist</code> directory, which already had <code>calla.js</code>
+<ul>
+<li>(this is going to be a problem if I accidentally run the build script instead of just <code>tsc</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="additional-configuration">Additional configuration</h3>
+<ul>
+<li>got all the server stuff in the same docker-compose as my app, just need to get the extra nginx stuff working
+<ul>
+<li>nginx configs contain environment variables, which need to get replaced with env vars passed in Docker build</li>
+<li>jitsi containers use <code>frep</code> for env variable replacements, could do that, but requires learning to start a script</li>
+<li><code>envsubstr</code> is a linux cli tool for replacing env vars, still requires a bit of scripting</li>
+<li><a href="https://hub.docker.com/_/nginx">nginx alpine image</a> supports <code>envsubstr</code> automatically starting in 1.19 (mainline, not stable)
+<ul>
+<li>could potentially <a href="https://unix.stackexchange.com/questions/294378/replacing-only-specific-variables-with-envsubst">replace valid nginx confs that start with $</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>lets encrypt certificates are good for 90 days, so I only need to get one once and store on volume</li>
+<li>made sure local lib-jitsi-meet got loaded so Calla doesn&rsquo;t try to download it again</li>
+<li>struggled with HTTPS for SO LONG and it looks like the problem was just reusing ports that another container was using.
+<ul>
+<li>copied over more of the jitsi web configs, probably didn&rsquo;t need to do that</li>
+<li>changing ports instantly worked</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #18: Victory over AWS!</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/">Virtual Party Space Devlog #20: Docker registries <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

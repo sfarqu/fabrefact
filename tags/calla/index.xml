@@ -1,0 +1,680 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>calla on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/calla/</link>
+   <description>Recent content in calla on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Sat, 30 Jan 2021 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/calla/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #19: Containerizing an app</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</link>
+       <pubDate>Sat, 30 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</guid>
+       <description>&lt;p&gt;Today I finally turned my app into a Docker container, by reverse engineering how the Jitsi Dockerfiles work.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;tried using &lt;code&gt;--local&lt;/code&gt; context for docker compose CLI, doesn&amp;rsquo;t seem to do anything useful
+&lt;ul&gt;
+&lt;li&gt;doesn&amp;rsquo;t recreate the cloudmap service discovery, so back to services not talking to each another&lt;/li&gt;
+&lt;li&gt;try creating network aliases that use cloudmap format, to see if can pinpoint issue?&lt;/li&gt;
+&lt;li&gt;worried it might be related to &lt;a href=&#34;https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker#running-behind-nat-or-on-a-lan-environment&#34;&gt;lacking host ip&lt;/a&gt;, and really don&amp;rsquo;t know how to address not knowing public ip in advance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;dockerizing own app
+&lt;ul&gt;
+&lt;li&gt;currently only been running in dev mode, need to set up a container with nginx etc&lt;/li&gt;
+&lt;li&gt;can probably crib a lot from docker-jitsi-meet web container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Dockerfile tips
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/develop/dev-best-practices/&#34;&gt;https://docs.docker.com/develop/dev-best-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/solutions/best-practices-for-building-containers&#34;&gt;https://cloud.google.com/solutions/best-practices-for-building-containers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&#34;&gt;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html&#34;&gt;Tutorial&lt;/a&gt; for turning web app into container with multi-stage dockerfile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;how-does-docker-jisi-meet-work&#34;&gt;HOW DOES DOCKER-JISI-MEET WORK?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;project contains a &lt;code&gt;base&lt;/code&gt; image built on debian:buster-slim which contains:
+&lt;ul&gt;
+&lt;li&gt;apt-transport-https apt-utils ca-certificates gnupg wget&lt;/li&gt;
+&lt;li&gt;s6 for process management (via an &amp;ldquo;overlay&amp;rdquo;) &lt;a href=&#34;https://github.com/just-containers/s6-overlay&#34;&gt;https://github.com/just-containers/s6-overlay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jitsi&amp;rsquo;s GPG keys (what for?)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frep&lt;/code&gt; templating tool &lt;a href=&#34;https://github.com/subchen/frep&#34;&gt;https://github.com/subchen/frep&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;a couple wrapper commands &lt;code&gt;apt-dpkg-wrap&lt;/code&gt;, &lt;code&gt;apt-cleanup&lt;/code&gt;, and &lt;code&gt;tpl&lt;/code&gt; to be used in the other dockerfiles&lt;/li&gt;
+&lt;li&gt;if built using the &lt;code&gt;unstable&lt;/code&gt; release, also installs jq procps curl vim iputils-ping net-tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;base image sets &lt;code&gt;apt-get&lt;/code&gt; sources for debian and jitsi packages (so if want to use custom source, will have to add new)&lt;/li&gt;
+&lt;li&gt;each container image extends base by installing at least one jitsi package and some public packages
+&lt;ul&gt;
+&lt;li&gt;uses the wrapper commands from base image for installing and cleanup&lt;/li&gt;
+&lt;li&gt;web uses &lt;code&gt;ADD&lt;/code&gt; docker command instead of apt-get for acme, maybe not available in apt?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;each service contains a &lt;code&gt;rootfs&lt;/code&gt; folder containing config for the service
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;etc&lt;/code&gt; is mostly process running directions for s6
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cont-init.d&lt;/code&gt; contains bash script to run when the container initializes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;services.d&lt;/code&gt; contains run commands for processes that run in this service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;defaults&lt;/code&gt; is templates for things like nginx configs, including environment variables
+&lt;ul&gt;
+&lt;li&gt;these templates are expanded into the mapped &lt;code&gt;/config&lt;/code&gt; directory using the &lt;code&gt;tpl&lt;/code&gt; wrapper command around &lt;code&gt;frep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;upon container start, s6 runs &lt;code&gt;10-config&lt;/code&gt; init script, which contains &lt;code&gt;tpl&lt;/code&gt; commands to recreate &lt;code&gt;/config&lt;/code&gt; files from &lt;code&gt;/defaults&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;web&lt;/code&gt; container runs nginx and a cron that runs Lets Encrypt regularly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;more-about-whether-to-use-volumes-or-not&#34;&gt;more about whether to use volumes or not&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;By default all files created inside a container are stored on a writable container layer&amp;rdquo; &lt;a href=&#34;https://docs.docker.com/storage/&#34;&gt;https://docs.docker.com/storage/&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;not persistent when container goes down&lt;/li&gt;
+&lt;li&gt;hard to move to other hosts&lt;/li&gt;
+&lt;li&gt;storage driver reduces performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;for the most part, contents of volumes are just config files that are written every time the container starts
+&lt;ul&gt;
+&lt;li&gt;probably no need to use persistent storage, but also no need to copy in files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Let&amp;rsquo;s Encrypt certificates &lt;em&gt;do&lt;/em&gt; need to be persisted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;trying-new-more-ecs-friendly-setup-for-docker-jitsi-meet&#34;&gt;trying new, more ECS-friendly setup for docker-jitsi-meet&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;renamed network aliases to what CloudMap will call them&amp;ndash;seems to work locally, TBD remote&lt;/li&gt;
+&lt;li&gt;need to think about setting URIs etc in my app via environment variables
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa&#34;&gt;https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;dotenv library caused an error because I&amp;rsquo;m building for web, not node. Tried dotenv-webpack instead&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/webpack-contrib/css-loader/issues/447&#34;&gt;https://github.com/webpack-contrib/css-loader/issues/447&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/package/dotenv-webpack&#34;&gt;https://www.npmjs.com/package/dotenv-webpack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;getting &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; error a bunch, but doesn&amp;rsquo;t seem to actually be any configuration problem &amp;amp; went away on its own.
+&lt;ul&gt;
+&lt;li&gt;this usually means the UDP port for the JVB server isn&amp;rsquo;t accessible&lt;/li&gt;
+&lt;li&gt;may correlate to &amp;ldquo;WARNING: Took &amp;lt;##&amp;gt; ms to handle IQ:&amp;rdquo; messages in JVB log?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;found source of non-player avatar not moving when browser tab not focused bug
+&lt;ul&gt;
+&lt;li&gt;Most browsers pause activity when tab isn&amp;rsquo;t focused, so best case is to detect either blur/focus or pause/resume and change movement behaviour based on state&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403&#34;&gt;https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html&#34;&gt;https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-perils-of-libraries&#34;&gt;The perils of libraries&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Made some quick progress with dockerizing, but got blocked on Calla not being able to be included in any normal way
+&lt;ul&gt;
+&lt;li&gt;npm file:.. syntax being outside the Docker context was an issue, as expected&lt;/li&gt;
+&lt;li&gt;internet suggestion to use Dockerfile in parent directory was a nightmare because entire &lt;code&gt;projects&lt;/code&gt; directory gets loaded in as context, which is many Gb (still didn&amp;rsquo;t work)&lt;/li&gt;
+&lt;li&gt;tried including as tar.gz but kept running into issues with the &lt;code&gt;my-rollup&lt;/code&gt; dev dependency
+&lt;ul&gt;
+&lt;li&gt;I think this was actually due to &lt;code&gt;package-lock.json&lt;/code&gt;, and might have worked in the end&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Chosen path: turn Calla into a proper dependency (and by extension, its dependencies &lt;code&gt;kudzu&lt;/code&gt; and &lt;code&gt;my-rollup&lt;/code&gt;)
+&lt;ul&gt;
+&lt;li&gt;using &lt;a href=&#34;https://verdaccio.org/en/&#34;&gt;Verdaccio&lt;/a&gt; as local npm repository
+&lt;ul&gt;
+&lt;li&gt;(set as my default repository, remember this when working on other projects)&lt;/li&gt;
+&lt;li&gt;had to &amp;ldquo;log in&amp;rdquo;, created account and put in password manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;look up how to publish packages (&lt;code&gt;npm publish&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;npm pack&lt;/code&gt; on &lt;code&gt;my-rollup&lt;/code&gt; because it&amp;rsquo;s just a build script I don&amp;rsquo;t ever want to touch or use&lt;/li&gt;
+&lt;li&gt;publish &lt;code&gt;kudzu&lt;/code&gt; to verdaccio&lt;/li&gt;
+&lt;li&gt;publish &lt;code&gt;calla&lt;/code&gt; to verdaccio&lt;/li&gt;
+&lt;li&gt;install still fails due to complaining about some typescript syntax, because package contains TS
+&lt;ul&gt;
+&lt;li&gt;look into &lt;a href=&#34;https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd&#34;&gt;how you&amp;rsquo;re supposed to publish TS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Calla doesn&amp;rsquo;t use an outDir, so js files are intermingled with ts files
+&lt;ul&gt;
+&lt;li&gt;edit tsconfig, publish from ./dist folder (remember to actually include folder!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;app still can&amp;rsquo;t find calla, because &lt;code&gt;main&lt;/code&gt; was set incorrectly in package.json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Calla.js&lt;/code&gt; was incorrectly capitalized because I was trying to cheat and reuse the &lt;code&gt;dist&lt;/code&gt; directory, which already had &lt;code&gt;calla.js&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(this is going to be a problem if I accidentally run the build script instead of just &lt;code&gt;tsc&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;additional-configuration&#34;&gt;Additional configuration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;got all the server stuff in the same docker-compose as my app, just need to get the extra nginx stuff working
+&lt;ul&gt;
+&lt;li&gt;nginx configs contain environment variables, which need to get replaced with env vars passed in Docker build&lt;/li&gt;
+&lt;li&gt;jitsi containers use &lt;code&gt;frep&lt;/code&gt; for env variable replacements, could do that, but requires learning to start a script&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;envsubstr&lt;/code&gt; is a linux cli tool for replacing env vars, still requires a bit of scripting&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/nginx&#34;&gt;nginx alpine image&lt;/a&gt; supports &lt;code&gt;envsubstr&lt;/code&gt; automatically starting in 1.19 (mainline, not stable)
+&lt;ul&gt;
+&lt;li&gt;could potentially &lt;a href=&#34;https://unix.stackexchange.com/questions/294378/replacing-only-specific-variables-with-envsubst&#34;&gt;replace valid nginx confs that start with $&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;lets encrypt certificates are good for 90 days, so I only need to get one once and store on volume&lt;/li&gt;
+&lt;li&gt;made sure local lib-jitsi-meet got loaded so Calla doesn&amp;rsquo;t try to download it again&lt;/li&gt;
+&lt;li&gt;struggled with HTTPS for SO LONG and it looks like the problem was just reusing ports that another container was using.
+&lt;ul&gt;
+&lt;li&gt;copied over more of the jitsi web configs, probably didn&amp;rsquo;t need to do that&lt;/li&gt;
+&lt;li&gt;changing ports instantly worked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #16: AWS architecture with docker-compose</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</link>
+       <pubDate>Sat, 23 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</guid>
+       <description>&lt;p&gt;Today I finally stopped procrastinating and started seriously looking into how to build this on AWS. (But also fixed a bunch of bugs!)&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;looked into &lt;a href=&#34;https://nolanlawson.com/2020/02/19/fixing-memory-leaks-in-web-applications/&#34;&gt;memory leaks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;initial tests show that memory growth doesn&amp;rsquo;t present over short timeframes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;added userId to events to allow for multiple-player movement&lt;/li&gt;
+&lt;li&gt;modified depth layers so player avatars always drawn in front of scenery at &amp;ldquo;same&amp;rdquo; depth (using step-2 as considered before)
+&lt;ul&gt;
+&lt;li&gt;still looks weird when player going behind things, but moving in front of buildings now looks right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;took forever to figure out mute bug!
+&lt;ul&gt;
+&lt;li&gt;calling toggleAudioMuted in conferenceJoined event handler was the problem
+&lt;ul&gt;
+&lt;li&gt;conferenceJoined event is dispatched before async setAudioInput completes, so toggle would find no input and create a new one, which would then get destroyed when the initial audio input tried to complete.&lt;/li&gt;
+&lt;li&gt;always saw 2 adds, 2 removes, so maybe the async calls stepped on each other?&lt;/li&gt;
+&lt;li&gt;left with no audio track, new audio track would then be created on hitting mute toggle or switching inputs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;combined with Calla&amp;rsquo;s not-great idea to use &amp;ldquo;toggle&amp;rdquo; instead of any way of setting directly
+&lt;ul&gt;
+&lt;li&gt;isAudioMuted was always null so would always toggle, regardless of &amp;ldquo;set&amp;rdquo; value&lt;/li&gt;
+&lt;li&gt;even after patching that, initial state is always null, so leads to different behaviour depending if audio track exists or not&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;no easy way to create a track muted
+&lt;ul&gt;
+&lt;li&gt;startAudioMuted in Jitsi doesn&amp;rsquo;t seem to do anything?&lt;/li&gt;
+&lt;li&gt;also tried startMutedPolicy, also doesn&amp;rsquo;t seem to do anything
+&lt;ul&gt;
+&lt;li&gt;maybe look into these later, but Jitsi is complicated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reverted a change to Calla and then discovered it&amp;rsquo;s required to have the &amp;ldquo;None&amp;rdquo; option in audio/video dropdowns
+&lt;ul&gt;
+&lt;li&gt;redid fix and committed this time&lt;/li&gt;
+&lt;li&gt;still on &amp;ldquo;fixes&amp;rdquo; branch of official repo, haven&amp;rsquo;t recalled how to switch origins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;remote user avatars now properly load to that user&amp;rsquo;s reported position
+&lt;ul&gt;
+&lt;li&gt;addParticipant is getting sloppy, might want to break this out into somewhere else&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;figured out how to properly add user avatars &amp;amp; positions for all users!
+&lt;ul&gt;
+&lt;li&gt;requires sending custom Jitsi messages. Calla doesn&amp;rsquo;t have an interface for this, so now I&amp;rsquo;ve polluted my conference code with hard-coded Jitsi references&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cannot-put-off-aws-anymore&#34;&gt;CANNOT PUT OFF AWS ANYMORE&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;A&lt;/code&gt; recommended Fargate and I guess I see it, going to try tutorials in that direction&lt;/li&gt;
+&lt;li&gt;installed ecs cli and upgraded aws-cli
+&lt;ul&gt;
+&lt;li&gt;****TODO: set up AWS profile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Eventually get an &lt;a href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&#34;&gt;Elastic IP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;cost &amp;lt;$5 for a month&lt;/li&gt;
+&lt;li&gt;add CNAME at domain registrar well in advance to get domain name&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;using-docker-compose&#34;&gt;Using docker-compose&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s possible to &lt;a href=&#34;https://aws.amazon.com/blogs/containers/deploy-applications-on-amazon-ecs-using-docker-compose/&#34;&gt;use docker-compose with ECS&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/cloud/ecs-integration/&#34;&gt;https://docs.docker.com/cloud/ecs-integration/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;this seems to avoid the need to create cloudformation templates and just turns your docker-compose.yml into cloudformation
+&lt;ul&gt;
+&lt;li&gt;can use &lt;code&gt;docker compose convert&lt;/code&gt; to just generate the cloudformation and manually tweak&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can reuse much of the existing jitsi docker project, just update if I need to do something custom with jvb
+&lt;ul&gt;
+&lt;li&gt;I think I&amp;rsquo;m getting the picture that despite the visualization in Docker Desktop, all the different containers are actually entirely separate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can also test AWS context locally &lt;a href=&#34;https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/&#34;&gt;https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;need to add features like:
+&lt;ul&gt;
+&lt;li&gt;resources (max CPU and memory per service)&lt;/li&gt;
+&lt;li&gt;x-aws-* parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can specify a .env file for docker-compose &lt;a href=&#34;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html&#34;&gt;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;unfortunately this might not work for the docker binary, which is required for ECS features
+&lt;ul&gt;
+&lt;li&gt;.env file support added a couple weeks ago, might work? Installing new Docker Desktop version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;****TODO: figure out SSL certificates&lt;/li&gt;
+&lt;li&gt;****TODO: pull passwords out of .env and put them into secrets manager
+&lt;ul&gt;
+&lt;li&gt;learn how secrets work I guess&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other-considerations&#34;&gt;Other considerations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;I think the only thing the &amp;ldquo;web&amp;rdquo; docker container is used for is proxying http-bind on to xmpp.meet.jitsi:5280
+&lt;ul&gt;
+&lt;li&gt;could ditch &amp;ldquo;web&amp;rdquo; altogether, and replace it with a container of my app?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;my code is getting complicated enough that I&amp;rsquo;m starting to break features when adding a new feature, probably need tests
+&lt;ul&gt;
+&lt;li&gt;unfortunately most of my test needs are integration/e2e, not sure how to test ie jitsi connection events
+&lt;ul&gt;
+&lt;li&gt;a mock of lib-jitsi-meet would take so long to write&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #11: Refactoring</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-11/</link>
+       <pubDate>Sat, 16 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-11/</guid>
+       <description>&lt;p&gt;Today I continue resolving bugs, but also start refactoring my spaghetti code and looking into resources to make a character creator.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;local user DOM elements weren&amp;rsquo;t being removed because by the time it was called &lt;code&gt;calla.localUserId&lt;/code&gt; was reset, so just unload all elements on leave&lt;/li&gt;
+&lt;li&gt;username wasn&amp;rsquo;t being loaded because I had hardcoded username to empty string before I figured out where to get username from! RESOLVED&lt;/li&gt;
+&lt;li&gt;video wasn&amp;rsquo;t being loaded on conference join because I was calling setPreferredDevice with ID, instead of MediaDevicInfo object
+&lt;ul&gt;
+&lt;li&gt;audio still autoloaded because Calla passes in a flag to try loading even if preferred device not set
+&lt;ul&gt;
+&lt;li&gt;this is why I unexpectedly had audio feedback issues&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;video is passed with flag to only use preferred device, so have to set it first RESOLVED&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;need to make select box update when Calla updates audio source by other means RESOLVED&lt;/li&gt;
+&lt;li&gt;want option to mute, since can&amp;rsquo;t prevent audio from loading RESOLVED
+&lt;ul&gt;
+&lt;li&gt;might still be broken, sometimes the mute flag gets reversed, can&amp;rsquo;t quite pin down why&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uigame&#34;&gt;UI/Game&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;trying to resolve the circular reference problem, here is the plan:
+&lt;ul&gt;
+&lt;li&gt;refactor GameScene out of main.ts&lt;/li&gt;
+&lt;li&gt;refactor most of Conference.ts into a class
+&lt;ul&gt;
+&lt;li&gt;all references to Calla contained here&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;move random non-class code from Conference into main
+&lt;ul&gt;
+&lt;li&gt;main imports Conference class, all current function calls turned into conf.&lt;!-- raw HTML omitted --&gt; calls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Conference class has GameScene member
+&lt;ul&gt;
+&lt;li&gt;adds event listeners on important GameScene events (and GridPhysics?)
+&lt;ul&gt;
+&lt;li&gt;update&lt;/li&gt;
+&lt;li&gt;movePlayerSprite&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can call GameScene methods directly to send info the other way&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;character-creator&#34;&gt;Character Creator&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Create character avatars in a picrew-like interface&lt;/li&gt;
+&lt;li&gt;Identified favourite reference picrews
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://picrew.me/image_maker/257476&#34;&gt;https://picrew.me/image_maker/257476&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://picrew.me/image_maker/43383&#34;&gt;https://picrew.me/image_maker/43383&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Listed needed art assets and likely categories&lt;/li&gt;
+&lt;li&gt;picrew uses &lt;a href=&#34;https://kenwheeler.github.io/slick/&#34;&gt;carousel&lt;/a&gt; for paging through categories of assets&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #9: Testing continues</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-9/</link>
+       <pubDate>Thu, 14 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-9/</guid>
+       <description>&lt;p&gt;Today I continue to identify and resolve bugs with the Calla library.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Bug: changing video sources doesn&amp;rsquo;t work
+&lt;ul&gt;
+&lt;li&gt;if removeTrack called, addTrack will always be skipped&lt;/li&gt;
+&lt;li&gt;problem with &lt;code&gt;BaseConferenctClient.getNext()&lt;/code&gt; -&amp;gt; resolve is never called
+&lt;ul&gt;
+&lt;li&gt;what is evt.id? It&amp;rsquo;s compared to UserId, do we expect it to be userid? (Yes, apparently)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;videoRemoved&amp;rdquo; event never fires, so await&amp;hellip;waits&amp;hellip; indefinitely. RESOLVED (bug in Calla)
+&lt;ul&gt;
+&lt;li&gt;this may also be what&amp;rsquo;s happening in Calla.join
+&lt;ul&gt;
+&lt;li&gt;metadata.join waits for &amp;lsquo;conference.dataChannelOpened&amp;rsquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bug: leaving conference doesn&amp;rsquo;t clean up properly (Jitsi connection still pinging http-bind)
+&lt;ul&gt;
+&lt;li&gt;added await to conference.leave in JitsiConferenceClient.leave&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;rejoining conference doesn&amp;rsquo;t work (&amp;ldquo;conferenceJoined&amp;rdquo; never fires, additional Jitsi events never reached)
+&lt;ul&gt;
+&lt;li&gt;bug in JitsiConferenceClient.leave - never resets this.roomName, so skips joining on .join RESOLVED&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #8: Bug stomping</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-8/</link>
+       <pubDate>Wed, 13 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-8/</guid>
+       <description>&lt;p&gt;Today I identify a bunch of bugs in getting my rough POC working.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;error was because Calla is built for ESNext and I was building for ES5, updating webpack config to ESNext worked (for now?)&lt;/li&gt;
+&lt;li&gt;Bug: this.connection null when trying to join room
+&lt;ul&gt;
+&lt;li&gt;missing call to calla.connect()&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;spatial audio works better, not janking with movement now
+&lt;ul&gt;
+&lt;li&gt;need to figure out how to adjust volume/dropoff&lt;/li&gt;
+&lt;li&gt;clip volume of 1 appears to be ok&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Bug: clip audio still plays even after conference left, manually remove during &amp;ldquo;conference left&amp;rdquo; event handler&lt;/li&gt;
+&lt;li&gt;Bug: connection is not getting destroyed/recreated properly&lt;/li&gt;
+&lt;li&gt;Bug: username not set&lt;/li&gt;
+&lt;li&gt;Bug: username tag not unloading (probably something to do with how username set/fact that id is all internal to Calla now)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #7: Upgrade pain</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-7/</link>
+       <pubDate>Tue, 12 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-7/</guid>
+       <description>&lt;p&gt;Today I struggle with a new, completely backwards-incompatible version of Calla.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;First tried copying in new Calla library, tons of errors&lt;/li&gt;
+&lt;li&gt;Downloaded newer version with updated build script, but still took a long time to figure out how I&amp;rsquo;m supposed to use it&lt;/li&gt;
+&lt;li&gt;Loaded as npm library using &lt;code&gt;file:..&lt;/code&gt; syntax
+&lt;ul&gt;
+&lt;li&gt;Had to add &lt;code&gt;allowUmdGlobalAccess&lt;/code&gt; and &lt;code&gt;resolveJsonModule&lt;/code&gt; to tsconfig to avoid errors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Changed integration to use new syntax, but still guessing on what some of the analogues are
+&lt;ul&gt;
+&lt;li&gt;public AudioManager interface actually makes adding clips easier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Error breaks JS on load in website though&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #6: Putting it all together</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/</link>
+       <pubDate>Sun, 10 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/</guid>
+       <description>&lt;p&gt;Today I start combining my game interface with the audio spatialization library.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;imported Calla implementation into Phaser implementation
+&lt;ul&gt;
+&lt;li&gt;using tile position as &amp;ldquo;pose&amp;rdquo; since Calla uses metres as spatialization&lt;/li&gt;
+&lt;li&gt;this worked surprisingly easily&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tried to add an audio source to map to test - this is harder than expected!
+&lt;ul&gt;
+&lt;li&gt;Calla relies entirely on Jitsi for adding user audio, thought would have to create extra Jitsi users for every static audio source
+&lt;ul&gt;
+&lt;li&gt;this would be a huge pain and require customizing Jitsi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;upon reflection, may be easier to just add dummy sources to Calla&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;adding static audio sources to Calla
+&lt;ul&gt;
+&lt;li&gt;AudioManager has support for &amp;ldquo;clips&amp;rdquo; - creates an audio HTML element from audio file path
+&lt;ul&gt;
+&lt;li&gt;how to set location?
+&lt;ul&gt;
+&lt;li&gt;AudioManager.setClipPosition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;No API for accessing this in CallaClient
+&lt;ul&gt;
+&lt;li&gt;add createClip function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;looks like Calla has been updated recently to be able to be loaded as library
+&lt;ul&gt;
+&lt;li&gt;using typescript now?&lt;/li&gt;
+&lt;li&gt;still doesn&amp;rsquo;t look finished/easily loadable&lt;/li&gt;
+&lt;li&gt;Docker documentation for Calla does include the setup issue I had, sorta (4 months old, so my bad for not figuring that out)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;uigame&#34;&gt;UI/Game&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;playing with map offsets in Tiled&lt;/li&gt;
+&lt;li&gt;figured out how to make an animation for fountain in Tiled, but it doesn&amp;rsquo;t work in Phaser. Need to do via Phaser animation or &lt;a href=&#34;https://github.com/nkholski/phaser-animated-tiles&#34;&gt;use plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;learned how to add ipad as video source in OBS
+&lt;ul&gt;
+&lt;li&gt;need to use cable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can do isometric depth with min(x,y) + modifier
+&lt;ul&gt;
+&lt;li&gt;roofs always higher layer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;downloaded &lt;a href=&#34;https://soundbible.com/1435-Water-Fountain-Noise.html&#34;&gt;free fountain sound&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #5: Config issues</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-5/</link>
+       <pubDate>Sat, 09 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-5/</guid>
+       <description>&lt;p&gt;Today I muddled through configuration issues to get things working properly in a dev environment&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;forgot to update last times I worked on this&lt;/li&gt;
+&lt;li&gt;Got jammed up on a Calla &amp;ldquo;bug&amp;rdquo; and spent several sessions just trying to figure out why I couldn&amp;rsquo;t successfully create a Jitsi connection
+&lt;ul&gt;
+&lt;li&gt;problem is that &amp;ldquo;hosts&amp;rdquo; passed to &lt;code&gt;JitsiMeetJS.JitsiConnection&lt;/code&gt; must match configured hostnames in docker container, which is not explained in Calla documentation&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;serviceUrl&amp;rdquo; needs to be publicly-available hostname for http-bind, giving the illusion that it was working&lt;/li&gt;
+&lt;li&gt;Calla docs say to use same value for JITSI_HOST and JVB_HOST without giving any indication of how those values are actually used by Jitsi&lt;/li&gt;
+&lt;li&gt;this took me way, way too long to figure out&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed CORS issue in testing by learning how to &lt;a href=&#34;https://webpack.js.org/configuration/dev-server/#devserverproxy&#34;&gt;proxy requests via webpack server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;learning how to do this the &amp;ldquo;proper&amp;rdquo; way instead of the janked up dev environment way is going to be tricky&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #4: Audio spatialization</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</link>
+       <pubDate>Tue, 22 Dec 2020 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</guid>
+       <description>&lt;p&gt;Today I tried to make audio spatialization work, and looked into Jitsi features and how to properly render isometric tiles.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;calla&#34;&gt;Calla&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Calla as a library seems to be more usable than expected
+&lt;ul&gt;
+&lt;li&gt;Tutorial exists in sub-project&amp;rsquo;s &lt;code&gt;doc&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;broken&amp;rdquo; UI is the minimal client implementation from tutorial&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;notes-for-calla-implementation&#34;&gt;Notes for Calla implementation&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;spatializer distance is in &amp;ldquo;meters&amp;rdquo;, may need to play around with math on this?&lt;/li&gt;
+&lt;li&gt;uses &lt;code&gt;omnitone&lt;/code&gt; preferred, but has a number of different spatializers, depending what browser supports&lt;/li&gt;
+&lt;li&gt;library handles interpolation of audio over time and assumes you&amp;rsquo;re using that for avatar movement, need to think how to integrate with sprite movement&lt;/li&gt;
+&lt;li&gt;audio sources set their own max distance (so players can control how far people can hear them, but not vice versa)
+&lt;ul&gt;
+&lt;li&gt;except Calla user messages don&amp;rsquo;t include audio properties? So this would be a universal setting for all users in their world&lt;/li&gt;
+&lt;li&gt;can add mute flag to user array to allow people to mute individuals?&lt;/li&gt;
+&lt;li&gt;environmental sound can be set to whatever I like&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jitsi&#34;&gt;Jitsi&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Jitsi includes text chat, need to examine that for use/abuse cases&lt;/li&gt;
+&lt;li&gt;Jitsi Videobridge last-N feature may be hackable to only show nearest-N video streams
+&lt;ul&gt;
+&lt;li&gt;locations are sent peer-to-peer by Calla, so clients would have to request specific list of streams with each update&lt;/li&gt;
+&lt;li&gt;all audio streams will always be sent, most likely&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uigame&#34;&gt;UI/Game&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;How to do appropriate layering in isometric view?&lt;/li&gt;
+&lt;li&gt;Phaser isometric sample seems to use at minimum a different layer for every grid-Y, and change sprite layer based on y value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

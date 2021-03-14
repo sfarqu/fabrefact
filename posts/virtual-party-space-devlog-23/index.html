@@ -1,0 +1,293 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #23: Connection interrupted - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #23: Connection interrupted" />
+<meta property="og:description" content="Spent a solid week tweaking and testing my AWS setup, only to discover mysterious connection issues that would cause all players to get booted off the server if more than a few people connected at a time.
+At only 2 weeks before the event was originally scheduled, there&rsquo;s no realistic way to fix this issue, actually finish the interface, and hold the event as planned. Putting this project on hold for now, mystery connection issue still unresolved." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-11T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-02-11T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #23: Connection interrupted"/>
+<meta name="twitter:description" content="Spent a solid week tweaking and testing my AWS setup, only to discover mysterious connection issues that would cause all players to get booted off the server if more than a few people connected at a time.
+At only 2 weeks before the event was originally scheduled, there&rsquo;s no realistic way to fix this issue, actually finish the interface, and hold the event as planned. Putting this project on hold for now, mystery connection issue still unresolved."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #23: Connection interrupted</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-02-11T23:59:00-07:00">Feb 11, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/jitsi">#jitsi</a>
+                
+                    , 
+                    <a href="/tags/aws">#aws</a>
+                
+            </em>
+        </li>
+        
+
+        <li>4 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/" title="Virtual Party Space Devlog #23: Connection interrupted">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Spent a solid week tweaking and testing my AWS setup, only to discover mysterious connection issues that would cause all players to get booted off the server if more than a few people connected at a time.</p>
+<p>At only 2 weeks before the event was originally scheduled, there&rsquo;s no realistic way to fix this issue, actually finish the interface, and hold the event as planned. Putting this project on hold for now, mystery connection issue still unresolved.</p>
+<h1 id="log">Log</h1>
+<h3 id="thursday-february-4">Thursday, February 4</h3>
+<ul>
+<li>turns out scripts are constantly scraping my app looking for admin pages or vulns!
+<ul>
+<li>for some reason source IPs are not preserved though</li>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/elb-capture-client-ip-addresses/">https://aws.amazon.com/premiumsupport/knowledge-center/elb-capture-client-ip-addresses/</a></li>
+</ul>
+</li>
+<li>finally put code on github in case something happens to my computer</li>
+<li>looks like JVB has a memory leak? memory usage increases permanently after every CPU spike
+<ul>
+<li><a href="https://github.com/jitsi/jitsi-videobridge/issues/1396">https://github.com/jitsi/jitsi-videobridge/issues/1396</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="friday-february-5">Friday, February 5</h3>
+<ul>
+<li>looked at malleus, going to take some Java work to try to make it test my frontend</li>
+<li>manual testing by opening a bunch of windows first
+<ul>
+<li>default config starts dropping connections at &gt;4 people in conference</li>
+</ul>
+</li>
+<li>Can keep a permanent loadbalancer while killing the rest of the stack
+<ul>
+<li>Use <code>x-aws-loadbalancer</code> as a top-level element in your Compose file to set the ARN of an existing LoadBalancer.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sunday-february-7">Sunday, February 7</h3>
+<ul>
+<li>trying out new cloudformation configs
+<ul>
+<li>permanent load balancer, set using <code>x-aws-loadbalancer</code>
+<ul>
+<li>took a long time for this to stabilize after bringing up, but seems to work now</li>
+</ul>
+</li>
+<li>setting HTTP2Preferred on TLS endpoint
+<ul>
+<li>broke everything, probably because of the hack to make non-SSL port 443 in nginx.</li>
+<li>need to figure out how to re-encrypt traffic to instance while still keeping ELB certificate</li>
+</ul>
+</li>
+<li>greater capacity for JVB server (8Gb RAM)
+<ul>
+<li>problem seems to be CPU, not RAM, but 8Gb is recommended for high load</li>
+<li>can&rsquo;t set both CPU and memory, so going with RAM</li>
+<li>setting 8Gb forces 1vCPU, rather than default of .25 or .5</li>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/ecs-fargate-high-cpu-utilization/">https://aws.amazon.com/premiumsupport/knowledge-center/ecs-fargate-high-cpu-utilization/</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="oh-no-a-big-problem">Oh no a big problem</h4>
+<ul>
+<li>Can&rsquo;t seem to stably handle more than 4 concurrent users
+<ul>
+<li>jicofo reports that users are sending &ldquo;MemberLeft&rdquo; messages &ldquo;Chat room event ChatRoomMemberPresenceChangeEvent&rdquo;</li>
+<li>JS: Lots of &ldquo;Ping timeout&rdquo; from modules/xmpp/strophe.ping.js</li>
+<li>JS: Often gets stuck in &ldquo;Bridge Channel send: no opened channel.&rdquo; from modules/RTC/BridgeChannel.js (groups of 4 every 10s)
+THEORY: nginx connections get saturated, leading to timeouts
+<ul>
+<li>default configs for Fargate task of .25 vCPU probably means work gets blocked if co-sharing</li>
+<li>tried creating a second task instance, but HTTPS traffic was never routed to it (WHY?)</li>
+</ul>
+</li>
+<li>turning on <a href="https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-access-logs.html">access logs for ELB</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="tuesday-february-9">Tuesday, February 9</h3>
+<ul>
+<li>character creator
+<ul>
+<li><a href="https://www.dropzonejs.com/#usage">https://www.dropzonejs.com/#usage</a></li>
+<li><a href="http://camanjs.com/">http://camanjs.com/</a></li>
+<li>no good existing dollmaker open source projects</li>
+</ul>
+</li>
+</ul>
+<h3 id="thursday-february-11">Thursday, February 11</h3>
+<ul>
+<li>trying to figure out why connections dropping
+<ul>
+<li>testing locally
+<ul>
+<li>local build requires local environment variables to be built into JS project
+<ul>
+<li>add <code>path</code> parameter to <code>Dotenv</code> instantiation in <code>webpack.config</code> to set to <code>.env.local</code></li>
+<li>rebuild docker container for local tag <code>docker- build -t sfarqu/party-app:latest .</code></li>
+<li>use docker-compose and local .env file <code>docker--compose --env-file .env.local up -d</code></li>
+</ul>
+</li>
+<li>5 connections locally seem to run fine, but tons of &ldquo;Bridge Channel send: no opened channel.&rdquo; errors
+<ul>
+<li>probably related to &ldquo;Firefox can’t establish a connection to the server at wss://meet.chicazul.com/colibri-ws/172.25.0.5/&hellip;&rdquo;</li>
+<li>does this mean that app is failing to set up videobridge connections and is instead using P2P?
+<ul>
+<li>that could explain why local is way more stable that AWS version</li>
+</ul>
+</li>
+<li>NEW INVESTIGATION TRACK: figure out why colibri websocket connections are failing</li>
+<li>don&rsquo;t recall consistently seeing that error in AWS version, so may be red herring</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Investigating &ldquo;connection interrupted&rdquo; error in <code>lib-jitsi-meet</code>
+<ul>
+<li>sometimes it was a different error, so it&rsquo;s not just this thing, but it was an issue</li>
+<li>both P2P errors and JVB errors throw the same interruption message.</li>
+<li>in theory interruptions should be recoverable&hellip;how?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #22: Amazon Certificates Manager</a>
+        </li>
+        
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

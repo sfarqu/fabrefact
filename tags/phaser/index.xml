@@ -1,0 +1,265 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>phaser on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/phaser/</link>
+   <description>Recent content in phaser on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Fri, 22 Jan 2021 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/phaser/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #15: Tile-based pathfinding</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-15/</link>
+       <pubDate>Fri, 22 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-15/</guid>
+       <description>&lt;p&gt;Spent a few days puttering around with pathfinding and rendering isometric movement in Phaser.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;wednesday-january-20&#34;&gt;Wednesday, January 20&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;poked around with pathfinder some more&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;thursday-january-21&#34;&gt;Thursday, January 21&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;generalized depth-layer code a bit and added buildings to it.
+&lt;ul&gt;
+&lt;li&gt;Buildings don&amp;rsquo;t work as well for some reason? Flickering when sprite transitions from in-front to behind
+&lt;ul&gt;
+&lt;li&gt;potentially make depth layers step-2? so sprites can always be above scenery at &amp;ldquo;same&amp;rdquo; depth&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tried switching movement to event-driven as opposed to every update, but made movement very choppy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;friday-january-22&#34;&gt;Friday, January 22&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;hacked pathfinder to get it working
+&lt;ul&gt;
+&lt;li&gt;relies on EventEmitter to tell Pathfinder when to try next step
+&lt;ul&gt;
+&lt;li&gt;because &lt;a href=&#34;https://phasergames.com/phaser-3-dispatching-custom-events/&#34;&gt;custom events tutorial&lt;/a&gt; designed EventEmitter as singleton, events only work for single player
+&lt;ul&gt;
+&lt;li&gt;could add userId to event name?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tile-based pathfinding looks pretty rough&lt;/li&gt;
+&lt;li&gt;pathfinder currently only has ground layer so is stymied by obstacles in scenery layer
+&lt;ul&gt;
+&lt;li&gt;if movement is blocked it just stops forever, path is never recalculated&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #10: Rendering isometric tiles</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-10/</link>
+       <pubDate>Fri, 15 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-10/</guid>
+       <description>&lt;p&gt;Today I struggle with videoconference connections and look into isometric rendering and pathfinding for the game interface.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;spent 4 hours trying to figure out why videobridge wasn&amp;rsquo;t connecting
+&lt;ul&gt;
+&lt;li&gt;turns out I made a poor choice to use host.docker.internal in docker .ENV, which doesn&amp;rsquo;t work. Replaced with IP RESOLVED&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tested with 2 users, mostly works fine&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uigame&#34;&gt;UI/Game&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;made isometric depth work
+&lt;ul&gt;
+&lt;li&gt;load tilesets as spritesheets instead of images, load each tile individually&lt;/li&gt;
+&lt;li&gt;Algorithm: depth = x + y + (base depth for foreground objects)
+&lt;ul&gt;
+&lt;li&gt;means depth increases evenly on the diagonal&lt;/li&gt;
+&lt;li&gt;causes irregular results if player character is sharing same tile as another object (layered objects should be blocking)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;looked into pathfinding to enable mouse navigation/find-my-friend
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.dynetisgames.com/2018/03/06/pathfinding-easystar-phaser-3/&#34;&gt;Easystar library&lt;/a&gt; Looks like a good option&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #7: Upgrade pain</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-7/</link>
+       <pubDate>Tue, 12 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-7/</guid>
+       <description>&lt;p&gt;Today I struggle with a new, completely backwards-incompatible version of Calla.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;First tried copying in new Calla library, tons of errors&lt;/li&gt;
+&lt;li&gt;Downloaded newer version with updated build script, but still took a long time to figure out how I&amp;rsquo;m supposed to use it&lt;/li&gt;
+&lt;li&gt;Loaded as npm library using &lt;code&gt;file:..&lt;/code&gt; syntax
+&lt;ul&gt;
+&lt;li&gt;Had to add &lt;code&gt;allowUmdGlobalAccess&lt;/code&gt; and &lt;code&gt;resolveJsonModule&lt;/code&gt; to tsconfig to avoid errors&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Changed integration to use new syntax, but still guessing on what some of the analogues are
+&lt;ul&gt;
+&lt;li&gt;public AudioManager interface actually makes adding clips easier&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Error breaks JS on load in website though&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #6: Putting it all together</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/</link>
+       <pubDate>Sun, 10 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/</guid>
+       <description>&lt;p&gt;Today I start combining my game interface with the audio spatialization library.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;imported Calla implementation into Phaser implementation
+&lt;ul&gt;
+&lt;li&gt;using tile position as &amp;ldquo;pose&amp;rdquo; since Calla uses metres as spatialization&lt;/li&gt;
+&lt;li&gt;this worked surprisingly easily&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;tried to add an audio source to map to test - this is harder than expected!
+&lt;ul&gt;
+&lt;li&gt;Calla relies entirely on Jitsi for adding user audio, thought would have to create extra Jitsi users for every static audio source
+&lt;ul&gt;
+&lt;li&gt;this would be a huge pain and require customizing Jitsi&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;upon reflection, may be easier to just add dummy sources to Calla&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;adding static audio sources to Calla
+&lt;ul&gt;
+&lt;li&gt;AudioManager has support for &amp;ldquo;clips&amp;rdquo; - creates an audio HTML element from audio file path
+&lt;ul&gt;
+&lt;li&gt;how to set location?
+&lt;ul&gt;
+&lt;li&gt;AudioManager.setClipPosition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;No API for accessing this in CallaClient
+&lt;ul&gt;
+&lt;li&gt;add createClip function&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;looks like Calla has been updated recently to be able to be loaded as library
+&lt;ul&gt;
+&lt;li&gt;using typescript now?&lt;/li&gt;
+&lt;li&gt;still doesn&amp;rsquo;t look finished/easily loadable&lt;/li&gt;
+&lt;li&gt;Docker documentation for Calla does include the setup issue I had, sorta (4 months old, so my bad for not figuring that out)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;uigame&#34;&gt;UI/Game&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;playing with map offsets in Tiled&lt;/li&gt;
+&lt;li&gt;figured out how to make an animation for fountain in Tiled, but it doesn&amp;rsquo;t work in Phaser. Need to do via Phaser animation or &lt;a href=&#34;https://github.com/nkholski/phaser-animated-tiles&#34;&gt;use plugin&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;learned how to add ipad as video source in OBS
+&lt;ul&gt;
+&lt;li&gt;need to use cable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can do isometric depth with min(x,y) + modifier
+&lt;ul&gt;
+&lt;li&gt;roofs always higher layer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;downloaded &lt;a href=&#34;https://soundbible.com/1435-Water-Fountain-Noise.html&#34;&gt;free fountain sound&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #4: Audio spatialization</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</link>
+       <pubDate>Tue, 22 Dec 2020 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-4/</guid>
+       <description>&lt;p&gt;Today I tried to make audio spatialization work, and looked into Jitsi features and how to properly render isometric tiles.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;calla&#34;&gt;Calla&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Calla as a library seems to be more usable than expected
+&lt;ul&gt;
+&lt;li&gt;Tutorial exists in sub-project&amp;rsquo;s &lt;code&gt;doc&lt;/code&gt; directory&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;broken&amp;rdquo; UI is the minimal client implementation from tutorial&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;notes-for-calla-implementation&#34;&gt;Notes for Calla implementation&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;spatializer distance is in &amp;ldquo;meters&amp;rdquo;, may need to play around with math on this?&lt;/li&gt;
+&lt;li&gt;uses &lt;code&gt;omnitone&lt;/code&gt; preferred, but has a number of different spatializers, depending what browser supports&lt;/li&gt;
+&lt;li&gt;library handles interpolation of audio over time and assumes you&amp;rsquo;re using that for avatar movement, need to think how to integrate with sprite movement&lt;/li&gt;
+&lt;li&gt;audio sources set their own max distance (so players can control how far people can hear them, but not vice versa)
+&lt;ul&gt;
+&lt;li&gt;except Calla user messages don&amp;rsquo;t include audio properties? So this would be a universal setting for all users in their world&lt;/li&gt;
+&lt;li&gt;can add mute flag to user array to allow people to mute individuals?&lt;/li&gt;
+&lt;li&gt;environmental sound can be set to whatever I like&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jitsi&#34;&gt;Jitsi&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Jitsi includes text chat, need to examine that for use/abuse cases&lt;/li&gt;
+&lt;li&gt;Jitsi Videobridge last-N feature may be hackable to only show nearest-N video streams
+&lt;ul&gt;
+&lt;li&gt;locations are sent peer-to-peer by Calla, so clients would have to request specific list of streams with each update&lt;/li&gt;
+&lt;li&gt;all audio streams will always be sent, most likely&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;uigame&#34;&gt;UI/Game&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;How to do appropriate layering in isometric view?&lt;/li&gt;
+&lt;li&gt;Phaser isometric sample seems to use at minimum a different layer for every grid-Y, and change sprite layer based on y value&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

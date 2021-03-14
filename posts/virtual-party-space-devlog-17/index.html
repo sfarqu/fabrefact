@@ -1,0 +1,289 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #17: Translating docker-compose files for AWS - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #17: Translating docker-compose files for AWS" />
+<meta property="og:description" content="Spent a couple days fighting with Docker and the ECS integration of docker-compose." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-25T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-25T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #17: Translating docker-compose files for AWS"/>
+<meta name="twitter:description" content="Spent a couple days fighting with Docker and the ECS integration of docker-compose."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #17: Translating docker-compose files for AWS</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-25T23:59:00-07:00">Jan 25, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/aws">#aws</a>
+                
+                    , 
+                    <a href="/tags/docker">#docker</a>
+                
+            </em>
+        </li>
+        
+
+        <li>3 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/" title="Virtual Party Space Devlog #17: Translating docker-compose files for AWS">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Spent a couple days fighting with Docker and the ECS integration of docker-compose.</p>
+<h1 id="log">Log</h1>
+<h2 id="sunday-january-24">Sunday, January 24</h2>
+<ul>
+<li>turns out can&rsquo;t connect to Jitsi server when using <code>docker compose</code> instead of <code>docker-compose</code>
+<ul>
+<li>getting <code>PR_END_OF_FILE_ERROR</code>, so probably SSL certificates aren&rsquo;t set up properly? (not even whatever self-signed one I&rsquo;m using)</li>
+<li>switched back to <code>docker-compose</code> for the purpose of playing around</li>
+</ul>
+</li>
+<li>fixed bug where leaving and rejoining the same conference would not reload the avatars for participants who had stayed in
+<ul>
+<li>addParticipant was tied to the loadImage callback, but in this case the image was already loaded</li>
+<li>tried just deleting image from textureManager on participant remove, but that caused a game crash when phaser tried to render nonexistent texture
+<ul>
+<li>only happened on second time (consistently), no idea why</li>
+</ul>
+</li>
+<li>made loading of image conditional on if texture already exists, all other stuff the same
+<ul>
+<li>should player avatars ever be unloaded? If so how?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>fixed bug where pathfinder didn&rsquo;t recognize obstacles on anything but scenery layer, and treated some ground tiles as obstacles
+<ul>
+<li>possibly should simplify by consolidating most tiles onto single layer?
+<ul>
+<li>might be more complicated for other existing logic/image loading though</li>
+<li>may also suggest consolidating tilesets, which is a good idea but not until i&rsquo;ve finalized the map</li>
+</ul>
+</li>
+<li>Simply check for collisions in other layers, otherwise just use ground tile</li>
+</ul>
+</li>
+</ul>
+<h2 id="tuesday-january-26">Tuesday, January 26</h2>
+<ul>
+<li>UGH DOCKER
+<ul>
+<li>still can&rsquo;t figure out why <code>docker compose</code> doesn&rsquo;t like SSL</li>
+<li>fine then, set up AWS credentials and context</li>
+</ul>
+</li>
+<li>trying the docker-&gt;ecs auto deploy thing
+<ul>
+<li>&ldquo;published port can&rsquo;t be set to a distinct value than container port: incompatible attribute&rdquo;
+<ul>
+<li>can&rsquo;t use custom ports for 80/443</li>
+</ul>
+</li>
+<li>&ldquo;ECS Fargate does not support bind mounts from host: incompatible attribute&rdquo;
+<ul>
+<li>have to learn <a href="https://maximorlov.com/docker-compose-syntax-volume-or-bind-mount/">the difference between &ldquo;volumes&rdquo; and &ldquo;bind mounts&rdquo;</a></li>
+<li>jitsi docker-compose binds config directory for all mounts, have to figure out how to turn those into volumes</li>
+<li>replaced all bind mounts with empty volumes, simply for the purpose of getting to the next error
+<ul>
+<li>possibly build config directories into docker containers rather than messing around with EFS?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&ldquo;WARN[0001] services.networks.aliases: unsupported attribute&rdquo;
+<ul>
+<li>services.networks may not be supported at all?
+<ul>
+<li>&ldquo;Communication between services is implemented by SecurityGroups within the application VPC.&rdquo;</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>&ldquo;WARN[0001] services.restart: unsupported attribute&rdquo;
+<ul>
+<li>Replaced by service.deployment.restart_policy</li>
+</ul>
+</li>
+<li><code>docker compose down</code> always fails with ENV variables in ports
+<ul>
+<li>hard coded ports in docker-compose.yml</li>
+</ul>
+</li>
+<li><code>docker compose down</code> doesn&rsquo;t actually&hellip;do anything
+<ul>
+<li>use CloudFormation service in AWS console to delete stack</li>
+<li>I WASN&rsquo;T PASSING THE CONTEXT UGH this was user error</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>AWS doesn&rsquo;t provide an easy way to look at every resource you created
+<ul>
+<li>have to assume cloudformation stack listed them all correctly and deleted all</li>
+</ul>
+</li>
+<li>requested ElasticIP in us-west-2 (it was very easy)
+<ul>
+<li>****TODO: assign URL to IP so I can create a Let&rsquo;s Encrypt</li>
+<li>****TODO: verify which region I want to use</li>
+</ul>
+</li>
+</ul>
+<h3 id="notes-for-next-attempt">notes for next attempt</h3>
+<ul>
+<li>Config bind-mounts don&rsquo;t work
+<ul>
+<li>need to find alternate way to get config directories into containers</li>
+<li>(I think build my own versions of the docker containers with appropriate configs?)</li>
+</ul>
+</li>
+<li>Internal domain aliases don&rsquo;t work (ie xmpp.meet.jitsi)
+<ul>
+<li>need to find alternate way for services to talk to each other</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #16: AWS architecture with docker-compose</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/">Virtual Party Space Devlog #18: Victory over AWS! <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

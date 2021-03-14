@@ -1,0 +1,234 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #6: Putting it all together - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #6: Putting it all together" />
+<meta property="og:description" content="Today I start combining my game interface with the audio spatialization library." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-10T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-10T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #6: Putting it all together"/>
+<meta name="twitter:description" content="Today I start combining my game interface with the audio spatialization library."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #6: Putting it all together</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-10T23:59:00-07:00">Jan 10, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/calla">#calla</a>
+                
+                    , 
+                    <a href="/tags/phaser">#phaser</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-6/" title="Virtual Party Space Devlog #6: Putting it all together">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Today I start combining my game interface with the audio spatialization library.</p>
+<h1 id="log">Log</h1>
+<ul>
+<li>imported Calla implementation into Phaser implementation
+<ul>
+<li>using tile position as &ldquo;pose&rdquo; since Calla uses metres as spatialization</li>
+<li>this worked surprisingly easily</li>
+</ul>
+</li>
+<li>tried to add an audio source to map to test - this is harder than expected!
+<ul>
+<li>Calla relies entirely on Jitsi for adding user audio, thought would have to create extra Jitsi users for every static audio source
+<ul>
+<li>this would be a huge pain and require customizing Jitsi</li>
+</ul>
+</li>
+<li>upon reflection, may be easier to just add dummy sources to Calla</li>
+</ul>
+</li>
+<li>adding static audio sources to Calla
+<ul>
+<li>AudioManager has support for &ldquo;clips&rdquo; - creates an audio HTML element from audio file path
+<ul>
+<li>how to set location?
+<ul>
+<li>AudioManager.setClipPosition</li>
+</ul>
+</li>
+<li>No API for accessing this in CallaClient
+<ul>
+<li>add createClip function</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>looks like Calla has been updated recently to be able to be loaded as library
+<ul>
+<li>using typescript now?</li>
+<li>still doesn&rsquo;t look finished/easily loadable</li>
+<li>Docker documentation for Calla does include the setup issue I had, sorta (4 months old, so my bad for not figuring that out)</li>
+</ul>
+</li>
+</ul>
+<h4 id="uigame">UI/Game</h4>
+<ul>
+<li>playing with map offsets in Tiled</li>
+<li>figured out how to make an animation for fountain in Tiled, but it doesn&rsquo;t work in Phaser. Need to do via Phaser animation or <a href="https://github.com/nkholski/phaser-animated-tiles">use plugin</a></li>
+<li>learned how to add ipad as video source in OBS
+<ul>
+<li>need to use cable</li>
+</ul>
+</li>
+<li>can do isometric depth with min(x,y) + modifier
+<ul>
+<li>roofs always higher layer</li>
+</ul>
+</li>
+<li>downloaded <a href="https://soundbible.com/1435-Water-Fountain-Noise.html">free fountain sound</a></li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-5/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #5: Config issues</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-7/">Virtual Party Space Devlog #7: Upgrade pain <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

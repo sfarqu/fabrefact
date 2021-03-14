@@ -1,0 +1,45 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>webpack on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/webpack/</link>
+   <description>Recent content in webpack on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Sat, 09 Jan 2021 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/webpack/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #5: Config issues</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-5/</link>
+       <pubDate>Sat, 09 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-5/</guid>
+       <description>&lt;p&gt;Today I muddled through configuration issues to get things working properly in a dev environment&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;forgot to update last times I worked on this&lt;/li&gt;
+&lt;li&gt;Got jammed up on a Calla &amp;ldquo;bug&amp;rdquo; and spent several sessions just trying to figure out why I couldn&amp;rsquo;t successfully create a Jitsi connection
+&lt;ul&gt;
+&lt;li&gt;problem is that &amp;ldquo;hosts&amp;rdquo; passed to &lt;code&gt;JitsiMeetJS.JitsiConnection&lt;/code&gt; must match configured hostnames in docker container, which is not explained in Calla documentation&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;serviceUrl&amp;rdquo; needs to be publicly-available hostname for http-bind, giving the illusion that it was working&lt;/li&gt;
+&lt;li&gt;Calla docs say to use same value for JITSI_HOST and JVB_HOST without giving any indication of how those values are actually used by Jitsi&lt;/li&gt;
+&lt;li&gt;this took me way, way too long to figure out&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed CORS issue in testing by learning how to &lt;a href=&#34;https://webpack.js.org/configuration/dev-server/#devserverproxy&#34;&gt;proxy requests via webpack server&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;learning how to do this the &amp;ldquo;proper&amp;rdquo; way instead of the janked up dev environment way is going to be tricky&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>

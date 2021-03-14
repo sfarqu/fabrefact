@@ -1,0 +1,233 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #11: Refactoring - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #11: Refactoring" />
+<meta property="og:description" content="Today I continue resolving bugs, but also start refactoring my spaghetti code and looking into resources to make a character creator." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-11/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-16T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-16T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #11: Refactoring"/>
+<meta name="twitter:description" content="Today I continue resolving bugs, but also start refactoring my spaghetti code and looking into resources to make a character creator."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #11: Refactoring</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-16T23:59:00-07:00">Jan 16, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/calla">#calla</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-11/" title="Virtual Party Space Devlog #11: Refactoring">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Today I continue resolving bugs, but also start refactoring my spaghetti code and looking into resources to make a character creator.</p>
+<h1 id="log">Log</h1>
+<ul>
+<li>local user DOM elements weren&rsquo;t being removed because by the time it was called <code>calla.localUserId</code> was reset, so just unload all elements on leave</li>
+<li>username wasn&rsquo;t being loaded because I had hardcoded username to empty string before I figured out where to get username from! RESOLVED</li>
+<li>video wasn&rsquo;t being loaded on conference join because I was calling setPreferredDevice with ID, instead of MediaDevicInfo object
+<ul>
+<li>audio still autoloaded because Calla passes in a flag to try loading even if preferred device not set
+<ul>
+<li>this is why I unexpectedly had audio feedback issues</li>
+</ul>
+</li>
+<li>video is passed with flag to only use preferred device, so have to set it first RESOLVED</li>
+</ul>
+</li>
+<li>need to make select box update when Calla updates audio source by other means RESOLVED</li>
+<li>want option to mute, since can&rsquo;t prevent audio from loading RESOLVED
+<ul>
+<li>might still be broken, sometimes the mute flag gets reversed, can&rsquo;t quite pin down why</li>
+</ul>
+</li>
+</ul>
+<h3 id="uigame">UI/Game</h3>
+<ul>
+<li>trying to resolve the circular reference problem, here is the plan:
+<ul>
+<li>refactor GameScene out of main.ts</li>
+<li>refactor most of Conference.ts into a class
+<ul>
+<li>all references to Calla contained here</li>
+</ul>
+</li>
+<li>move random non-class code from Conference into main
+<ul>
+<li>main imports Conference class, all current function calls turned into conf.<!-- raw HTML omitted --> calls</li>
+</ul>
+</li>
+<li>Conference class has GameScene member
+<ul>
+<li>adds event listeners on important GameScene events (and GridPhysics?)
+<ul>
+<li>update</li>
+<li>movePlayerSprite</li>
+</ul>
+</li>
+<li>can call GameScene methods directly to send info the other way</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="character-creator">Character Creator</h3>
+<ul>
+<li>Create character avatars in a picrew-like interface</li>
+<li>Identified favourite reference picrews
+<ul>
+<li><a href="https://picrew.me/image_maker/257476">https://picrew.me/image_maker/257476</a></li>
+<li><a href="https://picrew.me/image_maker/43383">https://picrew.me/image_maker/43383</a></li>
+</ul>
+</li>
+<li>Listed needed art assets and likely categories</li>
+<li>picrew uses <a href="https://kenwheeler.github.io/slick/">carousel</a> for paging through categories of assets</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-10/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #10: Rendering isometric tiles</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-12/">Virtual Party Space Devlog #12: Player avatars <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

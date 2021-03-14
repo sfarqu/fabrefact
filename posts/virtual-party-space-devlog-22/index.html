@@ -1,0 +1,225 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #22: Amazon Certificates Manager - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #22: Amazon Certificates Manager" />
+<meta property="og:description" content="In the past couple days I threw away all that work with Let&rsquo;s Encrypt to use Amazon Certificates Manager instead." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-03T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-02-03T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #22: Amazon Certificates Manager"/>
+<meta name="twitter:description" content="In the past couple days I threw away all that work with Let&rsquo;s Encrypt to use Amazon Certificates Manager instead."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #22: Amazon Certificates Manager</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-02-03T23:59:00-07:00">Feb 3, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/ssl">#ssl</a>
+                
+                    , 
+                    <a href="/tags/aws">#aws</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/" title="Virtual Party Space Devlog #22: Amazon Certificates Manager">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>In the past couple days I threw away all that work with Let&rsquo;s Encrypt to use Amazon Certificates Manager instead.</p>
+<h1 id="log">Log</h1>
+<h2 id="tuesday-february-2">Tuesday, February 2</h2>
+<ul>
+<li>Note for future: <a href="https://aws.amazon.com/fr/blogs/containers/how-amazon-ecs-manages-cpu-and-memory-resources/">CPU and memory in ECS</a></li>
+<li>Error &ldquo;The VPC <!-- raw HTML omitted --> in region <!-- raw HTML omitted --> has already been associated with the hosted zone <!-- raw HTML omitted --> with the same domain name&rdquo;
+<ul>
+<li>Deleted VPC to fix this DO NOT DO THIS, need to have a default VPC to do anything</li>
+</ul>
+</li>
+<li>verified that ELB changes every time I delete the stack, so will have to keep updating CNAME record
+<ul>
+<li>unless I can figure out how to retain ELB without breaking create</li>
+</ul>
+</li>
+<li>updated health check by adding overlays, but have to delete whole stack for every change</li>
+<li>had to expose port 8080 which I don&rsquo;t love, but at least it works</li>
+<li>tried out Amazon Certificate Manager to request a certificate for my domain, and that seems to have worked
+<ul>
+<li>think it should automatically use it for load balancer? Need to wait for domain to propagate to check</li>
+<li>wasted all that time learning Let&rsquo;s Encrypt and didn&rsquo;t need it, but at least I learned something</li>
+</ul>
+</li>
+</ul>
+<h2 id="wednesday-february-3">Wednesday, February 3</h2>
+<ul>
+<li>How to make drastic changes to cloudformation template: <a href="https://aws.amazon.com/premiumsupport/knowledge-center/failing-stack-updates-deleted/">delete resource and manually recreate</a> so update will work</li>
+</ul>
+<h3 id="acm-certificates">ACM certificates</h3>
+<ul>
+<li>need to add certificate to a listener on port 443
+<ul>
+<li>change type from TCP to TLS</li>
+<li>leave other settings as default I guess</li>
+</ul>
+</li>
+<li>PROBLEM: this causes &ldquo;http request to https port&rdquo; error
+<ul>
+<li>ELB terminates HTTPS and sends HTTP request to web server - need to tell nginx to stand down</li>
+<li>SOLUTION:
+<ul>
+<li>remove <code>ssl http2</code> from nginx <code>listen 443</code> directives (this means probably want to turn on ALPN HTTP2 service on ELB listener)
+<ul>
+<li>if you get rid of <code>ssl</code> but not <code>http2</code> server will still <em>run</em> but only return garbage - HTTP2 is SSL-only</li>
+</ul>
+</li>
+<li>remove all other ssl directives (conveniently packaged in <code>ssl.conf</code>)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #21: Let&#39;s Encrypt</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-23/">Virtual Party Space Devlog #23: Connection interrupted <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

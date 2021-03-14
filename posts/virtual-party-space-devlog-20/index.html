@@ -1,0 +1,215 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #20: Docker registries - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #20: Docker registries" />
+<meta property="og:description" content="Today I dug deeper into how Docker works to resolve some error messages, and then started learning about Let&rsquo;s Encrypt." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-01-31T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-01-31T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #20: Docker registries"/>
+<meta name="twitter:description" content="Today I dug deeper into how Docker works to resolve some error messages, and then started learning about Let&rsquo;s Encrypt."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #20: Docker registries</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-01-31T23:59:00-07:00">Jan 31, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/docker">#docker</a>
+                
+                    , 
+                    <a href="/tags/ssl">#ssl</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/" title="Virtual Party Space Devlog #20: Docker registries">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Today I dug deeper into how Docker works to resolve some error messages, and then started learning about Let&rsquo;s Encrypt.</p>
+<h1 id="log">Log</h1>
+<ul>
+<li>struggled with running <code>docker compose up</code> due to &ldquo;authentication failed&rdquo; message, so I took a multiple-hour detour into how docker registries work
+<ul>
+<li>NOTE: when you get this error it probably means your image doesn&rsquo;t exist in an &ldquo;acceptable&rdquo; registry (doesn&rsquo;t matter if you can see it locally)</li>
+<li>existing images were possibly resolving to wrong hash from docker.io, maybe deploying wrong version?</li>
+<li>solution: create ECR registry, add all locally built images to it
+<ul>
+<li>can also do <a href="https://docs.docker.com/registry/introduction/">local registry</a> but for this ECR makes sense</li>
+<li>docker has <a href="https://github.com/awslabs/amazon-ecr-credential-helper#Configuration">ecr credentials helper</a> built in
+<ul>
+<li>set <code>~/.docker/config.json</code> &ldquo;credsStore&rdquo; to &ldquo;ecr-login&rdquo;</li>
+</ul>
+</li>
+<li><a href="https://docs.docker.com/engine/reference/commandline/push/">https://docs.docker.com/engine/reference/commandline/push/</a></li>
+<li>new flow: <code>docker build -t &lt;name&gt;:&lt;tag&gt; -t &lt;remote-name&gt;:&lt;remote-tag&gt; .</code> &amp;&amp; <code>docker push</code> &amp;&amp; <code>docker compose up --file docker-compose-aws.yml --context &lt;ecscontext&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>use <code>docker rmi</code> to remove unnecessary images</li>
+<li>docker &ldquo;Pool overlaps with other one on this address space&rdquo; error or being unable to delete things in Docker Desktop indicates you have ghost docker networks, need to prune</li>
+<li>PARTY NOW RUNNING!</li>
+<li><a href="https://www.cynkra.com/2020/11/02/jitsi-load-balanced/index.html">load balancing ref</a></li>
+</ul>
+<h3 id="lets-encrypt-time">Let&rsquo;s Encrypt time!</h3>
+<ul>
+<li>enabled flag in environment variables, quickly got an API timeout</li>
+<li>ECS by default has a &ldquo;Desired count&rdquo; of 1, so containers keep spawning and re-running the erroneous encrypt script
+<ul>
+<li>to prevent this, update the service to &ldquo;number of tasks&rdquo; 0. Will automatically reset on next Cloudformation update</li>
+</ul>
+</li>
+<li>jitsi web host uses <a href="https://github.com/acmesh-official/acme.sh">acme.sh</a> to do lets encrypt keys in init script</li>
+<li>tried alternatives to standalone mode&hellip;nginx/webroot, still always get failure
+<ul>
+<li>lets encrypt requires healthy server responding on port 80</li>
+<li>problem is this init script also creates the nginx config files, and if LETS_ENCRYPT flag is true, nginx can&rsquo;t start without keys. Chicken &amp; egg</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #19: Containerizing an app</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/">Virtual Party Space Devlog #21: Let&#39;s Encrypt <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

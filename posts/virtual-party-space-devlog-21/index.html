@@ -1,0 +1,232 @@
+<!doctype html>
+
+<html lang="en-us">
+
+<head>
+  <title>Virtual Party Space Devlog #21: Let&#39;s Encrypt - Fabrefact</title>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="a blog by Sara Farquharson" />
+<meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Virtual Party Space Devlog #21: Let&#39;s Encrypt" />
+<meta property="og:description" content="Today I learned how to get an SSL certificate with Let&rsquo;s Encrypt, and discovered a lot about health checks." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-02-01T23:59:00-07:00" />
+<meta property="article:modified_time" content="2021-02-01T23:59:00-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Virtual Party Space Devlog #21: Let&#39;s Encrypt"/>
+<meta name="twitter:description" content="Today I learned how to get an SSL certificate with Let&rsquo;s Encrypt, and discovered a lot about health checks."/>
+
+<meta name="generator" content="Hugo 0.81.0" />
+    
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://blog.fabrefact.ca/fontawesome/css/all.min.css" />
+  
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" />
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/styles.css" /><link rel='stylesheet' href='https://blog.fabrefact.ca/css/custom.css'></head>
+
+<body>
+  <div id="container">
+    <header>
+      <h1>
+                <a href="/">Fabrefact</a>
+            </h1>
+
+      <ul id="social-media">
+             <li>
+               <a href="https://github.com/sfarqu" title="GitHub">
+               <i class="fab fa-github fa-lg"></i>
+               </a>
+             </li>
+             <li>
+               <a href="https://twitter.com/fabrefact" title="Twitter">
+               <i class="fab fa-twitter fa-lg"></i>
+               </a>
+             </li>
+      </ul>
+      
+      <p><em>a blog by Sara Farquharson</em></p>
+      
+    </header>
+
+    
+<nav>
+    <ul>
+        
+        <li>
+            <a class="" href="/posts/">
+                <i class="fa-li fa  fa-lg"></i><span>Archive</span>
+            </a>
+        </li>
+        
+    </ul>
+</nav>
+
+
+    <main>
+
+
+
+
+<article>
+
+    <h1>Virtual Party Space Devlog #21: Let&#39;s Encrypt</h1>
+
+    
+      <aside>
+    <ul>
+        <li>
+            <time class="post-date" datetime="2021-02-01T23:59:00-07:00">Feb 1, 2021</time>
+        </li>
+        
+        <li>
+            Categories:
+            <em>
+                
+                    
+                    <a href="/categories/devlog">devlog</a>
+                
+            </em>
+        </li>
+        
+
+        
+        <li>
+            <em>
+                
+                    
+                    <a href="/tags/party">#party</a>
+                
+                    , 
+                    <a href="/tags/jitsi">#jitsi</a>
+                
+                    , 
+                    <a href="/tags/ssl">#ssl</a>
+                
+                    , 
+                    <a href="/tags/aws">#aws</a>
+                
+            </em>
+        </li>
+        
+
+        <li>2 minutes read</li>
+    </ul>
+</aside>
+
+    
+
+    
+<div class="featured_image">
+    <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-21/" title="Virtual Party Space Devlog #21: Let&#39;s Encrypt">
+        <img src="">
+    </a>
+</div>
+
+
+
+    <p>Today I learned how to get an SSL certificate with Let&rsquo;s Encrypt, and discovered a lot about health checks.</p>
+<h1 id="log">Log</h1>
+<h3 id="lets-encrypt-go">LETS ENCRYPT GO</h3>
+<ul>
+<li>reason why docker-jitsi-meet uses standalone mode may be that if container is directly exposed to internet, standalone server might be live fast enough for LE call to succeed.</li>
+<li>in Fargate, container doesn&rsquo;t last long enough to pass health check and become valid recipient for HTTP request forwarded from load balancer</li>
+<li>need a way to get a live server that responds to HTTP requests
+<ul>
+<li>stood up EC2 instance, installed acme.sh &amp; nginx, and attached it as a target for load balancer SUCCESS!
+<ul>
+<li>scp keys back to my computer, hack is store them in config directory baked into docker image (since only need them for 30 days)</li>
+<li>modified server init script to install acme.sh keys to nginx on start, and not try to get keys.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>keys don&rsquo;t work!
+<ul>
+<li>created keys with &ndash;staging enabled to allow more retries</li>
+<li>tried to recreate without staging, but got &ldquo;keys are fine, didn&rsquo;t recreate&rdquo; from real server
+<ul>
+<li>guess have to use &ndash;force once you&rsquo;re sure your code works</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>for long-term fix, probably need a <a href="https://autoize.com/automating-lets-encrypt-https-behind-a-load-balancer/">dedicated cert-renewal server</a>?
+<ul>
+<li>how does load balancer know to direct traffic to port 80 on a different type of server?
+<ul>
+<li>docker compose ECS group only lets you have one service with same port open, unsure how to manage</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="testing-with-2-people">Testing with 2 people</h3>
+<ul>
+<li>conference seems to die every 5 minutes, is JVB rebooting?
+<ul>
+<li>turns out yes, health checks for ports (10000/4443) are &ldquo;failing&rdquo; so Fargate kills the container</li>
+<li>can I update health check?
+<ul>
+<li>not really, can&rsquo;t change timeout or interval (and probably wouldn&rsquo;t help, because UDP port isn&rsquo;t going to respond to health check)</li>
+</ul>
+</li>
+<li>JVB has <a href="https://github.com/jitsi/jitsi-videobridge/blob/master/doc/health-checks.md">health check endpoint</a>!</li>
+<li>docker-compose has <code>healthcheck</code> option, maybe this is what lets you make a custom health check?</li>
+<li>apparently you can&rsquo;t update the health check for a TargetGroup
+<ul>
+<li>deleting the target group broke updates for the Cloudformation Stack</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="about-this-series">About this series</h4>
+<blockquote>
+<p>Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both <em>do the project</em> and <em>blog about the project</em>. I have retroactively decided to post my raw notes as a dev log.</p>
+</blockquote>
+
+</article>
+
+
+<section class="post-nav">
+    <ul>
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/"><i class="fa fa-chevron-circle-left"></i> Virtual Party Space Devlog #20: Docker registries</a>
+        </li>
+        
+        
+        <li>
+            <a href="https://blog.fabrefact.ca/posts/virtual-party-space-devlog-22/">Virtual Party Space Devlog #22: Amazon Certificates Manager <i class="fa fa-chevron-circle-right"></i> </a>
+        </li>
+        
+    </ul>
+</section>
+  
+    
+    
+  
+
+
+
+
+
+</main>
+    <footer>
+        <h6>© 2019 Sara Farquharson |
+            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
+            <a href="https://blog.fabrefact.ca/index.xml">Subscribe </a></h6>
+    </footer>
+</div>
+<script src="/js/scripts.js"></script>
+
+</body>
+
+</html>
+

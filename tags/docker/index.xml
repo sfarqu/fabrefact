@@ -1,0 +1,600 @@
+
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+ <channel>
+   <title>docker on Fabrefact</title>
+   <link>https://blog.fabrefact.ca/tags/docker/</link>
+   <description>Recent content in docker on Fabrefact</description>
+   <generator>Hugo -- gohugo.io</generator>
+   <language>en-us</language>
+   <copyright>&amp;copy; 2019 Sara Farquharson</copyright>
+   <lastBuildDate>Sun, 31 Jan 2021 23:59:00 -0700</lastBuildDate>
+   
+       <atom:link href="https://blog.fabrefact.ca/tags/docker/index.xml" rel="self" type="application/rss+xml" />
+   
+   
+   
+   
+     <item>
+       <title>Virtual Party Space Devlog #20: Docker registries</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/</link>
+       <pubDate>Sun, 31 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-20/</guid>
+       <description>&lt;p&gt;Today I dug deeper into how Docker works to resolve some error messages, and then started learning about Let&amp;rsquo;s Encrypt.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;struggled with running &lt;code&gt;docker compose up&lt;/code&gt; due to &amp;ldquo;authentication failed&amp;rdquo; message, so I took a multiple-hour detour into how docker registries work
+&lt;ul&gt;
+&lt;li&gt;NOTE: when you get this error it probably means your image doesn&amp;rsquo;t exist in an &amp;ldquo;acceptable&amp;rdquo; registry (doesn&amp;rsquo;t matter if you can see it locally)&lt;/li&gt;
+&lt;li&gt;existing images were possibly resolving to wrong hash from docker.io, maybe deploying wrong version?&lt;/li&gt;
+&lt;li&gt;solution: create ECR registry, add all locally built images to it
+&lt;ul&gt;
+&lt;li&gt;can also do &lt;a href=&#34;https://docs.docker.com/registry/introduction/&#34;&gt;local registry&lt;/a&gt; but for this ECR makes sense&lt;/li&gt;
+&lt;li&gt;docker has &lt;a href=&#34;https://github.com/awslabs/amazon-ecr-credential-helper#Configuration&#34;&gt;ecr credentials helper&lt;/a&gt; built in
+&lt;ul&gt;
+&lt;li&gt;set &lt;code&gt;~/.docker/config.json&lt;/code&gt; &amp;ldquo;credsStore&amp;rdquo; to &amp;ldquo;ecr-login&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/push/&#34;&gt;https://docs.docker.com/engine/reference/commandline/push/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;new flow: &lt;code&gt;docker build -t &amp;lt;name&amp;gt;:&amp;lt;tag&amp;gt; -t &amp;lt;remote-name&amp;gt;:&amp;lt;remote-tag&amp;gt; .&lt;/code&gt; &amp;amp;&amp;amp; &lt;code&gt;docker push&lt;/code&gt; &amp;amp;&amp;amp; &lt;code&gt;docker compose up --file docker-compose-aws.yml --context &amp;lt;ecscontext&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;docker rmi&lt;/code&gt; to remove unnecessary images&lt;/li&gt;
+&lt;li&gt;docker &amp;ldquo;Pool overlaps with other one on this address space&amp;rdquo; error or being unable to delete things in Docker Desktop indicates you have ghost docker networks, need to prune&lt;/li&gt;
+&lt;li&gt;PARTY NOW RUNNING!&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cynkra.com/2020/11/02/jitsi-load-balanced/index.html&#34;&gt;load balancing ref&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;lets-encrypt-time&#34;&gt;Let&amp;rsquo;s Encrypt time!&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;enabled flag in environment variables, quickly got an API timeout&lt;/li&gt;
+&lt;li&gt;ECS by default has a &amp;ldquo;Desired count&amp;rdquo; of 1, so containers keep spawning and re-running the erroneous encrypt script
+&lt;ul&gt;
+&lt;li&gt;to prevent this, update the service to &amp;ldquo;number of tasks&amp;rdquo; 0. Will automatically reset on next Cloudformation update&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;jitsi web host uses &lt;a href=&#34;https://github.com/acmesh-official/acme.sh&#34;&gt;acme.sh&lt;/a&gt; to do lets encrypt keys in init script&lt;/li&gt;
+&lt;li&gt;tried alternatives to standalone mode&amp;hellip;nginx/webroot, still always get failure
+&lt;ul&gt;
+&lt;li&gt;lets encrypt requires healthy server responding on port 80&lt;/li&gt;
+&lt;li&gt;problem is this init script also creates the nginx config files, and if LETS_ENCRYPT flag is true, nginx can&amp;rsquo;t start without keys. Chicken &amp;amp; egg&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #19: Containerizing an app</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</link>
+       <pubDate>Sat, 30 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-19/</guid>
+       <description>&lt;p&gt;Today I finally turned my app into a Docker container, by reverse engineering how the Jitsi Dockerfiles work.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;tried using &lt;code&gt;--local&lt;/code&gt; context for docker compose CLI, doesn&amp;rsquo;t seem to do anything useful
+&lt;ul&gt;
+&lt;li&gt;doesn&amp;rsquo;t recreate the cloudmap service discovery, so back to services not talking to each another&lt;/li&gt;
+&lt;li&gt;try creating network aliases that use cloudmap format, to see if can pinpoint issue?&lt;/li&gt;
+&lt;li&gt;worried it might be related to &lt;a href=&#34;https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-docker#running-behind-nat-or-on-a-lan-environment&#34;&gt;lacking host ip&lt;/a&gt;, and really don&amp;rsquo;t know how to address not knowing public ip in advance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;dockerizing own app
+&lt;ul&gt;
+&lt;li&gt;currently only been running in dev mode, need to set up a container with nginx etc&lt;/li&gt;
+&lt;li&gt;can probably crib a lot from docker-jitsi-meet web container&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Dockerfile tips
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/develop/dev-best-practices/&#34;&gt;https://docs.docker.com/develop/dev-best-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://cloud.google.com/solutions/best-practices-for-building-containers&#34;&gt;https://cloud.google.com/solutions/best-practices-for-building-containers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&#34;&gt;https://docs.docker.com/develop/develop-images/dockerfile_best-practices/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://vuejs.org/v2/cookbook/dockerize-vuejs-app.html&#34;&gt;Tutorial&lt;/a&gt; for turning web app into container with multi-stage dockerfile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;how-does-docker-jisi-meet-work&#34;&gt;HOW DOES DOCKER-JISI-MEET WORK?&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;project contains a &lt;code&gt;base&lt;/code&gt; image built on debian:buster-slim which contains:
+&lt;ul&gt;
+&lt;li&gt;apt-transport-https apt-utils ca-certificates gnupg wget&lt;/li&gt;
+&lt;li&gt;s6 for process management (via an &amp;ldquo;overlay&amp;rdquo;) &lt;a href=&#34;https://github.com/just-containers/s6-overlay&#34;&gt;https://github.com/just-containers/s6-overlay&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jitsi&amp;rsquo;s GPG keys (what for?)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;frep&lt;/code&gt; templating tool &lt;a href=&#34;https://github.com/subchen/frep&#34;&gt;https://github.com/subchen/frep&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;a couple wrapper commands &lt;code&gt;apt-dpkg-wrap&lt;/code&gt;, &lt;code&gt;apt-cleanup&lt;/code&gt;, and &lt;code&gt;tpl&lt;/code&gt; to be used in the other dockerfiles&lt;/li&gt;
+&lt;li&gt;if built using the &lt;code&gt;unstable&lt;/code&gt; release, also installs jq procps curl vim iputils-ping net-tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;base image sets &lt;code&gt;apt-get&lt;/code&gt; sources for debian and jitsi packages (so if want to use custom source, will have to add new)&lt;/li&gt;
+&lt;li&gt;each container image extends base by installing at least one jitsi package and some public packages
+&lt;ul&gt;
+&lt;li&gt;uses the wrapper commands from base image for installing and cleanup&lt;/li&gt;
+&lt;li&gt;web uses &lt;code&gt;ADD&lt;/code&gt; docker command instead of apt-get for acme, maybe not available in apt?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;each service contains a &lt;code&gt;rootfs&lt;/code&gt; folder containing config for the service
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;etc&lt;/code&gt; is mostly process running directions for s6
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cont-init.d&lt;/code&gt; contains bash script to run when the container initializes&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;services.d&lt;/code&gt; contains run commands for processes that run in this service&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;defaults&lt;/code&gt; is templates for things like nginx configs, including environment variables
+&lt;ul&gt;
+&lt;li&gt;these templates are expanded into the mapped &lt;code&gt;/config&lt;/code&gt; directory using the &lt;code&gt;tpl&lt;/code&gt; wrapper command around &lt;code&gt;frep&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;upon container start, s6 runs &lt;code&gt;10-config&lt;/code&gt; init script, which contains &lt;code&gt;tpl&lt;/code&gt; commands to recreate &lt;code&gt;/config&lt;/code&gt; files from &lt;code&gt;/defaults&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;web&lt;/code&gt; container runs nginx and a cron that runs Lets Encrypt regularly&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;more-about-whether-to-use-volumes-or-not&#34;&gt;more about whether to use volumes or not&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;By default all files created inside a container are stored on a writable container layer&amp;rdquo; &lt;a href=&#34;https://docs.docker.com/storage/&#34;&gt;https://docs.docker.com/storage/&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;not persistent when container goes down&lt;/li&gt;
+&lt;li&gt;hard to move to other hosts&lt;/li&gt;
+&lt;li&gt;storage driver reduces performance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;for the most part, contents of volumes are just config files that are written every time the container starts
+&lt;ul&gt;
+&lt;li&gt;probably no need to use persistent storage, but also no need to copy in files&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Let&amp;rsquo;s Encrypt certificates &lt;em&gt;do&lt;/em&gt; need to be persisted&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;trying-new-more-ecs-friendly-setup-for-docker-jitsi-meet&#34;&gt;trying new, more ECS-friendly setup for docker-jitsi-meet&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;renamed network aliases to what CloudMap will call them&amp;ndash;seems to work locally, TBD remote&lt;/li&gt;
+&lt;li&gt;need to think about setting URIs etc in my app via environment variables
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa&#34;&gt;https://medium.com/chingu/an-introduction-to-environment-variables-and-how-to-use-them-f602f66d15fa&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;dotenv library caused an error because I&amp;rsquo;m building for web, not node. Tried dotenv-webpack instead&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/webpack-contrib/css-loader/issues/447&#34;&gt;https://github.com/webpack-contrib/css-loader/issues/447&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.npmjs.com/package/dotenv-webpack&#34;&gt;https://www.npmjs.com/package/dotenv-webpack&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;getting &amp;ldquo;Bridge Channel send: no opened channel.&amp;rdquo; error a bunch, but doesn&amp;rsquo;t seem to actually be any configuration problem &amp;amp; went away on its own.
+&lt;ul&gt;
+&lt;li&gt;this usually means the UDP port for the JVB server isn&amp;rsquo;t accessible&lt;/li&gt;
+&lt;li&gt;may correlate to &amp;ldquo;WARNING: Took &amp;lt;##&amp;gt; ms to handle IQ:&amp;rdquo; messages in JVB log?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;found source of non-player avatar not moving when browser tab not focused bug
+&lt;ul&gt;
+&lt;li&gt;Most browsers pause activity when tab isn&amp;rsquo;t focused, so best case is to detect either blur/focus or pause/resume and change movement behaviour based on state&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403&#34;&gt;https://phaser.discourse.group/t/code-execution-when-coming-back-from-another-tab/1403&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html&#34;&gt;https://photonstorm.github.io/phaser3-docs/Phaser.Core.Events.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;the-perils-of-libraries&#34;&gt;The perils of libraries&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Made some quick progress with dockerizing, but got blocked on Calla not being able to be included in any normal way
+&lt;ul&gt;
+&lt;li&gt;npm file:.. syntax being outside the Docker context was an issue, as expected&lt;/li&gt;
+&lt;li&gt;internet suggestion to use Dockerfile in parent directory was a nightmare because entire &lt;code&gt;projects&lt;/code&gt; directory gets loaded in as context, which is many Gb (still didn&amp;rsquo;t work)&lt;/li&gt;
+&lt;li&gt;tried including as tar.gz but kept running into issues with the &lt;code&gt;my-rollup&lt;/code&gt; dev dependency
+&lt;ul&gt;
+&lt;li&gt;I think this was actually due to &lt;code&gt;package-lock.json&lt;/code&gt;, and might have worked in the end&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Chosen path: turn Calla into a proper dependency (and by extension, its dependencies &lt;code&gt;kudzu&lt;/code&gt; and &lt;code&gt;my-rollup&lt;/code&gt;)
+&lt;ul&gt;
+&lt;li&gt;using &lt;a href=&#34;https://verdaccio.org/en/&#34;&gt;Verdaccio&lt;/a&gt; as local npm repository
+&lt;ul&gt;
+&lt;li&gt;(set as my default repository, remember this when working on other projects)&lt;/li&gt;
+&lt;li&gt;had to &amp;ldquo;log in&amp;rdquo;, created account and put in password manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;look up how to publish packages (&lt;code&gt;npm publish&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;use &lt;code&gt;npm pack&lt;/code&gt; on &lt;code&gt;my-rollup&lt;/code&gt; because it&amp;rsquo;s just a build script I don&amp;rsquo;t ever want to touch or use&lt;/li&gt;
+&lt;li&gt;publish &lt;code&gt;kudzu&lt;/code&gt; to verdaccio&lt;/li&gt;
+&lt;li&gt;publish &lt;code&gt;calla&lt;/code&gt; to verdaccio&lt;/li&gt;
+&lt;li&gt;install still fails due to complaining about some typescript syntax, because package contains TS
+&lt;ul&gt;
+&lt;li&gt;look into &lt;a href=&#34;https://medium.com/cameron-nokes/the-30-second-guide-to-publishing-a-typescript-package-to-npm-89d93ff7bccd&#34;&gt;how you&amp;rsquo;re supposed to publish TS&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Calla doesn&amp;rsquo;t use an outDir, so js files are intermingled with ts files
+&lt;ul&gt;
+&lt;li&gt;edit tsconfig, publish from ./dist folder (remember to actually include folder!)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;app still can&amp;rsquo;t find calla, because &lt;code&gt;main&lt;/code&gt; was set incorrectly in package.json&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Calla.js&lt;/code&gt; was incorrectly capitalized because I was trying to cheat and reuse the &lt;code&gt;dist&lt;/code&gt; directory, which already had &lt;code&gt;calla.js&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;(this is going to be a problem if I accidentally run the build script instead of just &lt;code&gt;tsc&lt;/code&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;additional-configuration&#34;&gt;Additional configuration&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;got all the server stuff in the same docker-compose as my app, just need to get the extra nginx stuff working
+&lt;ul&gt;
+&lt;li&gt;nginx configs contain environment variables, which need to get replaced with env vars passed in Docker build&lt;/li&gt;
+&lt;li&gt;jitsi containers use &lt;code&gt;frep&lt;/code&gt; for env variable replacements, could do that, but requires learning to start a script&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;envsubstr&lt;/code&gt; is a linux cli tool for replacing env vars, still requires a bit of scripting&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://hub.docker.com/_/nginx&#34;&gt;nginx alpine image&lt;/a&gt; supports &lt;code&gt;envsubstr&lt;/code&gt; automatically starting in 1.19 (mainline, not stable)
+&lt;ul&gt;
+&lt;li&gt;could potentially &lt;a href=&#34;https://unix.stackexchange.com/questions/294378/replacing-only-specific-variables-with-envsubst&#34;&gt;replace valid nginx confs that start with $&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;lets encrypt certificates are good for 90 days, so I only need to get one once and store on volume&lt;/li&gt;
+&lt;li&gt;made sure local lib-jitsi-meet got loaded so Calla doesn&amp;rsquo;t try to download it again&lt;/li&gt;
+&lt;li&gt;struggled with HTTPS for SO LONG and it looks like the problem was just reusing ports that another container was using.
+&lt;ul&gt;
+&lt;li&gt;copied over more of the jitsi web configs, probably didn&amp;rsquo;t need to do that&lt;/li&gt;
+&lt;li&gt;changing ports instantly worked&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #18: Victory over AWS!</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/</link>
+       <pubDate>Fri, 29 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-18/</guid>
+       <description>&lt;p&gt;A few more days struggling with docker-compose and AWS, and finally get the service running in ECS!&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h3 id=&#34;wednesday-january-27&#34;&gt;Wednesday, January 27&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;asked for ECS help, didn&amp;rsquo;t get it&lt;/li&gt;
+&lt;li&gt;looking into making secondary conference rooms
+&lt;ul&gt;
+&lt;li&gt;made an interior map&lt;/li&gt;
+&lt;li&gt;probably need additional scenes for each room
+&lt;ul&gt;
+&lt;li&gt;refactor GameScene to be a parent class, and have all specific maps/images in specific scene classes&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://netexl.com/blog/exploring-phaser-3-with-a-game-adding-multiple-scenes/&#34;&gt;Tutorial for adding multiple scenes&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Checked licenses on Jitsi &amp;amp; Calla - no usage restrictions, so I can choose ethical source library&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;thursday-january-28&#34;&gt;Thursday, January 28&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;tried out AWS again, still couldn&amp;rsquo;t figure out how to get endpoint working
+&lt;ul&gt;
+&lt;li&gt;confirmed &lt;code&gt;docker compose down&lt;/code&gt; works if context is passed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reconfigured Dockerfiles to contain config instead of bind mounts
+&lt;ul&gt;
+&lt;li&gt;learned how to build docker containers!&lt;/li&gt;
+&lt;li&gt;works locally&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;friday-january-29&#34;&gt;Friday, January 29&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;looking into how to make services talk to one another
+&lt;ul&gt;
+&lt;li&gt;searching for &lt;a href=&#34;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-discovery.html&#34;&gt;ECS service discovery&lt;/a&gt; seems promising&lt;/li&gt;
+&lt;li&gt;read about &lt;a href=&#34;https://docs.aws.amazon.com/cloud-map/latest/dg/what-is-cloud-map.html&#34;&gt;CloudMap&lt;/a&gt;, think I understand the &amp;ldquo;service discovery&amp;rdquo; portion of the Compose CLI docs now
+&lt;ul&gt;
+&lt;li&gt;need to change internal network base to be &lt;!-- raw HTML omitted --&gt;.local instead of meet.jitsi&lt;/li&gt;
+&lt;li&gt;can refer to other containers directly by service name too&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;updated &lt;code&gt;docker-compose&lt;/code&gt; and environment vars to use CloudMap syntax
+&lt;ul&gt;
+&lt;li&gt;WEB SERVER WORKS NOW!!&lt;/li&gt;
+&lt;li&gt;https doesn&amp;rsquo;t work (still need to set up domain I think in order to use LetsEncrypt?)&lt;/li&gt;
+&lt;li&gt;probably still some settings wrong, can&amp;rsquo;t connect to conference
+&lt;ul&gt;
+&lt;li&gt;websocket &amp;ldquo;public url&amp;rdquo; definitely wrong&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;since jicofo/prosody have to be single instance for single conference, how to turn off availability zones?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #17: Translating docker-compose files for AWS</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/</link>
+       <pubDate>Mon, 25 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-17/</guid>
+       <description>&lt;p&gt;Spent a couple days fighting with Docker and the ECS integration of docker-compose.&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;h2 id=&#34;sunday-january-24&#34;&gt;Sunday, January 24&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;turns out can&amp;rsquo;t connect to Jitsi server when using &lt;code&gt;docker compose&lt;/code&gt; instead of &lt;code&gt;docker-compose&lt;/code&gt;
+&lt;ul&gt;
+&lt;li&gt;getting &lt;code&gt;PR_END_OF_FILE_ERROR&lt;/code&gt;, so probably SSL certificates aren&amp;rsquo;t set up properly? (not even whatever self-signed one I&amp;rsquo;m using)&lt;/li&gt;
+&lt;li&gt;switched back to &lt;code&gt;docker-compose&lt;/code&gt; for the purpose of playing around&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed bug where leaving and rejoining the same conference would not reload the avatars for participants who had stayed in
+&lt;ul&gt;
+&lt;li&gt;addParticipant was tied to the loadImage callback, but in this case the image was already loaded&lt;/li&gt;
+&lt;li&gt;tried just deleting image from textureManager on participant remove, but that caused a game crash when phaser tried to render nonexistent texture
+&lt;ul&gt;
+&lt;li&gt;only happened on second time (consistently), no idea why&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;made loading of image conditional on if texture already exists, all other stuff the same
+&lt;ul&gt;
+&lt;li&gt;should player avatars ever be unloaded? If so how?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;fixed bug where pathfinder didn&amp;rsquo;t recognize obstacles on anything but scenery layer, and treated some ground tiles as obstacles
+&lt;ul&gt;
+&lt;li&gt;possibly should simplify by consolidating most tiles onto single layer?
+&lt;ul&gt;
+&lt;li&gt;might be more complicated for other existing logic/image loading though&lt;/li&gt;
+&lt;li&gt;may also suggest consolidating tilesets, which is a good idea but not until i&amp;rsquo;ve finalized the map&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Simply check for collisions in other layers, otherwise just use ground tile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;tuesday-january-26&#34;&gt;Tuesday, January 26&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;UGH DOCKER
+&lt;ul&gt;
+&lt;li&gt;still can&amp;rsquo;t figure out why &lt;code&gt;docker compose&lt;/code&gt; doesn&amp;rsquo;t like SSL&lt;/li&gt;
+&lt;li&gt;fine then, set up AWS credentials and context&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;trying the docker-&amp;gt;ecs auto deploy thing
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;published port can&amp;rsquo;t be set to a distinct value than container port: incompatible attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;can&amp;rsquo;t use custom ports for 80/443&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;ECS Fargate does not support bind mounts from host: incompatible attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;have to learn &lt;a href=&#34;https://maximorlov.com/docker-compose-syntax-volume-or-bind-mount/&#34;&gt;the difference between &amp;ldquo;volumes&amp;rdquo; and &amp;ldquo;bind mounts&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;jitsi docker-compose binds config directory for all mounts, have to figure out how to turn those into volumes&lt;/li&gt;
+&lt;li&gt;replaced all bind mounts with empty volumes, simply for the purpose of getting to the next error
+&lt;ul&gt;
+&lt;li&gt;possibly build config directories into docker containers rather than messing around with EFS?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;WARN[0001] services.networks.aliases: unsupported attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;services.networks may not be supported at all?
+&lt;ul&gt;
+&lt;li&gt;&amp;ldquo;Communication between services is implemented by SecurityGroups within the application VPC.&amp;rdquo;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;WARN[0001] services.restart: unsupported attribute&amp;rdquo;
+&lt;ul&gt;
+&lt;li&gt;Replaced by service.deployment.restart_policy&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker compose down&lt;/code&gt; always fails with ENV variables in ports
+&lt;ul&gt;
+&lt;li&gt;hard coded ports in docker-compose.yml&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;docker compose down&lt;/code&gt; doesn&amp;rsquo;t actually&amp;hellip;do anything
+&lt;ul&gt;
+&lt;li&gt;use CloudFormation service in AWS console to delete stack&lt;/li&gt;
+&lt;li&gt;I WASN&amp;rsquo;T PASSING THE CONTEXT UGH this was user error&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;AWS doesn&amp;rsquo;t provide an easy way to look at every resource you created
+&lt;ul&gt;
+&lt;li&gt;have to assume cloudformation stack listed them all correctly and deleted all&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;requested ElasticIP in us-west-2 (it was very easy)
+&lt;ul&gt;
+&lt;li&gt;****TODO: assign URL to IP so I can create a Let&amp;rsquo;s Encrypt&lt;/li&gt;
+&lt;li&gt;****TODO: verify which region I want to use&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;notes-for-next-attempt&#34;&gt;notes for next attempt&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Config bind-mounts don&amp;rsquo;t work
+&lt;ul&gt;
+&lt;li&gt;need to find alternate way to get config directories into containers&lt;/li&gt;
+&lt;li&gt;(I think build my own versions of the docker containers with appropriate configs?)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Internal domain aliases don&amp;rsquo;t work (ie xmpp.meet.jitsi)
+&lt;ul&gt;
+&lt;li&gt;need to find alternate way for services to talk to each other&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+     <item>
+       <title>Virtual Party Space Devlog #16: AWS architecture with docker-compose</title>
+       <link>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</link>
+       <pubDate>Sat, 23 Jan 2021 23:59:00 -0700</pubDate>
+       
+       <guid>https://blog.fabrefact.ca/posts/virtual-party-space-devlog-16/</guid>
+       <description>&lt;p&gt;Today I finally stopped procrastinating and started seriously looking into how to build this on AWS. (But also fixed a bunch of bugs!)&lt;/p&gt;
+&lt;h1 id=&#34;log&#34;&gt;Log&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;looked into &lt;a href=&#34;https://nolanlawson.com/2020/02/19/fixing-memory-leaks-in-web-applications/&#34;&gt;memory leaks&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;initial tests show that memory growth doesn&amp;rsquo;t present over short timeframes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;added userId to events to allow for multiple-player movement&lt;/li&gt;
+&lt;li&gt;modified depth layers so player avatars always drawn in front of scenery at &amp;ldquo;same&amp;rdquo; depth (using step-2 as considered before)
+&lt;ul&gt;
+&lt;li&gt;still looks weird when player going behind things, but moving in front of buildings now looks right&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;bug-fixes&#34;&gt;Bug fixes&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;took forever to figure out mute bug!
+&lt;ul&gt;
+&lt;li&gt;calling toggleAudioMuted in conferenceJoined event handler was the problem
+&lt;ul&gt;
+&lt;li&gt;conferenceJoined event is dispatched before async setAudioInput completes, so toggle would find no input and create a new one, which would then get destroyed when the initial audio input tried to complete.&lt;/li&gt;
+&lt;li&gt;always saw 2 adds, 2 removes, so maybe the async calls stepped on each other?&lt;/li&gt;
+&lt;li&gt;left with no audio track, new audio track would then be created on hitting mute toggle or switching inputs&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;combined with Calla&amp;rsquo;s not-great idea to use &amp;ldquo;toggle&amp;rdquo; instead of any way of setting directly
+&lt;ul&gt;
+&lt;li&gt;isAudioMuted was always null so would always toggle, regardless of &amp;ldquo;set&amp;rdquo; value&lt;/li&gt;
+&lt;li&gt;even after patching that, initial state is always null, so leads to different behaviour depending if audio track exists or not&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;no easy way to create a track muted
+&lt;ul&gt;
+&lt;li&gt;startAudioMuted in Jitsi doesn&amp;rsquo;t seem to do anything?&lt;/li&gt;
+&lt;li&gt;also tried startMutedPolicy, also doesn&amp;rsquo;t seem to do anything
+&lt;ul&gt;
+&lt;li&gt;maybe look into these later, but Jitsi is complicated.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;reverted a change to Calla and then discovered it&amp;rsquo;s required to have the &amp;ldquo;None&amp;rdquo; option in audio/video dropdowns
+&lt;ul&gt;
+&lt;li&gt;redid fix and committed this time&lt;/li&gt;
+&lt;li&gt;still on &amp;ldquo;fixes&amp;rdquo; branch of official repo, haven&amp;rsquo;t recalled how to switch origins&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;remote user avatars now properly load to that user&amp;rsquo;s reported position
+&lt;ul&gt;
+&lt;li&gt;addParticipant is getting sloppy, might want to break this out into somewhere else&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;figured out how to properly add user avatars &amp;amp; positions for all users!
+&lt;ul&gt;
+&lt;li&gt;requires sending custom Jitsi messages. Calla doesn&amp;rsquo;t have an interface for this, so now I&amp;rsquo;ve polluted my conference code with hard-coded Jitsi references&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cannot-put-off-aws-anymore&#34;&gt;CANNOT PUT OFF AWS ANYMORE&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;A&lt;/code&gt; recommended Fargate and I guess I see it, going to try tutorials in that direction&lt;/li&gt;
+&lt;li&gt;installed ecs cli and upgraded aws-cli
+&lt;ul&gt;
+&lt;li&gt;****TODO: set up AWS profile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Eventually get an &lt;a href=&#34;https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html&#34;&gt;Elastic IP&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;cost &amp;lt;$5 for a month&lt;/li&gt;
+&lt;li&gt;add CNAME at domain registrar well in advance to get domain name&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;using-docker-compose&#34;&gt;Using docker-compose&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;It&amp;rsquo;s possible to &lt;a href=&#34;https://aws.amazon.com/blogs/containers/deploy-applications-on-amazon-ecs-using-docker-compose/&#34;&gt;use docker-compose with ECS&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://docs.docker.com/cloud/ecs-integration/&#34;&gt;https://docs.docker.com/cloud/ecs-integration/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;this seems to avoid the need to create cloudformation templates and just turns your docker-compose.yml into cloudformation
+&lt;ul&gt;
+&lt;li&gt;can use &lt;code&gt;docker compose convert&lt;/code&gt; to just generate the cloudformation and manually tweak&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can reuse much of the existing jitsi docker project, just update if I need to do something custom with jvb
+&lt;ul&gt;
+&lt;li&gt;I think I&amp;rsquo;m getting the picture that despite the visualization in Docker Desktop, all the different containers are actually entirely separate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;can also test AWS context locally &lt;a href=&#34;https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/&#34;&gt;https://aws.amazon.com/blogs/compute/a-guide-to-locally-testing-containers-with-amazon-ecs-local-endpoints-and-docker-compose/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;need to add features like:
+&lt;ul&gt;
+&lt;li&gt;resources (max CPU and memory per service)&lt;/li&gt;
+&lt;li&gt;x-aws-* parameters&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Can specify a .env file for docker-compose &lt;a href=&#34;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html&#34;&gt;https://docs.aws.amazon.com/AmazonECS/latest/developerguide/taskdef-envfiles.html&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;unfortunately this might not work for the docker binary, which is required for ECS features
+&lt;ul&gt;
+&lt;li&gt;.env file support added a couple weeks ago, might work? Installing new Docker Desktop version&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;****TODO: figure out SSL certificates&lt;/li&gt;
+&lt;li&gt;****TODO: pull passwords out of .env and put them into secrets manager
+&lt;ul&gt;
+&lt;li&gt;learn how secrets work I guess&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;other-considerations&#34;&gt;Other considerations&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;I think the only thing the &amp;ldquo;web&amp;rdquo; docker container is used for is proxying http-bind on to xmpp.meet.jitsi:5280
+&lt;ul&gt;
+&lt;li&gt;could ditch &amp;ldquo;web&amp;rdquo; altogether, and replace it with a container of my app?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;my code is getting complicated enough that I&amp;rsquo;m starting to break features when adding a new feature, probably need tests
+&lt;ul&gt;
+&lt;li&gt;unfortunately most of my test needs are integration/e2e, not sure how to test ie jitsi connection events
+&lt;ul&gt;
+&lt;li&gt;a mock of lib-jitsi-meet would take so long to write&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;about-this-series&#34;&gt;About this series&lt;/h4&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Back in mid-December I started an ambitious project to create a custom platform for a virtual birthday party in February. I kept notes on my progress, both for personal reference and to turn into a series of blog posts. It quickly became apparent that I did not have time to both &lt;em&gt;do the project&lt;/em&gt; and &lt;em&gt;blog about the project&lt;/em&gt;. I have retroactively decided to post my raw notes as a dev log.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+     </item>
+   
+ </channel>
+</rss>
