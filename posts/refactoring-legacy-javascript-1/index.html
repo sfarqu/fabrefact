@@ -10,15 +10,16 @@
 <meta name="author" content="Sara Farquharson" /><meta property="og:title" content="Refactoring Legacy Javascript: Part 1" />
 <meta property="og:description" content="Enter the haunted forest My workplace has the expected share of legacy code, and one piece nestles at the heart of a major product I supported for years as a developer. This very successful product dates back to when the company was a frantic handful of developers trying to do too much work in too little time, and by the time I joined the company it had attained nigh-on haunted graveyard status." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-05-07T22:49:41-07:00" />
 <meta property="article:modified_time" content="2020-05-07T22:49:41-07:00" /><meta property="og:site_name" content="Fabrefact" />
+
 
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="Refactoring Legacy Javascript: Part 1"/>
 <meta name="twitter:description" content="Enter the haunted forest My workplace has the expected share of legacy code, and one piece nestles at the heart of a major product I supported for years as a developer. This very successful product dates back to when the company was a frantic handful of developers trying to do too much work in too little time, and by the time I joined the company it had attained nigh-on haunted graveyard status."/>
 
-<meta name="generator" content="Hugo 0.60.1" />
+<meta name="generator" content="Hugo 0.81.0" />
     
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
@@ -119,18 +120,18 @@
 
     <h2 id="enter-the-haunted-forest">Enter the haunted forest</h2>
 <p>My workplace has the expected share of legacy code, and one piece nestles at the heart of a major product I supported for years as a developer. This very successful product dates back to when the company was a frantic handful of developers trying to do too much work in too little time, and by the time I joined the company it had attained nigh-on <a href="https://softwareexorcist.com/writing/haunted-graveyards">haunted graveyard</a> status. Little documentation, no tests, a tangled mess of tightly-dependent code in at least three languages, relied upon daily by many Important Clients.</p>
-<p>One of my first tasks was a backlog ticket to add an insignificant feature to this product, and it took me a full month to feel like I understood it well enough to not break it. (Spoiler: even then I didn't understand it.) Over the years tiny changes broke production more often than not, and every developer who touched it had to spend days chasing down arcane undocumented trivia, like how to even build the localization files.</p>
+<p>One of my first tasks was a backlog ticket to add an insignificant feature to this product, and it took me a full month to feel like I understood it well enough to not break it. (Spoiler: even then I didn&rsquo;t understand it.) Over the years tiny changes broke production more often than not, and every developer who touched it had to spend days chasing down arcane undocumented trivia, like how to even build the localization files.</p>
 <p>Did I mention no tests?</p>
-<p>Of course I adopted this orphaned codebase as my ugly, precious baby. I spent many hours thinking about how to make it beautiful, even while knowing it would never be a priority. At one point I demanded the opportunity to refactor the entire PHP codebase for testability as a prerequisite for adding a new feature, but the Javascript was deemed out of scope. None of us had a background in Javascript development, and the code worked until now, might as well just cross our fingers and hope it held out until this product's inevitable retirement.</p>
-<p>The problem with decade-old Javascript, however, is that the browser landscape keeps changing, and suddenly you get an emergency bug ticket from an Important Client because your product doesn't work in a new browser. And nobody understands how the code works, or how to test it, or where the script to build the localization files lives.</p>
-<p>I didn't get that ticket because I've moved on to another role, so I only watched Slack in dismay as the dev described a week struggling to implement and verify a ten-line fix, some of which could have been avoided if I'd documented my own fights more thoroughly. (She is a better dev than I, and wrote down the entire elaborate build process as she figured it out.)</p>
+<p>Of course I adopted this orphaned codebase as my ugly, precious baby. I spent many hours thinking about how to make it beautiful, even while knowing it would never be a priority. At one point I demanded the opportunity to refactor the entire PHP codebase for testability as a prerequisite for adding a new feature, but the Javascript was deemed out of scope. None of us had a background in Javascript development, and the code worked until now, might as well just cross our fingers and hope it held out until this product&rsquo;s inevitable retirement.</p>
+<p>The problem with decade-old Javascript, however, is that the browser landscape keeps changing, and suddenly you get an emergency bug ticket from an Important Client because your product doesn&rsquo;t work in a new browser. And nobody understands how the code works, or how to test it, or where the script to build the localization files lives.</p>
+<p>I didn&rsquo;t get that ticket because I&rsquo;ve moved on to another role, so I only watched Slack in dismay as the dev described a week struggling to implement and verify a ten-line fix, some of which could have been avoided if I&rsquo;d documented my own fights more thoroughly. (She is a better dev than I, and wrote down the entire elaborate build process as she figured it out.)</p>
 <h2 id="the-purpose-of-refactoring">The purpose of refactoring</h2>
-<p>If you're not familiar with a language, figuring out <em>how</em> to write tests or run the code can be an insurmountable barrier. The curse of haunted Javascript is that all today's snazzy test frameworks assume you are using modern techniques like modules or ES6 syntax or a framework. Nothing like that in legacy files! Only a bunch of functions, dumped into an inline script tag.</p>
+<p>If you&rsquo;re not familiar with a language, figuring out <em>how</em> to write tests or run the code can be an insurmountable barrier. The curse of haunted Javascript is that all today&rsquo;s snazzy test frameworks assume you are using modern techniques like modules or ES6 syntax or a framework. Nothing like that in legacy files! Only a bunch of functions, dumped into an inline script tag.</p>
 <p><img src="/figures/legacy-script.png" alt="Drawing of code being inserted between &ldquo;script&rdquo; HTML tags"></p>
-<p>You can't get code coverage unless you can <code>require</code> your files in your tests, and you can't tell what parts of the 3000-line monolith to put in a <code>module.exports</code> without either writing a test, or painstakingly stepping through in a way no one ever seems to have the time for. Last year I spent a weekend trying to get at least a test framework running, and ended up lost in the bowels of <a href="https://istanbul.js.org/">Istanbul</a> source code.</p>
+<p>You can&rsquo;t get code coverage unless you can <code>require</code> your files in your tests, and you can&rsquo;t tell what parts of the 3000-line monolith to put in a <code>module.exports</code> without either writing a test, or painstakingly stepping through in a way no one ever seems to have the time for. Last year I spent a weekend trying to get at least a test framework running, and ended up lost in the bowels of <a href="https://istanbul.js.org/">Istanbul</a> source code.</p>
 <p>But improving the code coverage metrics is just something I <em>want</em> to do. There are some genuine reasons to want to modernize the code to do things like remove global variables, but even that is mostly personal preference. The real problem is that it takes too long to check if your changes worked.</p>
 <p>I came back to this on Tuesday full of renewed determination to make the process of building and testing this code easier. Right now &ldquo;the process&rdquo; involves running two different command line scripts manually and checking in the processed artifacts. These artifacts are dynamically injected into a <code>&lt;script&gt;</code> tag at run time.</p>
-<p>Let's draw that as a picture:</p>
+<p>Let&rsquo;s draw that as a picture:</p>
 <p><img src="/figures/build-flow.png" alt="Flow diagram of the build process, from CSV file through a legacy PHP script, then compiled by a different legacy PHP script along with a variable number of other script files into a concatenated and minified version, which is checked into source control, then included inline at run time"></p>
 <p>This diagram makes it look more straightforward than it is currently:</p>
 <ul>
@@ -147,16 +148,16 @@
 <li>Artifacts produced by this new build process should be identical to the old process</li>
 <li>None of the existing files should be changed</li>
 </ol>
-<p>The last one is possibly overkill, but I want to be absolutely sure that my desire to improve the developer experience doesn't impact the actual production code.</p>
+<p>The last one is possibly overkill, but I want to be absolutely sure that my desire to improve the developer experience doesn&rsquo;t impact the actual production code.</p>
 <h2 id="choosing-tools">Choosing tools</h2>
-<p>First things first, we need a package manager. I went with npm over yarn because I've used npm before and it's already installed on my computer. At least one other project also uses npm, so it's pretty likely to be on other developers&rsquo; computers too.</p>
+<p>First things first, we need a package manager. I went with npm over yarn because I&rsquo;ve used npm before and it&rsquo;s already installed on my computer. At least one other project also uses npm, so it&rsquo;s pretty likely to be on other developers' computers too.</p>
 <h3 id="running-tasks">Running tasks</h3>
-<p>For my needs I knew I wanted to use a task runner. As I said before, I am not a Javascript expert, and neither are the people who maintain this product. There aren't many other Javascript projects in the company that I can use for reference, and I'm not familiar with the common Javascript toolchain.</p>
-<p>I considered using a custom script or a task runner in another language—gradle is commonly used even for projects that aren't Java. I decided to pick a JS tool despite that for a few reasons:</p>
+<p>For my needs I knew I wanted to use a task runner. As I said before, I am not a Javascript expert, and neither are the people who maintain this product. There aren&rsquo;t many other Javascript projects in the company that I can use for reference, and I&rsquo;m not familiar with the common Javascript toolchain.</p>
+<p>I considered using a custom script or a task runner in another language—gradle is commonly used even for projects that aren&rsquo;t Java. I decided to pick a JS tool despite that for a few reasons:</p>
 <ol>
-<li>Custom scripts are how we got in this mess—if you spend enough time to make a script that's resilient and extendable, you've basically written another task runner. Better to use one that's actively maintained.</li>
-<li>A tool that's designed to work with Javascript is more likely to have built-in support for the kind of steps used in Javascript pipelines, like running Google Closure Compiler.</li>
-<li>I hold a grudge against Gradle after years of having to deal with build chains I didn't understand.</li>
+<li>Custom scripts are how we got in this mess—if you spend enough time to make a script that&rsquo;s resilient and extendable, you&rsquo;ve basically written another task runner. Better to use one that&rsquo;s actively maintained.</li>
+<li>A tool that&rsquo;s designed to work with Javascript is more likely to have built-in support for the kind of steps used in Javascript pipelines, like running Google Closure Compiler.</li>
+<li>I hold a grudge against Gradle after years of having to deal with build chains I didn&rsquo;t understand.</li>
 <li>I wanted to learn more about Javascript toolchains.</li>
 </ol>
 <p>A quick search for Javascript build tools got me a few options:</p>
@@ -174,12 +175,12 @@
 <h4 id="grunt">Grunt</h4>
 <ul>
 <li>PRO: Described as simpler to learn than Gulp</li>
-<li>CON: I can't remember, but surely there was something?</li>
+<li>CON: I can&rsquo;t remember, but surely there was something?</li>
 </ul>
-<p>Webpack was clearly out because it is a bundler, not a task runner, and trying to force it to be a task runner would lead to heartache. Grunt and Gulp seemed to be a toss-up, with <a href="https://www.ionos.ca/digitalguide/websites/web-development/gulp-vs-grunt-differentiating-between-the-task-runners/">some articles</a> describing Grunt having more a focus on configuration, and Gulp more on programming. I decided to try Gulp first, for nebulous reasons including the fact that it was supposed to be faster, and I didn't like the <a href="https://gruntjs.com/">Grunt logo</a>.</p>
+<p>Webpack was clearly out because it is a bundler, not a task runner, and trying to force it to be a task runner would lead to heartache. Grunt and Gulp seemed to be a toss-up, with <a href="https://www.ionos.ca/digitalguide/websites/web-development/gulp-vs-grunt-differentiating-between-the-task-runners/">some articles</a> describing Grunt having more a focus on configuration, and Gulp more on programming. I decided to try Gulp first, for nebulous reasons including the fact that it was supposed to be faster, and I didn&rsquo;t like the <a href="https://gruntjs.com/">Grunt logo</a>.</p>
 <p>I fully planned to delete Gulp if I got frustrated with it, because there are clearly other options that work very well.</p>
 <h3 id="next-steps">Next steps</h3>
-<p>In the next post I'll talk about how I set up a working build script in 4 hours, and then spent until sunrise debugging a single configuration option.</p>
+<p>In the next post I&rsquo;ll talk about how I set up a working build script in 4 hours, and then spent until sunrise debugging a single configuration option.</p>
 
 
 </article>

@@ -20,55 +20,55 @@
        <pubDate>Sat, 07 Dec 2019 23:13:25 -0800</pubDate>
        
        <guid>https://blog.fabrefact.ca/posts/framework-mistakes-were-made/</guid>
-       <description>&lt;p&gt;It took a long time for me to go from &amp;ldquo;I want to write blog posts&amp;rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was &lt;em&gt;so exhausting&lt;/em&gt;.&lt;/p&gt;
+       <description>&lt;p&gt;It took a long time for me to go from &amp;ldquo;I want to write blog posts&amp;rdquo; to actually, y&amp;rsquo;know, writing anything. Not due to any sort of writer&amp;rsquo;s block, but because the idea of designing a new website was &lt;em&gt;so exhausting&lt;/em&gt;.&lt;/p&gt;
 &lt;p&gt;Even once I decided to use a static site generator, I had to choose &lt;em&gt;which&lt;/em&gt; generator, and then a template&amp;hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.&lt;/p&gt;
 &lt;p&gt;That turned out to be a mistake. How could I have done better?&lt;/p&gt;
 &lt;h2 id=&#34;the-perils-of-picking-tools&#34;&gt;The perils of picking tools&lt;/h2&gt;
-&lt;p&gt;Once, back in the before times, when we wanted to create a webpage we would write plain HTML in a text editor (uphill both ways in the snow) but that hasn&#39;t been the in thing for decades now. The last time I had a go at creating a new website (circa 2010) it still seemed like content management systems were the way to go. Spend days or weeks choosing a platform that had all the features you need but wasn&#39;t too complicated, or write your own from scratch and be responsible for all the database management, user authentication, and API design.&lt;/p&gt;
-&lt;p&gt;I&#39;ve always fallen in the &amp;ldquo;roll your own&amp;rdquo; camp, which is why I have not had a functioning website in a decade.&lt;/p&gt;
+&lt;p&gt;Once, back in the before times, when we wanted to create a webpage we would write plain HTML in a text editor (uphill both ways in the snow) but that hasn&amp;rsquo;t been the in thing for decades now. The last time I had a go at creating a new website (circa 2010) it still seemed like content management systems were the way to go. Spend days or weeks choosing a platform that had all the features you need but wasn&amp;rsquo;t too complicated, or write your own from scratch and be responsible for all the database management, user authentication, and API design.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;ve always fallen in the &amp;ldquo;roll your own&amp;rdquo; camp, which is why I have not had a functioning website in a decade.&lt;/p&gt;
 &lt;p&gt;When this new blogging impulse hit, I, older and wiser, determined to use a tool to abstract away all the blog boilerplate and website design. I wanted to simply publish posts without having to babysit my own Linux server. Conveniently, while I was ignoring the world of web, the tide had shifted away from databases and admin consoles to static HTML sites on free hosting.&lt;/p&gt;
-&lt;p&gt;Turns out I still don&#39;t like outsourcing most of my application to other programmers, but it&#39;s either that or go back to never finishing my own framework so what choice did I have?&lt;/p&gt;
+&lt;p&gt;Turns out I still don&amp;rsquo;t like outsourcing most of my application to other programmers, but it&amp;rsquo;s either that or go back to never finishing my own framework so what choice did I have?&lt;/p&gt;
 &lt;h2 id=&#34;decisions-decisions&#34;&gt;Decisions, decisions&lt;/h2&gt;
 &lt;p&gt;A lot of choice! There are approximately eleventy-billion static site generators out there, so how to pick one, if you only barely understand what a static site generator is? I settled on a few heuristics to get the fastest start on a new site:&lt;/p&gt;
 &lt;h3 id=&#34;1-how-good-is-the-documentation&#34;&gt;1. How good is the documentation?&lt;/h3&gt;
-&lt;p&gt;If you want to get started as fast as possible, be on the lookout for step-by-step instructions for getting up and running with all the features you&#39;re looking for.&lt;/p&gt;
+&lt;p&gt;If you want to get started as fast as possible, be on the lookout for step-by-step instructions for getting up and running with all the features you&amp;rsquo;re looking for.&lt;/p&gt;
 &lt;h3 id=&#34;2-is-the-generator-written-in-a-programming-language-you-know-or-want-to-learn&#34;&gt;2. Is the generator written in a programming language you know (or want to learn?)&lt;/h3&gt;
-&lt;p&gt;Eventually you may want to understand what is happening inside the generator, or edit some of the templates. Even if you are not interested in tinkering, the tooling around installing, updating, and running the generator will be tied to the language it&#39;s written in. Some familiarity with that programming language will make the whole process easier.&lt;/p&gt;
-&lt;h3 id=&#34;3-are-there-prebuilt-themes-you-like-the-look-of&#34;&gt;3. Are there pre-built themes you like the look of?&lt;/h3&gt;
+&lt;p&gt;Eventually you may want to understand what is happening inside the generator, or edit some of the templates. Even if you are not interested in tinkering, the tooling around installing, updating, and running the generator will be tied to the language it&amp;rsquo;s written in. Some familiarity with that programming language will make the whole process easier.&lt;/p&gt;
+&lt;h3 id=&#34;3-are-there-pre-built-themes-you-like-the-look-of&#34;&gt;3. Are there pre-built themes you like the look of?&lt;/h3&gt;
 &lt;p&gt;Even if you intend to make a custom theme, starting with one that is most of what you want will give you a vast head start.&lt;/p&gt;
 &lt;h3 id=&#34;4-how-popular-is-it&#34;&gt;4. How popular is it?&lt;/h3&gt;
 &lt;p&gt;The larger the user community, the more likely you are to find tutorials, Stack Overflow answers, and lots of themes or other sites for reference.&lt;/p&gt;
 &lt;h3 id=&#34;5-is-it-actively-maintained&#34;&gt;5. Is it actively maintained?&lt;/h3&gt;
-&lt;p&gt;How often is it updated? Are there any problems regularly reported by users that aren&#39;t getting fixed?&lt;/p&gt;
+&lt;p&gt;How often is it updated? Are there any problems regularly reported by users that aren&amp;rsquo;t getting fixed?&lt;/p&gt;
 &lt;h2 id=&#34;mistakes-were-made&#34;&gt;Mistakes were made&lt;/h2&gt;
 &lt;p&gt;Where I went wrong was in prioritizing a pre-made theme I liked over community, language, and support. Hexo is a fairly popular static site generator written in node.js, but it turned out to have some fatal flaws for my needs.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
-&lt;p&gt;&lt;strong&gt;Turns out I don&#39;t like Node&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;I didn&#39;t have strong feelings about language choice when I started, and I thought learning Node a little better might be useful. Instead I just felt annoyed whenever I had to debug anything, because I don&#39;t care enough about getting familiar with the framework, and it has a few quirks that frustrated me:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Turns out I don&amp;rsquo;t like Node&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;I didn&amp;rsquo;t have strong feelings about language choice when I started, and I thought learning Node a little better might be useful. Instead I just felt annoyed whenever I had to debug anything, because I don&amp;rsquo;t care enough about getting familiar with the framework, and it has a few quirks that frustrated me:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Node doesn&#39;t have a standard templating language&lt;/strong&gt;.
+&lt;li&gt;&lt;strong&gt;Node doesn&amp;rsquo;t have a standard templating language&lt;/strong&gt;.
 Almost every theme I looked at used a different templating style, which made it difficult to generalize about how templates worked and how to customize them. On top of that, the templating framework used by the theme I chose turned out to be obsolete.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;There are too many dependencies&lt;/strong&gt;.
-The quick-start instructions for setting up my Hexo site didn&#39;t include checking in a dependency lockfile. As a result, some transitive dependency updated and for unknown reasons broke Hexo&#39;s ability to generate my site. This crystallized my frustration with the overall Node dependency ecosystem.&lt;/li&gt;
+The quick-start instructions for setting up my Hexo site didn&amp;rsquo;t include checking in a dependency lockfile. As a result, some transitive dependency updated and for unknown reasons broke Hexo&amp;rsquo;s ability to generate my site. This crystallized my frustration with the overall Node dependency ecosystem.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;The support community is not accessible to me&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Hexo has a reasonable number of users, but many of them are Chinese-speaking. Many times when trying to debug an error or find a tutorial, I had trouble finding any results in my native language. I didn&#39;t think this would be an issue when I chose it, but I ended up having to debug a lot more than I predicted.&lt;/p&gt;
+&lt;p&gt;Hexo has a reasonable number of users, but many of them are Chinese-speaking. Many times when trying to debug an error or find a tutorial, I had trouble finding any results in my native language. I didn&amp;rsquo;t think this would be an issue when I chose it, but I ended up having to debug a lot more than I predicted.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Some of the defaults result in undesireable behaviour&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;The final nail in the coffin of my Hexo experiment was realizing that by default permalinks include date information, but default date-time stamps in posts don&#39;t include time zone. This meant that URIs for all my posts sometimes changed depending on which timezone I was in when I generated the static files. This broke any links to my site and was overall much less permanent than &amp;ldquo;permalink&amp;rdquo; implies.&lt;/p&gt;
+&lt;p&gt;The final nail in the coffin of my Hexo experiment was realizing that by default permalinks include date information, but default date-time stamps in posts don&amp;rsquo;t include time zone. This meant that URIs for all my posts sometimes changed depending on which timezone I was in when I generated the static files. This broke any links to my site and was overall much less permanent than &amp;ldquo;permalink&amp;rdquo; implies.&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;I probably could have worked all of these problems out, but the entire reason for using a static site generator is to not have to do all this code tweaking and maintenance!&lt;/p&gt;
 &lt;h2 id=&#34;enter-hugo&#34;&gt;Enter Hugo&lt;/h2&gt;
-&lt;p&gt;After a week or two of sulking, I picked Hugo as a replacement generator. I don&#39;t love any of the themes, but found one I can tolerate until I find time to make something custom. Hugo has the following selling points:&lt;/p&gt;
+&lt;p&gt;After a week or two of sulking, I picked Hugo as a replacement generator. I don&amp;rsquo;t love any of the themes, but found one I can tolerate until I find time to make something custom. Hugo has the following selling points:&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;The community and support seem vibrant. I haven&#39;t had any trouble so far finding documentation or tutorials for any issues I&#39;ve run in to.&lt;/li&gt;
+&lt;li&gt;The community and support seem vibrant. I haven&amp;rsquo;t had any trouble so far finding documentation or tutorials for any issues I&amp;rsquo;ve run in to.&lt;/li&gt;
 &lt;li&gt;I am actively interested in learning more Go and find it straightforward to read both code and templates.&lt;/li&gt;
-&lt;li&gt;The specific date issues I had with Hexo don&#39;t exist in Hugo.&lt;/li&gt;
+&lt;li&gt;The specific date issues I had with Hexo don&amp;rsquo;t exist in Hugo.&lt;/li&gt;
 &lt;li&gt;The post and front matter formats are identical, so I was able to simply copy-paste my previous source files into the new generator.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;Fingers crossed this will be the last major shakeup for a while, but at the very least I am moving on to new and different problems.&lt;/p&gt;</description>

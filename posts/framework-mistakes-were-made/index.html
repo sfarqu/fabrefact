@@ -8,21 +8,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="description" content="a blog by Sara Farquharson" />
 <meta name="author" content="Sara Farquharson" /><meta property="og:title" content="(framework) mistakes were made" />
-<meta property="og:description" content="It took a long time for me to go from &ldquo;I want to write blog posts&rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was so exhausting.
+<meta property="og:description" content="It took a long time for me to go from &ldquo;I want to write blog posts&rdquo; to actually, y&rsquo;know, writing anything. Not due to any sort of writer&rsquo;s block, but because the idea of designing a new website was so exhausting.
 Even once I decided to use a static site generator, I had to choose which generator, and then a template&hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.
 That turned out to be a mistake. How could I have done better?" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://blog.fabrefact.ca/posts/framework-mistakes-were-made/" />
+<meta property="og:url" content="https://blog.fabrefact.ca/posts/framework-mistakes-were-made/" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2019-12-07T23:13:25-08:00" />
 <meta property="article:modified_time" content="2019-12-07T23:13:25-08:00" /><meta property="og:site_name" content="Fabrefact" />
 
+
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="(framework) mistakes were made"/>
-<meta name="twitter:description" content="It took a long time for me to go from &ldquo;I want to write blog posts&rdquo; to actually, y&#39;know, writing anything. Not due to any sort of writer&#39;s block, but because the idea of designing a new website was so exhausting.
+<meta name="twitter:description" content="It took a long time for me to go from &ldquo;I want to write blog posts&rdquo; to actually, y&rsquo;know, writing anything. Not due to any sort of writer&rsquo;s block, but because the idea of designing a new website was so exhausting.
 Even once I decided to use a static site generator, I had to choose which generator, and then a template&hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.
 That turned out to be a mistake. How could I have done better?"/>
 
-<meta name="generator" content="Hugo 0.60.1" />
+<meta name="generator" content="Hugo 0.81.0" />
     
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
@@ -108,55 +109,55 @@ That turned out to be a mistake. How could I have done better?"/>
     
 
 
-    <p>It took a long time for me to go from &ldquo;I want to write blog posts&rdquo; to actually, y'know, writing anything. Not due to any sort of writer's block, but because the idea of designing a new website was <em>so exhausting</em>.</p>
+    <p>It took a long time for me to go from &ldquo;I want to write blog posts&rdquo; to actually, y&rsquo;know, writing anything. Not due to any sort of writer&rsquo;s block, but because the idea of designing a new website was <em>so exhausting</em>.</p>
 <p>Even once I decided to use a static site generator, I had to choose <em>which</em> generator, and then a template&hellip; Ugh! After four months or so I finally picked Hexo and tweaked a template to my liking.</p>
 <p>That turned out to be a mistake. How could I have done better?</p>
 <h2 id="the-perils-of-picking-tools">The perils of picking tools</h2>
-<p>Once, back in the before times, when we wanted to create a webpage we would write plain HTML in a text editor (uphill both ways in the snow) but that hasn't been the in thing for decades now. The last time I had a go at creating a new website (circa 2010) it still seemed like content management systems were the way to go. Spend days or weeks choosing a platform that had all the features you need but wasn't too complicated, or write your own from scratch and be responsible for all the database management, user authentication, and API design.</p>
-<p>I've always fallen in the &ldquo;roll your own&rdquo; camp, which is why I have not had a functioning website in a decade.</p>
+<p>Once, back in the before times, when we wanted to create a webpage we would write plain HTML in a text editor (uphill both ways in the snow) but that hasn&rsquo;t been the in thing for decades now. The last time I had a go at creating a new website (circa 2010) it still seemed like content management systems were the way to go. Spend days or weeks choosing a platform that had all the features you need but wasn&rsquo;t too complicated, or write your own from scratch and be responsible for all the database management, user authentication, and API design.</p>
+<p>I&rsquo;ve always fallen in the &ldquo;roll your own&rdquo; camp, which is why I have not had a functioning website in a decade.</p>
 <p>When this new blogging impulse hit, I, older and wiser, determined to use a tool to abstract away all the blog boilerplate and website design. I wanted to simply publish posts without having to babysit my own Linux server. Conveniently, while I was ignoring the world of web, the tide had shifted away from databases and admin consoles to static HTML sites on free hosting.</p>
-<p>Turns out I still don't like outsourcing most of my application to other programmers, but it's either that or go back to never finishing my own framework so what choice did I have?</p>
+<p>Turns out I still don&rsquo;t like outsourcing most of my application to other programmers, but it&rsquo;s either that or go back to never finishing my own framework so what choice did I have?</p>
 <h2 id="decisions-decisions">Decisions, decisions</h2>
 <p>A lot of choice! There are approximately eleventy-billion static site generators out there, so how to pick one, if you only barely understand what a static site generator is? I settled on a few heuristics to get the fastest start on a new site:</p>
 <h3 id="1-how-good-is-the-documentation">1. How good is the documentation?</h3>
-<p>If you want to get started as fast as possible, be on the lookout for step-by-step instructions for getting up and running with all the features you're looking for.</p>
+<p>If you want to get started as fast as possible, be on the lookout for step-by-step instructions for getting up and running with all the features you&rsquo;re looking for.</p>
 <h3 id="2-is-the-generator-written-in-a-programming-language-you-know-or-want-to-learn">2. Is the generator written in a programming language you know (or want to learn?)</h3>
-<p>Eventually you may want to understand what is happening inside the generator, or edit some of the templates. Even if you are not interested in tinkering, the tooling around installing, updating, and running the generator will be tied to the language it's written in. Some familiarity with that programming language will make the whole process easier.</p>
-<h3 id="3-are-there-prebuilt-themes-you-like-the-look-of">3. Are there pre-built themes you like the look of?</h3>
+<p>Eventually you may want to understand what is happening inside the generator, or edit some of the templates. Even if you are not interested in tinkering, the tooling around installing, updating, and running the generator will be tied to the language it&rsquo;s written in. Some familiarity with that programming language will make the whole process easier.</p>
+<h3 id="3-are-there-pre-built-themes-you-like-the-look-of">3. Are there pre-built themes you like the look of?</h3>
 <p>Even if you intend to make a custom theme, starting with one that is most of what you want will give you a vast head start.</p>
 <h3 id="4-how-popular-is-it">4. How popular is it?</h3>
 <p>The larger the user community, the more likely you are to find tutorials, Stack Overflow answers, and lots of themes or other sites for reference.</p>
 <h3 id="5-is-it-actively-maintained">5. Is it actively maintained?</h3>
-<p>How often is it updated? Are there any problems regularly reported by users that aren't getting fixed?</p>
+<p>How often is it updated? Are there any problems regularly reported by users that aren&rsquo;t getting fixed?</p>
 <h2 id="mistakes-were-made">Mistakes were made</h2>
 <p>Where I went wrong was in prioritizing a pre-made theme I liked over community, language, and support. Hexo is a fairly popular static site generator written in node.js, but it turned out to have some fatal flaws for my needs.</p>
 <ul>
 <li>
-<p><strong>Turns out I don't like Node</strong></p>
-<p>I didn't have strong feelings about language choice when I started, and I thought learning Node a little better might be useful. Instead I just felt annoyed whenever I had to debug anything, because I don't care enough about getting familiar with the framework, and it has a few quirks that frustrated me:</p>
+<p><strong>Turns out I don&rsquo;t like Node</strong></p>
+<p>I didn&rsquo;t have strong feelings about language choice when I started, and I thought learning Node a little better might be useful. Instead I just felt annoyed whenever I had to debug anything, because I don&rsquo;t care enough about getting familiar with the framework, and it has a few quirks that frustrated me:</p>
 <ul>
-<li><strong>Node doesn't have a standard templating language</strong>.
+<li><strong>Node doesn&rsquo;t have a standard templating language</strong>.
 Almost every theme I looked at used a different templating style, which made it difficult to generalize about how templates worked and how to customize them. On top of that, the templating framework used by the theme I chose turned out to be obsolete.</li>
 <li><strong>There are too many dependencies</strong>.
-The quick-start instructions for setting up my Hexo site didn't include checking in a dependency lockfile. As a result, some transitive dependency updated and for unknown reasons broke Hexo's ability to generate my site. This crystallized my frustration with the overall Node dependency ecosystem.</li>
+The quick-start instructions for setting up my Hexo site didn&rsquo;t include checking in a dependency lockfile. As a result, some transitive dependency updated and for unknown reasons broke Hexo&rsquo;s ability to generate my site. This crystallized my frustration with the overall Node dependency ecosystem.</li>
 </ul>
 </li>
 <li>
 <p><strong>The support community is not accessible to me</strong></p>
-<p>Hexo has a reasonable number of users, but many of them are Chinese-speaking. Many times when trying to debug an error or find a tutorial, I had trouble finding any results in my native language. I didn't think this would be an issue when I chose it, but I ended up having to debug a lot more than I predicted.</p>
+<p>Hexo has a reasonable number of users, but many of them are Chinese-speaking. Many times when trying to debug an error or find a tutorial, I had trouble finding any results in my native language. I didn&rsquo;t think this would be an issue when I chose it, but I ended up having to debug a lot more than I predicted.</p>
 </li>
 <li>
 <p><strong>Some of the defaults result in undesireable behaviour</strong></p>
-<p>The final nail in the coffin of my Hexo experiment was realizing that by default permalinks include date information, but default date-time stamps in posts don't include time zone. This meant that URIs for all my posts sometimes changed depending on which timezone I was in when I generated the static files. This broke any links to my site and was overall much less permanent than &ldquo;permalink&rdquo; implies.</p>
+<p>The final nail in the coffin of my Hexo experiment was realizing that by default permalinks include date information, but default date-time stamps in posts don&rsquo;t include time zone. This meant that URIs for all my posts sometimes changed depending on which timezone I was in when I generated the static files. This broke any links to my site and was overall much less permanent than &ldquo;permalink&rdquo; implies.</p>
 </li>
 </ul>
 <p>I probably could have worked all of these problems out, but the entire reason for using a static site generator is to not have to do all this code tweaking and maintenance!</p>
 <h2 id="enter-hugo">Enter Hugo</h2>
-<p>After a week or two of sulking, I picked Hugo as a replacement generator. I don't love any of the themes, but found one I can tolerate until I find time to make something custom. Hugo has the following selling points:</p>
+<p>After a week or two of sulking, I picked Hugo as a replacement generator. I don&rsquo;t love any of the themes, but found one I can tolerate until I find time to make something custom. Hugo has the following selling points:</p>
 <ul>
-<li>The community and support seem vibrant. I haven't had any trouble so far finding documentation or tutorials for any issues I've run in to.</li>
+<li>The community and support seem vibrant. I haven&rsquo;t had any trouble so far finding documentation or tutorials for any issues I&rsquo;ve run in to.</li>
 <li>I am actively interested in learning more Go and find it straightforward to read both code and templates.</li>
-<li>The specific date issues I had with Hexo don't exist in Hugo.</li>
+<li>The specific date issues I had with Hexo don&rsquo;t exist in Hugo.</li>
 <li>The post and front matter formats are identical, so I was able to simply copy-paste my previous source files into the new generator.</li>
 </ul>
 <p>Fingers crossed this will be the last major shakeup for a while, but at the very least I am moving on to new and different problems.</p>

@@ -1,285 +1,173 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://blog.fabrefact.ca/posts/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/books/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/categories/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/links/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/categories/reading-list/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-nov-8/</loc>
     <lastmod>2020-11-08T19:06:29-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-oct-18/</loc>
     <lastmod>2020-10-18T22:05:46-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-oct-4/</loc>
     <lastmod>2020-10-04T11:16:42-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/categories/blog/</loc>
     <lastmod>2020-09-13T16:19:03-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/productivity/</loc>
     <lastmod>2020-09-13T16:19:03-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/tools/</loc>
     <lastmod>2020-09-13T16:19:03-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/bullet-journal/</loc>
     <lastmod>2020-09-13T16:19:03-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/papers/</loc>
     <lastmod>2020-09-06T11:54:54-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-sep-6/</loc>
     <lastmod>2020-09-06T11:54:54-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-30/</loc>
     <lastmod>2020-08-30T11:24:03-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/categories/events/</loc>
     <lastmod>2020-08-24T22:40:34-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/lessons-from-recurse-mini-batch/</loc>
     <lastmod>2020-08-24T22:40:34-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/pairing/</loc>
     <lastmod>2020-08-24T22:40:34-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/recurse-center/</loc>
     <lastmod>2020-08-24T22:40:34-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/rust/</loc>
     <lastmod>2020-08-24T22:40:34-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-20/</loc>
     <lastmod>2020-08-20T22:49:47-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-aug-18/</loc>
     <lastmod>2020-08-18T21:14:56-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-july-19/</loc>
     <lastmod>2020-07-19T12:14:37-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-july-12/</loc>
     <lastmod>2020-07-12T00:22:45-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-july-5/</loc>
     <lastmod>2020-07-05T19:00:54-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-june-28/</loc>
     <lastmod>2020-06-28T18:40:15-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-june-14/</loc>
     <lastmod>2020-06-14T10:25:00-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-jun-6/</loc>
     <lastmod>2020-06-06T21:32:17-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-may-24/</loc>
     <lastmod>2020-05-24T16:10:28-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-may-19/</loc>
     <lastmod>2020-05-19T22:02:13-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-may-9/</loc>
     <lastmod>2020-05-09T22:51:49-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/javascript/</loc>
     <lastmod>2020-05-07T22:49:41-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/refactoring/</loc>
     <lastmod>2020-05-07T22:49:41-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/refactoring-legacy-javascript-1/</loc>
     <lastmod>2020-05-07T22:49:41-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-apr-21/</loc>
     <lastmod>2020-04-21T20:11:50-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-feb-11/</loc>
     <lastmod>2020-02-11T20:47:47-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-feb-2/</loc>
     <lastmod>2020-02-02T12:38:20-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-26/</loc>
     <lastmod>2020-01-26T20:59:35-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-19/</loc>
     <lastmod>2020-01-19T17:42:02-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-jan-12/</loc>
     <lastmod>2020-01-12T23:05:22-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-january-3/</loc>
     <lastmod>2020-01-03T22:12:16-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-december/</loc>
     <lastmod>2019-12-25T23:25:13-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-catch-up/</loc>
     <lastmod>2019-12-14T17:20:09-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/framework-mistakes-were-made/</loc>
     <lastmod>2019-12-07T23:13:25-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/meta/</loc>
     <lastmod>2019-12-07T23:13:25-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-3/</loc>
     <lastmod>2019-11-23T22:21:53-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-2/</loc>
     <lastmod>2019-11-16T10:45:00-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week-1/</loc>
     <lastmod>2019-11-09T21:47:59-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/review-doing-good-better/</loc>
     <lastmod>2019-11-07T21:54:20-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/ctf/</loc>
     <lastmod>2019-11-04T16:04:02-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/tags/security/</loc>
     <lastmod>2019-11-04T16:04:02-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/women-unite-over-ctf-solving-challenges/</loc>
     <lastmod>2019-11-04T16:04:02-08:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/wtf-is-a-ctf/</loc>
     <lastmod>2019-11-02T18:24:49-07:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://blog.fabrefact.ca/posts/what-i-m-reading-this-week/</loc>
     <lastmod>2019-10-31T20:26:57-07:00</lastmod>
   </url>
-  
 </urlset>
